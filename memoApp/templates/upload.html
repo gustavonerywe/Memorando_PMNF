@@ -1,9 +1,24 @@
 {% extends 'template.html' %}
 {% block subtitulo %}
-- Upload
+-- Upload
 {% endblock %}
 {% block content %}
 
+<h1>Upload de arquivos via django</h1>
+<hr>
 
-
+<!-- templates/upload.html -->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+      <label for="id_name">Nome:</label>
+      <input type="text" name="name" id="id_name" required>
+    </div>
+    <div>
+      <label for="id_file">Arquivo:</label>
+      <input type="file" name="file" id="id_file" required>
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
 {% endblock %}
+
