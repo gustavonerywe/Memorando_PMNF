@@ -1,8 +1,7 @@
 {% extends 'template.html' %}
 
 {% block content %}
-  <h1>{{ image.name }}</h1>
-  <p>Tamanho: {{ image.file.size }}</p>
-  <p>Data de upload: {{ image.timestamp }}</p>
-  <a href="{{ image.file.url }}" download>Download</a>
+<h1>{{ image.name }}</h1>
+<p>Tamanho do arquivo: {{ image_size_mb }} MB</p>
+<p>Data de upload: {{ timestamp }}</p>
 {% endblock %}

@@ -7,6 +7,8 @@ from django import forms
 from .models import Image
 from django.http import Http404
 from .forms import ImageForm
+from django.utils import timezone
+
 
 @login_required
 def upload(request):
@@ -29,11 +31,14 @@ def upload(request):
 @login_required
 def file_detail(request, id):
     try:
-        image = Image.objects.get(id=id)
+         image = Image.objects.get(id=id)
+         image_size_kb = round(image.file.size/1024)
+         image_size_mb = round(image_size_kb/1024, 2)
+         timestamp = timezone.now()
     except Image.DoesNotExist:
         raise Http404("Image does not exist")
 
-    context = {'image': image}
+    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
 
     return render(request, 'file_detail.html', context)
 
