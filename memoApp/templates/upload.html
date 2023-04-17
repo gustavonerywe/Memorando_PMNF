@@ -1,6 +1,74 @@
 {% extends 'template.html' %}
 {% block subtitulo %}
-- Upload
+- Upload <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoAPP</title>
+    <link rel="stylesheet" href="/memoApp/static/style.css">
+</head>
+<body>
+	<header>
+            <div id="header">
+                <img  id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+                <div class="linha-vertical"></div>
+            </div>
+            <hr>
+            <div id="content">
+                <table class="table">
+                    <tr>
+                        <th id="tituloTable" colspan="2">MEMORANDO</th>
+                    </tr>
+                    <tr>
+                        <th>Data:</th>
+                        <td>[data do memorando]</td>
+                    </tr>
+                    <tr>
+                        <th>Memo n°:</th>
+                        <td>[número memorando]</td>
+                    </tr>
+                    <tr>
+                        <th>De:</th>
+                        <td>[Lugar de onde está sendo enviado]</td>
+                    </tr>
+                    <tr>
+                        <th>Para:</th>
+                        <td>[Lugar para onde está sendo enviado]</td>
+                    </tr>
+                    <tr>
+                        <th>Assunto:</th>
+                        <td>[Assunto do memorando]</td>
+                    </tr>
+                </table>
+
+                <section id="corpoMemorando">
+                    <p class="texto">
+                    </p>
+                </section>
+            </div>
+            <div id="footer">
+                <p>
+                <fieldset id="box-field">
+                    <table>
+                        <tr>
+                            <th id="tituloTable2">RECEBIDO</td>
+                        </tr>
+                        <tr>
+                            <td>Em: ____ /_____/____</td>
+                        </tr>
+                        <tr>
+                            <td id=ass>Ass: ______________</td>
+                        </tr>
+                    </table>
+ 
+            </div>
+	</footer>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
 {% endblock %}
 {% block content %}
 
