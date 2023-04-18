@@ -26,7 +26,7 @@ def upload(request):
     context={
         'form': form
         }
-    return render(request, 'upload.html', context)
+    return render(request, 'memo_main.html', context)
 
 @login_required
 def file_detail(request, id):
