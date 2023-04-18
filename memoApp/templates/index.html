@@ -1,9 +1,7 @@
 {% extends 'template.html' %}
 {% block subtitulo %}
-<<<<<<< HEAD
--- Upload
-=======
-- Upload <!DOCTYPE html>
+- Index
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -72,25 +70,9 @@
     {% endblock %}
 </body>
 </html>
->>>>>>> c70e831ed2b2725d64954fbabf88cb23f2acd9e2
 {% endblock %}
 {% block content %}
 
-<h1>Upload de arquivos via django</h1>
-<hr>
 
-<!-- templates/upload.html -->
-  <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
-    {% csrf_token %}
-    <div>
-      <label for="id_name">Nome:</label>
-      <input type="text" name="name" id="id_name" required>
-    </div>
-    <div>
-      <label for="id_file">Arquivo:</label>
-      <input type="file" name="file" id="id_file" required>
-    </div>
-    <button type="submit">Enviar</button>
-  </form>
+
 {% endblock %}
-
