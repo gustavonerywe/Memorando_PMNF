@@ -61,9 +61,10 @@
             </div>
     </footer>
 </body>
+<hr>
 
 <h1>Upload de arquivos</h1>
-<hr>
+
 
 <!-- templates/upload.html -->
   <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
@@ -74,8 +75,18 @@
     </div>
     <div>
       <label for="id_file">Arquivo:</label>
-      <input type="file" name="file" id="id_file" multiple>
+      <div id="input-container">
+        <input type="file" name="file" id="id_file" multiple>
+        <button type="button" id="addInput">+</button>
+      </div>
+      <br>
+      <em style="font-size: 0.7em;">Tamanho máximo: 50mb</em>
+      <div id="drop-area">
+        Arraste e solte os arquivos aqui
+      </div>
     </div>
     <button type="submit">Enviar</button>
   </form>
+
+  <script src="/static/js/memoMain.js"></script>
 {% endblock %}

@@ -131,3 +131,14 @@ main {
     text-align: center;
     padding: 5px;
 }
+
+#drop-area {
+    border: 2px dashed gray;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    text-align: center;
+  }
