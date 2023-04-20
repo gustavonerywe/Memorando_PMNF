@@ -1,0 +1,27 @@
+{% extends 'template.html' %}
+{% block subtitulo %}
+-- file_detail
+{% endblock %}
+{% block content %}
+<div id="header">
+    <img  id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+    <div class="linha-vertical"></div>
+    <fieldset id="box-file">
+        <h1 id="titulo-file">{{ image.name }}</h1>
+    </fieldset>
+    <hr>
+</div>
+<main id="corpo">
+    <table border="1"id="table-file">
+        <!-- <tr>
+            <td><p id="image-name">{{ image.name }}</p></td>
+        </tr> -->
+        <tr class="tr-file">
+            <td class="td-file"><p>Tamanho do arquivo: {{ image_size_mb }} MB</p></td>
+        </tr>
+        <tr class="tr-file">
+            <td class="td-file"><p>Data de upload: {{ timestamp }}</p></td>
+        </tr>
+    </table>
+</main>
+{% endblock %}

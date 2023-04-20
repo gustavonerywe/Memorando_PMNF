@@ -1,21 +1,67 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,  get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django import forms
+from .models import Image
+from django.http import Http404
+from .forms import ImageForm
+from django.utils import timezone
 
-# Define a view que lida com o upload de arquivos
-def upload_file(request):
+
+@login_required
+def upload(request):
     if request.method == 'POST':
-        uploaded_file = request.FILES['file']
-        return HttpResponseRedirect(reverse('index'))
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image=form.save()
+            context={
+                'image': image
+            }
+            return render(request, 'upload_success.html', context)
     else:
-        return render(request, 'upload.html')
+        form = ImageForm()
 
-# Define a view para a página inicial
-def index(request):
-    return render(request, 'index.html')
+    context={
+        'form': form
+        }
+    return render(request, 'memo_main.html', context)
+
+@login_required
+def file_detail(request, id):
+    try:
+         image = Image.objects.get(id=id)
+         image_size_kb = round(image.file.size/1024)
+         image_size_mb = round(image_size_kb/1024, 2)
+         timestamp = timezone.now()
+    except Image.DoesNotExist:
+        raise Http404("Image does not exist")
+
+    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
+
+    return render(request, 'file_detail.html', context)
+
+# @login_required
+# def emAtendimento(request, id):
+#     try:
+#         atendimento = Atendimento.objects.get(id=id)
+#         atendimento.emAtendimento()
+#         context={
+#         'senha': atendimento,
+#         }        
+#     except:
+#         context={
+#         'senha': '',
+#         }
+#     return render(request, 'em-atendimento.html', context)
 
 
+# def file_detail(request, pk):
+#     image = get_object_or_404(Image, pk=pk)
+#     return render(request, 'file_detail.html', {'image': image})
 
-# Create your views here.
+
+def file_list(request):
+    files = Image.objects.all()
+    return render(request, 'upload_success.html', {'files': files})

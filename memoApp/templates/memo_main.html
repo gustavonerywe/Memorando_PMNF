@@ -1,17 +1,11 @@
 {% extends 'template.html' %}
 {% block subtitulo %}
-- Index
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MemoAPP</title>
-    <link rel="stylesheet" href="/memoApp/static/style.css">
-</head>
+-- Upload
+{% endblock %}
+{% block content %}
+
 <body>
-	<header>
+    <header>
             <div id="header">
                 <img  id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
                 <div class="linha-vertical"></div>
@@ -24,11 +18,11 @@
                     </tr>
                     <tr>
                         <th>Data:</th>
-                        <td>[data do memorando]</td>
+                        <td><input type="date"></td>
                     </tr>
                     <tr>
                         <th>Memo n°:</th>
-                        <td>[número memorando]</td>
+                        <td><input type="number"></td>
                     </tr>
                     <tr>
                         <th>De:</th>
@@ -65,14 +59,23 @@
                     </table>
  
             </div>
-	</footer>
-    {% block content %}
-    {% endblock %}
+    </footer>
 </body>
-</html>
-{% endblock %}
-{% block content %}
 
+<h1>Upload de arquivos</h1>
+<hr>
 
-
+<!-- templates/upload.html -->
+  <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+    {% csrf_token %}
+    <div>
+      <label for="id_name">Nome:</label>
+      <input type="text" name="name" id="id_name" required>
+    </div>
+    <div>
+      <label for="id_file">Arquivo:</label>
+      <input type="file" name="file" id="id_file" multiple>
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
 {% endblock %}

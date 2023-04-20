@@ -1,0 +1,8 @@
+{% extends 'template.html' %}
+
+{% block content %}
+  <h1>Upload bem-sucedido!</h1>
+  <p>O arquivo foi carregado com sucesso.</p>
+  <a href="{% url 'file_detail' image.id %}">Ver detalhes</a>
+<!-- upload_success.html -->
+{% endblock %}
