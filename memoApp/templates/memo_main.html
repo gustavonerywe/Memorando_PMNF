@@ -5,7 +5,7 @@
 {% block content %}
 
 <body>
-	<header>
+    <header>
             <div id="header">
                 <img  id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
                 <div class="linha-vertical"></div>
@@ -18,11 +18,11 @@
                     </tr>
                     <tr>
                         <th>Data:</th>
-                        <td>[data do memorando]</td>
+                        <td><input type="date"></td>
                     </tr>
                     <tr>
                         <th>Memo n°:</th>
-                        <td>[número memorando]</td>
+                        <td><input type="number"></td>
                     </tr>
                     <tr>
                         <th>De:</th>
@@ -59,7 +59,7 @@
                     </table>
  
             </div>
-	</footer>
+    </footer>
 </body>
 
 <h1>Upload de arquivos via django</h1>
@@ -79,4 +79,3 @@
     <button type="submit">Enviar</button>
   </form>
 {% endblock %}
-
