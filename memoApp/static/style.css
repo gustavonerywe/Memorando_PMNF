@@ -4,6 +4,8 @@ html {
 
 body {
     font-family: Arial, sans-serif;
+    background: #add8e652;
+    color: #000000;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -130,15 +132,21 @@ main {
 
 #drop-area {
     border: 2px dashed gray;
-    width: 100%;
+    width: 50%;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
-    text-align: center;
+    margin: auto
   }
 
+#italic-message {
+    margin: auto;
+    width: 121px;
+    height: 12px;
+}
+  
 #title-footer{
         text-align: center;
 }
