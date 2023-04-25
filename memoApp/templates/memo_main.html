@@ -7,6 +7,7 @@
 <body>
     <header>
             <div id="header">
+                <link rel="stylesheet" href="/memoApp/static/style.css">
                 <img  id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
                 <div class="linha-vertical"></div>
             </div>
@@ -61,21 +62,51 @@
             </div>
     </footer>
 </body>
-
-<h1>Upload de arquivos</h1>
 <hr>
+
+<h1 id="title-footer">Upload de arquivos</h1>
+
 
 <!-- templates/upload.html -->
   <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
     {% csrf_token %}
-    <div>
-      <label for="id_name">Nome:</label>
-      <input type="text" name="name" id="id_name" required>
+    <div id="name-file">
+        <table>
+            <tr>
+                <td>
+                    <label for="id_name">Nome:</label>
+                    <input type="text" name="name" id="id_name" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <section id="main-file">
+                        <br>
+                      <label id="label-file"for="id_file">Arquivo:</label>
+                      <div id="input-container">
+                        <input type="file" name="file" id="id_file" multiple>
+                        <button type="button" id="addInput">+</button>
+                    </section>
+                </td>
+            </tr>
+        </table>
+      
     </div>
     <div>
-      <label for="id_file">Arquivo:</label>
-      <input type="file" name="file" id="id_file" multiple>
+      </div>
+      <br>
+      <div id="drop-area">
+        Arraste e solte os arquivos aqui
+      </div>
+      <div id="italic-message">
+        <em style="font-size: 0.7em;">Tamanho máximo: 50mb</em>
+      </div>
     </div>
-    <button type="submit">Enviar</button>
+    <br>
+    <div id="button-file">
+    <button id="botao" type="submit">Enviar</button>
+</div>
   </form>
+
+  <script src="/static/js/memoMain.js"></script>
 {% endblock %}
