@@ -174,9 +174,7 @@ label, input[type="text"] {
     margin-top: -20px;
     padding-left: 55px;
 }
-#label-file{
-    margin-right: 305px;
-}
+
 #botao {
     width: 200px;
     border-style: solid;
@@ -199,4 +197,49 @@ label, input[type="text"] {
     justify-content: center;
     align-items: center;
   }
-  
+#file-margin{
+    margin-top: 5px;
+}
+#id_file {
+    display: block;
+    width: 100%;
+    margin: 0 auto 0 auto;
+    max-width: 100%;
+    margin-right: 50px;
+  }
+#container-file{
+    display: flex;
+}
+
+#title-upload{
+    text-align: center;
+}
+#subtitle-upload{
+    text-align: center;
+}
+#botao-upload{
+   display: block;
+   margin: 0 auto;
+   border-style:solid;
+   border-radius: 5px;
+   border-color: black;
+   width: 100px;
+   height: 40px;
+}
+#box-upload{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+
+}
+#link-upload{
+    text-decoration: none;
+    color: black;
+}
+#link-upload:hover{
+    text-decoration: underline;
+    color: black;
+
+}
