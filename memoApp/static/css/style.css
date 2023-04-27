@@ -179,13 +179,6 @@ input[type="text"] {
     padding-left: 55px;
 }
 
-<<<<<<< HEAD
-#label-file {
-    margin-right: 305px;
-}
-
-=======
->>>>>>> e49f6f91bd5ea105659009dee00bd04a2494981e
 #botao {
     width: 200px;
     border-style: solid;
@@ -208,18 +201,6 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-}
-
-#link_view {
-    text-decoration: none;
-    font-size: 90%;
-}
-
-#link_view:hover {
-    color: rgb(0, 47, 255);
-}
-=======
   }
 #file-margin{
     margin-top: 5px;
@@ -229,7 +210,7 @@ input[type="text"] {
     width: 100%;
     margin: 0 auto 0 auto;
     max-width: 100%;
-    margin-right: 50px;
+    margin-right: 50.1px;
   }
 #container-file{
     display: flex;
@@ -267,4 +248,3 @@ input[type="text"] {
     color: black;
 
 }
->>>>>>> e49f6f91bd5ea105659009dee00bd04a2494981e
