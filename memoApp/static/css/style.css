@@ -179,10 +179,13 @@ input[type="text"] {
     padding-left: 55px;
 }
 
+<<<<<<< HEAD
 #label-file {
     margin-right: 305px;
 }
 
+=======
+>>>>>>> e49f6f91bd5ea105659009dee00bd04a2494981e
 #botao {
     width: 200px;
     border-style: solid;
@@ -205,6 +208,7 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
 }
 
 #link_view {
@@ -215,3 +219,52 @@ input[type="text"] {
 #link_view:hover {
     color: rgb(0, 47, 255);
 }
+=======
+  }
+#file-margin{
+    margin-top: 5px;
+}
+#id_file {
+    display: block;
+    width: 100%;
+    margin: 0 auto 0 auto;
+    max-width: 100%;
+    margin-right: 50px;
+  }
+#container-file{
+    display: flex;
+}
+
+#title-upload{
+    text-align: center;
+}
+#subtitle-upload{
+    text-align: center;
+}
+#botao-upload{
+   display: block;
+   margin: 0 auto;
+   border-style:solid;
+   border-radius: 5px;
+   border-color: black;
+   width: 100px;
+   height: 40px;
+}
+#box-upload{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+
+}
+#link-upload{
+    text-decoration: none;
+    color: black;
+}
+#link-upload:hover{
+    text-decoration: underline;
+    color: black;
+
+}
+>>>>>>> e49f6f91bd5ea105659009dee00bd04a2494981e

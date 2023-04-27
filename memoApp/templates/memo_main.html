@@ -7,7 +7,7 @@
 <body>
     <header>
             <div id="header">
-                <link rel="stylesheet" href="/memoApp/static/style.css">
+                <link rel="stylesheet" href="/memoApp/static/css/style.css">
                 <img  id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
                 <div class="linha-vertical"></div>
             </div>
@@ -82,10 +82,17 @@
                 <td>
                     <section id="main-file">
                         <br>
-                      <label id="label-file"for="id_file">Arquivo:</label>
-                      <div id="input-container">
-                        <input type="file" name="file" id="id_file" multiple>
-                        <button type="button" id="addInput">+</button>
+                        <fieldset id="box-upload">
+                            <div id="file-margin">
+                            <label id="label-file"for="id_file">Arquivo:</label>
+                            <div id="input-container">
+                              <br><br>
+                              <div id="container-file">
+                              <input type="file" name="file" id="id_file" multiple>
+                              <span><button type="button" id="addInput">+</button></span>
+                            </div>
+                            </div>
+                        </fieldset>
                     </section>
                 </td>
             </tr>
