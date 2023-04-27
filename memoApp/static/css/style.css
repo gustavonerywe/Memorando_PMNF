@@ -237,14 +237,13 @@ input[type="text"] {
     padding: 20px;
     margin: 20px auto;
     max-width: 500px;
-
 }
 #link-upload{
     text-decoration: none;
     color: black;
 }
 #link-upload:hover{
-    text-decoration: underline;
+    text-decoration: none;
     color: black;
 
 }

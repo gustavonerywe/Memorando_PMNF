@@ -3,6 +3,9 @@
 -- digital_view
 {% endblock %}
 {% block content %}
-    <h1>Arquivos</h1>
-    <p> {{ image.file }} </p>
+<h1>Arquivos</h1>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.js"></script>
+<canvas id="pdf-canvas"></canvas>
+
 {% endblock %}

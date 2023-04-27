@@ -8,7 +8,7 @@ from .models import Image
 from django.http import Http404
 from .forms import ImageForm
 from django.utils import timezone
-import PyPDF2
+import datetime
 
 
 @login_required
@@ -30,6 +30,14 @@ def upload(request):
     return render(request, 'memo_main.html', context)
 
 @login_required
+def data_atual(request):
+    data = datetime.date.today()
+    context ={
+        'data': data
+    }
+    return render(request, 'memo_main.html', context)
+
+@login_required
 def file_detail(request, id):
     try:
          image = Image.objects.get(id=id)
@@ -47,17 +55,17 @@ def file_detail(request, id):
 def digital_view(request, id):
     try: 
         image = Image.objects.get(id=id)
-        with open('image.file', 'rb') as pdf_file:
-            pdf_reader = PyPDF2.PdfFileReader(pdf_file)
-            num_pages = pdf_reader.numPages
-            for page_num in range(num_pages):
-                page = pdf_reader.getPage(page_num)
-                print(page.extractText())
+        # with open(str(image.file), 'rb') as pdf_file:
+        #     pdf_reader = PyPDF2.PdfReader(pdf_file)
+        #     num_pages = len(pdf_reader.pages)
+        #     for page_num in range(num_pages):
+        #         page = pdf_reader.pages[page_num]
+        #         print(page.extract_text())
     except Image.DoesNotExist:
         raise Http404("Image does not exist")
     
-    context = {'image': image}
-    return render(request, 'digital_view.html', context)
+    return JsonResponse(str(image.file), safe=False)
+
 
 # @login_required
 # def emAtendimento(request, id):
