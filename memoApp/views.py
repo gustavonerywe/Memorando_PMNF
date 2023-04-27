@@ -6,9 +6,11 @@ from django.urls import reverse
 from django import forms
 from .models import Image
 from django.http import Http404
-from .forms import ImageForm
+from .forms import ImageForm, UltimoNumero
 from django.utils import timezone
 import datetime
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 @login_required
@@ -86,7 +88,26 @@ def digital_view(request, id):
 #     image = get_object_or_404(Image, pk=pk)
 #     return render(request, 'file_detail.html', {'image': image})
 
-
+@login_required
 def file_list(request):
     files = Image.objects.all()
     return render(request, 'upload_success.html', {'files': files})
+
+# @login_required
+# def generate_next_number():
+#     ultimo_numero = UltimoNumero.objects.get_or_create(id=1)
+    
+#     proximo_numero = ultimo_numero.numero + 1
+#     ultimo_numero.numero = proximo_numero
+#     ultimo_numero.data_atualizacao = timezone.now()
+#     ultimo_numero.save()
+
+#     return f"{proximo_numero:0d}/{timezone.now().year}"
+
+# @api_view(['GET'])
+# def next_number(request):
+#     proximo_numero = generate_next_number()
+#     context ={
+#         'proximo_numero': proximo_numero
+#     }
+#     return Response(context)
