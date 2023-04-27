@@ -4,7 +4,7 @@ html {
 
 body {
     font-family: Arial, sans-serif;
-    background: #add8e652;
+    background: #add8e68e;
     color: #000000;
 }
 
@@ -34,10 +34,11 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     text-align: left;
     padding: 8px;
-    border: 1px solid ;
+    border: 1px solid;
 }
 
 #tituloTable {
@@ -90,7 +91,7 @@ table#table-file {
     border-collapse: collapse;
     display: table;
     margin: auto;
-} 
+}
 
 main#corpo {
     display: table;
@@ -139,44 +140,49 @@ main {
     align-items: center;
     font-size: 15px;
     margin: auto
-  }
+}
 
 #italic-message {
     margin: auto;
     width: 121px;
     height: 12px;
 }
-  
-#title-footer{
-        text-align: center;
+
+#title-footer {
+    text-align: center;
+    font-size: 165%;
 }
 
-#name-file{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+#name-file {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      }
+}
 
-label, input[type="text"] {
-        background-color: #f5f5f5;
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 5px;
-        margin-left: 5px;
-      }
+label,
+input[type="text"] {
+    background-color: #f5f5f5;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 5px;
+}
 
 #main-file {
     margin: 0 auto;
     text-align: center;
-  }
-#input-container{
+}
+
+#input-container {
     margin-top: -20px;
     padding-left: 55px;
 }
-#label-file{
+
+#label-file {
     margin-right: 305px;
 }
+
 #botao {
     width: 200px;
     border-style: solid;
@@ -188,15 +194,24 @@ label, input[type="text"] {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  #botao:hover {
+}
+
+#botao:hover {
     background-color: gray;
-    
-  }
-  #button-file{
+
+}
+
+#button-file {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
+}
+
+#link_view {
+    text-decoration: none;
+    font-size: 90%;
+}
+
+#link_view:hover {
+    color: rgb(0, 47, 255);
+}

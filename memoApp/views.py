@@ -8,6 +8,7 @@ from .models import Image
 from django.http import Http404
 from .forms import ImageForm
 from django.utils import timezone
+import PyPDF2
 
 
 @login_required
@@ -41,6 +42,22 @@ def file_detail(request, id):
     context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
 
     return render(request, 'file_detail.html', context)
+
+@login_required
+def digital_view(request, id):
+    try: 
+        image = Image.objects.get(id=id)
+        with open('image.file', 'rb') as pdf_file:
+            pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+            num_pages = pdf_reader.numPages
+            for page_num in range(num_pages):
+                page = pdf_reader.getPage(page_num)
+                print(page.extractText())
+    except Image.DoesNotExist:
+        raise Http404("Image does not exist")
+    
+    context = {'image': image}
+    return render(request, 'digital_view.html', context)
 
 # @login_required
 # def emAtendimento(request, id):

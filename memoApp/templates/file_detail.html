@@ -22,6 +22,9 @@
         <tr class="tr-file">
             <td class="td-file"><p>Data de upload: {{ timestamp }}</p></td>
         </tr>
+        <tr class="tr-file">
+            <td class="td-file"><p><a id="link_view" href="{% url 'digital_view' image.id %}">Clique para ter acesso à visualização digital</a></p></td>
+        </tr>
     </table>
 </main>
 {% endblock %}

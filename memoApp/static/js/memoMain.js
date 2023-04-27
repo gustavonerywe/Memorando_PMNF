@@ -28,3 +28,4 @@ addInputButton.addEventListener('click', () => {
     inputContainer.appendChild(newInput);
 
 });
+
