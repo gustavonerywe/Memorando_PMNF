@@ -6,7 +6,7 @@ from django.urls import reverse
 from django import forms
 from .models import Image
 from django.http import Http404
-from .forms import ImageForm, UltimoNumero
+from .forms import ImageForm
 from django.utils import timezone
 import datetime
 from rest_framework.decorators import api_view

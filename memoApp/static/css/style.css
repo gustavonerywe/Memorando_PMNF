@@ -1,14 +1,23 @@
 html {
-    margin: 0
-}
-
-body {
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: Arial, sans-serif;
     background: #add8e68e;
     color: #000000;
 }
 
-h1, h2, h3, h4, h5, h6 {
+body {
+    width: 75%;
+    background: #fff;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: bold;
 }
 
@@ -32,6 +41,10 @@ h1, h2, h3, h4, h5, h6 {
     width: 75%;
     margin-bottom: 20px;
     border: 1px solid;
+}
+
+#table-header {
+    background-color: #fff;
 }
 
 .table th,
@@ -201,61 +214,72 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-#file-margin{
+    margin-bottom: 20px;
+}
+
+#file-margin {
     margin-top: 5px;
 }
+
 #id_file {
     display: block;
     width: 100%;
     margin: 0 auto 0 auto;
     max-width: 100%;
     margin-right: 50.1px;
-  }
-#container-file{
+}
+
+#container-file {
     display: flex;
 }
 
-#title-upload{
+#title-upload {
     text-align: center;
-}
-#subtitle-upload{
-    text-align: center;
-}
-#botao-upload{
-   display: block;
-   margin: 0 auto;
-   border-style:solid;
-   border-radius: 5px;
-   border-color: black;
-   width: 100px;
-   height: 40px;
 }
 
-#botao-back{
+#subtitle-upload {
+    text-align: center;
+}
+
+#botao-upload {
     display: block;
     margin: 0 auto;
-    border-style:solid;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+    width: 100px;
+    height: 40px;
+}
+
+#botao-back {
+    display: block;
+    margin: 0 auto;
+    border-style: solid;
     border-radius: 5px;
     border-color: black;
     width: 200px;
     height: 40px;
 }
 
-#box-upload{
+#box-upload {
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
     margin: 20px auto;
     max-width: 500px;
 }
-#link-upload{
+
+#link-upload {
     text-decoration: none;
     color: black;
 }
-#link-upload:hover{
+
+#link-upload:hover {
     text-decoration: none;
     color: rgb(15, 12, 226);
 }
 
-
+#corpoMemorando {
+    width: 75%;
+    margin: 0 auto;
+  }

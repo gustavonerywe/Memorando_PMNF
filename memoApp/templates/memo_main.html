@@ -13,38 +13,42 @@
         </div>
         <hr>
         <div id="content">
-            <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
-                {% csrf_token %}
-                <table class="table">
-                    <tr>
-                        <th id="tituloTable" colspan="2">MEMORANDO</th>
-                    </tr>
-                    <tr>
-                        <th>Data:</th>
-                        <td><input type="date" name="data" value="{% now 'Y-m-d' %}"></td>
-                    </tr>
-                    <tr>
-                        <th>Memo n°:</th>
-                        <td><input type="number" id="proximo_numero" readonly></td>
-                    </tr>
-                    <tr>
-                        <th>De:</th>
-                        <td>[Lugar de onde está sendo enviado]</td>
-                    </tr>
-                    <tr>
-                        <th>Para:</th>
-                        <td>[Lugar para onde está sendo enviado]</td>
-                    </tr>
-                    <tr>
-                        <th>Assunto:</th>
-                        <td>[Assunto do memorando]</td>
-                    </tr>
-                </table>
-
-                <section id="corpoMemorando">
-                    <p class="texto">
-                    </p>
-                </section>
+            <table class="table" id="table-header">
+                <tr>
+                    <th id="tituloTable" colspan="2">MEMORANDO</th>
+                </tr>
+                <tr>
+                    <th>Data:</th>
+                    <td><input type="date" name="data" value="{% now 'Y-m-d' %}"></td>
+                </tr>
+                <tr>
+                    <th>Memo n°:</th>
+                    <td><input type="number" id="proximo_numero" readonly></td>
+                </tr>
+                <tr>
+                    <th>De:</th>
+                    <td>[Lugar de onde está sendo enviado]</td>
+                </tr>
+                <tr>
+                    <th>Para:</th>
+                    <td><select name="select" id="select-secretaria">
+                            <option value="0">-- Escolha a secretaria --</option>
+                            <option value="1">Prefeito</option>
+                            <option value="2">Controladoria Geral</option>
+                            <option value="3">Fundação Dom João VI de Nova Friburgo</option>
+                            <option value="4">Procuradoria Geral </option>
+                            <option value="5">Secretaria Municipal da Casa Civil - EGCP</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <th>Assunto:</th>
+                    <td>[Assunto do memorando]</td>
+                </tr>
+            </table>
+            
+            <section id="corpoMemorando">
+                <textarea name="textarea" id="mytextarea"></textarea>
+            </section>
         </div>
         <div id="footer">
             <p>
@@ -71,32 +75,34 @@
 
 <!-- templates/upload.html -->
 <div id="name-file">
-    <table>
-        <tr>
-            <td>
-                <label for="id_name">Nome</label>
-                <input type="text" name="name" id="id_name" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <section id="main-file">
-                    <br>
-                    <fieldset id="box-upload">
-                        <div id="file-margin">
-                            <label id="label-file" for="id_file">Arquivo</label>
-                            <div id="input-container">
-                                <br><br>
-                                <div id="container-file">
-                                    <input type="file" name="file" id="id_file" multiple>
-                                    <span><button type="button" id="addInput">+</button></span>
+    <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>
+                    <label for="id_name">Nome</label>
+                    <input type="text" name="name" id="id_name" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <section id="main-file">
+                        <br>
+                        <fieldset id="box-upload">
+                            <div id="file-margin">
+                                <label id="label-file" for="id_file">Arquivo</label>
+                                <div id="input-container">
+                                    <br><br>
+                                    <div id="container-file">
+                                        <input type="file" name="file" id="id_file" multiple required>
+                                        <span><button type="button" id="addInput">+</button></span>
+                                    </div>
                                 </div>
-                            </div>
-                    </fieldset>
-                </section>
-            </td>
-        </tr>
-    </table>
+                        </fieldset>
+                    </section>
+                </td>
+            </tr>
+        </table>
 
 </div>
 <div>
@@ -116,4 +122,18 @@
 </form>
 
 <script src="/static/js/memoMain.js"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+    selector: '#mytextarea',
+    height: 500,
+    plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    toolbar_mode: 'floating',
+    toolbar: 'undo redo | formatselect | bold italic backcolor | \
+                  alignleft aligncenter alignright alignjustify | \
+                  bullist numlist outdent indent | removeformat | help',
+    content_style: 'body { font-family: Arial, sans-serif; font-size: 14px; }',
+    content_css: 'custom-styles.css',
+});
+</script>
 {% endblock %}
