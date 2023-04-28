@@ -231,6 +231,17 @@ input[type="text"] {
    width: 100px;
    height: 40px;
 }
+
+#botao-back{
+    display: block;
+    margin: 0 auto;
+    border-style:solid;
+    border-radius: 5px;
+    border-color: black;
+    width: 200px;
+    height: 40px;
+}
+
 #box-upload{
     border: 2px solid black;
     border-radius: 10px;
@@ -244,6 +255,7 @@ input[type="text"] {
 }
 #link-upload:hover{
     text-decoration: none;
-    color: black;
-
+    color: rgb(15, 12, 226);
 }
+
+
