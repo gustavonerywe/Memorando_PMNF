@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django import forms
-from .models import Image
+from .models import *
 from django.http import Http404
 from .forms import ImageForm
 from django.utils import timezone
@@ -18,9 +18,15 @@ def upload(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
+            memorando = Memorando()
+            memorando.gerar_proximo_numero()
+            memorando.remetente = request.user
+            memorando.corpo_memorando = form.cleaned_data['corpo_memorando']
+            memorando.save()
             image=form.save()
             context={
-                'image': image
+                'image': image,
+                'memorando': memorando
             }
             return render(request, 'upload_success.html', context)
     else:
