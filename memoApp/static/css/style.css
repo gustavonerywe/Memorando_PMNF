@@ -63,17 +63,6 @@ h6 {
     width: 20%;
 }
 
-.linha-vertical {
-    position: absolute;
-    height: 10%;
-    width: 1px;
-    background-color: black;
-    right: 75%;
-    transform: translateX(-50%);
-    margin-top: -100px;
-    border-width: 1px;
-}
-
 #box-field {
     width: 170px;
     height: 70px;
@@ -287,4 +276,16 @@ input[type="text"] {
 #label-file {
     pointer-events: none;
   }
+  @media screen and (max-width: 599px) and (min-height: 1372px) {
+    #box-field {
+    position: absolute;
+    top: 425px;
+    right: 110px;
+
+    }
+  }
+.cor{
+    background-color: transparent;
+}
   
+
