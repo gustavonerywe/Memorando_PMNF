@@ -131,8 +131,6 @@ main {
     width: 20%;
 }
 
-
-
 #box-file {
     width: 40%;
     display: inline;
@@ -269,18 +267,24 @@ input[type="text"] {
     margin: 20px auto;
     max-width: 500px;
 }
-
-#link-upload {
+#link-upload{
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
     text-decoration: none;
-    color: black;
+    border-radius: 4px;
 }
-
-#link-upload:hover {
-    text-decoration: none;
-    color: rgb(15, 12, 226);
+#link-upload:hover{
+    text-decoration: underline white;
 }
-
-#corpoMemorando {
-    width: 75%;
-    margin: 0 auto;
+#link-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#label-file {
+    pointer-events: none;
   }
+  

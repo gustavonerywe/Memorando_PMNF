@@ -76,21 +76,32 @@
 
 
 <!-- templates/upload.html -->
-<div id="name-file">
-    <table>
-        <tr>
-            <td>
-                <label for="id_name">Nome</label>
-                <input type="text" name="name" id="id_name" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <section id="main-file">
-                    <br>
-                    <fieldset id="box-upload">
-                        <div id="file-margin">
-                            <label id="label-file" for="id_file">Arquivo</label>
+  <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+    {% csrf_token %}
+    <br>
+      <div id="drop-area">
+        Arraste e solte os arquivos aqui
+      </div>
+      <div id="italic-message">
+        <em style="font-size: 0.7em;">Tamanho máximo: 50mb</em>
+      </div>
+    </div>
+    <br><br>
+    <div id="name-file">
+        <table>
+            <tr>
+                <td>
+                    <label for="id_name">Nome:</label>
+                    <input type="text" name="name" id="id_name" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <section id="main-file">
+                        
+                        <fieldset id="box-upload">
+                            <div id="file-margin">
+                            <label id="label-file"for="id_file">Arquivo:</label>
                             <div id="input-container">
                                 <br><br>
                                 <div id="container-file">
@@ -98,25 +109,17 @@
                                     <span><button type="button" id="addInput">+</button></span>
                                 </div>
                             </div>
-                    </fieldset>
-                </section>
-            </td>
-        </tr>
-    </table>
-
-</div>
-<div>
-</div>
-<br>
-<div id="drop-area">
-    Arraste e solte os arquivos aqui
-</div>
-<div id="italic-message">
-    <em style="font-size: 0.6em;">Tamanho máximo: 50mb</em>
-</div>
-</div>
-<br>
-<div id="button-file">
+                            </div>
+                        </fieldset>
+                    </section>
+                </td>
+            </tr>
+        </table>
+      
+    </div>
+    <div>
+      </div>
+    <div id="button-file">
     <button id="botao" type="submit">Enviar</button>
 </div>
 </form>
