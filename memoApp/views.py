@@ -4,10 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django import forms
-from .models import Image
+from .models import *
 from django.http import Http404
 from .forms import ImageForm
 from django.utils import timezone
+import datetime
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 @login_required
@@ -15,9 +18,15 @@ def upload(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
+            memorando = Memorando()
+            memorando.gerar_proximo_numero()
+            memorando.remetente = request.user
+            memorando.corpo_memorando = form.cleaned_data['corpo_memorando']
+            memorando.save()
             image=form.save()
             context={
-                'image': image
+                'image': image,
+                'memorando': memorando
             }
             return render(request, 'upload_success.html', context)
     else:
@@ -26,6 +35,14 @@ def upload(request):
     context={
         'form': form
         }
+    return render(request, 'memo_main.html', context)
+
+@login_required
+def data_atual(request):
+    data = datetime.date.today()
+    context ={
+        'data': data
+    }
     return render(request, 'memo_main.html', context)
 
 @login_required
@@ -41,6 +58,22 @@ def file_detail(request, id):
     context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
 
     return render(request, 'file_detail.html', context)
+
+@login_required
+def digital_view(request, id):
+    try: 
+        image = Image.objects.get(id=id)
+        # with open(str(image.file), 'rb') as pdf_file:
+        #     pdf_reader = PyPDF2.PdfReader(pdf_file)
+        #     num_pages = len(pdf_reader.pages)
+        #     for page_num in range(num_pages):
+        #         page = pdf_reader.pages[page_num]
+        #         print(page.extract_text())
+    except Image.DoesNotExist:
+        raise Http404("Image does not exist")
+    
+    return JsonResponse(str(image.file), safe=False)
+
 
 # @login_required
 # def emAtendimento(request, id):
@@ -61,7 +94,26 @@ def file_detail(request, id):
 #     image = get_object_or_404(Image, pk=pk)
 #     return render(request, 'file_detail.html', {'image': image})
 
-
+@login_required
 def file_list(request):
     files = Image.objects.all()
     return render(request, 'upload_success.html', {'files': files})
+
+# @login_required
+# def generate_next_number():
+#     ultimo_numero = UltimoNumero.objects.get_or_create(id=1)
+    
+#     proximo_numero = ultimo_numero.numero + 1
+#     ultimo_numero.numero = proximo_numero
+#     ultimo_numero.data_atualizacao = timezone.now()
+#     ultimo_numero.save()
+
+#     return f"{proximo_numero:0d}/{timezone.now().year}"
+
+# @api_view(['GET'])
+# def next_number(request):
+#     proximo_numero = generate_next_number()
+#     context ={
+#         'proximo_numero': proximo_numero
+#     }
+#     return Response(context)

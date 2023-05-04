@@ -1,14 +1,23 @@
 html {
-    margin: 0
-}
-
-body {
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: Arial, sans-serif;
-    background: #add8e652;
+    background: #add8e68e;
     color: #000000;
 }
 
-h1, h2, h3, h4, h5, h6 {
+body {
+    width: 75%;
+    background: #fff;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: bold;
 }
 
@@ -34,10 +43,15 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid;
 }
 
-.table th, .table td {
+#table-header {
+    background-color: #fff;
+}
+
+.table th,
+.table td {
     text-align: left;
     padding: 8px;
-    border: 1px solid ;
+    border: 1px solid;
 }
 
 #tituloTable {
@@ -47,17 +61,6 @@ h1, h2, h3, h4, h5, h6 {
 #img {
     margin-right: 75%;
     width: 20%;
-}
-
-.linha-vertical {
-    position: absolute;
-    height: 10%;
-    width: 1px;
-    background-color: black;
-    right: 75%;
-    transform: translateX(-50%);
-    margin-top: -100px;
-    border-width: 1px;
 }
 
 #box-field {
@@ -90,7 +93,7 @@ table#table-file {
     border-collapse: collapse;
     display: table;
     margin: auto;
-} 
+}
 
 main#corpo {
     display: table;
@@ -117,8 +120,6 @@ main {
     width: 20%;
 }
 
-
-
 #box-file {
     width: 40%;
     display: inline;
@@ -139,44 +140,45 @@ main {
     align-items: center;
     font-size: 15px;
     margin: auto
-  }
+}
 
 #italic-message {
     margin: auto;
     width: 121px;
     height: 12px;
 }
-  
-#title-footer{
-        text-align: center;
+
+#title-footer {
+    text-align: center;
+    font-size: 165%;
 }
 
-#name-file{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+#name-file {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      }
+}
 
-label, input[type="text"] {
-        background-color: #f5f5f5;
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 5px;
-        margin-left: 5px;
-      }
+label,
+input[type="text"] {
+    background-color: #f5f5f5;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 5px;
+}
 
 #main-file {
     margin: 0 auto;
     text-align: center;
-  }
-#input-container{
+}
+
+#input-container {
     margin-top: -20px;
     padding-left: 55px;
 }
-#label-file{
-    margin-right: 305px;
-}
+
 #botao {
     width: 200px;
     border-style: solid;
@@ -188,15 +190,102 @@ label, input[type="text"] {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  #botao:hover {
+}
+
+#botao:hover {
     background-color: gray;
-    
-  }
-  #button-file{
+
+}
+
+#button-file {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+#file-margin {
+    margin-top: 5px;
+}
+
+#id_file {
+    display: block;
+    width: 100%;
+    margin: 0 auto 0 auto;
+    max-width: 100%;
+    margin-right: 50.1px;
+}
+
+#container-file {
+    display: flex;
+}
+
+#title-upload {
+    text-align: center;
+}
+
+#subtitle-upload {
+    text-align: center;
+}
+
+#botao-upload {
+    display: block;
+    margin: 0 auto;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+    width: 100px;
+    height: 40px;
+}
+
+#botao-back {
+    display: block;
+    margin: 0 auto;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+    width: 200px;
+    height: 40px;
+}
+
+#box-upload {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+#link-upload{
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+}
+#link-upload:hover{
+    text-decoration: underline white;
+}
+#link-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#label-file {
+    pointer-events: none;
   }
+  @media screen and (max-width: 599px) and (min-height: 1372px) {
+    #box-field {
+    position: absolute;
+    top: 425px;
+    right: 110px;
+
+    }
+  }
+.cor{
+    background-color: transparent;
+}
   
+

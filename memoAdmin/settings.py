@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'memoApp',
+    'rest_framework',
 ]
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
