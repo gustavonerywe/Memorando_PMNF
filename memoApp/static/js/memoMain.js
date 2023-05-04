@@ -67,4 +67,3 @@ fetch('/digital_view/')
     .then((dados) => {
         pdfReader(dados)
     })
-

@@ -13,28 +13,23 @@ class Image(models.Model):
     
 class Memorando(models.Model):
     data = models.DateTimeField(null=True, default=None, blank=False)
-    memo_numero = models.IntegerField()
+    memo_numero = models.CharField(max_length=220)
     remetente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='memorandos_enviados')
     destinatario = models.ManyToManyField(User, related_name='memorandos_recebidos')
     assunto = models.CharField(max_length=255, verbose_name='Digite o assunto', null=True, blank=True)
-    corpo_memorando = tinymce_models.HTMLField()
+    corpo_memorando = tinymce_models.HTMLField(null=True, default='')
 
     def gerar_proximo_numero(self):
-        memo_numero = self.memo_numero
-        ultimo_numero = Memorando.objects.filter(memo_numero=memo_numero, data=timezone.now().year).order_by('data').first()
+        memo_numero = 0
+        ultimo_numero = Memorando.objects.last()
+        print(ultimo_numero)
         if ultimo_numero:
-            self.memo_numero = ultimo_numero.memo_numero + 1
-            numero_formatado = f"{ultimo_numero.memo_numero+1:0d}"
+            numero =  ultimo_numero.memo_numero.split('/')
+            memo_numero = int(numero[0]) + 1
         else:
-            self.memo_numero = 1
-            numero_formatado = f"{self.memo_numero:0d}"
+            memo_numero = 1
 
         data_atual = timezone.now()
-        data_formatada =  data_atual.isoformat()
-        data_string = str(data_formatada)
-        data = datetime.fromisoformat(data_string[:-6])
-
-        return f"{numero_formatado}/{data.year}"
-
-
-
+        ano_atual = data_atual.year
+        response = f'{memo_numero:003d}/{ano_atual}'
+        return response

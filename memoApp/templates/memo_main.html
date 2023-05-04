@@ -22,8 +22,8 @@
                         <td><input type="date" name="data" value="{% now 'Y-m-d' %}"></td>
                     </tr>
                     <tr>
-                        <th>Memo n°:</th>
-                        <td><input type="number" id="proximo_numero" readonly></td>
+                        <th>Memo nº:</th>
+                        <td><input type="text" id="proximo_numero" readonly value="{{ memo_numero_atualizado }}"></td>
                     </tr>
                     <tr>
                         <th>De:</th>

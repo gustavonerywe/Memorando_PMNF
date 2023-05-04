@@ -1,15 +1,19 @@
 {% extends 'template.html' %}
 
 {% block content %}
+
 <body class="cor">
-<link rel="stylesheet" href="/memoApp/static/css/style.css">
-<fieldset id="box-upload">
-  <h1 id="title-upload">Upload bem-sucedido!</h1>
-  <p id="subtitle-upload">O arquivo foi carregado com sucesso.</p>
-  <div id="link-container">
-  <a id="link-upload" href="{% url 'file_detail' image.id %}">Ver detalhes</a>
-</div>
-</fieldset>
-<!-- upload_success.html -->
+  <link rel="stylesheet" href="/memoApp/static/css/style.css">
+  <fieldset id="box-upload">
+    <h1 id="title-upload">Upload bem-sucedido!</h1>
+    <p id="subtitle-upload">O arquivo foi carregado com sucesso.</p>
+    <div id="link-container">
+      <a id="link-upload" href="{% url 'file_detail' image.id %}">Ver detalhes</a>
+    </div>
+    <br>
+    <button id="botao-back"><a id="link-upload" href="{% url 'upload' %}">Volte para a página inicial do
+        memorando.</a></button>
+  </fieldset>
+  <!-- upload_success.html -->
 </body>
 {% endblock %}
