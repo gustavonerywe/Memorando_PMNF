@@ -15,27 +15,39 @@ from rest_framework.response import Response
 
 @login_required
 def upload(request):
+    memorando = Memorando()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            memorando = Memorando()
-            memorando.gerar_proximo_numero()
+        if form.is_valid():            
+            memo_numero_atualizado = memorando.gerar_proximo_numero()
+            memorando.assunto = request.POST.get('assunto')
+            memorando.corpo_memorando = request.POST.get('corpo_memorando')
+            memorando.data = request.POST.get('data')
+            destinatarios = request.POST.getlist('destinatario')
+            for destinatario_id in destinatarios:
+                destinatario = User.objects.get(id=destinatario_id)
+                memorando.destinatario.add(destinatario)
             memorando.remetente = request.user
-            memorando.corpo_memorando = form.cleaned_data['corpo_memorando']
+            memorando.memo_numero = memo_numero_atualizado
             memorando.save()
-            image=form.save()
+            image = form.save()
             context={
                 'image': image,
-                'memorando': memorando
+                'memorando': memorando,
+                'memo_numero_atualizado': memo_numero_atualizado,
+                
             }
+            print(memo_numero_atualizado)
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
 
     context={
-        'form': form
+        'form': form,
+        'memo_numero_atualizado': memorando.gerar_proximo_numero()
         }
     return render(request, 'memo_main.html', context)
+
 
 @login_required
 def data_atual(request):

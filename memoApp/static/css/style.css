@@ -243,8 +243,6 @@ input[type="text"] {
     display: block;
     margin: 0 auto;
     border-style: solid;
-    border-radius: 5px;
-    border-color: black;
     width: 200px;
     height: 40px;
 }
@@ -266,7 +264,8 @@ input[type="text"] {
     border-radius: 4px;
 }
 #link-upload:hover{
-    text-decoration: underline white;
+    text-decoration: none;
+    color: cyan;
 }
 #link-container{
     display: flex;
@@ -288,4 +287,8 @@ input[type="text"] {
     background-color: transparent;
 }
   
-
+#form-main {
+    width: 90%;
+    background: #fff;
+    margin: 0 auto;
+}
