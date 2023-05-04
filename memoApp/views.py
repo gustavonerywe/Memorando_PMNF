@@ -18,15 +18,15 @@ def upload(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
-            memorando = Memorando()
-            memorando.gerar_proximo_numero()
-            memorando.remetente = request.user
-            memorando.corpo_memorando = form.cleaned_data['corpo_memorando']
-            memorando.save()
+            # memorando = Memorando()
+            # memorando.gerar_proximo_numero()
+            # memorando.remetente = request.user
+            # memorando.corpo_memorando = form.cleaned_data['corpo_memorando']
+            # memorando.save()
             image=form.save()
             context={
                 'image': image,
-                'memorando': memorando
+                # 'memorando': memorando
             }
             return render(request, 'upload_success.html', context)
     else:
