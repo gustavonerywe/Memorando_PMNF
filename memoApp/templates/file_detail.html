@@ -3,7 +3,7 @@
 -- file_detail
 {% endblock %}
 {% block content %}
-<link rel="stylesheet" href="/memoApp/static/css/style.css">
+<link rel="stylesheet" href="/static/css/style.css">
 <body class="cor">
     <div id="header">
         <img  id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
@@ -12,6 +12,7 @@
             <h1 id="titulo-file">{{ image.name }}</h1>
         </fieldset>
         <hr>
+        <h1>{{ memorando.assunto }}</h1>
     </div>
     <main id="corpo">
         <table border="1"id="table-file">

@@ -17,7 +17,7 @@ class Memorando(models.Model):
     remetente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='memorandos_enviados')
     destinatario = models.ManyToManyField(User, related_name='memorandos_recebidos')
     assunto = models.CharField(max_length=255, verbose_name='Digite o assunto', null=True, blank=True)
-    corpo_memorando = tinymce_models.HTMLField(null=True, default='')
+    corpo = tinymce_models.HTMLField(null=True, default='')
 
     def gerar_proximo_numero(self):
         memo_numero = 0

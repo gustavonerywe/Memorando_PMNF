@@ -21,7 +21,7 @@ def upload(request):
         if form.is_valid():            
             memo_numero_atualizado = memorando.gerar_proximo_numero()
             memorando.assunto = request.POST.get('assunto')
-            memorando.corpo_memorando = request.POST.get('corpo_memorando')
+            memorando.corpo = request.POST.get('corpo_memorando')
             memorando.data = request.POST.get('data')
             destinatarios = request.POST.getlist('destinatario')
             for destinatario_id in destinatarios:
@@ -34,17 +34,18 @@ def upload(request):
             context={
                 'image': image,
                 'memorando': memorando,
-                'memo_numero_atualizado': memo_numero_atualizado,
-                
+                'memo_numero_atualizado': memo_numero_atualizado,  
+                'memorando_assunto': memorando.assunto,  
             }
-            print(memo_numero_atualizado)
+            print(memorando.assunto)
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
 
     context={
         'form': form,
-        'memo_numero_atualizado': memorando.gerar_proximo_numero()
+        'memo_numero_atualizado': memorando.gerar_proximo_numero(),
+        'memorando_assunto' : memorando.assunto,
         }
     return render(request, 'memo_main.html', context)
 
@@ -67,9 +68,11 @@ def file_detail(request, id):
     except Image.DoesNotExist:
         raise Http404("Image does not exist")
 
-    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
+    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp,}
 
     return render(request, 'file_detail.html', context)
+
+        
 
 @login_required
 def digital_view(request, id):
