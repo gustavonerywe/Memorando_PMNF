@@ -148,6 +148,13 @@ main {
     height: 12px;
 }
 
+#verify-message {
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
 #title-footer {
     text-align: center;
     font-size: 165%;
@@ -201,8 +208,8 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 #file-margin {

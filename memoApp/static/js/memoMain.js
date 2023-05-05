@@ -67,3 +67,14 @@ fetch('/digital_view/')
     .then((dados) => {
         pdfReader(dados)
     })
+
+const btn = document.querySelector('#botao')
+
+botao.addEventListener('click', function(event){
+    event.preventDefault()
+
+    let confirmed = confirm('Deseja mesmo enviar o formulário?')
+    if(confirmed){
+        event.target.closest('form').submit()
+    } 
+})
