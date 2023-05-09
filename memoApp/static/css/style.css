@@ -189,21 +189,19 @@ input[type="text"] {
 }
 
 #botao {
-    width: 200px;
-    border-style: solid;
-    padding: 10px 20px;
-    text-align: center;
-    display: inline-block;
-    border-color: black;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 20px;
+    background: gray;
+	color: black;
+	border-style: solid;
+	border-color: black;
+	height: 50px;
+	width: 200px;
+	font: bold 20px times;
+	text-shadow: none;
 }
 
 #botao:hover {
-    background-color: gray;
-
+    text-decoration: underline;
 }
 
 #button-file {

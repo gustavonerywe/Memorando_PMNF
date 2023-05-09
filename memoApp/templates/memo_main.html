@@ -5,6 +5,7 @@
 {% block content %}
 
 <body>
+    <link rel="stylesheet" href="/memoApp/static/css/style.css">
     <header>
         <form id = "form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
