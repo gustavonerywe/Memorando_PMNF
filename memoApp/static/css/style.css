@@ -190,8 +190,8 @@ input[type="text"] {
 
 #botao {
     border-radius: 20px;
-    background: gray;
-	color: black;
+    background: #a7e5fa;
+	color: #333333;
 	border-style: solid;
 	border-color: black;
 	height: 50px;
@@ -201,7 +201,8 @@ input[type="text"] {
 }
 
 #botao:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    background: #78dcfd;
 }
 
 #button-file {

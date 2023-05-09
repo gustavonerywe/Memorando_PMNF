@@ -39,8 +39,8 @@ def upload(request):
                 'memo_numero_atualizado': memo_numero_atualizado,  
                 'memorando_assunto': memorando.assunto, 
                 'memorando_corpo': plain_text,
+                'memorando_remetente': memorando.remetente
             }
-            print(plain_text)
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
