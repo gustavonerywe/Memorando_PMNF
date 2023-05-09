@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect,  get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django import forms
 from .models import *
@@ -9,6 +8,7 @@ from django.http import Http404
 from .forms import ImageForm
 from django.utils import timezone
 import datetime
+from bs4 import BeautifulSoup
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -21,7 +21,9 @@ def upload(request):
         if form.is_valid():            
             memo_numero_atualizado = memorando.gerar_proximo_numero()
             memorando.assunto = request.POST.get('assunto')
-            memorando.corpo = request.POST.get('corpo_memorando')
+            memorando.corpo = request.POST.get('corpo')
+            soup = BeautifulSoup(memorando.corpo, 'html.parser')
+            plain_text = soup.get_text()
             memorando.data = request.POST.get('data')
             destinatarios = request.POST.getlist('destinatario')
             for destinatario_id in destinatarios:
@@ -35,9 +37,10 @@ def upload(request):
                 'image': image,
                 'memorando': memorando,
                 'memo_numero_atualizado': memo_numero_atualizado,  
-                'memorando_assunto': memorando.assunto,  
+                'memorando_assunto': memorando.assunto, 
+                'memorando_corpo': plain_text,
             }
-            print(memorando.assunto)
+            print(plain_text)
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
@@ -46,6 +49,7 @@ def upload(request):
         'form': form,
         'memo_numero_atualizado': memorando.gerar_proximo_numero(),
         'memorando_assunto' : memorando.assunto,
+        'memorando_corpo': memorando.corpo,
         }
     return render(request, 'memo_main.html', context)
 
