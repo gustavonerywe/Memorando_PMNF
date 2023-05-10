@@ -277,14 +277,25 @@ input[type="text"] {
 #label-file {
     pointer-events: none;
   }
-  @media screen and (max-width: 599px) and (min-height: 1372px) {
-    #box-field {
-    position: absolute;
-    top: 425px;
-    right: 110px;
 
+  @media screen and (max-width: 850px){
+    #box-field {
+        margin-left: 170px;
     }
-  }
+    #box-upload{
+        width:350px;
+    }
+    #drop-area{
+        width: 350px;
+    }
+    #corpo{
+        height: 10px;
+    }
+        
+    }
+
+
+  
 .cor{
     background-color: transparent;
 }
@@ -297,6 +308,6 @@ input[type="text"] {
 #corpo{
     display: block;
     margin: auto;
-    width: 30%;
-    height: 15%;
+    width: 250px;
+    height: 120px;
 }
