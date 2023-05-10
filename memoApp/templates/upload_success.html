@@ -11,8 +11,10 @@
       <a id="link-upload" href="{% url 'file_detail' image.id %}">Ver detalhes</a>
     </div>
     <br>
-    <button id="botao-back"><a id="link-upload" href="{% url 'upload' %}">Volte para a página inicial do
-        memorando.</a></button>
+    <div id="link-container">
+      <a id="link-upload" href="{% url 'upload' %}">Volte para a página inicial do<br>
+        memorando</a>
+    </div>
   </fieldset>
   <!-- upload_success.html -->
 </body>
