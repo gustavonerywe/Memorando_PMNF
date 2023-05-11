@@ -5,6 +5,7 @@
 {% block content %}
 
 <body>
+    <link rel="stylesheet" href="/static/css/style.css">
     <header>
         <form id = "form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
@@ -27,7 +28,7 @@
                     </tr>
                     <tr>
                         <th>De:</th>
-                        <td>[Lugar de onde está sendo enviado]</td>
+                        <td>{{ user.username }}</td>
                     </tr>
                     <tr>
                         <th>Para:</th>
@@ -41,13 +42,19 @@
                             </select></td>
                     </tr>
                     <tr>
+                        <!-- <tr>
+                            <td id="td-nome">
+                                <label for="id_name">Nome:</label>
+                                <input type="text" name="name" id="id_name" required>
+                            </td>
+                        </tr> -->
                         <th>Assunto:</th>
-                        <td>[Assunto do memorando]</td>
+                        <td><input type="text" id="id_name" name="name"></td>
                     </tr>
                 </table>
 
                 <section id="corpoMemorando">
-                    <textarea name="textarea" id="mytextarea"></textarea>
+                    <textarea id="corpo" name="corpo"></textarea>
                 </section>
             </div>
             <div id="footer">
@@ -87,12 +94,6 @@
     <table>
         <tr>
             <td>
-                <label for="id_name">Nome:</label>
-                <input type="text" name="name" id="id_name" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
                 <section id="main-file">
                     
                     <fieldset id="box-upload">
@@ -111,20 +112,22 @@
             </td>
         </tr>
     </table>
-  
 </div>
 <div>
 </div>
 <div id="button-file">
     <button id="botao" type="submit">Enviar</button>
 </div>
+<div id="verify-message">
+    <em style="font-size: 0.6em;">Confira todo o memorando antes de eviar.</em>
+  </div>
 </form>
 
 <script src="/static/js/memoMain.js"></script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
 <script>
     tinymce.init({
-        selector: '#mytextarea',
+        selector: '#corpo',
         height: 500,
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',

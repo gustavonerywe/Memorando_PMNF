@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect,  get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django import forms
 from .models import *
@@ -9,6 +8,7 @@ from django.http import Http404
 from .forms import ImageForm
 from django.utils import timezone
 import datetime
+from bs4 import BeautifulSoup
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -18,10 +18,11 @@ def upload(request):
     memorando = Memorando()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():            
+        if form.is_valid():   
+            memorando.corpo = request.POST.get('corpo')   
             memo_numero_atualizado = memorando.gerar_proximo_numero()
-            memorando.assunto = request.POST.get('assunto')
-            memorando.corpo_memorando = request.POST.get('corpo_memorando')
+            soup = BeautifulSoup(memorando.corpo, 'html.parser')
+            plain_text = soup.get_text()
             memorando.data = request.POST.get('data')
             destinatarios = request.POST.getlist('destinatario')
             for destinatario_id in destinatarios:
@@ -34,17 +35,19 @@ def upload(request):
             context={
                 'image': image,
                 'memorando': memorando,
-                'memo_numero_atualizado': memo_numero_atualizado,
-                
+                'memo_numero_atualizado': memo_numero_atualizado,  
+                'memorando_corpo': plain_text,
+                'memorando_remetente': memorando.remetente
             }
-            print(memo_numero_atualizado)
+            print(memorando.assunto)
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
 
     context={
         'form': form,
-        'memo_numero_atualizado': memorando.gerar_proximo_numero()
+        'memo_numero_atualizado': memorando.gerar_proximo_numero(),
+        'memorando_corpo': memorando.corpo,
         }
     return render(request, 'memo_main.html', context)
 
@@ -60,6 +63,8 @@ def data_atual(request):
 @login_required
 def file_detail(request, id):
     try:
+         memorando = Memorando()
+         memorando.assunto = request.POST.get()
          image = Image.objects.get(id=id)
          image_size_kb = round(image.file.size/1024)
          image_size_mb = round(image_size_kb/1024, 2)
@@ -67,9 +72,11 @@ def file_detail(request, id):
     except Image.DoesNotExist:
         raise Http404("Image does not exist")
 
-    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
+    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp, 'memorando_assunto': memorando.assunto}
 
     return render(request, 'file_detail.html', context)
+
+        
 
 @login_required
 def digital_view(request, id):

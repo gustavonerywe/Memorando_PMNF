@@ -76,23 +76,22 @@ h6 {
     text-align: left;
 }
 
-/*.texto {
-        text-align: center;
-        padding: 150px;
-        line-height: 25px;
-        margin-top: -90px;
-        white-space: pre-line;
-      }
-      */
 #image-name {
     text-align: center;
 
+}
+
+#section-detail{
+    margin-top: 70px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 table#table-file {
     border-collapse: collapse;
     display: table;
     margin: auto;
+    width: 500px;
 }
 
 main#corpo {
@@ -113,7 +112,9 @@ main {
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
+    text-decoration: none;
 }
+
 
 #img {
     padding-left: px;
@@ -129,6 +130,7 @@ main {
     margin-top: -10.9%;
     text-align: center;
     padding: 5px;
+    margin-bottom: 10px;
 }
 
 #drop-area {
@@ -146,6 +148,13 @@ main {
     margin: auto;
     width: 121px;
     height: 12px;
+}
+
+#verify-message {
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0px;
 }
 
 #title-footer {
@@ -180,29 +189,28 @@ input[type="text"] {
 }
 
 #botao {
-    width: 200px;
-    border-style: solid;
-    padding: 10px 20px;
-    text-align: center;
-    display: inline-block;
-    border-color: black;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 20px;
+    background: #a7e5fa;
+	color: #333333;
+	border-style: solid;
+	border-color: black;
+	height: 50px;
+	width: 200px;
+	font: bold 20px times;
+	text-shadow: none;
 }
 
 #botao:hover {
-    background-color: gray;
-
+    text-decoration: none;
+    background: #78dcfd;
 }
 
 #button-file {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 #file-margin {
@@ -252,7 +260,7 @@ input[type="text"] {
     border-radius: 10px;
     padding: 20px;
     margin: 20px auto;
-    max-width: 500px;
+    width: 450px;
 }
 #link-upload{
     display: inline-block;
@@ -262,6 +270,8 @@ input[type="text"] {
     text-align: center;
     text-decoration: none;
     border-radius: 4px;
+    font-size: 15px;
+    margin-top: 7px;
 }
 #link-upload:hover{
     text-decoration: none;
@@ -275,14 +285,25 @@ input[type="text"] {
 #label-file {
     pointer-events: none;
   }
-  @media screen and (max-width: 599px) and (min-height: 1372px) {
-    #box-field {
-    position: absolute;
-    top: 425px;
-    right: 110px;
 
+  @media screen and (max-width: 850px){
+    #box-field {
+        margin-left: 170px;
     }
-  }
+    #box-upload{
+        width:350px;
+    }
+    #drop-area{
+        width: 350px;
+    }
+    #corpo{
+        height: 10px;
+    }
+        
+    }
+
+
+  
 .cor{
     background-color: transparent;
 }
@@ -291,4 +312,10 @@ input[type="text"] {
     width: 90%;
     background: #fff;
     margin: 0 auto;
+}
+#corpo{
+    display: block;
+    margin: auto;
+    width: 250px;
+    height: 120px;
 }
