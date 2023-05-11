@@ -15,15 +15,12 @@ from rest_framework.response import Response
 
 @login_required
 def upload(request):
-    imageObj = Image()
     memorando = Memorando()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():   
-            memorando.corpo = request.POST.get('corpo')
-            imageObj=form.save()    
+            memorando.corpo = request.POST.get('corpo')   
             memo_numero_atualizado = memorando.gerar_proximo_numero()
-            memorando.assunto = imageObj
             soup = BeautifulSoup(memorando.corpo, 'html.parser')
             plain_text = soup.get_text()
             memorando.data = request.POST.get('data')
@@ -39,10 +36,10 @@ def upload(request):
                 'image': image,
                 'memorando': memorando,
                 'memo_numero_atualizado': memo_numero_atualizado,  
-                'memorando_assunto': memorando.assunto, 
                 'memorando_corpo': plain_text,
                 'memorando_remetente': memorando.remetente
             }
+            print(memorando.assunto)
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
@@ -50,7 +47,6 @@ def upload(request):
     context={
         'form': form,
         'memo_numero_atualizado': memorando.gerar_proximo_numero(),
-        'memorando_assunto' : memorando.assunto,
         'memorando_corpo': memorando.corpo,
         }
     return render(request, 'memo_main.html', context)
@@ -67,6 +63,8 @@ def data_atual(request):
 @login_required
 def file_detail(request, id):
     try:
+         memorando = Memorando()
+         memorando.assunto = request.POST.get()
          image = Image.objects.get(id=id)
          image_size_kb = round(image.file.size/1024)
          image_size_mb = round(image_size_kb/1024, 2)
@@ -74,7 +72,7 @@ def file_detail(request, id):
     except Image.DoesNotExist:
         raise Http404("Image does not exist")
 
-    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp,}
+    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp, 'memorando_assunto': memorando.assunto}
 
     return render(request, 'file_detail.html', context)
 

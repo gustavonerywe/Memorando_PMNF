@@ -7,15 +7,39 @@
   <fieldset id="box-upload">
     <h1 id="title-upload">Anexo bem-sucedido!</h1>
     <p id="subtitle-upload">O arquivo foi carregado com sucesso.</p>
-    <div id="link-container">
-      <a id="link-upload" href="{% url 'file_detail' image.id %}">Ver detalhes</a>
-    </div>
     <br>
     <div id="link-container">
-      <a id="link-upload" href="{% url 'upload' %}">Volte para a página inicial do<br>
-        memorando</a>
+      <a id="link-upload" href="{% url 'upload' %}">Página inicial do memorando</a>
     </div>
   </fieldset>
+  <section id="section-detail">
+    <fieldset id="box-file">
+      <h1 id="titulo-file">{{ image.name }}</h1>
+    </fieldset>
+    </div>
+    <main id="corpo">
+      <table border="1" id="table-file">
+        <!-- <tr>
+          <td><p id="image-name">{{ image.name }}</p></td>
+      </tr> -->
+        <tr class="tr-file">
+          <td class="td-file">
+            <p>Tamanho do arquivo: {{ image_size_mb }} MB</p>
+          </td>
+        </tr>
+        <tr class="tr-file">
+          <td class="td-file">
+            <p>Data de upload: {{ timestamp }}</p>
+          </td>
+        </tr>
+        <tr class="tr-file">
+          <td class="td-file">
+            <p><a id="link_view" href="{% url 'digital_view' image.id %}">Clique para ter acesso à visualização
+                digital</a></p>
+          </td>
+        </tr>
+      </table>
+  </section>
   <!-- upload_success.html -->
 </body>
 {% endblock %}
