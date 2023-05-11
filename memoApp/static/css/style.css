@@ -85,6 +85,7 @@ table#table-file {
     border-collapse: collapse;
     display: table;
     margin: auto;
+    width: 500px;
 }
 
 main#corpo {

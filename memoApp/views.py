@@ -15,13 +15,15 @@ from rest_framework.response import Response
 
 @login_required
 def upload(request):
+    imageObj = Image()
     memorando = Memorando()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():            
-            memo_numero_atualizado = memorando.gerar_proximo_numero()
-            memorando.assunto = request.POST.get('assunto')
+        if form.is_valid():   
             memorando.corpo = request.POST.get('corpo')
+            imageObj=form.save()    
+            memo_numero_atualizado = memorando.gerar_proximo_numero()
+            memorando.assunto = imageObj
             soup = BeautifulSoup(memorando.corpo, 'html.parser')
             plain_text = soup.get_text()
             memorando.data = request.POST.get('data')

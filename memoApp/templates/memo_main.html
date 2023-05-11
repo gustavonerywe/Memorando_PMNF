@@ -5,7 +5,7 @@
 {% block content %}
 
 <body>
-    <link rel="stylesheet" href="/memoApp/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <header>
         <form id = "form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
@@ -42,8 +42,14 @@
                             </select></td>
                     </tr>
                     <tr>
+                        <!-- <tr>
+                            <td id="td-nome">
+                                <label for="id_name">Nome:</label>
+                                <input type="text" name="name" id="id_name" required>
+                            </td>
+                        </tr> -->
                         <th>Assunto:</th>
-                        <td><input type="text" id="assunto" name="assunto"></td>
+                        <td><input type="text" id="id_name" name="name"></td>
                     </tr>
                 </table>
 
@@ -86,12 +92,6 @@
 <br><br>
 <div id="name-file">
     <table>
-        <tr>
-            <td id="td-nome">
-                <label for="id_name">Nome:</label>
-                <input type="text" name="name" id="id_name" required>
-            </td>
-        </tr>
         <tr>
             <td>
                 <section id="main-file">
