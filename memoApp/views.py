@@ -18,7 +18,8 @@ def upload(request):
     memorando = Memorando()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():   
+        if form.is_valid(): 
+            memorando.assunto = request.POST.get('assunto_memorando')  
             memorando.corpo = request.POST.get('corpo')   
             memo_numero_atualizado = memorando.gerar_proximo_numero()
             soup = BeautifulSoup(memorando.corpo, 'html.parser')
@@ -37,7 +38,8 @@ def upload(request):
                 'memorando': memorando,
                 'memo_numero_atualizado': memo_numero_atualizado,  
                 'memorando_corpo': plain_text,
-                'memorando_remetente': memorando.remetente
+                'memorando_remetente': memorando.remetente,
+                'memorando_assunto': memorando.assunto,
             }
             print(memorando.assunto)
             return render(request, 'upload_success.html', context)
@@ -63,8 +65,6 @@ def data_atual(request):
 @login_required
 def file_detail(request, id):
     try:
-         memorando = Memorando()
-         memorando.assunto = request.POST.get()
          image = Image.objects.get(id=id)
          image_size_kb = round(image.file.size/1024)
          image_size_mb = round(image_size_kb/1024, 2)
@@ -72,7 +72,7 @@ def file_detail(request, id):
     except Image.DoesNotExist:
         raise Http404("Image does not exist")
 
-    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp, 'memorando_assunto': memorando.assunto}
+    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
 
     return render(request, 'file_detail.html', context)
 

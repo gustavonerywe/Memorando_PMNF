@@ -6,7 +6,7 @@ from django.utils import timezone
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ('name', 'file')
+        fields = ('file',)
 
     file = forms.FileField(
         widget=forms.ClearableFileInput(attrs={'multiple': True}))
