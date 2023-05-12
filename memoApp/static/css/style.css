@@ -81,6 +81,10 @@ h6 {
 
 }
 
+#memo_numero {
+    font-size: 0.9em;
+  }
+
 #section-detail{
     text-align: center;
     margin-bottom: 20px;

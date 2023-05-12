@@ -9,6 +9,7 @@ class Image(models.Model):
     file = models.FileField(upload_to='documents/')    
     class Meta:
         app_label = 'memoApp'
+        
     
 class Memorando(models.Model):
     data = models.DateTimeField(null=True, default=None, blank=False)

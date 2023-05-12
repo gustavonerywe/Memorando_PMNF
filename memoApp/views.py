@@ -41,7 +41,7 @@ def upload(request):
                 'memorando_remetente': memorando.remetente,
                 'memorando_assunto': memorando.assunto,
             }
-            print(memorando.assunto)
+
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
@@ -73,7 +73,7 @@ def file_detail(request, id):
         raise Http404("Image does not exist")
 
     context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
-
+    print(image_size_mb)
     return render(request, 'file_detail.html', context)
 
         

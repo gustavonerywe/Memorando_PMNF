@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <th>Memo nº:</th>
-                        <td><input type="text" id="proximo_numero" readonly value="{{ memo_numero_atualizado }}"></td>
+                        <td><span id="memo_numero">{{memo_numero_atualizado}}</span></td>
                     </tr>
                     <tr>
                         <th>De:</th>
@@ -102,7 +102,7 @@
                         <div id="input-container">
                             <br><br>
                             <div id="container-file">
-                                <input type="file" name="file" id="id_file" multiple required>
+                                <input type="file" name="file" id="id_file" multiple required maxlength="52428800">
                                 <span><button type="button" id="addInput">+</button></span>
                             </div>
                         </div>
