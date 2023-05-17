@@ -90,13 +90,13 @@ h6 {
     margin-bottom: 20px;
 }
 
-table#table-file {
-    border-collapse: collapse;
+#table-file {
     display: table;
     margin: auto;
-    width: 500px;
 }
-
+#section-detail{
+    margin-top:100px;
+}
 main#corpo {
     display: table;
     margin: auto;
@@ -321,4 +321,23 @@ input[type="text"] {
     margin: auto;
     width: 250px;
     height: 120px;
+}
+#main-file-detail{
+    background-color: transparent;
+}
+#box-file-DETAIL{
+    width: 50%;
+    border: 3px solid black;
+    border-radius: 30px;
+    padding: 50px;
+    margin: 0 auto;
+}
+.style-p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    line-height: 35px;
+}
+#titulo-file-detail{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 35px;
 }

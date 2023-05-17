@@ -4,24 +4,27 @@
 {% endblock %}
 {% block content %}
 
-</fieldset>
+<body id="main-file-detail">
+<link rel="stylesheet" href="/memoApp/static/css/style.css">
 <section id="section-detail">
-    <main id="corpo">
-        <table border="1" id="table-file">
+    <h1 id="titulo-file-detail">Informações do arquivo</h1>
+    <fieldset id="box-file-detail">
+        <table id="table-file">
             <!-- <tr>
         <td><p id="image-name">{{ image.name }}</p></td>
     </tr> -->
             <tr class="tr-file">
                 <td class="td-file">
-                    <p>Tamanho do arquivo: {{ image_size_mb }} MB</p>
+                    <p class="style-p">Tamanho do arquivo: {{ image_size_mb }} MB</p>
                 </td>
             </tr>
             <tr class="tr-file">
                 <td class="td-file">
-                    <p>Data de upload: {{ timestamp }}</p>
+                    <p class="style-p">Data de upload: {{ timestamp }}</p>
                 </td>
             </tr>
         </table>
+    </fieldset>
 </section>
 <!-- upload_success.html -->
 </body>
