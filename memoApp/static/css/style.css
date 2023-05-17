@@ -172,13 +172,9 @@ main {
 
 }
 
-label,
-input[type="text"] {
-    background-color: #f5f5f5;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px;
-    margin-left: 5px;
+#label-file{
+    text-align: center;
+    font-size: 20px;
 }
 
 #main-file {
@@ -304,9 +300,7 @@ input[type="text"] {
     }
         
     }
-
-
-  
+    
 .cor{
     background-color: transparent;
 }

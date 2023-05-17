@@ -5,7 +5,7 @@
 {% block content %}
 
 <body>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/memoApp/static/css/style.css">
     <header>
         <form id = "form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
@@ -98,7 +98,7 @@
                     
                     <fieldset id="box-upload">
                         <div id="file-margin">
-                        <label id="label-file"for="id_file">Arquivo:</label>
+                        <label id="label-file"for="id_file">Selecionar Arquivos</label>
                         <div id="input-container">
                             <br><br>
                             <div id="container-file">
