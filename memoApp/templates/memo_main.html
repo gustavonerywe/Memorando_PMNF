@@ -5,7 +5,7 @@
 {% block content %}
 
 <body>
-    <link rel="stylesheet" href="/memoApp/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <header>
         <form id = "form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
@@ -14,7 +14,7 @@
             </div>
             <hr>
             <div id="content">
-                <table class="table" id="table-header">
+                <table class="table" id="table-header" class="table-success">
                     <tr>
                         <th id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
@@ -68,7 +68,7 @@
                             <td>Em: ____ /_____/____</td>
                         </tr>
                         <tr>
-                            <td id=ass>Ass: ______________</td>
+                            <td id=ass>Ass: ________________</td>
                         </tr>
                     </table>
 
