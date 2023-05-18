@@ -6,7 +6,7 @@ from django.utils import timezone
 from datetime import datetime
 
 class Image(models.Model):
-    file = models.FileField(upload_to='documents/')    
+    file = models.FileField(upload_to='documents/')     
     class Meta:
         app_label = 'memoApp'
         
