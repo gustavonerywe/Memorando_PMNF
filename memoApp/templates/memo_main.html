@@ -6,6 +6,8 @@
 
 <body>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/memoApp/static/Bootstrap/css/bootstrap.min.css">
+    <script defer src="/memoApp/static/Bootstrap/js/bootstrap.min.js"></script>
     <header>
         <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
@@ -14,7 +16,7 @@
             </div>
             <hr>
             <div id="content">
-                <table class="table" id="table-header" class="table-success">
+                <table class="table" id="table-header">
                     <tr>
                         <th id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
@@ -68,7 +70,7 @@
                             <td>Em: ____ /_____/____</td>
                         </tr>
                         <tr>
-                            <td id=ass>Ass: ________________</td>
+                            <td id=ass>Ass: ______________</td>
                         </tr>
                     </table>
 
