@@ -90,10 +90,6 @@ h6 {
     margin-bottom: 20px;
 }
 
-#table-file {
-    display: table;
-    margin: auto;
-}
 #section-detail{
     margin-top:100px;
 }
@@ -256,7 +252,15 @@ main {
     height: 40px;
 }
 
-#box-upload {
+#box-upload{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 55%;
+}
+
+#box-upload-main {
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
