@@ -227,6 +227,7 @@ main {
 
 #container-file {
     display: flex;
+    flex-direction: column;
 }
 
 #title-upload {
@@ -260,7 +261,7 @@ main {
     border-radius: 10px;
     padding: 20px;
     margin: 20px auto;
-    width: 450px;
+    width: 105%;
 }
 #link-upload{
     display: inline-block;
@@ -345,4 +346,28 @@ main {
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: center;
+}
+
+.cancel-button:hover{
+    background-color: red;
+    color: whitesmoke;
+}
+
+#addInput{
+    margin-left: 10px;
+}
+
+#addInput:hover{
+    background-color: green;
+    color: whitesmoke
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.cancel-button {
+    margin-right: 5px;
 }

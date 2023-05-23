@@ -102,9 +102,15 @@
                             <div id="input-container">
                                 <br><br>
                                 <div id="container-file">
-                                    <input type="file" name="file" id="id_file" multiple required maxlength="52428800">
-                                    <span><button type="button" id="addInput">+</button></span>
+                                    <div class="input-row">
+                                        <button type="button" class="cancel-button">x</button>
+                                        <input type="file" name="file" class="file-input" multiple required>
+                                    </div>
+                                    <span>
+                                        <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
+                                    </span>
                                 </div>
+                                
                             </div>
                         </div>
                     </fieldset>
