@@ -16,21 +16,21 @@
             <div id="content">
                 <table class="table" id="table-header">
                     <tr>
-                        <th id="tituloTable" colspan="2">MEMORANDO</th>
+                        <th id="tituloTable" colspan="2" class="table-info">MEMORANDO</th>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <th>Data:</th>
                         <td><input type="date" name="data" value="{% now 'Y-m-d' %}"></td>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <th>Memo nº:</th>
                         <td><span id="memo_numero">{{memo_numero_atualizado}}</span></td>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <th>De:</th>
                         <td>{{ user.username }}</td>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <th>Para:</th>
                         <td><select name="select" id="select-secretaria">
                                 <option value="0">-- Escolha a secretaria --</option>
@@ -41,7 +41,7 @@
                                 <option value="5">Secretaria Municipal da Casa Civil - EGCP</option>
                             </select></td>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <!-- <tr>
                             <td id="td-nome">
                                 <label for="id_name">Nome:</label>
