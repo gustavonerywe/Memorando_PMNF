@@ -54,7 +54,7 @@ h6 {
     border: 1px solid;
 }
 
-#tituloTable {
+#tituloTable, #tituloTable2{
     text-align: center;
 }
 
@@ -62,18 +62,25 @@ h6 {
     margin-right: 75%;
     width: 20%;
 }
-
+#footer{
+    margin-left: 600px;
+}
 #box-field {
-    width: 170px;
-    height: 70px;
+    border: solid 1px black;
     border-radius: 10px;
-    margin-left: 70%;
-    border-color: black;
-
+    width: 200px;
+    height: 100px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+#box-field table {
+    width: 200px; /* Define a largura da tabela como 100% */
 }
 
-#ass {
+#ass,#em {
     text-align: left;
+    padding-left: 10px;
 }
 
 #image-name {
@@ -283,17 +290,15 @@ main {
     color: cyan;
 }
 #link-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ margin-left: 600PX;
 }
 #label-file {
     pointer-events: none;
   }
 
-  @media screen and (max-width: 990px){
+  @media screen and (max-width: 1290px){
     #box-field {
-     margin:  0 auto;
+       margin-right: 200px;
     }
     #box-upload{
         width:350px;
@@ -359,6 +364,15 @@ main {
 
 #addInput{
     margin-left: 10px;
+    color: #333;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #addInput:hover{
@@ -374,4 +388,12 @@ main {
 
 .cancel-button {
     margin-right: 5px;
+    color: #333;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
