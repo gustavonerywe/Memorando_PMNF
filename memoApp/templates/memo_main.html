@@ -104,7 +104,7 @@
                                 <div id="container-file">
                                     <div class="input-row">
                                         <button type="button" id="botaoModal" class="cancel-button">x</button>
-                                        <input type="file" name="file" class="file-input" multiple required>
+                                        <input type="file" name="file" class="file-input" multiple>
                                         <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
                                     </div>
                                 </div>
@@ -112,11 +112,13 @@
                         </div>
                         <div id="meuModal">
                             <div class="modal-content">
-                                <img class="imgModal" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+                                <img class="imgModal" src="https://pedroschuenck.github.io/prefeituraImg.png"
+                                    alt="Logo da prefeitura">
                                 <hr>
                                 <span class="fechar">&times;</span>
                                 <p>Deseja cancelar o envio do arquivo?</p>
-                                <button type="button" id="buttonYesModal">Sim</button> <button type="button" id="buttonNoModal">Não</button>
+                                <button type="button" id="buttonYesModal">Sim</button> <button type="button"
+                                    id="buttonNoModal">Não</button>
                             </div>
                         </div>
                     </fieldset>
@@ -128,7 +130,18 @@
 <div>
 </div>
 <div id="button-file">
-    <button id="botao" type="submit">Enviar</button>
+    <button id="botao" class="botaoSumbitModal" type="submit">Enviar</button>
+    <div id="meuModalMemorando">
+        <div class="modal-content">
+            <img class="imgModal" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+            <hr>
+            <span class="fecharMemorando">&times;</span>
+            <p style="text-align: center; margin-bottom: 0;">Deseja enviar o memorando?</p>
+            <span style="font-size: 0.7em; margin-bottom: 10px; margin-top: 0; text-align: center; color: rgb(168, 67, 67);">Lembre-se: quando o memorando for enviado, ele será salvo no banco de dados.</span>
+            <button type="button" id="buttonYesModalMemorando">Sim</button> <button type="button"
+                id="buttonNoModalMemorando">Não</button>
+        </div>
+    </div>
 </div>
 <div>
     {% if form.file.errors %}

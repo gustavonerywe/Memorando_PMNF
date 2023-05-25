@@ -16,23 +16,11 @@ function handleFileDrop(event) {
   fileInput.files = files;
 }
 
-// const inputContainer = document.getElementById('input-container');
-// const addInputButton = document.getElementById('addInput');
-
-// addInputButton.addEventListener('click', () => {
-//     const newInput = document.createElement('input');
-//     newInput.type = 'file';
-//     newInput.name = 'file';
-//     newInput.id = 'id_file';
-//     inputContainer.appendChild(document.createElement('br'));
-//     inputContainer.appendChild(newInput);
-
-// });
-
 const inputContainer = document.getElementById('container-file');
 const addInputButton = document.getElementById('addInput');
 var meuModal = document.getElementById("meuModal");
 var fechar = document.querySelector(".fechar");
+
 
 function createNewInput() {
   const inputRow = document.createElement('div');
@@ -55,8 +43,9 @@ function createNewInput() {
   inputContainer.insertBefore(inputRow, addInputButton.parentNode);
 
   cancelButton.addEventListener('click', function () {
-    meuModal.style.display = "block";
-    console.log('oi')
+    if (fileInput != null) {
+      meuModal.style.display = "block";
+    }
   });
 
   fechar.addEventListener("click", function () {
@@ -74,7 +63,6 @@ function addCancelButtonEvent(cancelButton) {
   cancelButton.type = 'button';
   cancelButton.addEventListener('click', function () {
     meuModal.style.display = "block";
-    console.log('oi')
   });
 
   fechar.addEventListener("click", function () {
@@ -134,31 +122,52 @@ fetch('/digital_view/')
     pdfReader(dados)
   })
 
+
+var fecharMemorando = document.querySelector(".fecharMemorando")
+var meuModalmemorando = document.querySelector('#meuModalMemorando')
 const btn = document.querySelector('#botao')
 
 botao.addEventListener('click', function (event) {
   event.preventDefault()
-
-  let confirmed = confirm('Deseja mesmo enviar o formulário?')
-  if (confirmed) {
-    event.target.closest('form').submit()
-  }
+  meuModalMemorando.style.display = "block";
 })
+
+fecharMemorando.addEventListener('click', function(){
+  meuModalmemorando.style.display = "none";
+})
+
+window.addEventListener("click", function (event) {
+  if (event.target == meuModalMemorando) {
+    meuModalMemorando.style.display = "none";
+  }
+});
 
 
 const buttonYesModal = document.querySelector('#buttonYesModal')
 const buttonNoModal = document.querySelector('#buttonNoModal')
+const buttonYesModalMemorando = document.querySelector('#buttonYesModalMemorando')
+const buttonNoModalMemorando = document.querySelector('#buttonNoModalMemorando')
 const spanMessage = document.querySelector('#spanMessage')
+const form = document.querySelector('#form-main')
 
 buttonYesModal.addEventListener('click', function () {
   document.querySelector('.file-input').value = '';
   meuModal.style.display = "none";
   spanMessage.textContent = "Arquivo removido com sucesso!"
-  setTimeout(function(){
+  setTimeout(function () {
     spanMessage.textContent = ''
   }, 2500)
 })
 
 buttonNoModal.addEventListener('click', function () {
   meuModal.style.display = "none";
+})
+
+buttonYesModalMemorando.addEventListener('click', function () {
+  meuModal.style.display = "none";
+  form.submit()
+})
+
+buttonNoModalMemorando.addEventListener('click', function () {
+  meuModalMemorando.style.display = "none";
 })

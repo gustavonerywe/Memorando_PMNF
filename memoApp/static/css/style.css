@@ -423,6 +423,18 @@ main {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+#meuModalMemorando {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -442,9 +454,26 @@ main {
     align-self: flex-end;
 }
 
+.fecharMemorando {
+    color: #aaa;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
 
 .fechar:hover,
 .fechar:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fecharMemorando:hover,
+.fecharMemorando:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -470,7 +499,26 @@ hr{
     margin-bottom: 10px;
 }
 
+#buttonYesModalMemorando {
+    width: 35%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: rgba(157, 230, 157, 0.815);
+    border: 0.2px solid black;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
 #buttonNoModal {
+    width: 35%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: rgba(214, 140, 140, 0.836);
+    border: 0.2px solid black;
+    border-radius: 15px;
+}
+
+#buttonNoModalMemorando {
     width: 35%;
     text-align: center;
     margin: 0 auto;
@@ -483,7 +531,15 @@ hr{
     background-color: rgb(209, 97, 97);
 }
 
+#buttonNoModalMemorando:hover{
+    background-color: rgb(209, 97, 97);
+}
+
 #buttonYesModal:hover{
+    background-color: rgb(107, 216, 107);
+}
+
+#buttonYesModalMemorando:hover{
     background-color: rgb(107, 216, 107);
 }
 
