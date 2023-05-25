@@ -93,27 +93,37 @@
 <div id="name-file">
     <table>
         <tr>
-          <td>
-            <section id="main-file">
-              <fieldset id="box-upload-main">
-                <div id="file-margin">
-                  <label id="label-file" for="id_file">Selecionar Arquivos</label>
-                  <div id="input-container">
-                    <br><br>
-                    <div id="container-file">
-                      <div class="input-row">
-                        <button type="button" class="cancel-button">x</button>
-                        <input type="file" name="file" class="file-input" multiple required>
-                        <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-            </section>
-          </td>
+            <td>
+                <section id="main-file">
+                    <fieldset id="box-upload-main">
+                        <div id="file-margin">
+                            <label id="label-file" for="id_file">Selecionar Arquivos</label>
+                            <p id="spanMessage"></p>
+                            <div id="input-container">
+                                <br><br>
+                                <div id="container-file">
+                                    <div class="input-row">
+                                        <button type="button" id="botaoModal" class="cancel-button">x</button>
+                                        <input type="file" name="file" class="file-input" multiple required>
+                                        <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="meuModal">
+                            <div class="modal-content">
+                                <img class="imgModal" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+                                <hr>
+                                <span class="fechar">&times;</span>
+                                <p>Deseja cancelar o envio do arquivo?</p>
+                                <button type="button" id="buttonYesModal">Sim</button> <button type="button" id="buttonNoModal">Não</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </section>
+            </td>
         </tr>
-      </table>      
+    </table>
 </div>
 <div>
 </div>
