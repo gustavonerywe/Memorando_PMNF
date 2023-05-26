@@ -80,7 +80,6 @@ h6 {
 
 #box-field table {
     width: 200px;
-    /* Define a largura da tabela como 100% */
 }
 
 #ass,
@@ -440,13 +439,13 @@ main {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 68%;
 }
 
 .fechar {
     color: #aaa;
     float: right;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     cursor: pointer;
     padding: 4px 8px;

@@ -24,6 +24,8 @@ var fechar = document.querySelector(".fechar");
 
 function createNewInput() {
   const inputRow = document.createElement('div');
+  const parentElement = document.getElementById('container-file');
+  parentElement.appendChild(inputRow);
   inputRow.classList.add('input-row');
 
   const cancelButton = document.createElement('button');
@@ -132,7 +134,7 @@ botao.addEventListener('click', function (event) {
   meuModalMemorando.style.display = "block";
 })
 
-fecharMemorando.addEventListener('click', function(){
+fecharMemorando.addEventListener('click', function () {
   meuModalmemorando.style.display = "none";
 })
 

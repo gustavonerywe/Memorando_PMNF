@@ -12,15 +12,14 @@ from bs4 import BeautifulSoup
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-
 @login_required
 def upload(request):
-    memorando = Memorando()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
-        if form.is_valid(): 
-            memorando.assunto = request.POST.get('assunto_memorando')  
-            memorando.corpo = request.POST.get('corpo')   
+        if form.is_valid():
+            memorando = Memorando()
+            memorando.assunto = request.POST.get('assunto_memorando')
+            memorando.corpo = request.POST.get('corpo')
             memo_numero_atualizado = memorando.gerar_proximo_numero()
             soup = BeautifulSoup(memorando.corpo, 'html.parser')
             plain_text = soup.get_text()
@@ -32,11 +31,18 @@ def upload(request):
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
             memorando.save()
-            image = form.save()
-            context={
-                'image': image,
+
+            # Iterar sobre os arquivos enviados e salvá-los individualmente
+            for file in request.FILES.getlist('file'):
+                image = Image.objects.create(file=file)
+
+                # Associar a imagem ao memorando
+                image.memorando = memorando
+                image.save()
+
+            context = {
                 'memorando': memorando,
-                'memo_numero_atualizado': memo_numero_atualizado,  
+                'memo_numero_atualizado': memo_numero_atualizado,
                 'memorando_corpo': plain_text,
                 'memorando_remetente': memorando.remetente,
                 'memorando_assunto': memorando.assunto,
@@ -46,12 +52,13 @@ def upload(request):
     else:
         form = ImageForm()
 
-    context={
+    context = {
         'form': form,
-        'memo_numero_atualizado': memorando.gerar_proximo_numero(),
-        'memorando_corpo': memorando.corpo,
-        }
+        'memo_numero_atualizado': Memorando().gerar_proximo_numero(),
+        'memorando_corpo': Memorando().corpo,
+    }
     return render(request, 'memo_main.html', context)
+
 
 
 @login_required
@@ -62,19 +69,46 @@ def data_atual(request):
     }
     return render(request, 'memo_main.html', context)
 
+from django.core.exceptions import SuspiciousFileOperation
+
+from django.core.exceptions import SuspiciousFileOperation
+
 @login_required
 def file_detail(request, id):
     try:
-         image = Image.objects.get(id=id)
-         image_size_kb = round(image.file.size/1024)
-         image_size_mb = round(image_size_kb/1024, 2)
-         timestamp = timezone.now()
+        image = Image.objects.get(id=id)
+        if not image.file:
+            raise SuspiciousFileOperation("Image file not found")
+        
+        image_size_kb = round(image.file.size / 1024)
+        image_size_mb = round(image_size_kb / 1024, 2)
+        timestamp = timezone.now()
     except Image.DoesNotExist:
         raise Http404("Image does not exist")
+    except SuspiciousFileOperation:
+        raise Http404("Image file not found")
 
-    context = {'image': image, 'image_size_mb' : image_size_mb, 'timestamp' : timestamp}
-    print(image_size_mb)
+    try:
+        # Calcular a soma dos tamanhos de todos os arquivos
+        total_size_mb = 0
+        images = Image.objects.filter(file=image.file)
+        for img in images:
+            if img.file:
+                total_size_mb += round(img.file.size / (1024 * 1024), 2)
+    except FileNotFoundError:
+        total_size_mb = 0
+
+    context = {
+        'image': image,
+        'image_size_mb': image_size_mb,
+        'timestamp': timestamp,
+        'total_size_mb': total_size_mb
+    }
+
     return render(request, 'file_detail.html', context)
+
+
+
 
         
 
