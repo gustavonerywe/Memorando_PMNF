@@ -14,7 +14,7 @@
             </div>
             <hr>
             <div id="content">
-                <table class="table" id="table-header">
+                <table class="table" class="custom-table">
                     <tr>
                         <th id="tituloTable" colspan="2" class="table-info">MEMORANDO</th>
                     </tr>
@@ -32,22 +32,18 @@
                     </tr>
                     <tr class="table-secondary">
                         <th>Para:</th>
-                        <td><select name="select" id="select-secretaria">
+                        <td>
+                            <select name="select" id="select-secretaria" class="form-select">
                                 <option value="0">-- Escolha a secretaria --</option>
                                 <option value="1">Prefeito</option>
                                 <option value="2">Controladoria Geral</option>
                                 <option value="3">Fundação Dom João VI de Nova Friburgo</option>
                                 <option value="4">Procuradoria Geral </option>
                                 <option value="5">Secretaria Municipal da Casa Civil - EGCP</option>
-                            </select></td>
+                            </select>
+                        </td>
                     </tr>
                     <tr class="table-secondary">
-                        <!-- <tr>
-                            <td id="td-nome">
-                                <label for="id_name">Nome:</label>
-                                <input type="text" name="name" id="id_name" required>
-                            </td>
-                        </tr> -->
                         <th>Assunto:</th>
                         <td><input type="text" id="id_name" name="assunto_memorando"></td>
                     </tr>
