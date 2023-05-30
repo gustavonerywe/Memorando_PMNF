@@ -369,17 +369,20 @@ main {
     margin-bottom: 5px;
     text-align: center;
 }
-.cancel-button{
+
+.cancel-button {
     background-color: rgba(214, 140, 140, 0.836);
 }
+
 .cancel-button:hover {
-    background-color:rgb(209, 97, 97);
+    background-color: rgb(209, 97, 97);
     color: black;
 }
 
 #addInput {
     margin-left: 10px;
-    background-color:rgba(157, 230, 157, 0.815); ;
+    background-color: rgba(157, 230, 157, 0.815);
+    ;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
@@ -391,7 +394,7 @@ main {
 }
 
 #addInput:hover {
-    background-color:rgb(107, 216, 107);
+    background-color: rgb(107, 216, 107);
     color: black;
 }
 
@@ -480,12 +483,12 @@ main {
     cursor: pointer;
 }
 
-.imgModal{
+.imgModal {
     margin: 0;
     align-self: center;
 }
 
-hr{
+hr {
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -528,19 +531,19 @@ hr{
     border-radius: 15px;
 }
 
-#buttonNoModal:hover{
+#buttonNoModal:hover {
     background-color: rgb(209, 97, 97);
 }
 
-#buttonNoModalMemorando:hover{
+#buttonNoModalMemorando:hover {
     background-color: rgb(209, 97, 97);
 }
 
-#buttonYesModal:hover{
+#buttonYesModal:hover {
     background-color: rgb(107, 216, 107);
 }
 
-#buttonYesModalMemorando:hover{
+#buttonYesModalMemorando:hover {
     background-color: rgb(107, 216, 107);
 }
 
@@ -548,4 +551,16 @@ hr{
     color: rgb(3, 117, 3);
     font-size: 0.7em;
     margin-bottom: 0;
+}
+
+.tox-notifications-container {
+    display: none;
+}
+
+.tox .tox-statusbar a,
+.tox .tox-statusbar__path-item,
+.tox .tox-statusbar__wordcount {
+    color: rgba(34, 47, 62, .7);
+    text-decoration: none;
+    display: none;
 }

@@ -105,7 +105,7 @@ def file_detail(request, id):
         'total_size_mb': total_size_mb
     }
 
-    return render(request, 'file_detail.html', context)
+    return render(request, 'upload_success.html', context)
 
 
 

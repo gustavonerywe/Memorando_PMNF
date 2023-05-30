@@ -1,5 +1,8 @@
-const fileInput = document.querySelector('#id_file')
+const fileInput = document.querySelector('#id_file');
 const dropArea = document.getElementById('drop-area');
+const inputContainer = document.getElementById('container-file');
+const addInputButton = document.getElementById('addInput');
+let fileInputs = []; 
 
 dropArea.addEventListener('dragover', handleDragOver);
 dropArea.addEventListener('drop', handleFileDrop);
@@ -13,36 +16,34 @@ function handleFileDrop(event) {
   event.preventDefault();
   dropArea.classList.remove('drag-over');
   const files = event.dataTransfer.files;
-  fileInput.files = files;
+  if (fileInputs.length > 0) {
+    const lastFileInput = fileInputs[fileInputs.length - 1];
+    lastFileInput.files = files; 
+  } else {
+    fileInput.files = files; 
+  }
 }
-
-const inputContainer = document.getElementById('container-file');
-const addInputButton = document.getElementById('addInput');
-var meuModal = document.getElementById("meuModal");
-var fechar = document.querySelector(".fechar");
-
 
 function createNewInput() {
   const inputRow = document.createElement('div');
-  const parentElement = document.getElementById('container-file');
-  parentElement.appendChild(inputRow);
-  inputRow.classList.add('input-row');
-
   const cancelButton = document.createElement('button');
+  const newFileInput = document.createElement('input');
+
+  inputRow.classList.add('input-row');
   cancelButton.classList.add('cancel-button');
   cancelButton.type = 'button';
   cancelButton.textContent = 'x';
-
-  const fileInput = document.createElement('input');
-  fileInput.type = 'file';
-  fileInput.name = 'file';
-  fileInput.classList.add('file-input');
-  fileInput.multiple = true;
-  fileInput.required = true;
+  newFileInput.type = 'file';
+  newFileInput.name = 'file';
+  newFileInput.classList.add('file-input');
+  newFileInput.multiple = true;
+  newFileInput.required = true;
 
   inputRow.appendChild(cancelButton);
-  inputRow.appendChild(fileInput);
-  inputContainer.insertBefore(inputRow, addInputButton.parentNode);
+  inputRow.appendChild(newFileInput);
+  inputContainer.appendChild(inputRow);
+
+  fileInputs.push(newFileInput)
 
   cancelButton.addEventListener('click', function () {
     if (fileInput != null) {
