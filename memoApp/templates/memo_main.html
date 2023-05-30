@@ -1,53 +1,49 @@
 {% extends 'template.html' %}
 {% block subtitulo %}
--- memo_main
+
 {% endblock %}
 {% block content %}
 
 <body>
     <link rel="stylesheet" href="/static/css/style.css">
     <header>
-        <form id = "form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+        <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
             </div>
             <hr>
             <div id="content">
-                <table class="table" id="table-header">
+                <table class="table" class="custom-table">
                     <tr>
-                        <th id="tituloTable" colspan="2">MEMORANDO</th>
+                        <th id="tituloTable" colspan="2" class="table-info">MEMORANDO</th>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <th>Data:</th>
                         <td><input type="date" name="data" value="{% now 'Y-m-d' %}"></td>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <th>Memo nº:</th>
-                        <td><input type="text" id="proximo_numero" readonly value="{{ memo_numero_atualizado }}"></td>
+                        <td><span id="memo_numero">{{memo_numero_atualizado}}</span></td>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <th>De:</th>
                         <td>{{ user.username }}</td>
                     </tr>
-                    <tr>
+                    <tr class="table-secondary">
                         <th>Para:</th>
-                        <td><select name="select" id="select-secretaria">
+                        <td>
+                            <select name="select" id="select-secretaria" class="form-select">
                                 <option value="0">-- Escolha a secretaria --</option>
                                 <option value="1">Prefeito</option>
                                 <option value="2">Controladoria Geral</option>
                                 <option value="3">Fundação Dom João VI de Nova Friburgo</option>
                                 <option value="4">Procuradoria Geral </option>
                                 <option value="5">Secretaria Municipal da Casa Civil - EGCP</option>
-                            </select></td>
+                            </select>
+                        </td>
                     </tr>
-                    <tr>
-                        <!-- <tr>
-                            <td id="td-nome">
-                                <label for="id_name">Nome:</label>
-                                <input type="text" name="name" id="id_name" required>
-                            </td>
-                        </tr> -->
+                    <tr class="table-secondary">
                         <th>Assunto:</th>
                         <td><input type="text" id="id_name" name="assunto_memorando"></td>
                     </tr>
@@ -65,13 +61,13 @@
                             <th id="tituloTable2">RECEBIDO</td>
                         </tr>
                         <tr>
-                            <td>Em: ____ /_____/____</td>
+                            <td id="em"> Em: ______ /______ /______</td>
                         </tr>
                         <tr>
-                            <td id=ass>Ass: ______________</td>
+                            <td id=ass> Ass: _____________________</td>
                         </tr>
                     </table>
-
+                </fieldset>
             </div>
             </footer>
 </body>
@@ -84,10 +80,10 @@
 <br>
 <div id="drop-area">
     Arraste e solte os arquivos aqui
-  </div>
-  <div id="italic-message">
-    <em style="font-size: 0.7em;">Tamanho máximo: 50mb</em>
-  </div>
+</div>
+<div id="italic-message">
+    <em style="font-size: 0.7em;">Tamanho máximo: 100mb</em>
+</div>
 </div>
 <br><br>
 <div id="name-file">
@@ -95,17 +91,31 @@
         <tr>
             <td>
                 <section id="main-file">
-                    
-                    <fieldset id="box-upload">
+                    <fieldset id="box-upload-main">
                         <div id="file-margin">
-                        <label id="label-file"for="id_file">Arquivo:</label>
-                        <div id="input-container">
-                            <br><br>
-                            <div id="container-file">
-                                <input type="file" name="file" id="id_file" multiple required>
-                                <span><button type="button" id="addInput">+</button></span>
+                            <label id="label-file" for="id_file">Selecionar Arquivos</label>
+                            <p id="spanMessage"></p>
+                            <div id="input-container">
+                                <br><br>
+                                <div id="container-file">
+                                    <div class="input-row">
+                                        <button type="button" id="botaoModal" class="cancel-button">x</button>
+                                        <input type="file" name="file" class="file-input" id="id_file" multiple>
+                                        <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div id="meuModal">
+                            <div class="modal-content">
+                                <img class="imgModal" src="https://pedroschuenck.github.io/prefeituraImg.png"
+                                    alt="Logo da prefeitura">
+                                <hr>
+                                <span class="fechar">&times;</span>
+                                <p>Deseja cancelar o envio do arquivo?</p>
+                                <button type="button" id="buttonYesModal">Sim</button> <button type="button"
+                                    id="buttonNoModal">Não</button>
+                            </div>
                         </div>
                     </fieldset>
                 </section>
@@ -116,11 +126,31 @@
 <div>
 </div>
 <div id="button-file">
-    <button id="botao" type="submit">Enviar</button>
+    <button id="botao" class="botaoSumbitModal" type="submit">Enviar</button>
+    <div id="meuModalMemorando">
+        <div class="modal-content">
+            <img class="imgModal" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+            <hr>
+            <span class="fecharMemorando">&times;</span>
+            <p style="text-align: center; margin-bottom: 0;">Deseja enviar o memorando?</p>
+            <span style="font-size: 0.8em; margin-bottom: 10px; margin-top: 0; text-align: center; color: rgb(168, 67, 67);">Lembre-se: quando o memorando for enviado, ele será salvo no banco de dados.</span>
+            <button type="button" id="buttonYesModalMemorando">Sim</button> <button type="button"
+                id="buttonNoModalMemorando">Não</button>
+        </div>
+    </div>
+</div>
+<div>
+    {% if form.file.errors %}
+    <ul id="error-message">
+        {% for error in form.file.errors %}
+        {{ error }}
+        {% endfor %}
+    </ul>
+    {% endif %}
 </div>
 <div id="verify-message">
-    <em style="font-size: 0.6em;">Confira todo o memorando antes de eviar.</em>
-  </div>
+    <em style="font-size: 0.6em;">Confira todo o memorando antes de enviar.</em>
+</div>
 </form>
 
 <script src="/static/js/memoMain.js"></script>
