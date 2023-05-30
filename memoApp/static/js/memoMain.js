@@ -37,7 +37,7 @@ function createNewInput() {
   newFileInput.name = 'file';
   newFileInput.classList.add('file-input');
   newFileInput.multiple = true;
-  newFileInput.required = true;
+  newFileInput.required = false;
 
   inputRow.appendChild(cancelButton);
   inputRow.appendChild(newFileInput);

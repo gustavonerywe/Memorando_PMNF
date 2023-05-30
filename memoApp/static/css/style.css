@@ -288,6 +288,19 @@ main {
     margin-top: 7px;
 }
 
+#link-upload-pdf {
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-top: 7px;
+    width: 27%;
+}
+
 #link-upload:hover {
     text-decoration: none;
     color: cyan;
@@ -564,3 +577,8 @@ hr {
     text-decoration: none;
     display: none;
 }
+
+#img-pdf {
+    width: 25%;
+    padding-right: 5px;
+  }
