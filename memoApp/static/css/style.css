@@ -142,8 +142,8 @@ main {
 
 #drop-area {
     border: 2px dashed gray;
-    width: 50%;
-    height: 100px;
+    width: 60%;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,6 +168,8 @@ main {
 #title-footer {
     text-align: center;
     font-size: 165%;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 50px;
 }
 
 #name-file {
@@ -269,7 +271,7 @@ main {
 }
 
 #box-upload-main {
-    border: 2px solid black;
+    border: 2px solid gray;
     border-radius: 10px;
     padding: 20px;
     margin: 20px auto;
@@ -582,3 +584,12 @@ hr {
     width: 25%;
     padding-right: 5px;
   }
+.bg-custom{
+    background-color:#d3d3d3;
+}
+#drop-area p {
+    color: black; 
+    font-size: 20px; 
+    text-align: center; 
+ }
+ 
