@@ -78,7 +78,7 @@
 
 <!-- templates/upload.html -->
 <br>
-<div id="drop-area" class="rounded bg-custom">
+<div id="drop-area">
    <p>Arraste e solte os arquivos aqui</p>
 </div>
 <div id="italic-message">
@@ -91,7 +91,7 @@
         <tr>
             <td>
                 <section id="main-file">
-                    <fieldset id="box-upload-main" class="bg-custom">
+                    <fieldset id="box-upload-main">
                         <div id="file-margin">
                             <label id="label-file" for="id_file">Selecionar Arquivos</label>
                             <p id="spanMessage"></p>
@@ -99,7 +99,7 @@
                                 <br><br>
                                 <div id="container-file">
                                     <div class="input-row">
-                                        <button type="button" id="botaoModal" class="cancel-button">x</button>
+                                        <button type="button" id="botaoModal" class="cancel-button" data-index="original">x</button>
                                         <input type="file" name="file" class="file-input" id="id_file" multiple>
                                         <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
                                     </div>
