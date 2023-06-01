@@ -2,7 +2,9 @@ const fileInput = document.querySelector('#id_file');
 const dropArea = document.getElementById('drop-area');
 const inputContainer = document.getElementById('container-file');
 const addInputButton = document.getElementById('addInput');
-let fileInputs = []; 
+const fechar = document.querySelector('.fechar')
+const removeDiv = document.querySelector('.input-row')
+let fileInputs = [];
 
 dropArea.addEventListener('dragover', handleDragOver);
 dropArea.addEventListener('drop', handleFileDrop);
@@ -18,9 +20,9 @@ function handleFileDrop(event) {
   const files = event.dataTransfer.files;
   if (fileInputs.length > 0) {
     const lastFileInput = fileInputs[fileInputs.length - 1];
-    lastFileInput.files = files; 
+    lastFileInput.files = files;
   } else {
-    fileInput.files = files; 
+    fileInput.files = files;
   }
 }
 
@@ -33,6 +35,7 @@ function createNewInput() {
   cancelButton.classList.add('cancel-button');
   cancelButton.type = 'button';
   cancelButton.textContent = 'x';
+  cancelButton.id = 'cancel-button-dynamic'
   newFileInput.type = 'file';
   newFileInput.name = 'file';
   newFileInput.classList.add('file-input');
@@ -66,6 +69,19 @@ function addCancelButtonEvent(cancelButton) {
   cancelButton.type = 'button';
   cancelButton.addEventListener('click', function () {
     meuModal.style.display = "block";
+    buttonYesModal.addEventListener('click', function () {
+      const correspondingInput = cancelButton.nextSibling;
+      correspondingInput.value = '';
+      meuModal.style.display = "none";
+      setTimeout(function(){
+        correspondingInput.remove()
+        document.getElementById('cancel-button-dynamic').remove()
+      }, 100)
+      spanMessage.textContent = "Arquivo removido com sucesso!";
+      setTimeout(function () {
+        spanMessage.textContent = '';
+      }, 2500)
+    })
   });
 
   fechar.addEventListener("click", function () {
@@ -91,43 +107,43 @@ const firstCancelButton = document.querySelector('.cancel-button');
 addCancelButtonEvent(firstCancelButton);
 
 
-function pdfReader(dados) {
-  const pdfUrl = dados;
-  const canvas = document.getElementById('pdf-canvas');
-  const ctx = canvas.getContext('2d');
+// function pdfReader(dados) {
+//   const pdfUrl = dados;
+//   const canvas = document.getElementById('pdf-canvas');
+//   const ctx = canvas.getContext('2d');
 
-  pdfjsLib.getDocument(pdfUrl).promise
-    .then((pdf) => {
-      return pdf.getPage(1);
-    })
-    .then((page) => {
-      const viewport = page.getViewport({ scale: 1 });
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
+//   pdfjsLib.getDocument(pdfUrl).promise
+//     .then((pdf) => {
+//       return pdf.getPage(1);
+//     })
+//     .then((page) => {
+//       const viewport = page.getViewport({ scale: 1 });
+//       canvas.width = viewport.width;
+//       canvas.height = viewport.height;
 
-      const renderContext = {
-        canvasContext: ctx,
-        viewport: viewport,
-      };
-      return page.render(renderContext);
-    })
-    .catch((error) => {
-      console.error('Erro ao carregar o arquivo PDF:', error);
-    });
+//       const renderContext = {
+//         canvasContext: ctx,
+//         viewport: viewport,
+//       };
+//       return page.render(renderContext);
+//     })
+//     .catch((error) => {
+//       console.error('Erro ao carregar o arquivo PDF:', error);
+//     });
 
-}
+// }
 
-fetch('/digital_view/')
-  .then((response) => {
-    return response.json()
-  })
-  .then((dados) => {
-    pdfReader(dados)
-  })
+// fetch('/digital_view/')
+//   .then((response) => {
+//     return response.json()
+//   })
+//   .then((dados) => {
+//     pdfReader(dados)
+//   })
 
 
 var fecharMemorando = document.querySelector(".fecharMemorando")
-var meuModalmemorando = document.querySelector('#meuModalMemorando')
+var meuModalMemorando = document.querySelector('#meuModalMemorando')
 const btn = document.querySelector('#botao')
 
 botao.addEventListener('click', function (event) {
@@ -136,7 +152,7 @@ botao.addEventListener('click', function (event) {
 })
 
 fecharMemorando.addEventListener('click', function () {
-  meuModalmemorando.style.display = "none";
+  meuModalMemorando.style.display = "none";
 })
 
 window.addEventListener("click", function (event) {
