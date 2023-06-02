@@ -208,6 +208,16 @@ main {
     text-shadow: none;
 }
 
+#select-secretaria {
+    text-align: center;
+    width: 100%;
+}
+
+#select-secretaria #option-disabled{
+    text-align: center;
+    color: #333333c5;
+}
+
 #botao:hover {
     text-decoration: none;
     background: #78dcfd;
@@ -596,4 +606,11 @@ hr {
     color: black;
     font-size: 20px;
     text-align: center;
+}
+
+#searchInput {
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+    width: 50%;
 }

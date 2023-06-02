@@ -11,9 +11,11 @@ import datetime
 from bs4 import BeautifulSoup
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.contrib.auth.models import Group
 
 @login_required
 def upload(request):
+    grupos = Group.objects.all()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -46,6 +48,7 @@ def upload(request):
                 'memorando_corpo': plain_text,
                 'memorando_remetente': memorando.remetente,
                 'memorando_assunto': memorando.assunto,
+                'grupos': grupos,
             }
 
             return render(request, 'upload_success.html', context)
@@ -56,6 +59,7 @@ def upload(request):
         'form': form,
         'memo_numero_atualizado': Memorando().gerar_proximo_numero(),
         'memorando_corpo': Memorando().corpo,
+        'grupos': grupos,
     }
     return render(request, 'memo_main.html', context)
 

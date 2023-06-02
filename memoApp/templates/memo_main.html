@@ -28,19 +28,18 @@
                     </tr>
                     <tr class="table-secondary">
                         <th>De:</th>
-                        <td>{{ user.username }}</td>
+                        <td>{{ user.get_full_name }}</td>
                     </tr>
                     <tr class="table-secondary">
                         <th>Para:</th>
                         <td>
-                            <select name="select" id="select-secretaria" class="form-select">
-                                <option value="0">-- Escolha a secretaria --</option>
-                                <option value="1">Prefeito</option>
-                                <option value="2">Controladoria Geral</option>
-                                <option value="3">Fundação Dom João VI de Nova Friburgo</option>
-                                <option value="4">Procuradoria Geral </option>
-                                <option value="5">Secretaria Municipal da Casa Civil - EGCP</option>
+                            <select name="destinatario" id="select-secretaria" class="form-select">
+                                <option id="option-disabled" disabled selected>-- Selecione um grupo --</option>
+                                {% for grupo in grupos %}
+                                <option value="{{grupo.name}}">{{ grupo.name }}</option>
+                                {% endfor %}
                             </select>
+                            <input type="text" id="searchInput" placeholder="Pesquisar" onkeyup="filterOptions()">
                         </td>
                     </tr>
                     <tr class="table-secondary">
@@ -79,7 +78,7 @@
 <!-- templates/upload.html -->
 <br>
 <div id="drop-area">
-   <p>Arraste e solte os arquivos aqui</p>
+    <p>Arraste e solte os arquivos aqui</p>
 </div>
 <div id="italic-message">
     <em style="font-size: 0.7em;">Tamanho máximo: 100mb</em>
@@ -99,7 +98,8 @@
                                 <br><br>
                                 <div id="container-file">
                                     <div class="input-row">
-                                        <button type="button" id="botaoModal" class="cancel-button" data-index="original">x</button>
+                                        <button type="button" id="botaoModal" class="cancel-button"
+                                            data-index="original">x</button>
                                         <input type="file" name="file" class="file-input" id="id_file" multiple>
                                         <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
                                     </div>
@@ -133,7 +133,9 @@
             <hr>
             <span class="fecharMemorando">&times;</span>
             <p style="text-align: center; margin-bottom: 0;">Deseja enviar o memorando?</p>
-            <span style="font-size: 0.8em; margin-bottom: 10px; margin-top: 0; text-align: center; color: rgb(168, 67, 67);">Lembre-se: quando o memorando for enviado, ele será salvo no banco de dados.</span>
+            <span
+                style="font-size: 0.8em; margin-bottom: 10px; margin-top: 0; text-align: center; color: rgb(168, 67, 67);">Lembre-se:
+                quando o memorando for enviado, ele será salvo no banco de dados.</span>
             <button type="button" id="buttonYesModalMemorando">Sim</button> <button type="button"
                 id="buttonNoModalMemorando">Não</button>
         </div>
@@ -167,5 +169,21 @@
         content_style: 'body { font-family: Arial, sans-serif; font-size: 14px; }',
         content_css: 'custom-styles.css',
     });
+
+    function filterOptions() {
+        var input, filter, select, options, i;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        select = document.getElementById('select-secretaria');
+        options = select.getElementsByTagName('option');
+
+        for (i = 0; i < options.length; i++) {
+            if (options[i].textContent.toUpperCase().indexOf(filter) > -1) {
+                options[i].style.display = '';
+            } else {
+                options[i].style.display = 'none';
+            }
+        }
+    }
 </script>
 {% endblock %}
