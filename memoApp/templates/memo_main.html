@@ -99,8 +99,10 @@
                                 <div id="container-file">
                                     <div class="input-row">
                                         <button type="button" id="botaoModal" class="cancel-button"
-                                            data-index="original">x</button>
-                                        <input type="file" name="file" class="file-input" id="id_file" multiple>
+                                            data-index="original"><img id="img-remove" src="https://pedroschuenck.github.io/bin.png" alt="remove"></button>
+                                            <div class="mb-3">
+                                                <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                              </div>
                                         <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
                                     </div>
                                 </div>
@@ -186,4 +188,6 @@
         }
     }
 </script>
+
+  
 {% endblock %}
