@@ -404,6 +404,7 @@ main {
 
 .cancel-button {
     background-color: rgba(214, 140, 140, 0.836);
+   margin-bottom: 17px;
 }
 
 .cancel-button:hover {
@@ -414,7 +415,6 @@ main {
 #addInput {
     margin-left: 10px;
     background-color: rgba(157, 230, 157, 0.815);
-    ;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
@@ -617,4 +617,11 @@ hr {
     display: block;
     margin-top: 10px;
     width: 50%;
+}
+#img-remove{
+    width: 25px;
+}
+  
+#img-add{
+    width: 20px;
 }
