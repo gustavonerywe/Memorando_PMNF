@@ -1,4 +1,4 @@
-html .page_main {
+.page_main {
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
@@ -6,7 +6,7 @@ html .page_main {
     color: #000000;
 }
 
-html .page_pdf {
+.page_pdf {
     color: white;
 }
 
