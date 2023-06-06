@@ -168,6 +168,7 @@ const buttonYesModalMemorando = document.querySelector('#buttonYesModalMemorando
 const buttonNoModalMemorando = document.querySelector('#buttonNoModalMemorando')
 const spanMessage = document.querySelector('#spanMessage')
 const form = document.querySelector('#form-main')
+const assunto = document.querySelector('#id_name')
 
 buttonYesModal.addEventListener('click', function () {
   document.querySelector('.file-input').value = '';
@@ -184,8 +185,13 @@ buttonNoModal.addEventListener('click', function () {
 
 buttonYesModalMemorando.addEventListener('click', function () {
   meuModal.style.display = "none";
-  form.submit()
-})
+  if (assunto === '') {
+    alert('Por favor, preencha o campo assunto.');
+    console.log('vazio');
+    return; 
+  }
+  form.submit();
+});
 
 buttonNoModalMemorando.addEventListener('click', function () {
   meuModalMemorando.style.display = "none";

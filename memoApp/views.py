@@ -12,6 +12,8 @@ from bs4 import BeautifulSoup
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import Group
+import pdfkit
+from django.template.loader import render_to_string
 
 @login_required
 def upload(request):
@@ -34,11 +36,8 @@ def upload(request):
             memorando.memo_numero = memo_numero_atualizado
             memorando.save()
 
-            # Iterar sobre os arquivos enviados e salvá-los individualmente
             for file in request.FILES.getlist('file'):
                 image = Image.objects.create(file=file)
-
-                # Associar a imagem ao memorando
                 image.memorando = memorando
                 image.save()
 
@@ -63,6 +62,21 @@ def upload(request):
     }
     return render(request, 'memo_main.html', context)
 
+
+@login_required
+def generate_pdf(request, memorando_id):
+    memorando = Memorando.objects.get(id=memorando_id)
+    memo_numero_atualizado = memorando.gerar_proximo_numero()
+    data_atual = datetime.date.today()
+    data_numerica = data_atual.strftime("%d/%m/%y")
+    context = {
+        'memorando': memorando,
+        'memo_numero_atualizado': memo_numero_atualizado,
+        'memorando_assunto': memorando.assunto,
+        'data_atual': data_numerica,
+    }
+
+    return render(request, 'generate_pdf.html', context)
 
 
 @login_required

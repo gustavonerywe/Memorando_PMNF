@@ -1,9 +1,13 @@
-html {
+html .page_main {
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
     background: #add8e68e;
     color: #000000;
+}
+
+html .page_pdf {
+    color: white;
 }
 
 body {

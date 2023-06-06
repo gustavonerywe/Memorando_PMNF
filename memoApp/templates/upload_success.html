@@ -4,6 +4,8 @@
 {% endblock %}
 {% block content %}
 
+<html class="page_main" lang="pt-br">
+
 <body class="cor">
   <link rel="stylesheet" href="/static/css/style.css">
   <fieldset id="box-upload">
@@ -13,6 +15,9 @@
       <a id="link-upload" href="{% url 'upload' %}">Novo memorando</a>
     </div>
     <div id="link-container">
-     <a id="link-upload-pdf" href="#"> <img id="img-pdf" src="/static/img/pdf.png" alt="imagem do pdf">Gerar PDF</a>
+      <a id="link-upload-pdf" href="{% url 'generate_pdf' memorando.id %}"> <img id="img-pdf" src="/static/img/pdf.png"
+          alt="imagem do pdf">Gerar PDF</a>
     </div>
- {% endblock %} 
+
+</html>
+{% endblock %}

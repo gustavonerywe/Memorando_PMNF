@@ -1,0 +1,69 @@
+{% extends 'template.html' %}
+{% block subtitulo %}
+-- PDF
+{% endblock %}
+{% block content %}
+
+<html class="page_pdf">
+
+<body>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <header>
+        <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+            {% csrf_token %}
+            <div id="header">
+                <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+            </div>
+            <hr>
+            <div id="content">
+                <table class="table" class="custom-table">
+                    <tr>
+                        <th id="tituloTable" colspan="2" class="table-info">MEMORANDO</th>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th>Data:</th>
+                        <td><p style="margin-bottom: 2px;">{{ data_atual }}</p></td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th>Memo nº:</th>
+                        <td><span id="memo_numero">{{memo_numero_atualizado}}</span></td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th>De:</th>
+                        <td>{{ user.get_full_name }}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th>Para:</th>
+                        <td>
+                            Preencher com o nome da secretaria escolhida
+                        </td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th>Assunto:</th>
+                        <td>
+                            <p style="margin-bottom: 2px;">{{ memorando_assunto }}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="footer">
+                <p>
+                <fieldset id="box-field">
+                    <table>
+                        <tr>
+                            <th id="tituloTable2">RECEBIDO</td>
+                        </tr>
+                        <tr>
+                            <td id="em"> Em: ______ /______ /______</td>
+                        </tr>
+                        <tr>
+                            <td id=ass> Ass: _____________________</td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            </footer>
+</body>
+
+</html>
+{% endblock %}

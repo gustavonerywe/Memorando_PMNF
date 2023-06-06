@@ -4,6 +4,8 @@
 {% endblock %}
 {% block content %}
 
+<html class="page_main" lang="pt-br">
+
 <body>
     <link rel="stylesheet" href="/static/css/style.css">
     <header>
@@ -44,7 +46,7 @@
                     </tr>
                     <tr class="table-secondary">
                         <th>Assunto:</th>
-                        <td><input type="text" id="id_name" name="assunto_memorando"></td>
+                        <td><input type="text" id="id_name" name="assunto_memorando" required></td>
                     </tr>
                 </table>
 
@@ -186,4 +188,6 @@
         }
     }
 </script>
+
+</html>
 {% endblock %}
