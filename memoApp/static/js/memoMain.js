@@ -30,18 +30,26 @@ function createNewInput() {
   const inputRow = document.createElement('div');
   const cancelButton = document.createElement('button');
   const newFileInput = document.createElement('input');
+  var imgRemove = document.createElement('img')
 
   inputRow.classList.add('input-row');
   cancelButton.classList.add('cancel-button');
   cancelButton.type = 'button';
-  cancelButton.textContent = 'x';
   cancelButton.id = 'cancel-button-dynamic'
+  imgRemove.id = 'img-remove';
+  imgRemove.src = 'https://pedroschuenck.github.io/bin.png';
+  imgRemove.alt = 'remove';
   newFileInput.type = 'file';
   newFileInput.name = 'file';
+  newFileInput.style.margin = '15px'
+  newFileInput.style.width = '105%'
+  newFileInput.classList.add('form-control', 'form-control-sm');
   newFileInput.classList.add('file-input');
   newFileInput.multiple = true;
   newFileInput.required = false;
+  
 
+  cancelButton.appendChild(imgRemove);
   inputRow.appendChild(cancelButton);
   inputRow.appendChild(newFileInput);
   inputContainer.appendChild(inputRow);
@@ -73,7 +81,7 @@ function addCancelButtonEvent(cancelButton) {
       const correspondingInput = cancelButton.nextSibling;
       correspondingInput.value = '';
       meuModal.style.display = "none";
-      setTimeout(function(){
+      setTimeout(function () {
         correspondingInput.remove()
         document.getElementById('cancel-button-dynamic').remove()
       }, 100)
@@ -188,7 +196,7 @@ buttonYesModalMemorando.addEventListener('click', function () {
   if (assunto === '') {
     alert('Por favor, preencha o campo assunto.');
     console.log('vazio');
-    return; 
+    return;
   }
   form.submit();
 });

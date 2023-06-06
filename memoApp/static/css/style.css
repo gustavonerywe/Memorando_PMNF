@@ -356,6 +356,10 @@ main {
     background-color: transparent;
 }
 
+#formFileSm {
+    width: 105%;
+}
+
 #form-main {
     width: 90%;
     background: #fff;
@@ -413,7 +417,7 @@ main {
 }
 
 #addInput {
-    margin-left: 10px;
+    margin-left: 20px;
     background-color: rgba(157, 230, 157, 0.815);
     border: 1px solid black;
     border-radius: 5px;
@@ -422,6 +426,7 @@ main {
     height: 25px;
     display: flex;
     align-items: center;
+    margin-bottom: 18px ;
     justify-content: center;
 }
 
