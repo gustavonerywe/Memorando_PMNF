@@ -203,4 +203,7 @@ buttonYesModalMemorando.addEventListener('click', function() {
 buttonNoModalMemorando.addEventListener('click', function () {
   meuModalMemorando.style.display = "none";
 })
+/*$(document).ready(function() {
+  $('.meu-js').select2();
+});*/
 
