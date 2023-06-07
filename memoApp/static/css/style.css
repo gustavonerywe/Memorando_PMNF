@@ -333,7 +333,7 @@ main {
     pointer-events: none;
 }
 
-@media screen and (max-width: 1290px) {
+/*@media screen and (max-width: 1290px) {
     #box-field {
         margin-right: 200px;
     }
@@ -351,6 +351,7 @@ main {
     }
 
 }
+*/
 
 .cor {
     background-color: transparent;
@@ -629,4 +630,20 @@ hr {
   
 #img-add{
     width: 20px;
+}
+#table-generate{
+    width: 100%;
+    
+}
+#hr-generate{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#box-field-generate{
+    border: solid 1px black;
+    border-radius: 10px;
+    width: 200px;
+    height: 100px;  
+    margin-left: 50px;
 }

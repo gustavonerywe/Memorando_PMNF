@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import Group
-import pdfkit
+#import pdfkit
 from django.template.loader import render_to_string
 
 @login_required

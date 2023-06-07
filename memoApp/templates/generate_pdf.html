@@ -14,31 +14,31 @@
             <div id="header">
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
             </div>
-            <hr>
+            <hr id="hr-generate">
             <div id="content">
-                <table class="table" class="custom-table">
+                <table class="table" id="table-generate">
                     <tr>
-                        <th id="tituloTable" colspan="2" class="table-info">MEMORANDO</th>
+                        <th id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
-                    <tr class="table-secondary">
+                    <tr>
                         <th>Data:</th>
                         <td><p style="margin-bottom: 2px;">{{ data_atual }}</p></td>
                     </tr>
-                    <tr class="table-secondary">
+                    <tr>
                         <th>Memo nº:</th>
                         <td><span id="memo_numero">{{memo_numero_atualizado}}</span></td>
                     </tr>
-                    <tr class="table-secondary">
+                    <tr>
                         <th>De:</th>
                         <td>{{ user.get_full_name }}</td>
                     </tr>
-                    <tr class="table-secondary">
+                    <tr>
                         <th>Para:</th>
                         <td>
                             Preencher com o nome da secretaria escolhida
                         </td>
                     </tr>
-                    <tr class="table-secondary">
+                    <tr>
                         <th>Assunto:</th>
                         <td>
                             <p style="margin-bottom: 2px;">{{ memorando_assunto }}</p>
@@ -48,7 +48,7 @@
             </div>
             <div id="footer">
                 <p>
-                <fieldset id="box-field">
+                <fieldset id="box-field-generate">
                     <table>
                         <tr>
                             <th id="tituloTable2">RECEBIDO</td>
