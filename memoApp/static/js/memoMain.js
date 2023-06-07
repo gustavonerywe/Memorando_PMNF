@@ -191,11 +191,10 @@ buttonNoModal.addEventListener('click', function () {
   meuModal.style.display = "none";
 })
 
-buttonYesModalMemorando.addEventListener('click', function () {
-  meuModal.style.display = "none";
-  if (assunto === '') {
+buttonYesModalMemorando.addEventListener('click', function() {
+  meuModal.style.display = 'none';
+  if (assunto.value.trim() === '') {
     alert('Por favor, preencha o campo assunto.');
-    console.log('vazio');
     return;
   }
   form.submit();
