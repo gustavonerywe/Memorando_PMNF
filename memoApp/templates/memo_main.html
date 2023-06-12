@@ -100,11 +100,20 @@
                                 <div id="container-file">
                                     <div class="input-row">
                                         <button type="button" id="botaoModal" class="cancel-button"
-                                            data-index="original"><img id="img-remove" src="https://pedroschuenck.github.io/bin.png" alt="remove"></button>
+                                            data-index="original"> <i data-feather="trash-2"></i></button>
                                             <div class="mb-3">
                                                 <input class="form-control form-control-sm" id="formFileSm" type="file">
                                               </div>
-                                        <button type="button" style="font-size: 1.0em;" id="addInput">+</button>
+                                              <style>
+                                                .custom-icon {
+                                                  transform: scale(2.0); /* Ajuste o valor para aumentar ou diminuir o tamanho do ícone */
+                                                }
+                                              </style>
+                                              
+                                              <button type="button" style="font-size: 1.0em;" id="addInput">
+                                                <i data-feather="file-plus" class="feather-icon-file-plus custom-icon"></i>
+                                              </button>
+                                              
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +182,7 @@
         content_css: 'custom-styles.css',
     });
 
-    function filterOptions() {
+    /*function filterOptions() {
         var input, filter, select, options, i;
         input = document.getElementById('searchInput');
         filter = input.value.toUpperCase();
@@ -187,8 +196,9 @@
                 options[i].style.display = 'none';
             }
         }
-    }
+    }*/
 </script>
+<!-- códigos para o search dentro do select  --> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
@@ -197,6 +207,11 @@
   $(document).ready(function() {
     $('.select2').select2();
   });
+</script>
+<!-- códigos para os ícones  --> 
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+  feather.replace();
 </script>
 </html>
 {% endblock %}

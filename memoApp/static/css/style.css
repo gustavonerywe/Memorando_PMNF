@@ -409,7 +409,7 @@ main {
 
 .cancel-button {
     background-color: rgba(214, 140, 140, 0.836);
-   margin-bottom: 17px;
+    margin-bottom: 17px;
 }
 
 .cancel-button:hover {
@@ -423,8 +423,9 @@ main {
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 10px;
     display: flex;
     align-items: center;
     margin-bottom: 18px ;
@@ -451,6 +452,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    
 }
 
 #meuModal {
