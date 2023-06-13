@@ -207,3 +207,11 @@ buttonNoModalMemorando.addEventListener('click', function () {
   $('.meu-js').select2();
 });*/
 
+const selectSecretaria = document.getElementById('select-secretaria');
+const secretariaEscolhida = document.getElementById('secretaria-escolhida');
+
+selectSecretaria.addEventListener('change', function() {
+    const grupoSelecionado = selectSecretaria.value;
+    secretariaEscolhida.textContent = grupoSelecionado;
+});
+

@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import Group
+from django.contrib.sessions.backends.db import SessionStore
 #import pdfkit
 from django.template.loader import render_to_string
 
@@ -30,10 +31,16 @@ def upload(request):
             memorando.data = request.POST.get('data')
             destinatarios = request.POST.getlist('destinatario')
             for destinatario_id in destinatarios:
-                destinatario = User.objects.get(id=destinatario_id)
-                memorando.destinatario.add(destinatario)
+                if destinatario_id.isdigit():
+                  destinatario = User.objects.get(id=destinatario_id)
+                  memorando.destinatario.add(destinatario)
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
+            grupo_escolhido = request.POST.get('destinatario')
+            session = SessionStore(request.session.session_key)
+            session['grupo_escolhido'] = grupo_escolhido
+            session.save()
+
             memorando.save()
 
             for file in request.FILES.getlist('file'):
@@ -69,11 +76,14 @@ def generate_pdf(request, memorando_id):
     memo_numero_atualizado = memorando.gerar_proximo_numero()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
+    session = SessionStore(request.session.session_key)
+    grupo_escolhido = session.get('grupo_escolhido')
     context = {
         'memorando': memorando,
         'memo_numero_atualizado': memo_numero_atualizado,
         'memorando_assunto': memorando.assunto,
         'data_atual': data_numerica,
+        'grupo_escolhido': grupo_escolhido
     }
 
     return render(request, 'generate_pdf.html', context)
@@ -169,6 +179,7 @@ def digital_view(request, id):
 def file_list(request):
     files = Image.objects.all()
     return render(request, 'upload_success.html', {'files': files})
+
 
 # @login_required
 # def generate_next_number():
