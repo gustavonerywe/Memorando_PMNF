@@ -25,12 +25,12 @@
                         <td><p style="margin-bottom: 2px;">{{ data_atual }}</p></td>
                     </tr>
                     <tr>
-                        <th>Memo nº:</th>
+                        <th>Número do memorando:</th>
                         <td><span id="memo_numero">{{memorando.memo_numero}}</span></td>
                     </tr>
                     <tr>
                         <th>De:</th>
-                        <td>{{ user.groups.first.name }} <hr> {{ user.get_full_name }} </td>
+                        <td>{{ user.groups.first.name }} {{ user.get_full_name }} </td>
                     </tr>
                     <tr>
                         <th>Para:</th>

@@ -11,7 +11,10 @@ dropArea.addEventListener('drop', handleFileDrop);
 
 function handleDragOver(event) {
   event.preventDefault();
-  dropArea.classList.add('drag-over');
+  console.log('File drop event');
+  dropArea.classList.remove('drag-over');
+  const files = event.dataTransfer.files;
+  console.log('Dropped files:', files);
 }
 
 function handleFileDrop(event) {
@@ -206,12 +209,3 @@ buttonNoModalMemorando.addEventListener('click', function () {
 /*$(document).ready(function() {
   $('.meu-js').select2();
 });*/
-
-const selectSecretaria = document.getElementById('select-secretaria');
-const secretariaEscolhida = document.getElementById('secretaria-escolhida');
-
-selectSecretaria.addEventListener('change', function() {
-    const grupoSelecionado = selectSecretaria.value;
-    secretariaEscolhida.textContent = grupoSelecionado;
-});
-
