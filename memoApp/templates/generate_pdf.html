@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <th>De:</th>
-                        <td>{{ user.get_full_name }}</td>
+                        <td>{{ user.groups.first.name }} <hr> {{ user.get_full_name }} </td>
                     </tr>
                     <tr>
                         <th>Para:</th>
