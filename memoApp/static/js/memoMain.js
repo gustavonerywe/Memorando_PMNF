@@ -180,6 +180,10 @@ const buttonNoModalMemorando = document.querySelector('#buttonNoModalMemorando')
 const spanMessage = document.querySelector('#spanMessage')
 const form = document.querySelector('#form-main')
 const assunto = document.querySelector('#id_name')
+const modalAssunto = document.querySelector('#meuModalAssunto')
+const fecharModalAssunto = document.querySelector('#ok-modal')
+const fecharModalAsssunto2 = document.getElementById('botaoFechar');
+
 
 buttonYesModal.addEventListener('click', function () {
   document.querySelector('.file-input').value = '';
@@ -195,9 +199,10 @@ buttonNoModal.addEventListener('click', function () {
 })
 
 buttonYesModalMemorando.addEventListener('click', function() {
-  meuModal.style.display = 'none';
+  modalAssunto.style.display = 'none';
   if (assunto.value.trim() === '') {
-    alert('Por favor, preencha o campo assunto.');
+    meuModalMemorando.style.display = 'none';
+    modalAssunto.style.display = 'block';
     return;
   }
   form.submit();
@@ -209,3 +214,10 @@ buttonNoModalMemorando.addEventListener('click', function () {
 /*$(document).ready(function() {
   $('.meu-js').select2();
 });*/
+
+fecharModalAssunto.addEventListener('click', function(){
+      modalAssunto.style.display = 'none';
+})
+fecharModalAsssunto2.addEventListener('click',function(){
+  modalAssunto.style.display = 'none';
+})
