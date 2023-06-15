@@ -1,6 +1,6 @@
 {% extends 'template.html' %}
 {% block subtitulo %}
--- PDF
+- PDF
 {% endblock %}
 {% block content %}
 
@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <th>De:</th>
-                        <td>{{ user.groups.first.name }} {{ user.get_full_name }} </td>
+                        <td>{{ user.groups.first.name }} <hr> {{ user.get_full_name }} </td>
                     </tr>
                     <tr>
                         <th>Para:</th>
@@ -45,6 +45,7 @@
                         </td>
                     </tr>
                 </table>
+                    <div id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
             </div>
             <div id="footer">
                 <p>

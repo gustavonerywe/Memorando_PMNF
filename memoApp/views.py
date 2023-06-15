@@ -9,10 +9,12 @@ from .forms import ImageForm
 from django.utils import timezone
 import datetime
 from bs4 import BeautifulSoup
+from django.utils.html import strip_tags
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
+from django.utils.safestring import mark_safe
 
 
 
@@ -27,8 +29,6 @@ def upload(request):
             memorando.assunto = request.POST.get('assunto_memorando')
             memorando.corpo = request.POST.get('corpo')
             memo_numero_atualizado = memorando.gerar_proximo_numero()
-            soup = BeautifulSoup(memorando.corpo, 'html.parser')
-            plain_text = soup.get_text()
             memorando.data = request.POST.get('data')
             destinatarios = request.POST.getlist('destinatario')
             for destinatario_id in destinatarios:
@@ -40,6 +40,7 @@ def upload(request):
             grupo_escolhido = request.POST.get('destinatario')
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
+            session['memorando_corpo'] = memorando.corpo
             session.save()
 
             memorando.save()
@@ -52,12 +53,11 @@ def upload(request):
             context = {
                 'memorando': memorando,
                 'memo_numero_atualizado': memo_numero_atualizado,
-                'memorando_corpo': plain_text,
+                'memorando_corpo': mark_safe(memorando.corpo),
                 'memorando_remetente': memorando.remetente,
                 'memorando_assunto': memorando.assunto,
                 'grupos': grupos,
             }
-
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
@@ -79,14 +79,16 @@ def generate_pdf(request, memorando_id):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
+    text_content = session.get('memorando_corpo')
     context = {
         'memorando': memorando,
         'memo_numero_atualizado': memo_numero_atualizado,
         'memorando_assunto': memorando.assunto,
         'data_atual': data_numerica,
-        'grupo_escolhido': grupo_escolhido
+        'grupo_escolhido': grupo_escolhido,
+        'text_content': mark_safe(text_content),
     }
-
+    print(text_content)
     return render(request, 'generate_pdf.html', context)
 
 

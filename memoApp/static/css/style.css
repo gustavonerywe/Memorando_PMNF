@@ -490,7 +490,7 @@ main {
     padding-left: 15px;
 } */
 
-.modal-content{
+.modal-content {
     height: 25%;
     background-color: #fefefe;
     margin: 15% auto;
@@ -725,4 +725,14 @@ hr {
 #span-alert {
     margin-left: 35px;
     margin-bottom: 10px;
+}
+
+#corpo-memorando-pdf {
+    /* border: 1px solid #ccc;
+    border-radius: 5px; */
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    cursor: not-allowed;
 }
