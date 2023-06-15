@@ -13,9 +13,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
-#import pdfkit
-from django.template.loader import render_to_string
-from django.http import HttpResponse
+
 
 
 
@@ -89,26 +87,7 @@ def generate_pdf(request, memorando_id):
         'grupo_escolhido': grupo_escolhido
     }
 
-  
-    # Renderizar o template como uma string HTML
-    html_string = render_to_string('generate_pdf.html', context)
-
-    # Configurar as opções do pdfkit (incluindo o caminho para o executável do wkhtmltopdf)
-    options = {
-        'page-size': 'A4',
-        'encoding': 'UTF-8',
-        'path': 'C:/Arquivos de Programas/wkhtmltopdf/bin/wkhtmltopdf.exe'
-    }
-
-    # Converter o HTML em PDF
-    pdf_file = pdfkit.from_string(html_string, False, options=options)
-
-    # Configurar a resposta HTTP com o conteúdo do PDF
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = f'attachment; filename="meu_pdf.pdf"'
-    response.write(pdf_file)
-
-    return response
+    return render(request, 'generate_pdf.html', context)
 
 
 @login_required
