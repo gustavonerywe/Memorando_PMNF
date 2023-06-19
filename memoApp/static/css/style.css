@@ -666,7 +666,7 @@ hr {
 }
 
 #table-generate {
-    width: 100%;
+    width: 80%;
 
 }
 
@@ -744,4 +744,10 @@ hr {
 }
 #container-modal-memo{
     margin-top: -1%;
+}
+.th-generate{
+    width: 200px;
+}
+.td-generate{
+    width: 200px;
 }
