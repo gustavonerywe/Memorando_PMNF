@@ -561,7 +561,7 @@ hr {
 }
 
 #buttonYesModal {
-    width: 35%;
+    width: 40%;
     text-align: center;
     margin: 0 auto;
     background-color: rgba(157, 230, 157, 0.815);
@@ -571,7 +571,7 @@ hr {
 }
 
 #buttonYesModalMemorando {
-    width: 35%;
+    width: 40%;
     text-align: center;
     margin: 0 auto;
     background-color: rgba(157, 230, 157, 0.815);
@@ -582,21 +582,23 @@ hr {
 
 
 #buttonNoModal {
-    width: 35%;
+    width: 40%;
     text-align: center;
     margin: 0 auto;
     background-color: rgba(214, 140, 140, 0.836);
     border: 0.2px solid black;
     border-radius: 15px;
+    margin-bottom: 10px;
 }
 
 #buttonNoModalMemorando {
-    width: 35%;
+    width: 40%;
     text-align: center;
     margin: 0 auto;
     background-color: rgba(214, 140, 140, 0.836);
     border: 0.2px solid black;
     border-radius: 15px;
+    margin-bottom: 10px;
 }
 
 #buttonNoModal:hover {
@@ -716,6 +718,7 @@ hr {
 
 .button-container {
     display: flex;
+    margin-top: 10px;
 }
 
 .button-container button {
@@ -735,4 +738,10 @@ hr {
     font-size: 14px;
     background-color: #fff;
     cursor: not-allowed;
+}
+#container-modal-atencao{
+    margin-top: -4%;
+}
+#container-modal-memo{
+    margin-top: -1%;
 }

@@ -147,6 +147,7 @@
             <span class="fecharMemorando">&times;</span>
             <div class="modal-body">
                 <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
+                <div id="container-modal-memo">
                 <p style="text-align: center; font-size: 20px; margin-bottom: 0;">Deseja enviar o memorando?</p>
                 <span id="span-alert"
                     style="font-size: 0.8em; margin-bottom: 10px; margin-top: 10px; text-align: center; color: rgb(168, 67, 67);">Lembre-se:
@@ -154,6 +155,7 @@
                 <div class="button-container">
                     <button type="button" id="buttonNoModalMemorando">Não</button>
                     <button type="button" class="buttonYesModal" id="buttonYesModalMemorando">Sim</button>
+                  </div>
                 </div>
             </div>
         </div>
@@ -176,11 +178,13 @@
     <div class="modal-content">
         <span class="fechar" id="botaoFechar">&times;</span>
         <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
+        <div id="container-modal-atencao"></div>
         <span
             style="font-size: 1.6em; margin-bottom: 0; margin-top: 0; text-align: center; color: rgb(168, 67, 67);">Atenção!</span>
         <p style="font-size: 1.1em; text-align: center; margin-top: 5px;">O campo 'Assunto' é obrigatório!</p>
         <button type="button" id="ok-modal">Ok</button>
     </div>
+</div>
     <script src="/static/js/memoMain.js"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
     <script>
