@@ -183,6 +183,9 @@ const assunto = document.querySelector('#id_name')
 const modalAssunto = document.querySelector('#meuModalAssunto')
 const fecharModalAssunto = document.querySelector('#ok-modal')
 const fecharModalAsssunto2 = document.getElementById('botaoFechar');
+const campoSelect = document.getElementById('select-secretaria');
+const pegarLugarTexto =  document.getElementById('texto-colocar')
+
 
 
 buttonYesModal.addEventListener('click', function () {
@@ -200,9 +203,10 @@ buttonNoModal.addEventListener('click', function () {
 
 buttonYesModalMemorando.addEventListener('click', function() {
   modalAssunto.style.display = 'none';
-  if (assunto.value.trim() === '') {
+  if (assunto.value.trim() === ''){
     meuModalMemorando.style.display = 'none';
     modalAssunto.style.display = 'block';
+    pegarLugarTexto.innerHTML = " 'Assunto' ";
     return;
   }
   form.submit();
