@@ -21,26 +21,26 @@
                         <th id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
                     <tr>
-                        <th>Data:</th>
-                        <td><p style="margin-bottom: 2px;">{{ data_atual }}</p></td>
+                        <th class="th-generate">Data:</th>
+                        <td class="td-generate"><p style="margin-bottom: 2px;">{{ data_atual }}</p></td>
                     </tr>
                     <tr>
-                        <th>Número do memorando:</th>
-                        <td><span id="memo_numero">{{memorando.memo_numero}}</span></td>
+                        <th class="th-generate">Número do memorando:</th>
+                        <td class="td-generate"><span id="memo_numero">{{memorando.memo_numero}}</span></td>
                     </tr>
                     <tr>
-                        <th>De:</th>
-                        <td>{{ user.groups.first.name }} <hr> {{ user.get_full_name }} </td>
+                        <th class="th-generate">De:</th>
+                        <td class="td-generate">{{ user.groups.first.name }} <hr> {{ user.get_full_name }} </td>
                     </tr>
                     <tr>
-                        <th>Para:</th>
-                        <td id="secretaria-escolhida">
+                        <th class="th-generate">Para:</th>
+                        <td class="td-generate" id="secretaria-escolhida">
                             {{ grupo_escolhido }}
                         </td>
                     </tr>
                     <tr>
-                        <th>Assunto:</th>
-                        <td>
+                        <th class="th-generate">Assunto:</th>
+                        <td class="td-generate">
                             <p style="margin-bottom: 2px;">{{ memorando_assunto }}</p>
                         </td>
                     </tr>
