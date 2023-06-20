@@ -16,9 +16,6 @@ from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
 
-
-
-
 @login_required
 def upload(request):
     grupos = Group.objects.all()
@@ -88,8 +85,8 @@ def generate_pdf(request, memorando_id):
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
     }
-    print(text_content)
     return render(request, 'generate_pdf.html', context)
+
 
 
 @login_required
@@ -158,47 +155,7 @@ def digital_view(request, id):
     
     return JsonResponse(str(image.file), safe=False)
 
-
-# @login_required
-# def emAtendimento(request, id):
-#     try:
-#         atendimento = Atendimento.objects.get(id=id)
-#         atendimento.emAtendimento()
-#         context={
-#         'senha': atendimento,
-#         }        
-#     except:
-#         context={
-#         'senha': '',
-#         }
-#     return render(request, 'em-atendimento.html', context)
-
-
-# def file_detail(request, pk):
-#     image = get_object_or_404(Image, pk=pk)
-#     return render(request, 'file_detail.html', {'image': image})
-
 @login_required
 def file_list(request):
     files = Image.objects.all()
     return render(request, 'upload_success.html', {'files': files})
-
-
-# @login_required
-# def generate_next_number():
-#     ultimo_numero = UltimoNumero.objects.get_or_create(id=1)
-    
-#     proximo_numero = ultimo_numero.numero + 1
-#     ultimo_numero.numero = proximo_numero
-#     ultimo_numero.data_atualizacao = timezone.now()
-#     ultimo_numero.save()
-
-#     return f"{proximo_numero:0d}/{timezone.now().year}"
-
-# @api_view(['GET'])
-# def next_number(request):
-#     proximo_numero = generate_next_number()
-#     context ={
-#         'proximo_numero': proximo_numero
-#     }
-#     return Response(context)

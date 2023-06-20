@@ -160,6 +160,16 @@ const btn = document.querySelector('#botao')
 botao.addEventListener('click', function (event) {
   event.preventDefault()
   meuModalMemorando.style.display = "block";
+  if(campoSelect.value.trim() !== optionDisabled.value.trim() && assunto.value.trim() !== ''){
+    return;
+  }
+  else if(assunto.value.trim() === '' || optionDisabled.value.trim() === '-- Selecione um grupo --'){
+    meuModalMemorando.style.display = 'none';
+    modalAssunto.style.display = 'block';
+      pegarLugarTexto.innerHTML = " 'Assunto' ";
+      pegarLugarTextoPara.innerHTML = " 'Para' "
+    return;
+  }
 })
 
 fecharMemorando.addEventListener('click', function () {
@@ -187,7 +197,7 @@ const campoSelect = document.getElementById('select-secretaria');
 const pegarLugarTexto =  document.getElementById('texto-colocar')
 const pegarLugarTextoPara = document.getElementById('texto-colocar-para')
 const optionDisabled = document.getElementById('option-disabled')
-
+const grupoSelected = document.getElementById('grupo_selected')
 
 buttonYesModal.addEventListener('click', function () {
   document.querySelector('.file-input').value = '';
@@ -204,14 +214,7 @@ buttonNoModal.addEventListener('click', function () {
 
 buttonYesModalMemorando.addEventListener('click', function() {
   modalAssunto.style.display = 'none';
-  if (assunto.value.trim() === '' || optionDisabled.value.trim() === '-- Selecione um grupo --'){
-    meuModalMemorando.style.display = 'none';
-    modalAssunto.style.display = 'block';
-      pegarLugarTexto.innerHTML = " 'Assunto' ";
-      pegarLugarTextoPara.innerHTML = " 'Para' "
-    return;
-  }
-  form.submit();
+  form.submit()
 });
 
 buttonNoModalMemorando.addEventListener('click', function () {
