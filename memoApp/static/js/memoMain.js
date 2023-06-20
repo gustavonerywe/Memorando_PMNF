@@ -185,7 +185,8 @@ const fecharModalAssunto = document.querySelector('#ok-modal')
 const fecharModalAsssunto2 = document.getElementById('botaoFechar');
 const campoSelect = document.getElementById('select-secretaria');
 const pegarLugarTexto =  document.getElementById('texto-colocar')
-
+const pegarLugarTextoPara = document.getElementById('texto-colocar-para')
+const optionDisabled = document.getElementById('option-disabled')
 
 
 buttonYesModal.addEventListener('click', function () {
@@ -203,10 +204,11 @@ buttonNoModal.addEventListener('click', function () {
 
 buttonYesModalMemorando.addEventListener('click', function() {
   modalAssunto.style.display = 'none';
-  if (assunto.value.trim() === ''){
+  if (assunto.value.trim() === '' || optionDisabled.value.trim() === '-- Selecione um grupo --'){
     meuModalMemorando.style.display = 'none';
     modalAssunto.style.display = 'block';
-    pegarLugarTexto.innerHTML = " 'Assunto' ";
+      pegarLugarTexto.innerHTML = " 'Assunto' ";
+      pegarLugarTextoPara.innerHTML = " 'Para' "
     return;
   }
   form.submit();

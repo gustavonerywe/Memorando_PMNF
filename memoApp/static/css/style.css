@@ -751,3 +751,7 @@ hr {
 .td-generate{
     width: 200px;
 }
+
+#id_name {
+    width: 75%;
+}
