@@ -25,7 +25,7 @@
                         <td><input type="date" name="data" value="{% now 'Y-m-d' %}"></td>
                     </tr>
                     <tr class="table-secondary">
-                        <th>Número do memorando</th>
+                        <th>Nº do memorando</th>
                         <td><span id="memo_numero">{{memo_numero_atualizado}}</span></td>
                     </tr>
                     <tr class="table-secondary">
@@ -37,12 +37,20 @@
                     <tr class="table-secondary">
                         <th>Para:</th>
                         <td>
-                            <select name="destinatario" id="select-secretaria" class="select2">
-                                <option id="option-disabled" disabled selected>-- Selecione um grupo --</option>
-                                {% for grupo in grupos %}
-                                <option value="{{grupo.name}}">{{ grupo.name }}</option>
-                                {% endfor %}
-                            </select>
+                            <div id="container_and_button">
+                                <div class="select-wrapper">
+                                    <select name="destinatario" id="select-secretaria" class="select2">
+                                        <option id="option-disabled" disabled selected>-- Selecione um grupo --</option>
+                                        {% for grupo in grupos %}
+                                        <option value="{{grupo.name}}">{{ grupo.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div id="selectFather"></div>
+                                </div>
+                                <button type="button" style="font-size: 0.7em;" id="addSelect">
+                                    <i data-feather="plus-circle" style="width: 12px; height: 12px;" class="feather-icon-file-plus custom-icon"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                     <tr class="table-secondary">

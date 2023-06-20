@@ -2,8 +2,8 @@ const fileInput = document.querySelector('#id_file');
 const dropArea = document.getElementById('drop-area');
 const inputContainer = document.getElementById('container-file');
 const addInputButton = document.getElementById('addInput');
-const fechar = document.querySelector('.fechar')
-const removeDiv = document.querySelector('.input-row')
+const fechar = document.querySelector('.fechar');
+const removeDiv = document.querySelector('.input-row');
 let fileInputs = [];
 
 dropArea.addEventListener('dragover', handleDragOver);
@@ -29,6 +29,31 @@ function handleFileDrop(event) {
   }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+function createNewSelect() {
+  const selectRow = document.createElement('select');
+  const selectContainer = document.getElementById('selectFather')
+  let classes = ['select2', 'select2-hidden-accessible']
+
+  classes.forEach(function (className) {
+    selectRow.classList.add(className);
+  })
+  selectRow.name = 'destinatario';
+  selectRow.id = "select-secretaria";
+  selectRow.tabIndex = '-1';
+  selectRow.ariaHidden = "true"
+
+  selectContainer.appendChild(selectRow)
+  return selectRow;
+}
+
+const addSelectButton = document.getElementById('addSelect');
+addSelectButton.addEventListener('click', function () {
+  const newSelect = createNewSelect()
+  console.log(document.getElementById('selectFather').innerHTML = newSelect)
+});
+})
+
 function createNewInput() {
   const inputRow = document.createElement('div');
   const cancelButton = document.createElement('button');
@@ -50,7 +75,7 @@ function createNewInput() {
   newFileInput.classList.add('file-input');
   newFileInput.multiple = true;
   newFileInput.required = false;
-  
+
 
   cancelButton.appendChild(imgRemove);
   inputRow.appendChild(cancelButton);
@@ -160,14 +185,14 @@ const btn = document.querySelector('#botao')
 botao.addEventListener('click', function (event) {
   event.preventDefault()
   meuModalMemorando.style.display = "block";
-  if(campoSelect.value.trim() !== optionDisabled.value.trim() && assunto.value.trim() !== ''){
+  if (campoSelect.value.trim() !== optionDisabled.value.trim() && assunto.value.trim() !== '') {
     return;
   }
-  else if(assunto.value.trim() === '' || optionDisabled.value.trim() === '-- Selecione um grupo --'){
+  else if (assunto.value.trim() === '' || optionDisabled.value.trim() === '-- Selecione um grupo --') {
     meuModalMemorando.style.display = 'none';
     modalAssunto.style.display = 'block';
-      pegarLugarTexto.innerHTML = " 'Assunto' ";
-      pegarLugarTextoPara.innerHTML = " 'Para' "
+    pegarLugarTexto.innerHTML = " 'Assunto' ";
+    pegarLugarTextoPara.innerHTML = " 'Para' "
     return;
   }
 })
@@ -194,7 +219,7 @@ const modalAssunto = document.querySelector('#meuModalAssunto')
 const fecharModalAssunto = document.querySelector('#ok-modal')
 const fecharModalAsssunto2 = document.getElementById('botaoFechar');
 const campoSelect = document.getElementById('select-secretaria');
-const pegarLugarTexto =  document.getElementById('texto-colocar')
+const pegarLugarTexto = document.getElementById('texto-colocar')
 const pegarLugarTextoPara = document.getElementById('texto-colocar-para')
 const optionDisabled = document.getElementById('option-disabled')
 const grupoSelected = document.getElementById('grupo_selected')
@@ -212,7 +237,7 @@ buttonNoModal.addEventListener('click', function () {
   meuModal.style.display = "none";
 })
 
-buttonYesModalMemorando.addEventListener('click', function() {
+buttonYesModalMemorando.addEventListener('click', function () {
   modalAssunto.style.display = 'none';
   form.submit()
 });
@@ -224,9 +249,9 @@ buttonNoModalMemorando.addEventListener('click', function () {
   $('.meu-js').select2();
 });*/
 
-fecharModalAssunto.addEventListener('click', function(){
-      modalAssunto.style.display = 'none';
+fecharModalAssunto.addEventListener('click', function () {
+  modalAssunto.style.display = 'none';
 })
-fecharModalAsssunto2.addEventListener('click',function(){
+fecharModalAsssunto2.addEventListener('click', function () {
   modalAssunto.style.display = 'none';
 })

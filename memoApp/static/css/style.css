@@ -417,6 +417,29 @@ main {
     color: black;
 }
 
+#container_and_button {
+    display: flex;
+    align-items: center;
+}
+
+.select-wrapper {
+    margin-right: 10px;
+}
+
+#addSelect {
+    margin-left: 0px;
+    background-color: rgba(157, 230, 157, 0.815);
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+}
+
+.feather.feather-plus-circle.feather-icon-file-plus.custom-icon {
+    padding: 1px;
+}
+
 #addInput {
     margin-left: 20px;
     background-color: rgba(157, 230, 157, 0.815);
@@ -739,16 +762,20 @@ hr {
     background-color: #fff;
     cursor: not-allowed;
 }
-#container-modal-atencao{
+
+#container-modal-atencao {
     margin-top: -4%;
 }
-#container-modal-memo{
+
+#container-modal-memo {
     margin-top: -1%;
 }
-.th-generate{
+
+.th-generate {
     width: 200px;
 }
-.td-generate{
+
+.td-generate {
     width: 200px;
 }
 
