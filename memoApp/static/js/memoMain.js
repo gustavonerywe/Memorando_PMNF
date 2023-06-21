@@ -58,19 +58,20 @@ function createNewInput() {
   const inputRow = document.createElement('div');
   const cancelButton = document.createElement('button');
   const newFileInput = document.createElement('input');
-  var imgRemove = document.createElement('img')
+  var imgRemove = document.createElement('img');
+  var widthInput = document.getElementById('id_file').width;
 
   inputRow.classList.add('input-row');
   cancelButton.classList.add('cancel-button');
   cancelButton.type = 'button';
   cancelButton.id = 'cancel-button-dynamic'
-  imgRemove.id = 'img-remove';
-  imgRemove.src = 'https://pedroschuenck.github.io/bin.png';
+  imgRemove.setAttribute('class', 'img-remove');
+  imgRemove.src = '/static/img/lixo.png';
   imgRemove.alt = 'remove';
   newFileInput.type = 'file';
   newFileInput.name = 'file';
-  newFileInput.style.margin = '15px'
-  newFileInput.style.width = '105%'
+  // newFileInput.style.margin = '15px'
+  // newFileInput.style.width = '100%';
   newFileInput.classList.add('form-control', 'form-control-sm');
   newFileInput.classList.add('file-input');
   newFileInput.multiple = true;
@@ -107,12 +108,13 @@ function addCancelButtonEvent(cancelButton) {
     meuModal.style.display = "block";
     buttonYesModal.addEventListener('click', function () {
       const correspondingInput = cancelButton.nextSibling;
-      correspondingInput.value = '';
-      meuModal.style.display = "none";
-      setTimeout(function () {
-        correspondingInput.remove()
-        document.getElementById('cancel-button-dynamic').remove()
-      }, 100)
+      correspondingInput.parentNode.remove();
+      // correspondingInput.value = '';
+      // meuModal.style.display = "none";
+      // setTimeout(function () {
+      //   correspondingInput.remove()
+      //   document.getElementById('cancel-button-dynamic').remove()
+      // }, 100)
       spanMessage.textContent = "Arquivo removido com sucesso!";
       setTimeout(function () {
         spanMessage.textContent = '';
