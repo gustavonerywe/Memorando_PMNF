@@ -425,7 +425,7 @@ main {
 }
 
 .select-wrapper {
-    margin-right: 10px;
+    margin: 10px;
 }
 
 #addSelect {
@@ -436,6 +436,8 @@ main {
     width: 32.5px;
     height: 32.5px;
     padding: 1px;
+    align-self: baseline;
+    margin-top: 7px;
 }
 
 .feather.feather-plus-circle.feather-icon-file-plus.custom-icon {
@@ -789,4 +791,8 @@ hr {
     margin-top: -15px;
     width: 358.094px;
     height: 21px;
+}
+
+#select-table{
+    display: inline-block;
 }

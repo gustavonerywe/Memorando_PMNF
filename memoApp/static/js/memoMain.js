@@ -29,28 +29,41 @@ function handleFileDrop(event) {
   }
 }
 
+var selectCounter = 1;
+
 document.addEventListener('DOMContentLoaded', function() {
 function createNewSelect() {
-  const selectRow = document.createElement('select');
-  const selectContainer = document.getElementById('selectFather')
-  let classes = ['select2', 'select2-hidden-accessible']
+  var selectOriginal = document.getElementById('select-container');
+  var selectClone = selectOriginal.cloneNode(true);
+  var selectElement = selectClone.querySelector('#select-secretaria')
 
-  classes.forEach(function (className) {
-    selectRow.classList.add(className);
-  })
-  selectRow.name = 'destinatario';
-  selectRow.id = "select-secretaria";
-  selectRow.tabIndex = '-1';
-  selectRow.ariaHidden = "true"
+  selectElement.id = 'select-secretaria-' + selectCounter;
+  selectElement.setAttribute('data-select2-id', selectElement.id);
+  selectCounter++;
 
-  selectContainer.appendChild(selectRow)
-  return selectRow;
+  selectOriginal.insertAdjacentElement('afterend', selectClone);
+  
+  // const selectRow = document.createElement('select');
+  // const selectContainer = document.getElementById('selectFather')
+  // let classes = ['select2', 'select2-hidden-accessible']
+
+  // classes.forEach(function (className) {
+  //   selectRow.classList.add(className);
+  // })
+  // selectRow.name = 'destinatario';
+  // selectRow.id = "select-secretaria";
+  // selectRow.tabIndex = '-1';
+  // selectRow.ariaHidden = "true"
+
+  // selectContainer.appendChild(selectRow)
+  // return selectRow;
 }
 
 const addSelectButton = document.getElementById('addSelect');
 addSelectButton.addEventListener('click', function () {
-  const newSelect = createNewSelect()
-  console.log(document.getElementById('selectFather').innerHTML = newSelect)
+  createNewSelect();
+  // const newSelect = createNewSelect()
+  // console.log(document.getElementById('selectFather').innerHTML = newSelect)
 });
 })
 
@@ -105,22 +118,37 @@ function createNewInput() {
 function addCancelButtonEvent(cancelButton) {
   cancelButton.type = 'button';
   cancelButton.addEventListener('click', function () {
-    meuModal.style.display = "block";
-    buttonYesModal.addEventListener('click', function () {
-      const correspondingInput = cancelButton.nextSibling;
-      correspondingInput.parentNode.remove();
-      // correspondingInput.value = '';
-      // meuModal.style.display = "none";
-      // setTimeout(function () {
-      //   correspondingInput.remove()
-      //   document.getElementById('cancel-button-dynamic').remove()
-      // }, 100)
-      spanMessage.textContent = "Arquivo removido com sucesso!";
-      setTimeout(function () {
-        spanMessage.textContent = '';
-      }, 2500)
+    console.log(fileInput.value)
+    if(cancelButton.parentNode == document.getElementById('div-anexo-orig')){
+      if(fileInput.value != ''){
+        meuModal.style.display = "block";
+        buttonYesModal.addEventListener('click', function () {
+          setTimeout(function(){
+              fileInput.value = '';
+            }, 100);
+          meuModal.style.display = 'none';  
+        }
+      )}
+      return;
+    }else{
+      meuModal.style.display = "block";
+      buttonYesModal.addEventListener('click', function () {
+        const correspondingInput = cancelButton.nextSibling;
+        setTimeout(function(){
+            correspondingInput.parentNode.remove();
+          }, 100);
+        // correspondingInput.value = '';
+        // meuModal.style.display = "none";
+        // setTimeout(function () {
+        //   correspondingInput.remove()
+        //   document.getElementById('cancel-button-dynamic').remove()
+        // }, 100)
+        spanMessage.textContent = "Arquivo removido com sucesso!";
+        setTimeout(function () {
+          spanMessage.textContent = '';
+        }, 2500)
     })
-  });
+  }});
 
   fechar.addEventListener("click", function () {
     meuModal.style.display = "none";

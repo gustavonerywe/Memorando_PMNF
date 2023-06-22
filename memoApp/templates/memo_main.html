@@ -38,14 +38,16 @@
                         <th>Para:</th>
                         <td>
                             <div id="container_and_button">
-                                <div class="select-wrapper">
-                                    <select name="destinatario" id="select-secretaria" class="select2">
-                                        <option id="option-disabled" disabled selected>-- Selecione um grupo --</option>
-                                        {% for grupo in grupos %}
-                                        <option value="{{grupo.name}}">{{ grupo.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                    <div id="selectFather"></div>
+                                <div id="select-table">
+                                    <div class="select-wrapper" id="select-container">
+                                        <select name="destinatario" id="select-secretaria" class="select2 selects">
+                                            <option id="option-disabled" disabled selected>-- Selecione um grupo --</option>
+                                            {% for grupo in grupos %}
+                                            <option value="{{grupo.name}}">{{ grupo.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        {% comment %} <div id="selectFather"></div> {% endcomment %}
+                                    </div>
                                 </div>
                                 <button type="button" style="font-size: 0.7em;" id="addSelect">
                                     <i data-feather="plus-circle" style="width: 12px; height: 12px;" class="feather-icon-file-plus custom-icon"></i>
@@ -108,7 +110,7 @@
                             <div id="input-container">
                                 <br><br>
                                 <div id="container-file">
-                                    <div class="input-row">
+                                    <div class="input-row" id="div-anexo-orig">
                                         <button type="button" id="botaoModal" class="cancel-button"
                                             data-index="original"> <img src="/static/img/lixo.png" class="img-remove"></img></button>
                                         <div class="mb-3">
