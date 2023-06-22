@@ -183,20 +183,40 @@ addCancelButtonEvent(firstCancelButton);
 var fecharMemorando = document.querySelector(".fecharMemorando")
 var meuModalMemorando = document.querySelector('#meuModalMemorando')
 const btn = document.querySelector('#botao')
+let corpoMemo = document.getElementById('corpo');
+const valorSelect = document.getElementById('select-secretaria')
 
 botao.addEventListener('click', function (event) {
   event.preventDefault()
   meuModalMemorando.style.display = "block";
-  if (campoSelect.value.trim() !== optionDisabled.value.trim() && assunto.value.trim() !== '') {
-    return;
-  }
-  else if (assunto.value.trim() === '' || optionDisabled.value.trim() === '-- Selecione um grupo --') {
+  if (assunto.value.trim() === ''){
     meuModalMemorando.style.display = 'none';
     modalAssunto.style.display = 'block';
-    pegarLugarTexto.innerHTML = " 'Assunto' ";
-    pegarLugarTextoPara.innerHTML = " 'Para' "
-    return;
+    pegarLugarTexto.innerHTML = " 'Assunto'";
   }
+  else if(valorSelect.value.trim() === '-- Selecione um grupo --'){
+    meuModalMemorando.style.display = 'none';
+    modalAssunto.style.display = 'block';
+    pegarLugarTexto.innerHTML = " 'Para'";
+  }
+  else if(corpoMemo.innerHTML === ''){
+    meuModalMemorando.style.display = 'none';
+    modalAssunto.style.display = 'block';
+    pegarLugarTexto.innerHTML = " 'Corpo'";
+ 
+  }
+  console.log(corpoMemo)
+  // if (campoSelect.value.trim() !== valorSelect.value.trim() && assunto.value.trim() !== '') {
+  //   return;
+  // }
+  // else if (assunto.value.trim() === '' || valorSelect.value.trim() === '-- Selecione um grupo --') {
+  //   meuModalMemorando.style.display = 'none';
+  //   modalAssunto.style.display = 'block';
+  //   pegarLugarTexto.innerHTML = " 'Assunto' ";
+  //   pegarLugarTextoPara.innerHTML = " 'Para' "
+  //   return;
+  // }
+  // else if()
 })
 
 fecharMemorando.addEventListener('click', function () {
@@ -223,7 +243,6 @@ const fecharModalAsssunto2 = document.getElementById('botaoFechar');
 const campoSelect = document.getElementById('select-secretaria');
 const pegarLugarTexto = document.getElementById('texto-colocar')
 const pegarLugarTextoPara = document.getElementById('texto-colocar-para')
-const optionDisabled = document.getElementById('option-disabled')
 const grupoSelected = document.getElementById('grupo_selected')
 
 buttonYesModal.addEventListener('click', function () {
