@@ -33,15 +33,25 @@ var selectCounter = 1;
 
 document.addEventListener('DOMContentLoaded', function() {
 function createNewSelect() {
-  var selectOriginal = document.getElementById('select-container');
+  var selectOriginal = document.getElementById('select-secretaria');
   var selectClone = selectOriginal.cloneNode(true);
-  var selectElement = selectClone.querySelector('#select-secretaria')
+  var novoWrapper = document.createElement('div');
+  var selectTable = document.getElementById('select-table');
 
-  selectElement.id = 'select-secretaria-' + selectCounter;
-  selectElement.setAttribute('data-select2-id', selectElement.id);
+  novoWrapper.setAttribute('class', 'select-wrapper');
+  novoWrapper.id = 'select-container-' + selectCounter;
+  selectTable.appendChild(novoWrapper)
+   
+  
+  selectClone.id = 'select-secretaria-' + selectCounter;
+  selectClone.setAttribute('data-select2-id', selectClone.id);
   selectCounter++;
+  selectClone.style.width = '100%';
 
-  selectOriginal.insertAdjacentElement('afterend', selectClone);
+  novoWrapper.appendChild(selectClone);
+  $(selectClone).select2();
+
+  // novoWrapper.appendChild(selectClone);
   
   // const selectRow = document.createElement('select');
   // const selectContainer = document.getElementById('selectFather')
@@ -227,12 +237,7 @@ botao.addEventListener('click', function (event) {
     modalAssunto.style.display = 'block';
     pegarLugarTexto.innerHTML = " 'Para'";
   }
-  else if(corpoMemo.innerHTML === ''){
-    meuModalMemorando.style.display = 'none';
-    modalAssunto.style.display = 'block';
-    pegarLugarTexto.innerHTML = " 'Corpo'";
- 
-  }
+  
   console.log(corpoMemo)
   // if (campoSelect.value.trim() !== valorSelect.value.trim() && assunto.value.trim() !== '') {
   //   return;
