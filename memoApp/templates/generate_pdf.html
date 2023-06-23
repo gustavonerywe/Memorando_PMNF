@@ -9,14 +9,14 @@
 <body>
     <link rel="stylesheet" href="/static/css/style.css">
     <header>
-        <form style="width: 100%;" id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+        <form style="width: 100%; margin: 0;" id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
             </div>
             <hr id="hr-generate">
             <div id="content">
-                <table class="table" id="table-generate">
+                <table style="width: 100%;" class="table" id="table-generate">
                     <tr>
                         <th id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
@@ -39,23 +39,30 @@
                     <tr>
                         <th class="th-generate">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
+                            <p style="margin-bottom: 15px;">Principal:</p>
                             {% for grupo in grupo_escolhido %}
-                                {% if forloop.first %}
-                                    Principal: {{ grupo }}<br>
-                                {% endif %}
+                            <ul>
+                                <li style="margin-top: -15px; padding: 0px;">
+                                    {{ grupo }}
+                                </li>
+                            </ul>
                             {% endfor %}
                         </td>
                     </tr>
                     <tr>
                         <th class="th-generate">Cópia para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
-                            {% for grupo in grupo_escolhido %}
-                                {% if not forloop.first %}
-                                    Cópia para: {{ grupo }}<br>
-                                {% endif %}
+                            <p style="margin-bottom: 15px;">Cópia para:</p>
+                            {% for grupo in grupo_escolhido_copia %}
+                            <ul>
+                                <li style="margin-top: -15px; padding: 0px;">
+                                    {{ grupo }}
+                                </li>
+                            </ul>
                             {% endfor %}
                         </td>
                     </tr>
+                    
                     <tr>
                         <th class="th-generate">Assunto:</th>
                         <td class="td-generate">
@@ -63,7 +70,7 @@
                         </td>
                     </tr>
                 </table>
-                <div id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
+                <div style="width: 70%;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
             </div>
             <div id="footer">
                 <p>

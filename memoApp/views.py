@@ -27,17 +27,14 @@ def upload(request):
             memorando.corpo = request.POST.get('corpo')
             memo_numero_atualizado = memorando.gerar_proximo_numero()
             memorando.data = request.POST.get('data')
-            destinatarios = request.POST.getlist('destinatario')
-            for destinatario_id in destinatarios:
-                if destinatario_id.isdigit():
-                  destinatario = User.objects.get(id=destinatario_id)
-                  memorando.destinatario.add(destinatario)
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
+            grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
             session['memorando_corpo'] = memorando.corpo
+            session['grupo_escolhido_copia'] = grupo_escolhido_copia
             session.save()
 
             memorando.save()
@@ -55,7 +52,6 @@ def upload(request):
                 'memorando_assunto': memorando.assunto,
                 'grupos': grupos,
             }
-            print(grupo_escolhido)
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
@@ -78,6 +74,8 @@ def generate_pdf(request, memorando_id):
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
     text_content = session.get('memorando_corpo')
+    grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+
     context = {
         'memorando': memorando,
         'memo_numero_atualizado': memo_numero_atualizado,
@@ -85,7 +83,9 @@ def generate_pdf(request, memorando_id):
         'data_atual': data_numerica,
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
+        'grupo_escolhido_copia': grupo_escolhido_copia,
     }
+    print(grupo_escolhido_copia)
     return render(request, 'generate_pdf.html', context)
 
 
