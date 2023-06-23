@@ -419,7 +419,7 @@ main {
     color: black;
 }
 
-#container_and_button {
+#container_and_button, #container_and_button-copia {
     display: flex;
     align-items: center;
 }
@@ -793,6 +793,6 @@ hr {
     height: 21px;
 }
 
-#select-table{
+#select-table, #select-table-copia{
     display: inline-block;
 }
