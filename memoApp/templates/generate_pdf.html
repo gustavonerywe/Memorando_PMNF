@@ -21,23 +21,23 @@
                         <th id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
                     <tr>
-                        <th class="th-generate">Data:</th>
+                        <th class="th-generate" style="vertical-align: middle;">Data:</th>
                         <td class="td-generate">
                             <p style="margin-bottom: 2px;">{{ data_atual }}</p>
                         </td>
                     </tr>
                     <tr>
-                        <th class="th-generate">Número do memorando:</th>
+                        <th class="th-generate" style="vertical-align: middle;">Número do memorando:</th>
                         <td class="td-generate"><span id="memo_numero">{{memorando.memo_numero}}</span></td>
                     </tr>
                     <tr>
-                        <th class="th-generate">De:</th>
+                        <th class="th-generate" style="vertical-align: middle;">De:</th>
                         <td class="td-generate">{{ user.groups.first.name }}
                             <hr> {{ user.get_full_name }}
                         </td>
                     </tr>
                     <tr>
-                        <th class="th-generate">Para:</th>
+                        <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
                             <p style="margin-bottom: 15px;">Principal:</p>
                             {% for grupo in grupo_escolhido %}
@@ -51,7 +51,7 @@
                     </tr>
                     {% if grupo_escolhido_copia|length > 0 %}
                     <tr>
-                        <th class="th-generate">Cópia para:</th>
+                        <th class="th-generate" style="vertical-align: middle;">Cópia para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
                             <p style="margin-bottom: 15px;">Cópia para:</p>
                             {% for grupo in grupo_escolhido_copia %}
@@ -65,13 +65,13 @@
                     </tr>
                     {% endif %}
                     <tr>
-                        <th class="th-generate">Assunto:</th>
+                        <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
                         <td class="td-generate">
                             <p style="margin-bottom: 2px;">{{ memorando_assunto }}</p>
                         </td>
                     </tr>
                 </table>
-                <div style="width: 70%;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
+                <div style="width: 100%; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
             </div>
             <div id="footer">
                 <p>
