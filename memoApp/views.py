@@ -34,7 +34,7 @@ def upload(request):
                   memorando.destinatario.add(destinatario)
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
-            grupo_escolhido = request.POST.get('destinatario')
+            grupo_escolhido = request.POST.getlist('destinatario')
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
             session['memorando_corpo'] = memorando.corpo
@@ -55,6 +55,7 @@ def upload(request):
                 'memorando_assunto': memorando.assunto,
                 'grupos': grupos,
             }
+            print(grupo_escolhido)
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
