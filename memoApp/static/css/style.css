@@ -323,6 +323,12 @@ main {
 #link-upload:hover {
     text-decoration: none;
     color: cyan;
+    cursor: pointer;
+}
+
+#link-upload-pdf:hover {
+    text-decoration: none;
+    color: cyan;
 }
 
 #link-container {
@@ -483,7 +489,7 @@ main {
 
 }
 
-#meuModal {
+#meuModal, #modal-upload {
     display: none;
     position: fixed;
     z-index: 1;
@@ -517,7 +523,11 @@ main {
     padding-left: 15px;
 } */
 
-.modal-content {
+.modal-content p{
+    text-align: center;
+}
+
+.modal-content  {
     height: 25%;
     background-color: #fefefe;
     margin: 15% auto;
@@ -587,7 +597,7 @@ hr {
     margin-top: 0;
 }
 
-#buttonYesModal {
+#buttonYesModal, #envia-modal {
     width: 40%;
     text-align: center;
     margin: 0 auto;
@@ -608,7 +618,7 @@ hr {
 }
 
 
-#buttonNoModal {
+#buttonNoModal, #nao-envia-modal {
     width: 40%;
     text-align: center;
     margin: 0 auto;
