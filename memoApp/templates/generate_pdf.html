@@ -49,6 +49,7 @@
                             {% endfor %}
                         </td>
                     </tr>
+                    {% if grupo_escolhido_copia|length > 0 %}
                     <tr>
                         <th class="th-generate">Cópia para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
@@ -62,7 +63,7 @@
                             {% endfor %}
                         </td>
                     </tr>
-                    
+                    {% endif %}
                     <tr>
                         <th class="th-generate">Assunto:</th>
                         <td class="td-generate">
