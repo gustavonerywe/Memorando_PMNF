@@ -29,72 +29,60 @@ function handleFileDrop(event) {
   }
 }
 
-let selectCounterCopia = 1;
+var selectCounter = 1;
 
-document.addEventListener('DOMContentLoaded', function () {
-  function createNewSelectCopia() {
-    let selectOriginal = document.getElementById('select-secretaria-copia-para');
-    let selectClone = selectOriginal.cloneNode(true);
-    let novoWrapper = document.createElement('div');
-    let selectTable = document.getElementById('select-table-copia');
+document.addEventListener('DOMContentLoaded', function() {
+function createNewSelect() {
+  var selectOriginal = document.getElementById('select-secretaria');
+  var selectClone = selectOriginal.cloneNode(true);
+  var novoWrapper = document.createElement('div');
+  var selectTable = document.getElementById('select-table');
 
-    novoWrapper.setAttribute('class', 'select-wrapper-copia');
-    novoWrapper.id = 'select-container-copia-' + selectCounterCopia;
-    selectTable.appendChild(novoWrapper)
+  novoWrapper.setAttribute('class', 'select-wrapper');
+  novoWrapper.id = 'select-container-' + selectCounter;
+  selectTable.appendChild(novoWrapper)
+   
+  
+  selectClone.id = 'select-secretaria-' + selectCounter;
+  selectClone.setAttribute('data-select2-id', selectClone.id);
+  selectCounter++;
+  selectClone.style.width = '100%';
 
+  novoWrapper.appendChild(selectClone);
+  $(selectClone).select2();
 
-    selectClone.id = 'select-secretaria-' + selectCounter;
-    selectClone.setAttribute('data-select2-id', selectClone.id);
-    selectCounter++;
-    selectClone.style.width = '100%';
+  // novoWrapper.appendChild(selectClone);
+  
+  // const selectRow = document.createElement('select');
+  // const selectContainer = document.getElementById('selectFather')
+  // let classes = ['select2', 'select2-hidden-accessible']
 
-    novoWrapper.appendChild(selectClone);
-    $(selectClone).select2();
-  }
-  const addSelectButtonCopia = document.getElementById('addSelectCopia')
+  // classes.forEach(function (className) {
+  //   selectRow.classList.add(className);
+  // })
+  // selectRow.name = 'destinatario';
+  // selectRow.id = "select-secretaria";
+  // selectRow.tabIndex = '-1';
+  // selectRow.ariaHidden = "true"
 
-  addSelectButtonCopia.addEventListener('click', () => {
-    createNewSelectCopia()
-  })
-})
-let selectCounter = 1;
+  // selectContainer.appendChild(selectRow)
+  // return selectRow;
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-  function createNewSelect() {
-    let selectOriginal = document.getElementById('select-secretaria');
-    let selectClone = selectOriginal.cloneNode(true);
-    let novoWrapper = document.createElement('div');
-    let selectTable = document.getElementById('select-table');
-
-    novoWrapper.setAttribute('class', 'select-wrapper');
-    novoWrapper.id = 'select-container-' + selectCounter;
-    selectTable.appendChild(novoWrapper)
-
-
-    selectClone.id = 'select-secretaria-' + selectCounter;
-    selectClone.setAttribute('data-select2-id', selectClone.id);
-    selectCounter++;
-    selectClone.style.width = '100%';
-
-    novoWrapper.appendChild(selectClone);
-    $(selectClone).select2();
-  }
-
-
-  const addSelectButton = document.getElementById('addSelect');
-  addSelectButton.addEventListener('click', function () {
-    createNewSelect();
-    // const newSelect = createNewSelect()
-    // console.log(document.getElementById('selectFather').innerHTML = newSelect)
-  });
+const addSelectButton = document.getElementById('addSelect');
+addSelectButton.addEventListener('click', function () {
+  createNewSelect();
+  // const newSelect = createNewSelect()
+  // console.log(document.getElementById('selectFather').innerHTML = newSelect)
+});
 })
 
 function createNewInput() {
   const inputRow = document.createElement('div');
   const cancelButton = document.createElement('button');
   const newFileInput = document.createElement('input');
-  let imgRemove = document.createElement('img');
-  let widthInput = document.getElementById('id_file').width;
+  var imgRemove = document.createElement('img');
+  var widthInput = document.getElementById('id_file').width;
 
   inputRow.classList.add('input-row');
   cancelButton.classList.add('cancel-button');
@@ -141,25 +129,24 @@ function addCancelButtonEvent(cancelButton) {
   cancelButton.type = 'button';
   cancelButton.addEventListener('click', function () {
     console.log(fileInput.value)
-    if (cancelButton.parentNode == document.getElementById('div-anexo-orig')) {
-      if (fileInput.value != '') {
+    if(cancelButton.parentNode == document.getElementById('div-anexo-orig')){
+      if(fileInput.value != ''){
         meuModal.style.display = "block";
         buttonYesModal.addEventListener('click', function () {
-          setTimeout(function () {
-            fileInput.value = '';
-          }, 100);
-          meuModal.style.display = 'none';
+          setTimeout(function(){
+              fileInput.value = '';
+            }, 100);
+          meuModal.style.display = 'none';  
         }
-        )
-      }
+      )}
       return;
-    } else {
+    }else{
       meuModal.style.display = "block";
       buttonYesModal.addEventListener('click', function () {
         const correspondingInput = cancelButton.nextSibling;
-        setTimeout(function () {
-          correspondingInput.parentNode.remove();
-        }, 100);
+        setTimeout(function(){
+            correspondingInput.parentNode.remove();
+          }, 100);
         // correspondingInput.value = '';
         // meuModal.style.display = "none";
         // setTimeout(function () {
@@ -170,9 +157,8 @@ function addCancelButtonEvent(cancelButton) {
         setTimeout(function () {
           spanMessage.textContent = '';
         }, 2500)
-      })
-    }
-  });
+    })
+  }});
 
   fechar.addEventListener("click", function () {
     meuModal.style.display = "none";
@@ -232,8 +218,8 @@ addCancelButtonEvent(firstCancelButton);
 //   })
 
 
-let fecharMemorando = document.querySelector(".fecharMemorando")
-let meuModalMemorando = document.querySelector('#meuModalMemorando')
+var fecharMemorando = document.querySelector(".fecharMemorando")
+var meuModalMemorando = document.querySelector('#meuModalMemorando')
 const btn = document.querySelector('#botao')
 let corpoMemo = document.getElementById('corpo');
 const valorSelect = document.getElementById('select-secretaria')
@@ -241,17 +227,17 @@ const valorSelect = document.getElementById('select-secretaria')
 botao.addEventListener('click', function (event) {
   event.preventDefault()
   meuModalMemorando.style.display = "block";
-  if (assunto.value.trim() === '') {
+  if (assunto.value.trim() === ''){
     meuModalMemorando.style.display = 'none';
     modalAssunto.style.display = 'block';
     pegarLugarTexto.innerHTML = " 'Assunto'";
   }
-  else if (valorSelect.value.trim() === '-- Selecione um grupo --') {
+  else if(valorSelect.value.trim() === '-- Selecione um grupo --'){
     meuModalMemorando.style.display = 'none';
     modalAssunto.style.display = 'block';
     pegarLugarTexto.innerHTML = " 'Para'";
   }
-
+  
   console.log(corpoMemo)
   // if (campoSelect.value.trim() !== valorSelect.value.trim() && assunto.value.trim() !== '') {
   //   return;

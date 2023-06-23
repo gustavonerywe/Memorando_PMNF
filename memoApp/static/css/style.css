@@ -424,11 +424,11 @@ main {
     align-items: center;
 }
 
-.select-wrapper, .select-wrapper-copia {
+.select-wrapper {
     margin: 10px;
 }
 
-#addSelect, #addSelectCopia {
+#addSelect {
     margin-left: 0px;
     background-color: rgba(157, 230, 157, 0.815);
     border-radius: 60px;
