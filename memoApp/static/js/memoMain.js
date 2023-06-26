@@ -314,6 +314,7 @@ botao.addEventListener('click', function (event) {
     pegarLugarTexto.innerHTML = " 'Para'";
   }
 
+
   console.log(corpoMemo)
   // if (campoSelect.value.trim() !== valorSelect.value.trim() && assunto.value.trim() !== '') {
   //   return;

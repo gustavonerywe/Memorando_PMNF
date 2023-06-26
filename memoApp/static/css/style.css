@@ -203,14 +203,9 @@ main {
 
 #botao {
     border-radius: 20px;
-    background: #a7e5fa;
-    color: #333333;
-    border-style: solid;
-    border-color: black;
-    height: 50px;
+    border: 0.2px solid black;
     width: 200px;
     font: bold 20px times;
-    text-shadow: none;
 }
 
 #select-secretaria {
@@ -223,10 +218,6 @@ main {
     color: #333333c5;
 }
 
-#botao:hover {
-    text-decoration: none;
-    background: #78dcfd;
-}
 
 #button-file {
     display: flex;
@@ -265,7 +256,7 @@ main {
     display: block;
     margin: 0 auto;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 20px;
     border-color: black;
     width: 100px;
     height: 40px;
@@ -598,61 +589,13 @@ hr {
     margin-top: 0;
 }
 
-#buttonYesModal, #envia-modal {
+#buttonNoModal, #buttonYesModal, #buttonNoModalMemorando, #buttonYesModalMemorando, #envia-modal, #nao-envia-modal, #ok-modal{
     width: 40%;
     text-align: center;
     margin: 0 auto;
-    background-color: rgba(157, 230, 157, 0.815);
     border: 0.2px solid black;
     border-radius: 15px;
     margin-bottom: 10px;
-}
-
-#buttonYesModalMemorando {
-    width: 40%;
-    text-align: center;
-    margin: 0 auto;
-    background-color: rgba(157, 230, 157, 0.815);
-    border: 0.2px solid black;
-    border-radius: 15px;
-    margin-bottom: 10px;
-}
-
-
-#buttonNoModal, #nao-envia-modal {
-    width: 40%;
-    text-align: center;
-    margin: 0 auto;
-    background-color: rgba(214, 140, 140, 0.836);
-    border: 0.2px solid black;
-    border-radius: 15px;
-    margin-bottom: 10px;
-}
-
-#buttonNoModalMemorando {
-    width: 40%;
-    text-align: center;
-    margin: 0 auto;
-    background-color: rgba(214, 140, 140, 0.836);
-    border: 0.2px solid black;
-    border-radius: 15px;
-    margin-bottom: 10px;
-}
-
-#buttonNoModal:hover {
-    background-color: rgb(209, 97, 97);
-}
-
-#buttonNoModalMemorando:hover {
-    background-color: rgb(209, 97, 97);
-}
-
-#buttonYesModal:hover {
-    background-color: rgb(107, 216, 107);
-}
-
-#buttonYesModalMemorando:hover {
-    background-color: rgb(107, 216, 107);
 }
 
 #spanMessage {
@@ -738,22 +681,6 @@ hr {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-#ok-modal {
-    width: 45%;
-    text-align: center;
-    margin: 0 auto;
-    color: black;
-    background-color: rgba(214, 140, 140, 0.836);
-    border: 1px solid black;
-    border-radius: 15px;
-    margin-bottom: 10px;
-    color: white;
-}
-
-#ok-modal:hover {
-    background-color: rgb(209, 97, 97)
-}
-
 .button-container {
     display: flex;
     margin-top: 10px;
@@ -807,3 +734,4 @@ hr {
 #select-table, #select-table-copia{
     display: inline-block;
 }
+

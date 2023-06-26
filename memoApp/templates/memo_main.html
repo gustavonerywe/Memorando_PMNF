@@ -30,7 +30,7 @@
                     </tr>
                     <tr class="table-secondary">
                         <th>De:</th>
-                        <td>{{ user.groups.first.name }}
+                        <td id="td-table-memo">{{ user.groups.first.name }}
                             <hr> {{ user.get_full_name }}
                         </td>
                     </tr>
@@ -165,8 +165,8 @@
                                 <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
                                 <p style="font-size: 17px;">Deseja cancelar o envio do arquivo?</p>
                                 <div class="button-container">
-                                    <button type="button" id="buttonNoModal">Não</button>
-                                    <button type="button" class="buttonYesModal" id="buttonYesModal">Sim</button>
+                                    <button type="button" id="buttonNoModal" class="btn btn-danger btn-sm">Não</button>
+                                    <button type="button" id="buttonYesModal" class="btn btn-success btn-sm">Sim</button>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
 <div>
 </div>
 <div id="button-file">
-    <button id="botao" class="botaoSumbitModal" type="submit">Enviar</button>
+    <button id="botao" class="btn btn-info btn-lg" type="submit">Enviar</button>
     <div id="meuModalMemorando">
         <div class="modal-content-memorando">
             <span class="fecharMemorando">&times;</span>
@@ -191,8 +191,8 @@
                         style="font-size: 0.8em; margin-bottom: 10px; margin-top: 10px; text-align: center; color: rgb(168, 67, 67);">Lembre-se:
                         quando o memorando for enviado, ele será salvo no banco de dados.</span>
                     <div class="button-container">
-                        <button type="button" id="buttonNoModalMemorando">Não</button>
-                        <button type="button" class="buttonYesModal" id="buttonYesModalMemorando">Sim</button>
+                        <button type="button" class="btn btn-danger btn-sm" id="buttonNoModalMemorando">Não</button>
+                        <button type="button" class="btn btn-success btn-sm" id="buttonYesModalMemorando">Sim</button>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,7 @@
             style="font-size: 1.6em; margin-bottom: 0; margin-top: 0; text-align: center; color: rgb(168, 67, 67);">Atenção!</span>
         <p style="font-size: 1.1em; text-align: center; margin-top: 5px;">O campo<span id="texto-colocar"></span><span
                 id="texto-colocar-para"></span> é obrigatório!</p>
-        <button type="button" id="ok-modal">Ok</button>
+        <button type="button" id="ok-modal" class="btn btn-warning btn-sm">Ok</button>
     </div>
 </div>
 <script src="/static/js/memoMain.js"></script>
@@ -256,10 +256,9 @@
     }*/
 </script>
 <!-- códigos para o search dentro do select  -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
 <script>
     $(document).ready(function () {
         // $('.select2').select2();
@@ -267,11 +266,14 @@
         $('#select-secretaria-copia-para').select2();
     });
 </script>
+<!---->
+
 <!-- códigos para os ícones  -->
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <script>
     feather.replace();
 </script>
+<!---->
 
 </html>
 {% endblock %}
