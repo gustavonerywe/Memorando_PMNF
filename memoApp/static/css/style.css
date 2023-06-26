@@ -405,17 +405,8 @@ main {
     text-align: center;
 }
 
-.cancel-button {
-    background-color: rgba(214, 140, 140, 0.836);
-    height: 10%;
-    width: 10%;
-    margin-bottom: 17px;
-}
 
-.cancel-button:hover {
-    background-color: rgb(209, 97, 97);
-    color: black;
-}
+
 
 #container_and_button, #container_and_button-copia {
     display: flex;
@@ -444,12 +435,12 @@ main {
 
 #addInput {
     margin-left: 20px;
-    background-color: rgba(157, 230, 157, 0.815);
+    background-color: #479F76;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
-    width: 32.5px;
-    height: 32.5px;
+    width: 30px;
+    height: 25px;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -457,10 +448,6 @@ main {
     justify-content: center;
 }
 
-#addInput:hover {
-    background-color: rgb(107, 216, 107);
-    color: black;
-}
 
 .input-row {
     display: flex;
@@ -470,15 +457,14 @@ main {
 
 .cancel-button {
     margin-right: 5px;
-    color: #333;
+    background-color: #E35D6A;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-
-
+    margin-bottom: 18px;
 }
 
 #meuModal, #modal-upload {

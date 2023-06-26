@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if(selectCounterCopia == 1){
       let removeSelect = document.createElement('button');
+      let icone = document.createElement('i');
+      icone.classList.add('bi' , 'bi-dash');
+      removeSelect.appendChild(icone);
       let container = document.getElementById('container_and_button-copia');
 
       container.appendChild(removeSelect);
