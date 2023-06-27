@@ -724,17 +724,31 @@ hr {
 /* CSS para a página de login */
 
 #login-box {
-    border-radius: 2px;
+    border-radius: 30px;
     border: solid;
     text-align: center;
     width: 25%;
-    height: 35%;
+    height: fit-content;
+    margin-top: 10%;
     margin-left: 37%;
+    background-color: white;
+    
+}
+
+#login-box p {
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+#login-box button {
+    margin-bottom: 30px;
 }
 
 #body-login{
     width: 100%;
     height: 100%;
+    position: absolute;
+    background-color: #add8e68e;
 }
 
 #html-login{
