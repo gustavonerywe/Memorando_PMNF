@@ -15,6 +15,8 @@ from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm
 
 @login_required
 def upload(request):
@@ -160,3 +162,19 @@ def digital_view(request, id):
 def file_list(request):
     files = Image.objects.all()
     return render(request, 'upload_success.html', {'files': files})
+
+
+def loginPage(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:        
+                login(request, user)
+                return redirect('upload')
+                # Redirect to a success page
+    else:
+        form = AuthenticationForm(request)
+    return render(request, 'login.html', {'form': form})

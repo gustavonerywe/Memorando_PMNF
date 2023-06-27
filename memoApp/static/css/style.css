@@ -721,3 +721,26 @@ hr {
     display: inline-block;
 }
 
+/* CSS para a página de login */
+
+#login-box {
+    border-radius: 2px;
+    border: solid;
+    text-align: center;
+    width: 25%;
+    height: 35%;
+    margin-left: 37%;
+    vertical-align: middle;
+}
+
+#body-login{
+    width: 100%;
+    height: 100%;
+}
+
+#html-login{
+    width: 100%;
+    height: 100%;
+}
+
+
