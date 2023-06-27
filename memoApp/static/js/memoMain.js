@@ -235,6 +235,7 @@ function addCancelButtonEvent(cancelButton) {
         setTimeout(function () {
           spanMessage.textContent = '';
         }, 2500)
+        meuModal.style.display = "none";
       })
     }
   });
@@ -358,14 +359,14 @@ const pegarLugarTexto = document.getElementById('texto-colocar')
 const pegarLugarTextoPara = document.getElementById('texto-colocar-para')
 const grupoSelected = document.getElementById('grupo_selected')
 
-buttonYesModal.addEventListener('click', function () {
-  document.querySelector('.file-input').value = '';
-  meuModal.style.display = "none";
-  spanMessage.textContent = "Arquivo removido com sucesso!"
-  setTimeout(function () {
-    spanMessage.textContent = ''
-  }, 2500)
-})
+// buttonYesModal.addEventListener('click', function () {
+//   document.querySelector('.file-input').value = '';
+//   meuModal.style.display = "none";
+//   spanMessage.textContent = "Arquivo removido com sucesso!"
+//   setTimeout(function () {
+//     spanMessage.textContent = ''
+//   }, 2500)
+// })
 
 buttonNoModal.addEventListener('click', function () {
   meuModal.style.display = "none";
