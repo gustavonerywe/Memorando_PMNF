@@ -199,6 +199,7 @@ main {
 #input-container {
     margin-top: -20px;
     padding-left: 55px;
+    display: inline-grid;
 }
 
 #botao {
@@ -234,9 +235,12 @@ main {
 #id_file {
     display: block;
     width: 100%;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
     max-width: 100%;
     margin-right: 50.1px;
+    width: 358.094px;
+    height: 21px;
+    margin-bottom: -15px;
 }
 
 #container-file {
@@ -435,7 +439,7 @@ main {
 }
 
 .addInput {
-    margin-left: 10px;
+    margin-left: -40px;
     background-color: #479F76;
     border-radius: 60px;
     cursor: pointer;
@@ -477,6 +481,7 @@ main {
     padding: 1px;
     align-self: baseline;
     border: 2px solid black;
+    margin-bottom: -10px;
 
     /*
     margin-right: 5px;
@@ -739,7 +744,6 @@ hr {
 }
 
 .file-input {
-    margin-top: -15px;
     width: 358.094px;
     height: 21px;
 }

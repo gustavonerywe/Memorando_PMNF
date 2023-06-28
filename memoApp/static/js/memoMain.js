@@ -172,9 +172,7 @@ function createNewInput() {
   cancelButton.classList.add('cancel-button');
   cancelButton.type = 'button';
   cancelButton.id = 'cancel-button-dynamic'
-  imgRemove.setAttribute('class', 'img-remove');
-  imgRemove.src = '/static/img/lixo.png';
-  imgRemove.alt = 'remove';
+  cancelButton.setAttribute('class' , 'bi bi-dash cancel-button')
   newFileInput.type = 'file';
   newFileInput.name = 'file';
   // newFileInput.style.margin = '15px'
@@ -259,8 +257,9 @@ function addCancelButtonEvent(cancelButton) {
 }
 
 addInputButton.addEventListener('click', function () {
+  console.log("p")
   createNewInput();
-  const cancelButtons = document.querySelectorAll('.cancel-button');
+  const cancelButtons = document.querySelectorAll('.cancel-button');  
   cancelButtons.forEach(function (cancelButton) {
     addCancelButtonEvent(cancelButton);
   });
