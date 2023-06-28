@@ -56,15 +56,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if(selectCounterCopia == 1){
       let removeSelect = document.createElement('button');
-      let icone = document.createElement('i');
-      icone.classList.add('bi' , 'bi-dash');
-      removeSelect.appendChild(icone);
+      removeSelect.setAttribute('class', 'cancel-button-select')
+      let tagIcone = document.createElement('i');
+      tagIcone.setAttribute('class', 'bi bi-dash');
+      removeSelect.appendChild(tagIcone);
       let container = document.getElementById('container_and_button-copia');
+      container.appendChild(removeSelect)
 
-      container.appendChild(removeSelect);
-      removeSelect.id = 'removeSelectCopia';
-      removeSelect.innerHTML = "REMOVER";
-      removeSelect.type = 'button';
+
+      // container.appendChild(removeSelect);
+       removeSelect.id = 'removeSelectCopia';
+      // removeSelect.innerHTML = "REMOVER";
+        removeSelect.type = 'button';
 
       removeSelect.addEventListener('click', function(){
         removeLastSelectCopia();
@@ -118,10 +121,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if(selectCounter == 1){
       let removeSelect = document.createElement('button');
       let container = document.getElementById('container_and_button');
+      removeSelect.setAttribute('class', 'cancel-button-select')
+      let tagIcone = document.createElement('i');
+      tagIcone.setAttribute('class', 'bi bi-dash');
+      removeSelect.appendChild(tagIcone);
 
       container.appendChild(removeSelect);
       removeSelect.id = 'removeSelect';
-      removeSelect.innerHTML = "REMOVER";
+      //removeSelect.innerHTML = "REMOVER";
       removeSelect.type = 'button';
 
       removeSelect.addEventListener('click', function(){

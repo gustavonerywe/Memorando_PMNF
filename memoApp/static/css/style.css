@@ -418,14 +418,15 @@ main {
 }
 
 #addSelect, #addSelectCopia {
-    margin-left: 0px;
-    background-color: rgba(157, 230, 157, 0.815);
+    margin-right: 10px;
+    background-color: #479F76;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
     height: 32.5px;
     padding: 1px;
     align-self: baseline;
+    border: 2px solid black;
     margin-top: 7px;
 }
 
@@ -433,7 +434,17 @@ main {
     padding: 1px;
 }
 
-#addInput {
+.addInput {
+    margin-left: 10px;
+    background-color: #479F76;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+    /*
     margin-left: 20px;
     background-color: #479F76;
     border: 1px solid black;
@@ -446,6 +457,7 @@ main {
     align-items: center;
     margin-bottom: 18px;
     justify-content: center;
+    */
 }
 
 
@@ -456,15 +468,30 @@ main {
 }
 
 .cancel-button {
+    margin-right: 10px;
+    background-color: #E35D6A;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+
+    /*
     margin-right: 5px;
     background-color: #E35D6A;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    width: 30px;
+    height: 25px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 18px;
+    */
 }
 
 #meuModal, #modal-upload {
@@ -756,4 +783,16 @@ hr {
     height: 100%;
 }
 
-
+.cancel-button-select {
+    margin-right: 10px;
+    background-color: #E35D6A;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+    padding-top: -7px;
+    display: inline-grid;
+}
