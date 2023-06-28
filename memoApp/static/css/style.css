@@ -807,3 +807,8 @@ hr {
     padding-top: -7px;
     display: inline-grid;
 }
+
+#td-table-memo hr {
+    margin: 7px 0;
+}
+    
