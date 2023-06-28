@@ -43,6 +43,7 @@
                                         <select name="destinatario" id="select-secretaria" class="select2 selects">
                                             <option id="option-disabled" disabled selected>-- Selecione um grupo --
                                             </option>
+                                            <option id='option-all'>Todos</option>
                                             {% for grupo in grupos %}
                                             <option value="{{grupo.name}}">{{ grupo.name }}</option>
                                             {% endfor %}
@@ -66,6 +67,7 @@
                                             class="select2 selects">
                                             <option id="option-disabled" disabled selected>-- Selecione um grupo --
                                             </option>
+                                            <option id='option-all-copia'>Todos</option>
                                             {% for grupo in grupos %}
                                             <option value="{{grupo.name}}">{{ grupo.name }}</option>
                                             {% endfor %}
