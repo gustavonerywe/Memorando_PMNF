@@ -32,7 +32,19 @@ def upload(request):
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
+            if grupo_escolhido[0] == 'Todos':
+                todosGrupos = []
+                for grupo in grupos:
+                    todosGrupos.append(grupo.name)
+                grupo_escolhido = todosGrupos    
+                
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
+            if grupo_escolhido_copia[0] == 'Todos':
+                todosGrupos = []
+                for grupo in grupos:
+                    todosGrupos.append(grupo.name)
+                grupo_escolhido_copia = todosGrupos    
+                
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
             session['memorando_corpo'] = memorando.corpo
