@@ -412,16 +412,19 @@ main {
 
 
 
-#container_and_button, #container_and_button-copia {
+#container_and_button,
+#container_and_button-copia {
     display: flex;
     align-items: center;
 }
 
-.select-wrapper, .select-wrapper-copia {
+.select-wrapper,
+.select-wrapper-copia {
     margin: 10px;
 }
 
-#addSelect, #addSelectCopia {
+#addSelect,
+#addSelectCopia {
     margin-right: 10px;
     background-color: #479F76;
     border-radius: 60px;
@@ -499,7 +502,8 @@ main {
     */
 }
 
-#meuModal, #modal-upload {
+#meuModal,
+#modal-upload {
     display: none;
     position: fixed;
     z-index: 1;
@@ -533,11 +537,11 @@ main {
     padding-left: 15px;
 } */
 
-.modal-content p{
+.modal-content p {
     text-align: center;
 }
 
-.modal-content  {
+.modal-content {
     height: 25%;
     background-color: #fefefe;
     margin: 15% auto;
@@ -607,7 +611,13 @@ hr {
     margin-top: 0;
 }
 
-#buttonNoModal, #buttonYesModal, #buttonNoModalMemorando, #buttonYesModalMemorando, #envia-modal, #nao-envia-modal, #ok-modal{
+#buttonNoModal,
+#buttonYesModal,
+#buttonNoModalMemorando,
+#buttonYesModalMemorando,
+#envia-modal,
+#nao-envia-modal,
+#ok-modal {
     width: 40%;
     text-align: center;
     margin: 0 auto;
@@ -748,7 +758,8 @@ hr {
     height: 21px;
 }
 
-#select-table, #select-table-copia{
+#select-table,
+#select-table-copia {
     display: inline-block;
 }
 
@@ -756,42 +767,48 @@ hr {
 
 #login-box {
     border-radius: 30px;
-    border: solid;
+    border: 1px solid black;
     text-align: center;
-    width: 25%;
+    width: 40%;
     height: fit-content;
     margin-top: 10%;
-    margin-left: 37%;
     background-color: white;
-    
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: rgb(12, 12, 12);;
 }
 
 #login-box p {
-   margin-top: 20px;
-   margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #login-box button {
     margin-bottom: 30px;
 }
 
-#body-login{
+#body-login {
     width: 100%;
     height: 100%;
     position: absolute;
     background-color: #add8e68e;
 }
 
-#input-container-login{
+#input-container-login {
     text-align: right;
     padding-left: 0px;
-    width: 85%;
+    width: 70%;
     margin-top: 5%;
 }
 
-#html-login{
+#html-login {
     width: 100%;
     height: 100%;
+    background-image: url(/static/img/img-memo-login.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .cancel-button-select {
@@ -811,4 +828,12 @@ hr {
 #td-table-memo hr {
     margin: 7px 0;
 }
-    
+
+#title-login {
+    text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8);
+    font-style: italic;
+}
+
+#button-submit-login:hover {
+    transform: scale(1.1);
+}
