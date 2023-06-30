@@ -200,7 +200,6 @@ def encerraSessao(request):
     return redirect('loginPage')
 
 def geraEBaixaPDF(request, memorando_id):
-    
-    pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(id))
+    pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(memorando_id))
     response = FileResponse(pdf, as_attachment=True, filename='memorando.pdf')
     return response
