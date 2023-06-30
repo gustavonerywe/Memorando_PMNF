@@ -502,6 +502,31 @@ main {
     */
 }
 
+.modal-content-login {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 17%;
+    padding: 20px;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#modal-login {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 #meuModal,
 #modal-upload {
     display: none;
@@ -512,7 +537,6 @@ main {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
 }
 
 #meuModalMemorando {
@@ -610,6 +634,7 @@ hr {
     margin-bottom: 0;
     margin-top: 0;
 }
+
 
 #buttonNoModal,
 #buttonYesModal,
@@ -763,17 +788,17 @@ hr {
     display: inline-block;
 }
 
-#btnSair{
+#btnSair {
     text-decoration: none;
     color: white;
     font-family: 'Times New Roman', Times, serif;
 }
 
-#btnTrueSair{
+#btnTrueSair {
     float: right;
 }
 
-#btnTrueSair:hover{
+#btnTrueSair:hover {
     float: right;
     transform: scale(1.1);
 }
@@ -790,7 +815,8 @@ hr {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: rgb(12, 12, 12);;
+    text-shadow: rgb(12, 12, 12);
+    ;
 }
 
 #login-box p {
@@ -851,4 +877,22 @@ hr {
 
 #button-submit-login:hover {
     transform: scale(1.1);
+    margin-right: 10px;
+}
+
+#cadastro-login:hover {
+    transform: scale(1.1);
+    margin-left: 10px;
+}
+
+#btn_to_upload:hover {
+    transform: scale(1.1);
+    /* margin-left: 10px; */
+    margin-right: 10px;
+}
+
+#button_to_sessao:hover {
+    transform: scale(1.1);
+    margin-left: 10px;
+    margin-right: 10px;
 }
