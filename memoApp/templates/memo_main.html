@@ -5,9 +5,10 @@
 {% block content %}
 
 <html class="page_main" lang="pt-br">
-
+<button class="btn btn-danger" id='btnTrueSair'><a href='{% url 'encerraSessao' %}' id="btnSair">Sair</a></button>
 <body>
     <link rel="stylesheet" href="/static/css/style.css">
+    
     <header>
         <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}

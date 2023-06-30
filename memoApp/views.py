@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django import forms
 from .models import *
-from django.http import Http404
+from django.http import Http404, FileResponse
 from .forms import ImageForm
 from django.utils import timezone
 import datetime
@@ -15,8 +15,9 @@ from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
+import pdfkit
 
 @login_required
 def upload(request):
@@ -89,7 +90,6 @@ def generate_pdf(request, memorando_id):
     grupo_escolhido = session.get('grupo_escolhido')
     text_content = session.get('memorando_corpo')
     grupo_escolhido_copia = session.get('grupo_escolhido_copia')
-
     context = {
         'memorando': memorando,
         'memo_numero_atualizado': memo_numero_atualizado,
@@ -177,16 +177,30 @@ def file_list(request):
 
 
 def loginPage(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:        
-                login(request, user)
-                return redirect('upload')
-                # Redirect to a success page
+    if request.user.is_authenticated:
+        return render(request, 'login.html', {'logado': True})
     else:
-        form = AuthenticationForm(request)
-    return render(request, 'login.html', {'form': form})
+        if request.method == 'POST':
+            form = AuthenticationForm(request, data=request.POST)
+            if form.is_valid():
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password')
+                user = authenticate(username=username, password=password)
+                if user is not None:        
+                    login(request, user)
+                    return redirect('upload')
+                    # Redirect to a success page
+        else:
+            form = AuthenticationForm(request)
+        return render(request, 'login.html', {'form': form})
+    
+    
+def encerraSessao(request):
+    logout(request)
+    return redirect('loginPage')
+
+def geraEBaixaPDF(request, memorando_id):
+    
+    pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(id))
+    response = FileResponse(pdf, as_attachment=True, filename='memorando.pdf')
+    return response

@@ -9,12 +9,18 @@
 
             <image src="https://pedroschuenck.github.io/prefeituraImg.png">
             <h1 id="title-login"> MemoApp </h1>
-            <form method="post">
-            {% csrf_token %}
-                <div id='input-container-login'>
-                {{ form.as_p }}
-                </div>
-            <button id="button-submit-login" type="submit" class='btn btn-primary'>Entrar</button>
+            {% if logado == True %}
+                <p> Voce ja esta logado </p>
+                <a href="{% url 'upload' %}">Novo memorando<a>
+                <a href="{% url 'encerraSessao' %}">Encerrar Sessão<a>
+            {% else %}
+                <form method="post">
+                {% csrf_token %}
+                    <div id='input-container-login'>
+                    {{ form.as_p }}
+                    </div>
+                <button id="button-submit-login" type="submit" class='btn btn-primary'>Entrar</button>
+            {% endif %}
             </form>
         </div>
     </body>
