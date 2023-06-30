@@ -40,11 +40,14 @@ def upload(request):
                 grupo_escolhido = todosGrupos    
                 
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
-            if grupo_escolhido_copia[0] == 'Todos':
-                todosGrupos = []
-                for grupo in grupos:
+            try:
+                if grupo_escolhido_copia[0] == 'Todos':
+                 todosGrupos = []
+                 for grupo in grupos:
                     todosGrupos.append(grupo.name)
-                grupo_escolhido_copia = todosGrupos    
+                 grupo_escolhido_copia = todosGrupos    
+            except:
+                pass
                 
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
@@ -199,7 +202,30 @@ def encerraSessao(request):
     logout(request)
     return redirect('loginPage')
 
+# def geraEBaixaPDF(request, memorando_id):
+#     pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(memorando_id))
+#     response = FileResponse(pdf, as_attachment=True, filename='memorando.pdf')
+#     return response
+
+import io
+from django.http import HttpResponse
+
 def geraEBaixaPDF(request, memorando_id):
-    pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(memorando_id))
-    response = FileResponse(pdf, as_attachment=True, filename='memorando.pdf')
+    # memorando = Memorando.objects.get(id=memorando_id)
+    path_wkhtmltopdf = 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
+    url_pdf = 'http://localhost:8006/pdf-gerado/'
+    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    pdf = pdfkit.from_url("http://localhost:8006/generate_pdf/" + str(memorando_id), False, configuration=config)
+
+    # Criar uma resposta HTTP com o PDF como anexo
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
+    response.write(pdf)
     return response
+
+
+# def teste(request):
+#     path_wkhtmltopdf = 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
+#     url_pdf='C:\\Users\\luiseduardo.salarini\\Documents\\GitHub\\desenvolve_nf\\desenvolve_nf\\static\\home.pdf'
+#     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)    
+#     pdfkit.from_url("https://www.google.com/", url_pdf, configuration=config)   

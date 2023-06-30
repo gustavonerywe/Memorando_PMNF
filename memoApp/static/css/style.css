@@ -423,6 +423,11 @@ main {
     margin: 10px;
 }
 
+#addSelect:hover,
+#addSelectCopia:hover {
+    transform: scale(1.1);
+}
+
 #addSelect,
 #addSelectCopia {
     margin-right: 10px;
@@ -439,6 +444,10 @@ main {
 
 .feather.feather-plus-circle.feather-icon-file-plus.custom-icon {
     padding: 1px;
+}
+
+.addInput:hover {
+    transform: scale(1.1);
 }
 
 .addInput {
@@ -472,6 +481,10 @@ main {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
+}
+
+.cancel-button:hover{
+    transform: scale(1.1);
 }
 
 .cancel-button {
@@ -635,6 +648,35 @@ hr {
     margin-top: 0;
 }
 
+#buttonNoModal,
+#buttonNoModalMemorando,
+#nao-envia-modal {
+    background-color: red;
+}
+
+#buttonYesModal,
+#buttonYesModalMemorando,
+#envia-modal {
+    background-color: green;
+}
+
+#buttonNoModal:hover,
+#buttonNoModalMemorando:hover,
+#nao-envia-modal:hover {
+    background-color: rgb(197, 12, 12);
+    transform: scale(1.1);
+}
+
+#buttonYesModal:hover,
+#buttonYesModalMemorando:hover,
+#envia-modal:hover {
+    background-color: rgb(7, 236, 7);
+    transform: scale(1.1);
+}
+
+#ok-modal:hover{
+    transform: scale(1.1);
+}
 
 #buttonNoModal,
 #buttonYesModal,
@@ -850,6 +892,10 @@ hr {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.cancel-button-select:hover{
+    transform: scale(1.1);
 }
 
 .cancel-button-select {

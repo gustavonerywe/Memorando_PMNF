@@ -7,5 +7,5 @@ urlpatterns = [
     path('generate_pdf/<int:memorando_id>', views.generate_pdf, name='generate_pdf'),
     path('login/', views.loginPage, name='loginPage'),
     path('encerrar-sessao/', views.encerraSessao, name='encerraSessao'),
-    path('geraEBaixaPDF/<int:memorando_id>', views.geraEBaixaPDF, name='geraEBaixaPDF'),
+    path('gerar-pdf/<int:memorando_id>/', views.geraEBaixaPDF, name='gerar_pdf'),
 ]
