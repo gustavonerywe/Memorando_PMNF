@@ -934,6 +934,7 @@ hr {
 #btn_to_upload:hover {
     transform: scale(1.1);
     /* margin-left: 10px; */
+    /* text-decoration: none; */
     margin-right: 10px;
 }
 
