@@ -207,6 +207,10 @@ main {
     border: 0.2px solid black;
     width: 200px;
     font: bold 20px times;
+    background-color: #CFF4FC;
+}
+#botao:hover{
+    transform: scale(1.1);
 }
 
 #select-secretaria {
@@ -651,26 +655,26 @@ hr {
 #buttonNoModal,
 #buttonNoModalMemorando,
 #nao-envia-modal {
-    background-color: red;
+    /* background-color: red; */
 }
 
 #buttonYesModal,
 #buttonYesModalMemorando,
 #envia-modal {
-    background-color: green;
+    /* background-color: green; */
 }
 
 #buttonNoModal:hover,
 #buttonNoModalMemorando:hover,
 #nao-envia-modal:hover {
-    background-color: rgb(197, 12, 12);
+    /* background-color: rgb(197, 12, 12); */
     transform: scale(1.1);
 }
 
 #buttonYesModal:hover,
 #buttonYesModalMemorando:hover,
 #envia-modal:hover {
-    background-color: rgb(7, 236, 7);
+    /* background-color: rgb(7, 236, 7); */
     transform: scale(1.1);
 }
 
@@ -896,11 +900,12 @@ hr {
 
 .cancel-button-select:hover{
     transform: scale(1.1);
+
 }
 
 .cancel-button-select {
     margin-right: 10px;
-    background-color: #E35D6A;
+    background-color: #E35D6A; 
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
