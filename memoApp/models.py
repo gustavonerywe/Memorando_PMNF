@@ -16,7 +16,7 @@ class Memorando(models.Model):
     memo_numero = models.CharField(max_length=220)
     remetente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='memorandos_enviados')
     destinatario = models.ManyToManyField(User, related_name='memorandos_recebidos')
-    destinatarios_copia = models.ManyToManyField(User, related_name='destinatarios_copia')
+    destinatarios_copia = models.ManyToManyField(User, related_name='destinatarios_copia', null=True)
     assunto = models.CharField(max_length=225, blank=True, null=True)
     corpo = tinymce_models.HTMLField(null=True, default='')
 

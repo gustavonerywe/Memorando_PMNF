@@ -655,26 +655,26 @@ hr {
 #buttonNoModal,
 #buttonNoModalMemorando,
 #nao-envia-modal {
-    /* background-color: red; */
+    background-color:  #E35D6A;
 }
 
 #buttonYesModal,
 #buttonYesModalMemorando,
 #envia-modal {
-    /* background-color: green; */
+    background-color: #479F76;
 }
 
 #buttonNoModal:hover,
 #buttonNoModalMemorando:hover,
 #nao-envia-modal:hover {
-    /* background-color: rgb(197, 12, 12); */
+    background-color:  #e62c3e;
     transform: scale(1.1);
 }
 
 #buttonYesModal:hover,
 #buttonYesModalMemorando:hover,
 #envia-modal:hover {
-    /* background-color: rgb(7, 236, 7); */
+    background-color: #6ae9ae;
     transform: scale(1.1);
 }
 

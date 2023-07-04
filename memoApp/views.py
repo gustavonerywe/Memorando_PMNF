@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django import forms
 from .models import *
-from django.http import Http404, FileResponse
+from django.http import Http404, FileResponse, HttpResponse
 from .forms import ImageForm
 from django.utils import timezone
 import datetime
@@ -17,12 +17,15 @@ from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
-import pdfkit
-import jinja2
-from jinja2 import Undefined
+import os
+from django.shortcuts import get_object_or_404
+from django.conf import settings
+# import pdfkit
+# import jinja2
+# from jinja2 import Undefined
 from pathlib import Path
 from django.template.loader import render_to_string
-from weasyprint import HTML, CSS
+# from weasyprint import HTML, CSS
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -267,3 +270,11 @@ def geraEBaixaPDF(request, memorando_id):
 #     url_pdf='C:\\Users\\luiseduardo.salarini\\Documents\\GitHub\\desenvolve_nf\\desenvolve_nf\\static\\home.pdf'
 #     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)    
 #     pdfkit.from_url("https://www.google.com/", url_pdf, configuration=config)   
+
+@login_required
+def force_download(request):
+    file_path = str(BASE_DIR) + '/memoApp/static/teste.txt'
+    with open(file_path, 'rb') as f:
+            response = HttpResponse(f, content_type='text/plain')
+            response['Content-Disposition'] = 'attachment; filename="downloaded_file.txt"'
+            return response

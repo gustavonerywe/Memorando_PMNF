@@ -12,25 +12,28 @@
     <h1 id="title-upload">Memorando enviado</h1>
     <p id="subtitle-upload">O arquivo foi carregado com sucesso.</p>
     <div id="link-container">
-      <a id="link-upload" >Novo memorando</a>
+      <a id="link-upload">Novo memorando</a>
     </div>
     <div id="link-container">
-      <a id="link-upload-pdf" href="/gerar-pdf/{{ memorando.id }}" download target="_blank"> <img id="img-pdf" src="/static/img/pdf.png"
-          alt="imagem do pdf">Gerar PDF</a>
+      <a id="link-upload-pdf" href="{% url 'generate_pdf' memorando.id %}" target="_blank">
+        <img id="img-pdf" src="/static/img/pdf.png" alt="imagem do pdf">Gerar PDF
+      </a>
     </div>
+
 
     <div id="modal-upload">
       <div class="modal-content">
-          <span class="fechar">&times;</span>
-          <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
-          <p style="font-size: 17px;">Deseja fazer um novo memorando?</p>
-          <div class="button-container">
-              <button type="button" id="nao-envia-modal">Não</button>
-              <button type="button" id="envia-modal">Sim</button>
-          </div>
+        <span class="fechar">&times;</span>
+        <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
+        <p style="font-size: 17px;">Deseja fazer um novo memorando?</p>
+        <div class="button-container">
+          <button type="button" id="nao-envia-modal">Não</button>
+          <button type="button" id="envia-modal">Sim</button>
+        </div>
       </div>
-  </div>
+    </div>
 
-<script src="/static/js/upload_success.js"></script>
+    <script src="/static/js/upload_success.js"></script>
+
 </html>
 {% endblock %}
