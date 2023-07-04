@@ -207,10 +207,9 @@ function createNewInput() {
   });
 }
 
-function addCancelButtonEvent(cancelButton) {
+function addCancelButtonEvent(cancelButton){
   cancelButton.type = 'button';
   cancelButton.addEventListener('click', function () {
-    console.log(fileInput.value)
     if (cancelButton.parentNode == document.getElementById('div-anexo-orig')) {
       if (fileInput.value != '') {
         meuModal.style.display = "block";
