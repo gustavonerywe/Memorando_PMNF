@@ -239,7 +239,7 @@ def geraEBaixaPDF(request, memorando_id):
     }
     
     
-    html_path = str(BASE_DIR) + "/memoAPP/templates/generate_pdf.html"
+    html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
 
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
