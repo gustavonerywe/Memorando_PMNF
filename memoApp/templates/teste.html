@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorando PMNF
+- PDF
+</title>
+    <link rel="icon" type="image/png" href="/static/img/icon-memorando.png">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+</head>
+
+
+
+
+<html class="page_pdf">
+
+<!-- <meta http-equiv="refresh" content="0;url=geraEBaixaPDF/199"> -->
+
+<body>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+        <form style="width: 100%; margin: 0;" id="form-main" method="post" enctype="multipart/form-data" action="/">
+            <input type="hidden" name="csrfmiddlewaretoken" value="tlMVKqOYGYgbuzpPyPppugHnZXiPZkVCg6ROdlCixkFvDC8ExfUMwqDHtR2TQOAo">
+            <div id="header">
+                <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+            </div>
+            <hr id="hr-generate">
+            <div id="content">
+                <table style="width: 100%;" class="table" id="table-generate" style="border: 1px solid blue">
+                    <tr>
+                        <th id="tituloTable" colspan="2">MEMORANDO</th>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Data:</th>
+                        <td class="td-generate">
+                            <p style="margin-bottom: 2px;">04/07/23</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Número do memorando:</th>
+                        <td class="td-generate"><span id="memo_numero">199/2023</span></td>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">De:</th>
+                        <td class="td-generate">Subsecretaria de TI
+                            <hr> yan fofinho
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Para:</th>
+                        <td class="td-generate" id="secretaria-escolhida">
+                            <p style="margin-bottom: 15px;">Principal:</p>
+
+                            <ul>
+                                <li style="margin-top: -15px; padding: 0px;">
+                                    Fundação Dom João VI de Nova Friburgo
+                                </li>
+                            </ul>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
+                        <td class="td-generate">
+                            <p style="margin-bottom: 2px;">asdasdasd</p>
+                        </td>
+                    </tr>
+                </table>
+                <div style="width: 100%; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false"><p>asdsadasdasd</p></div>
+            </div>
+            <div id="footer">
+                <p>
+                <fieldset id="box-field-generate">
+                    <table>
+                        <tr>
+                            <th id="tituloTable2">RECEBIDO</td>
+                        </tr>
+                        <tr>
+                            <td id="em"> Em: ______ /______ /______</td>
+                        </tr>
+                        <tr>
+                            <td id="ass"> Ass: _____________________</td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+
+</body>
+
+</html>
+
+
+
+</html>
