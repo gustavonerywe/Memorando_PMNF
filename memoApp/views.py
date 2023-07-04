@@ -247,7 +247,7 @@ def geraEBaixaPDF(request, memorando_id):
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     
-    HTML(html_path).write_pdf('weasy.pdf', stylesheets=[CSS(filename=BASE_DIR+'\\memoApp\\static\\css\\style.css')])
+    HTML(html_path).write_pdf('weasy.pdf', stylesheets=[CSS(filename=str(BASE_DIR)+'\\memoApp\\static\\css\\style.css')])
     
     
     
