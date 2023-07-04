@@ -6,11 +6,959 @@
 
 <html class="page_pdf">
 
+<style>
+    .page_main {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+        background: #add8e68e;
+        color: #000000;
+    }
+    
+    .page_pdf {
+        color: white;
+    }
+    
+    body {
+        width: 75%;
+        background: #fff;
+        margin: 0 auto;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+    }
+    
+    #header {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    #content {
+        padding: 20px;
+    }
+    
+    #footer {
+        padding: 10px;
+        text-align: center;
+        margin-left: 700px;
+    }
+    
+    .table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 75%;
+        margin-bottom: 20px;
+        border: 1px solid;
+    }
+    
+    #table-header {
+        background-color: #fff;
+    }
+    
+    .table th,
+    .table td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid;
+    }
+    
+    #tituloTable,
+    #tituloTable2 {
+        text-align: center;
+    }
+    
+    #img {
+        margin-right: 75%;
+        width: 20%;
+    }
+    
+    #footer {
+        margin-left: 600px;
+    }
+    
+    #box-field {
+        border: solid 1px black;
+        border-radius: 10px;
+        width: 200px;
+        height: 100px;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+    
+    #box-field table {
+        width: 200px;
+    }
+    
+    #ass,
+    #em {
+        text-align: left;
+        padding-left: 10px;
+    }
+    
+    #image-name {
+        text-align: center;
+    
+    }
+    
+    #memo_numero {
+        font-size: 0.9em;
+    }
+    
+    #section-detail {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    #section-detail {
+        margin-top: 100px;
+    }
+    
+    main#corpo {
+        display: table;
+        margin: auto;
+    }
+    
+    .tr-file {
+        border: 2px solid black;
+        text-align: center;
+    }
+    
+    main {
+        margin-top: 5%
+    }
+    
+    .td-file {
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 25px;
+        text-decoration: none;
+    }
+    
+    
+    #box-file {
+        width: 40%;
+        display: inline;
+        justify-content: center;
+        border-radius: 10px;
+        border: 2px solid black;
+        margin-top: -10.9%;
+        text-align: center;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+    
+    #drop-area {
+        border: 2px dashed black;
+        background-color: #cbe9f38e;
+        width: 60%;
+        height: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        margin: auto
+    }
+    
+    #italic-message {
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        height: 12px;
+    }
+    
+    #verify-message {
+        margin: auto;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 0px;
+    }
+    
+    #title-footer {
+        text-align: center;
+        font-size: 165%;
+        font-family: 'Times New Roman', Times, serif;
+        margin-top: 50px;
+    }
+    
+    #name-file {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 98%;
+        padding: 2px;
+    }
+    
+    #label-file {
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    #main-file {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    #input-container {
+        margin-top: -20px;
+        padding-left: 55px;
+        display: inline-grid;
+    }
+    
+    #botao {
+        border-radius: 20px;
+        border: 0.2px solid black;
+        width: 200px;
+        font: bold 20px times;
+    }
+    
+    #select-secretaria {
+        text-align: center;
+        width: 100%;
+    }
+    
+    #select-secretaria #option-disabled {
+        text-align: center;
+        color: #333333c5;
+    }
+    
+    
+    #button-file {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+    
+    #file-margin {
+        margin-top: 5px;
+    }
+    
+    #id_file {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 100%;
+        margin-right: 50.1px;
+        width: 358.094px;
+        height: 21px;
+        margin-bottom: -15px;
+    }
+    
+    #container-file {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #title-upload {
+        text-align: center;
+    }
+    
+    #subtitle-upload {
+        text-align: center;
+    }
+    
+    #botao-upload {
+        display: block;
+        margin: 0 auto;
+        border-style: solid;
+        border-radius: 20px;
+        border-color: black;
+        width: 100px;
+        height: 40px;
+    }
+    
+    #botao-back {
+        display: block;
+        margin: 0 auto;
+        border-style: solid;
+        width: 200px;
+        height: 40px;
+    }
+    
+    #box-upload {
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px auto;
+        width: 55%;
+    }
+    
+    #box-upload-main {
+        border: 2px solid black;
+        background-color: #cbe9f38e;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px auto;
+        width: 105%;
+    }
+    
+    #link-upload {
+        display: inline-block;
+        background-color: black;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 15px;
+        margin-top: 7px;
+    }
+    
+    #link-upload-pdf {
+        display: inline-block;
+        background-color: black;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 15px;
+        margin-top: 7px;
+        width: 27%;
+    }
+    
+    #link-upload:hover {
+        text-decoration: none;
+        color: cyan;
+        cursor: pointer;
+    }
+    
+    #link-upload-pdf:hover {
+        text-decoration: none;
+        color: cyan;
+    }
+    
+    #link-container {
+        text-align: center;
+    }
+    
+    #label-file {
+        pointer-events: none;
+    }
+    
+    /*@media screen and (max-width: 1290px) {
+        #box-field {
+            margin-right: 200px;
+        }
+    
+        #box-upload {
+            width: 350px;
+        }
+    
+        #drop-area {
+            width: 350px;
+        }
+    
+        #corpo {
+            height: 10px;
+        }
+    
+    }
+    */
+    
+    .cor {
+        background-color: transparent;
+    }
+    
+    #formFileSm {
+        width: 105%;
+    }
+    
+    #form-main {
+        width: 90%;
+        background: #fff;
+        margin: 0 auto;
+    }
+    
+    #corpo {
+        display: block;
+        margin: auto;
+        width: 250px;
+        height: 120px;
+    }
+    
+    #main-file-detail {
+        background-color: transparent;
+    }
+    
+    #box-file-detail {
+        width: 50%;
+        border: 3px solid black;
+        border-radius: 30px;
+        padding: 20px;
+        margin: 0 auto;
+    
+    }
+    
+    .style-p {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 25px;
+        line-height: 35px;
+    }
+    
+    #titulo-file-detail {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 35px;
+    }
+    
+    #error-message {
+        font-size: 0.8em;
+        margin: auto;
+        color: red;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    
+    
+    
+    
+    #container_and_button,
+    #container_and_button-copia {
+        display: flex;
+        align-items: center;
+    }
+    
+    .select-wrapper,
+    .select-wrapper-copia {
+        margin: 10px;
+    }
+    
+    #addSelect:hover,
+    #addSelectCopia:hover {
+        transform: scale(1.1);
+    }
+    
+    #addSelect,
+    #addSelectCopia {
+        margin-right: 10px;
+        background-color: #479F76;
+        border-radius: 60px;
+        cursor: pointer;
+        width: 32.5px;
+        height: 32.5px;
+        padding: 1px;
+        align-self: baseline;
+        border: 2px solid black;
+        margin-top: 7px;
+    }
+    
+    .feather.feather-plus-circle.feather-icon-file-plus.custom-icon {
+        padding: 1px;
+    }
+    
+    .addInput:hover {
+        transform: scale(1.1);
+    }
+    
+    .addInput {
+        margin-left: -40px;
+        background-color: #479F76;
+        border-radius: 60px;
+        cursor: pointer;
+        width: 32.5px;
+        height: 32.5px;
+        padding: 1px;
+        align-self: baseline;
+        border: 2px solid black;
+        /*
+        margin-left: 20px;
+        background-color: #479F76;
+        border: 1px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30px;
+        height: 25px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 18px;
+        justify-content: center;
+        */
+    }
+    
+    
+    .input-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    
+    .cancel-button:hover{
+        transform: scale(1.1);
+    }
+    
+    .cancel-button {
+        margin-right: 10px;
+        background-color: #E35D6A;
+        border-radius: 60px;
+        cursor: pointer;
+        width: 32.5px;
+        height: 32.5px;
+        padding: 1px;
+        align-self: baseline;
+        border: 2px solid black;
+        margin-bottom: -10px;
+    
+        /*
+        margin-right: 5px;
+        background-color: #E35D6A;
+        border: 1px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30px;
+        height: 25px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        */
+    }
+    
+    .modal-content-login {
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+        height: 17%;
+        padding: 20px;
+        border: 1px solid #888;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    #modal-login {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    #meuModal,
+    #modal-upload {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+    
+    #meuModalMemorando {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    /* .modal-content-span {
+        height: 28%;
+        background-color: #fefefe;
+        margin: 15% auto;
+        border: 1px solid #888;
+        width: 43%;
+        padding-right: 15px;
+        padding-left: 15px;
+    } */
+    
+    .modal-content p {
+        text-align: center;
+    }
+    
+    .modal-content {
+        height: 25%;
+        background-color: #fefefe;
+        margin: 15% auto;
+        border: 1px solid #888;
+        width: 43%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    
+    .modal-content-memorando {
+        background-color: #fefefe;
+        margin: 15% auto;
+        border: 1px solid #888;
+        width: 43%;
+        height: 20%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    
+    .modal-body {
+        padding-top: 20px;
+    }
+    
+    .fechar {
+        color: #aaa;
+        float: right;
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 4px 8px;
+        width: 3%;
+        align-self: flex-end;
+    }
+    
+    .fecharMemorando {
+        color: #aaa;
+        float: right;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 4px 8px;
+        width: 3%;
+        align-self: flex-end;
+    }
+    
+    .fechar:hover,
+    .fechar:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .fecharMemorando:hover,
+    .fecharMemorando:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .imgModal {
+        margin: 0;
+        align-self: center;
+    }
+    
+    hr {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    
+    #buttonNoModal,
+    #buttonNoModalMemorando,
+    #nao-envia-modal {
+        background-color: red;
+    }
+    
+    #buttonYesModal,
+    #buttonYesModalMemorando,
+    #envia-modal {
+        background-color: green;
+    }
+    
+    #buttonNoModal:hover,
+    #buttonNoModalMemorando:hover,
+    #nao-envia-modal:hover {
+        background-color: rgb(197, 12, 12);
+        transform: scale(1.1);
+    }
+    
+    #buttonYesModal:hover,
+    #buttonYesModalMemorando:hover,
+    #envia-modal:hover {
+        background-color: rgb(7, 236, 7);
+        transform: scale(1.1);
+    }
+    
+    #ok-modal:hover{
+        transform: scale(1.1);
+    }
+    
+    #buttonNoModal,
+    #buttonYesModal,
+    #buttonNoModalMemorando,
+    #buttonYesModalMemorando,
+    #envia-modal,
+    #nao-envia-modal,
+    #ok-modal {
+        width: 40%;
+        text-align: center;
+        margin: 0 auto;
+        border: 0.2px solid black;
+        border-radius: 15px;
+        margin-bottom: 10px;
+    }
+    
+    #spanMessage {
+        color: rgb(3, 117, 3);
+        font-size: 0.7em;
+        margin-bottom: 0;
+    }
+    
+    .tox-notifications-container {
+        display: none;
+    }
+    
+    .tox .tox-statusbar a,
+    .tox .tox-statusbar__path-item,
+    .tox .tox-statusbar__wordcount {
+        color: rgba(34, 47, 62, .7);
+        text-decoration: none;
+        display: none;
+    }
+    
+    #img-pdf {
+        width: 25%;
+        padding-right: 5px;
+    }
+    
+    .bg-custom {
+        background-color: #d3d3d3;
+    }
+    
+    #drop-area p {
+        color: black;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    #searchInput {
+        margin: auto;
+        display: block;
+        margin-top: 10px;
+        width: 50%;
+    }
+    
+    .img-remove {
+        width: 25px;
+    }
+    
+    #img-add {
+        width: 20px;
+    }
+    
+    #table-generate {
+        width: 80%;
+    
+    }
+    
+    #hr-generate {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #box-field-generate {
+        border: solid 1px black;
+        border-radius: 10px;
+        width: 200px;
+        height: 100px;
+        margin-left: 50px;
+    }
+    
+    #campo-assunto {
+        text-align: center;
+    }
+    
+    #meuModalAssunto {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    .button-container {
+        display: flex;
+        margin-top: 10px;
+    }
+    
+    .button-container button {
+        margin-right: 10px;
+    }
+    
+    #span-alert {
+        margin-left: 35px;
+        margin-bottom: 10px;
+    }
+    
+    #corpo-memorando-pdf {
+        /* border: 1px solid #ccc;
+        border-radius: 5px; */
+        padding: 10px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        background-color: #fff;
+        cursor: not-allowed;
+    }
+    
+    #container-modal-atencao {
+        margin-top: -4%;
+    }
+    
+    #container-modal-memo {
+        margin-top: -1%;
+    }
+    
+    .th-generate {
+        width: 200px;
+    }
+    
+    .td-generate {
+        width: 200px;
+    }
+    
+    #id_name {
+        width: 75%;
+    }
+    
+    .file-input {
+        width: 358.094px;
+        height: 21px;
+    }
+    
+    #select-table,
+    #select-table-copia {
+        display: inline-block;
+    }
+    
+    #btnSair {
+        text-decoration: none;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    
+    #btnTrueSair {
+        float: right;
+    }
+    
+    #btnTrueSair:hover {
+        float: right;
+        transform: scale(1.1);
+    }
+    
+    /* CSS para a página de login */
+    
+    #login-box {
+        border-radius: 30px;
+        border: 1px solid black;
+        text-align: center;
+        width: 40%;
+        height: fit-content;
+        margin-top: 10%;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: rgb(12, 12, 12);
+        ;
+    }
+    
+    #login-box p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    #login-box button {
+        margin-bottom: 30px;
+    }
+    
+    #body-login {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #add8e68e;
+    }
+    
+    #input-container-login {
+        text-align: right;
+        padding-left: 0px;
+        width: 70%;
+        margin-top: 5%;
+    }
+    
+    #html-login {
+        width: 100%;
+        height: 100%;
+        background-image: url(/static/img/img-memo-login.jpg);
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .cancel-button-select:hover{
+        transform: scale(1.1);
+    }
+    
+    .cancel-button-select {
+        margin-right: 10px;
+        background-color: #E35D6A;
+        border-radius: 60px;
+        cursor: pointer;
+        width: 32.5px;
+        height: 32.5px;
+        padding: 1px;
+        align-self: baseline;
+        border: 2px solid black;
+        padding-top: -7px;
+        display: inline-grid;
+    }
+    
+    #td-table-memo hr {
+        margin: 7px 0;
+    }
+    
+    #title-login {
+        text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8);
+        font-style: italic;
+    }
+    
+    #button-submit-login:hover {
+        transform: scale(1.1);
+        margin-right: 10px;
+    }
+    
+    #cadastro-login:hover {
+        transform: scale(1.1);
+        margin-left: 10px;
+    }
+    
+    #btn_to_upload:hover {
+        transform: scale(1.1);
+        /* margin-left: 10px; */
+        /* text-decoration: none; */
+        margin-right: 10px;
+    }
+    
+    #button_to_sessao:hover {
+        transform: scale(1.1);
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+</style>
+
 <!-- <meta http-equiv="refresh" content="0;url=geraEBaixaPDF/{{memorando.id}}"> -->
 
 <body>
     <link rel="stylesheet" href="/static/css/style.css">
-    <header>
+    {% comment %} <header> {% endcomment %}
         <form style="width: 100%; margin: 0;" id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
@@ -18,7 +966,7 @@
             </div>
             <hr id="hr-generate">
             <div id="content">
-                <table style="width: 100%;" class="table" id="table-generate">
+                <table style="width: 100%;" class="table" id="table-generate" style="border: 1px solid blue">
                     <tr>
                         <th id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
@@ -86,13 +1034,15 @@
                             <td id="em"> Em: ______ /______ /______</td>
                         </tr>
                         <tr>
-                            <td id=ass> Ass: _____________________</td>
+                            <td id="ass"> Ass: _____________________</td>
                         </tr>
                     </table>
                 </fieldset>
             </div>
-            </footer>
+            {% comment %} </footer> {% endcomment %}
 </body>
 
+
 </html>
+
 {% endblock %}

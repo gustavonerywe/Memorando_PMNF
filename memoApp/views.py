@@ -18,6 +18,14 @@ from django.utils.safestring import mark_safe
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 import pdfkit
+import jinja2
+from jinja2 import Undefined
+from pathlib import Path
+from django.template.loader import render_to_string
+from weasyprint import HTML, CSS
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 @login_required
 def upload(request):
@@ -210,19 +218,49 @@ def encerraSessao(request):
 import io
 from django.http import HttpResponse
 
+
 def geraEBaixaPDF(request, memorando_id):
     # memorando = Memorando.objects.get(id=memorando_id)
-    path_wkhtmltopdf = 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
-    url_pdf = 'http://localhost:8006/pdf-gerado/'
+    
+    memorando = Memorando.objects.get(id=memorando_id)
+    data_atual = datetime.date.today()
+    data_numerica = data_atual.strftime("%d/%m/%y")
+    session = SessionStore(request.session.session_key)
+    grupo_escolhido = session.get('grupo_escolhido')
+    text_content = session.get('memorando_corpo')
+    grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+    context = {
+        'memorando': memorando,
+        'memorando_assunto': memorando.assunto,
+        'data_atual': data_numerica,
+        'grupo_escolhido': grupo_escolhido,
+        'text_content': mark_safe(text_content),
+        'grupo_escolhido_copia': grupo_escolhido_copia,
+    }
+    
+    
+    html_path = str(BASE_DIR) + "/memoAPP/templates/generate_pdf.html"
+
+    path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    html_render = render_to_string('generate_pdf.html', context, request=request)
+    
     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pdf = pdfkit.from_url("http://localhost:8006/generate_pdf/" + str(memorando_id), False, configuration=config)
-
+    
+    HTML(BASE_DIR+'\\memoApp\\templates\\generate_pdf.html').write_pdf('weasy.pdf', stylesheets=[CSS(filename=BASE_DIR+'\\memoApp\\static\\css\\style.css')])
+    
+    
+    
+    # pdfkit.from_file(html_path, 'file.pdf', css=str(BASE_DIR)+"\\memoApp\\static\\css\\style.css", configuration=config)
+    # pdfkit.from_string(html_render, output_pdf, css=str(BASE_DIR)+"\\memoApp\\static\\css\\style.css", configuration=config)
+    
+    
+    return render(request, 'template.html')
     # Criar uma resposta HTTP com o PDF como anexo
-    response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
-    response.write(pdf)
-    return response
-
+    # response = HttpResponse(pdf, content_type='application/pdf')
+    # response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
+    # response.write(pdf)
+    # return response
 
 # def teste(request):
 #     path_wkhtmltopdf = 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
