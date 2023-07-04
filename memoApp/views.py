@@ -243,11 +243,11 @@ def geraEBaixaPDF(request, memorando_id):
 
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
-    # html_render = render_to_string('generate_pdf.html', context, request=request)
+    html_render = render_to_string('generate_pdf.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     
-    HTML(html_path).write_pdf('weasy.pdf', stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
+    HTML(string=html_render).write_pdf('weasy.pdf', stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
     
     
     
