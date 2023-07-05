@@ -247,14 +247,15 @@ def geraEBaixaPDF(request, memorando_id):
     html_render = render_to_string('generate_pdf.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    pathToPdf = BASE_DIR+'/pdfs/memorando' + str(memorando_id) + '.pdf'
     
-    pdf = HTML(string=html_render).write_pdf('weasy.pdf', stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
     
     
-    with BytesIO(pdf) as f:
-        response = HttpResponse(f, content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
-        return response
+    with open(pathToPdf, 'rb') as f:
+            response = HttpResponse(f, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
+            return response
     
 
 @login_required
