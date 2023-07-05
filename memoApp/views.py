@@ -20,9 +20,7 @@ from django.contrib.auth.forms import AuthenticationForm
 import os
 from django.shortcuts import get_object_or_404
 from django.conf import settings
-# import pdfkit
-# import jinja2
-# from jinja2 import Undefined
+from io import BytesIO
 from pathlib import Path
 from django.template.loader import render_to_string
 # from weasyprint import HTML, CSS
@@ -250,7 +248,7 @@ def geraEBaixaPDF(request, memorando_id):
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     
-    HTML(string=html_render).write_pdf('weasy.pdf', stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
+    pdf = HTML(string=html_render).write_pdf('weasy.pdf', stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
     
     
     
@@ -272,9 +270,9 @@ def geraEBaixaPDF(request, memorando_id):
 #     pdfkit.from_url("https://www.google.com/", url_pdf, configuration=config)   
 
 @login_required
-def force_download(request):
-    file_path = str(BASE_DIR) + '/memoApp/static/teste.txt'
-    with open(file_path, 'rb') as f:
-            response = HttpResponse(f, content_type='text/plain')
+def force_download(request, pdf):
+    # file_path = str(BASE_DIR) + '/memoApp/static/teste.txt'
+    with BytesIO(pdf) as f:
+            response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="downloaded_file.txt"'
             return response

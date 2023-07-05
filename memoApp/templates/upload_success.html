@@ -15,7 +15,8 @@
       <a id="link-upload">Novo memorando</a>
     </div>
     <div id="link-container">
-      <a id="link-upload-pdf" href="{% url 'generate_pdf' memorando.id %}" target="_blank">
+        <a id="link-upload-pdf" href="{% url 'force_download' %}" target="_blank">
+      {% comment %} <a id="link-upload-pdf" href="{% url 'generate_pdf' memorando.id %}" target="_blank"> {% endcomment %}
         <img id="img-pdf" src="/static/img/pdf.png" alt="imagem do pdf">Gerar PDF
       </a>
     </div>
