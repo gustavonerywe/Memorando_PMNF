@@ -23,7 +23,7 @@ from django.conf import settings
 from io import BytesIO
 from pathlib import Path
 from django.template.loader import render_to_string
-# from weasyprint import HTML, CSS
+from weasyprint import HTML, CSS
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
