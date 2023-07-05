@@ -23,7 +23,7 @@ from django.conf import settings
 from io import BytesIO
 from pathlib import Path
 from django.template.loader import render_to_string
-# from weasyprint import HTML, CSS
+from weasyprint import HTML, CSS
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -250,6 +250,7 @@ def geraEBaixaPDF(request, memorando_id):
     
     pdf = HTML(string=html_render).write_pdf('weasy.pdf', stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
     
+    force_download(request, pdf)
     
     
     # pdfkit.from_file(html_path, 'file.pdf', css=str(BASE_DIR)+"\\memoApp\\static\\css\\style.css", configuration=config)
