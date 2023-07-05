@@ -250,25 +250,12 @@ def geraEBaixaPDF(request, memorando_id):
     
     pdf = HTML(string=html_render).write_pdf('weasy.pdf', stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
     
-    force_download(request, pdf)
     
+    with BytesIO(pdf) as f:
+        response = HttpResponse(f, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="downloaded_file.txt"'
+        return response
     
-    # pdfkit.from_file(html_path, 'file.pdf', css=str(BASE_DIR)+"\\memoApp\\static\\css\\style.css", configuration=config)
-    # pdfkit.from_string(html_render, output_pdf, css=str(BASE_DIR)+"\\memoApp\\static\\css\\style.css", configuration=config)
-    
-    
-    return render(request, 'template.html')
-    # Criar uma resposta HTTP com o PDF como anexo
-    # response = HttpResponse(pdf, content_type='application/pdf')
-    # response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
-    # response.write(pdf)
-    # return response
-
-# def teste(request):
-#     path_wkhtmltopdf = 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
-#     url_pdf='C:\\Users\\luiseduardo.salarini\\Documents\\GitHub\\desenvolve_nf\\desenvolve_nf\\static\\home.pdf'
-#     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)    
-#     pdfkit.from_url("https://www.google.com/", url_pdf, configuration=config)   
 
 @login_required
 def force_download(request, pdf):
