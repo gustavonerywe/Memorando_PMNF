@@ -247,7 +247,7 @@ def geraEBaixaPDF(request, memorando_id):
     html_render = render_to_string('generate_pdf.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pathToPdf = BASE_DIR+'/pdfs/memorando' + str(memorando_id) + '.pdf'
+    pathToPdf = str(BASE_DIR)+'/pdfs/memorando' + str(memorando_id) + '.pdf'
     
     HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
     
