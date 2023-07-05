@@ -166,7 +166,8 @@ function createNewInput() {
   const cancelButton = document.createElement('button');
   const newFileInput = document.createElement('input');
   let imgRemove = document.createElement('img');
-  let widthInput = document.getElementById('id_file').width;
+  // let widthInput = document.getElementById('id_file').width;
+  newFileInput.setAttribute('id','id_file');
 
   inputRow.classList.add('input-row');
   cancelButton.classList.add('cancel-button');
@@ -177,6 +178,7 @@ function createNewInput() {
   newFileInput.name = 'file';
   // newFileInput.style.margin = '15px'
   // newFileInput.style.width = '100%';
+  newFileInput.setAttribute('id', 'id_file');
   newFileInput.classList.add('form-control', 'form-control-sm');
   newFileInput.classList.add('file-input');
   newFileInput.multiple = true;
@@ -256,7 +258,6 @@ function addCancelButtonEvent(cancelButton){
 }
 
 addInputButton.addEventListener('click', function () {
-  console.log("p")
   createNewInput();
   const cancelButtons = document.querySelectorAll('.cancel-button');  
   cancelButtons.forEach(function (cancelButton) {
