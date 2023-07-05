@@ -253,7 +253,7 @@ def geraEBaixaPDF(request, memorando_id):
     
     with BytesIO(pdf) as f:
         response = HttpResponse(f, content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="downloaded_file.txt"'
+        response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
         return response
     
 
