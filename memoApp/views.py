@@ -23,7 +23,8 @@ from django.conf import settings
 from io import BytesIO
 from pathlib import Path
 from django.template.loader import render_to_string
-from weasyprint import HTML, CSS
+from urllib.parse import quote
+# from weasyprint import HTML, CSS
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -93,8 +94,8 @@ def upload(request):
 
 
 @login_required
-def generate_pdf(request, memorando_id):
-    memorando = Memorando.objects.get(id=memorando_id)
+def generate_pdf(request, id_criptografado):
+    memorando = Memorando.objects.get(id=id_criptografado)
     memo_numero_atualizado = memorando.gerar_proximo_numero()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -211,8 +212,8 @@ def encerraSessao(request):
     logout(request)
     return redirect('loginPage')
 
-# def geraEBaixaPDF(request, memorando_id):
-#     pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(memorando_id))
+# def geraEBaixaPDF(request, id_criptografado):
+#     pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(id_criptografado))
 #     response = FileResponse(pdf, as_attachment=True, filename='memorando.pdf')
 #     return response
 
@@ -220,10 +221,11 @@ import io
 from django.http import HttpResponse
 
 
-def geraEBaixaPDF(request, memorando_id):
-    # memorando = Memorando.objects.get(id=memorando_id)
+def geraEBaixaPDF(request, id_criptografado):
     
-    memorando = Memorando.objects.get(id=memorando_id)
+    id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    url_criptografada = quote(id_criptografado_criptografado)
+    memorando = Memorando.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
@@ -247,9 +249,9 @@ def geraEBaixaPDF(request, memorando_id):
     html_render = render_to_string('generate_pdf.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pathToPdf = str(BASE_DIR)+'/pdfs/memorando' + str(memorando_id) + '.pdf'
+    pathToPdf = str(BASE_DIR)+'/pdfs/memorando' + str(id_criptografado) + '.pdf'
     
-    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
+    # HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
     
     
     with open(pathToPdf, 'rb') as f:
@@ -265,3 +267,13 @@ def force_download(request, pdf):
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
             return response
+
+import hashlib
+
+def criptografar_id_criptografado(id_criptografado):
+    id_criptografado_str = str(id_criptografado)
+    
+    hash_object = hashlib.sha256(id_criptografado_str.encode())
+    encrypted_id = hash_object.hexdigest()
+    
+    return encrypted_id
