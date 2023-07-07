@@ -225,8 +225,8 @@ from django.http import HttpResponse
 
 def geraEBaixaPDF(request, id_criptografado):
     
-    id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
-    url_criptografada = quote(id_criptografado_criptografado)
+    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    # url_criptografada = quote(id_criptografado_criptografado)
     memorando = Memorando.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
