@@ -956,8 +956,8 @@ hr {
 #corpo-pdf{
     margin: 0 auto;
     size: A4;
-    width: 210mm;
-    height: 297mm;
+    width: 179mm;
+    height: 293mm;
 }
 
 #content-pdf{
