@@ -1,0 +1,39 @@
+#upload-section {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #drop-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+  }
+  
+  #drop-area i {
+    font-size: 48px;
+    margin-bottom: 10px;
+    border: black;
+  }
+  
+  #drop-area p {
+    margin: 0;
+  }
+  
+  #file-input {
+    display: none;
+  }
+  
+  #submit-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #submit-button:hover {
+    background-color: #0056b3;
+  }
+  

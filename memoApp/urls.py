@@ -7,7 +7,7 @@ urlpatterns = [
     path('generate_pdf/<int:memorando_id>', views.generate_pdf, name='generate_pdf'),
     path('login/', views.loginPage, name='loginPage'),
     path('encerrar-sessao/', views.encerraSessao, name='encerraSessao'),
-    path('gerar-pdf/<int:memorando_id>/', views.geraEBaixaPDF, name='gerar_pdf'),
+    path('gerar-pdf/<int:id_criptografado>/', views.geraEBaixaPDF, name='gerar_pdf'),
     path('force-download/', views.force_download, name='force_download'),
     path('my-pdf/<int:pk>/', views.PrintView.as_view(), name='my_pdf'),
 ]

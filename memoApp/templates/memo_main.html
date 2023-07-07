@@ -119,8 +119,28 @@
 
 <!-- templates/upload.html -->
 <br>
-<div id="drop-area">
-    <p>Arraste e solte os arquivos aqui</p>
+<div id="drop-area" class="dropzone" >
+    <div id="file-margin">
+        <div id="div-icon">
+        <i class="bi bi-cloud-arrow-up" id="icon-files"></i>
+        </div>
+        <p id="spanMessage"></p>
+        <div id="input-container">
+            <div id="container-file">
+                <div class="input-row" id="div-anexo-orig">
+                    <button type="button" id="botaoModal" class="cancel-button"
+                        data-index="original"><i class="bi bi-dash"></i></button>
+                    <div class="mb-3">
+                        <input class="form-control form-control-sm" id="id_file" type="file">
+                    </div>
+                    <button type="button" style="font-size: 1.0em;" class="addInput" id="addInput">
+                        <i class="bi bi-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <p id="uploadFile">Escolha ou arraste os arquivos aqui!</p>
+        </div>
+    </div>
 </div>
 <div id="italic-message">
     <em style="font-size: 0.7em;">Tamanho máximo: 100mb</em>
@@ -132,34 +152,6 @@
         <tr>
             <td>
                 <section id="main-file">
-                    <fieldset id="box-upload-main">
-                        <div id="file-margin">
-                            <label id="label-file" for="id_file">Selecionar Arquivos</label>
-                            <p id="spanMessage"></p>
-                            <div id="input-container">
-                                <br><br>
-                                <div id="container-file">
-                                    <div class="input-row" id="div-anexo-orig">
-                                        <button type="button" id="botaoModal" class="cancel-button"
-                                            data-index="original"><i class="bi bi-dash"></i></button>
-                                        <div class="mb-3">
-                                            <input class="form-control form-control-sm" id="id_file" type="file">
-                                        </div>
-                                        <style>
-                                            .custom-icon {
-                                                transform: scale(2.0);
-                                                /* Ajuste o valor para aumentar ou diminuir o tamanho do ícone */
-                                            }
-                                        </style>
-
-                                        <button type="button" style="font-size: 1.0em;" class="addInput" id="addInput">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div id="meuModal">
                             <div class="modal-content">
                                 <span class="fechar">&times;</span>
@@ -172,7 +164,6 @@
                                 </div>
                             </div>
                         </div>
-                    </fieldset>
                 </section>
             </td>
         </tr>
@@ -270,6 +261,7 @@
         $('#select-secretaria-copia-para').select2();
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
 
 </html>
 {% endblock %}
