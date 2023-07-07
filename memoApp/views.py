@@ -252,8 +252,11 @@ def geraEBaixaPDF(request, id_criptografado):
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     pathToPdf = str(BASE_DIR)+'/pdfs/memorando' + str(id_criptografado) + '.pdf'
+
+    with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
+        conteudo = arquivoCss.read()
     
-    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(filename=str(BASE_DIR)+'/memoApp/static/css/style.css')])
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
     
     
     with open(pathToPdf, 'rb') as f:
