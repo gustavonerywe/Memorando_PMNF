@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render, redirect,  get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -24,6 +25,7 @@ from io import BytesIO
 from pathlib import Path
 from django.template.loader import render_to_string
 from weasyprint import HTML, CSS
+from django_weasyprint import *
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -265,3 +267,53 @@ def force_download(request, pdf):
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
             return response
+        
+from django.views.generic import DetailView
+
+from django_weasyprint import WeasyTemplateResponseMixin
+
+
+class MyDetailView(DetailView):
+    template_name = 'generate_pdf.html'
+
+
+class PrintView(WeasyTemplateResponseMixin, MyDetailView):
+    
+    model = Memorando
+    
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        
+    def get_queryset(self):
+        return Memorando.objects.all()
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        memorando = Memorando.objects.get(id=self.kwargs['pk'])
+        data_atual = datetime.date.today()
+        data_numerica = data_atual.strftime("%d/%m/%y")
+        session = SessionStore(self.request.session.session_key)
+        grupo_escolhido = session.get('grupo_escolhido')
+        text_content = session.get('memorando_corpo')
+        grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+        context = {
+            'memorando': memorando,
+            'memorando_assunto': memorando.assunto,
+            'data_atual': data_numerica,
+            'grupo_escolhido': grupo_escolhido,
+            'text_content': mark_safe(text_content),
+            'grupo_escolhido_copia': grupo_escolhido_copia,
+        }
+        
+        
+        return context
+
+    pdf_stylesheets= [
+        settings.STATIC_ROOT + '/css/style.css',
+    ]
+    
+    pdf_filename = 'memo.pdf'
+    
+    response_class = WeasyTemplateResponse
+    

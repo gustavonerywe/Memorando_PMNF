@@ -7,9 +7,9 @@
 <html class="page_pdf" id="page_pdf">
 
 <!-- <meta http-equiv="refresh" content="0;url=geraEBaixaPDF/{{memorando.id}}"> -->
-
 <body>
     <link rel="stylesheet" href="/static/css/style.css">
+    <div id='corpo-pdf'>
     {% comment %} <header> {% endcomment %}
         <form style="width: 100%; margin: 0;" id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
@@ -17,7 +17,7 @@
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
             </div>
             <hr id="hr-generate">
-            <div id="content">
+            <div id="content-pdf">
                 <table style="width: 100%;" class="table" id="table-generate" style="border: 1px solid blue">
                     <tr>
                         <th id="tituloTable" colspan="2">MEMORANDO</th>
@@ -92,6 +92,8 @@
                 </fieldset>
             </div>
             {% comment %} </footer> {% endcomment %}
+        </div>
+        
 </body>
 
 <script src="/static/js/generate_pdf.js"></script>

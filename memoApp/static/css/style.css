@@ -37,7 +37,7 @@ h6 {
 #footer {
     padding: 10px;
     text-align: center;
-    margin-left: 700px;
+    margin-left: 67%;
 }
 
 .table {
@@ -67,10 +67,6 @@ h6 {
 #img {
     margin-right: 75%;
     width: 20%;
-}
-
-#footer {
-    margin-left: 600px;
 }
 
 #box-field {
@@ -947,4 +943,15 @@ hr {
     transform: scale(1.1);
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#corpo-pdf{
+    margin: 0 auto;
+    size: A4;
+    width: 210mm;
+    height: 297mm;
+}
+
+#content-pdf{
+    width: 100%;
 }
