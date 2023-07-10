@@ -62,7 +62,7 @@ h6 {
 #tituloTable,
 #tituloTable2 {
     text-align: center;
-    font-weight: bold ;
+    font-weight: bold;
 }
 
 #img {
@@ -92,7 +92,6 @@ h6 {
 
 #image-name {
     text-align: center;
-
 }
 
 #memo_numero {
@@ -119,16 +118,15 @@ main#corpo {
 }
 
 main {
-    margin-top: 5%
+    margin-top: 5%;
 }
 
 .td-file {
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 25px;
     text-decoration: none;
 }
-
 
 #box-file {
     width: 40%;
@@ -172,7 +170,7 @@ main {
 #title-footer {
     text-align: center;
     font-size: 165%;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     margin-top: 50px;
 }
 
@@ -204,9 +202,9 @@ main {
     border: 0.2px solid black;
     width: 200px;
     font: bold 20px times;
-    background-color: #CFF4FC;
+    background-color: #cff4fc;
 }
-#botao:hover{
+#botao:hover {
     transform: scale(1.1);
 }
 
@@ -219,7 +217,6 @@ main {
     text-align: center;
     color: #333333c5;
 }
-
 
 #button-file {
     display: flex;
@@ -379,17 +376,16 @@ main {
     border-radius: 30px;
     padding: 20px;
     margin: 0 auto;
-
 }
 
 .style-p {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 25px;
     line-height: 35px;
 }
 
 #titulo-file-detail {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 35px;
 }
 
@@ -401,9 +397,6 @@ main {
     margin-bottom: 5px;
     text-align: center;
 }
-
-
-
 
 #container_and_button,
 #container_and_button-copia {
@@ -424,7 +417,7 @@ main {
 #addSelect,
 #addSelectCopia {
     margin-right: 10px;
-    background-color: #479F76;
+    background-color: #479f76;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
@@ -445,7 +438,7 @@ main {
 
 .addInput {
     margin-left: -40px;
-    background-color: #479F76;
+    background-color: #479f76;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
@@ -469,20 +462,19 @@ main {
     */
 }
 
-
 .input-row {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.cancel-button:hover{
+.cancel-button:hover {
     transform: scale(1.1);
 }
 
 .cancel-button {
     margin-right: 10px;
-    background-color: #E35D6A;
+    background-color: #e35d6a;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
@@ -644,19 +636,19 @@ hr {
 #buttonNoModal,
 #buttonNoModalMemorando,
 #nao-envia-modal {
-    background-color:  #E35D6A;
+    background-color: #e35d6a;
 }
 
 #buttonYesModal,
 #buttonYesModalMemorando,
 #envia-modal {
-    background-color: #479F76;
+    background-color: #479f76;
 }
 
 #buttonNoModal:hover,
 #buttonNoModalMemorando:hover,
 #nao-envia-modal:hover {
-    background-color:  #e62c3e;
+    background-color: #e62c3e;
     transform: scale(1.1);
 }
 
@@ -667,7 +659,7 @@ hr {
     transform: scale(1.1);
 }
 
-#ok-modal:hover{
+#ok-modal:hover {
     transform: scale(1.1);
 }
 
@@ -700,7 +692,7 @@ hr {
 .tox .tox-statusbar a,
 .tox .tox-statusbar__path-item,
 .tox .tox-statusbar__wordcount {
-    color: rgba(34, 47, 62, .7);
+    color: rgba(34, 47, 62, 0.7);
     text-decoration: none;
     display: none;
 }
@@ -717,7 +709,7 @@ hr {
 #uploadFile {
     color: black;
     font-size: 0.8em;
-    text-align:center;
+    text-align: center;
 }
 
 #searchInput {
@@ -826,7 +818,7 @@ hr {
 #btnSair {
     text-decoration: none;
     color: white;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #btnTrueSair {
@@ -851,7 +843,6 @@ hr {
     margin-left: auto;
     margin-right: auto;
     text-shadow: rgb(12, 12, 12);
-    ;
 }
 
 #login-box p {
@@ -887,14 +878,13 @@ hr {
     background-repeat: no-repeat;
 }
 
-.cancel-button-select:hover{
+.cancel-button-select:hover {
     transform: scale(1.1);
-
 }
 
 .cancel-button-select {
     margin-right: 10px;
-    background-color: #E35D6A; 
+    background-color: #e35d6a;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
@@ -937,7 +927,7 @@ hr {
     margin-left: 10px;
     margin-right: 10px;
 }
-#id_file1{
+#id_file1 {
     display: block;
     margin: 0 auto;
     margin-right: 50px;
@@ -945,22 +935,21 @@ hr {
     border-radius: 20px;
     margin-bottom: -17px;
 }
-#icon-files{
+#icon-files {
     font-size: 60px;
-    
 }
-#div-icon{
+#div-icon {
     text-align: center;
     margin-top: -75px;
-}  
+}
 
-#corpo-pdf{
+#corpo-pdf {
     margin: 0 auto;
     size: A4;
     width: 179mm;
     height: 293mm;
 }
 
-#content-pdf{
+#content-pdf {
     width: 100%;
 }
