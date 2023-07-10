@@ -45,7 +45,7 @@ h6 {
     border-collapse: collapse;
     width: 75%;
     margin-bottom: 20px;
-    border: 5px solid;
+    border: 2px solid;
 }
 
 #table-header {
@@ -146,12 +146,13 @@ main {
     border: 2px dashed black;
     background-color: #cbe9f38e;
     width: 80%;
-    height: 350px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 #italic-message {
