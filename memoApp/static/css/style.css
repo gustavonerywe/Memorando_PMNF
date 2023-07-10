@@ -152,7 +152,7 @@ main {
     align-items: center;
     font-size: 15px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 5%;
 }
 
 #italic-message {
@@ -320,7 +320,7 @@ main {
     color: cyan;
 }
 
-#link-container {
+.link-container {
     text-align: center;
 }
 

@@ -5,23 +5,18 @@
 {% block content %}
 
 <html class="page_pdf" id="page_pdf">
-
-<!-- <meta http-equiv="refresh" content="0;url=geraEBaixaPDF/{{memorando.id}}"> -->
-
-<div id="corpo-pdf">
-
     <body>
-        <link rel="stylesheet" href="/static/css/style.css">
-        {% comment %} <header> {% endcomment %}
-            <form style="width: 100%; margin: 0;" id="form-main" method="post" enctype="multipart/form-data"
-                action="{% url 'upload' %}">
+        <div id="corpo-pdf">
+            <link rel="stylesheet" href="/static/css/style.css" />
+            {% comment %} {% endcomment %}
+            <form style="width: 100%; margin: 0;" id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
                 {% csrf_token %}
                 <div id="header">
-                    <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura">
+                    <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
                 </div>
-                <hr id="hr-generate">
+                <hr id="hr-generate" />
                 <div id="content-pdf">
-                    <table style="width: 100%;" class="table" id="table-generate" style="border: 1px solid blue">
+                    <table style="width: 100%;" class="table" id="table-generate" style="border: 1px solid blue;">
                         <tr>
                             <th style="text-align: center; font-weight: bold;" id="tituloTable" colspan="2">MEMORANDO</th>
                         </tr>
@@ -37,8 +32,10 @@
                         </tr>
                         <tr>
                             <th class="th-generate" style="vertical-align: middle;">De:</th>
-                            <td class="td-generate">{{ user.groups.first.name }}
-                                <hr> {{ user.get_full_name }}
+                            <td class="td-generate">
+                                {{ user.groups.first.name }}
+                                <hr />
+                                {{ user.get_full_name }}
                             </td>
                         </tr>
                         <tr>
@@ -76,29 +73,29 @@
                             </td>
                         </tr>
                     </table>
-                     <div style="width: 100%; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
-                <div id="footer">
-                    <p>
-                    <fieldset id="box-field-generate">
-                        <table>
-                            <tr>
-                                <th id="tituloTable2">RECEBIDO</td>
-                            </tr>
-                            <tr>
-                                <td id="em"> Em: ______ /______ /______</td>
-                            </tr>
-                            <tr>
-                                <td id="ass"> Ass: _____________________</td>
-                            </tr>
-                        </table>
-                    </fieldset>
+                    <div style="width: 100%; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
+                    <div id="footer">
+                        <p></p>
+                        <fieldset id="box-field-generate">
+                            <table>
+                                <tr>
+                                    <th id="tituloTable2">RECEBIDO</th>
+                                </tr>
+                                <tr>
+                                    <td id="em">Em: ______ /______ /______</td>
+                                </tr>
+                                <tr>
+                                    <td id="ass">Ass: _____________________</td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
                 </div>
-</div>
-{% comment %} </footer> {% endcomment %}
-</body>
-
-<script src="/static/js/generate_pdf.js"></script>
-
+                {% comment %}{% endcomment %}
+                <script src="/static/js/generate_pdf.js"></script>
+            </form>
+        </div>
+    </body>
 </html>
 
 {% endblock %}
