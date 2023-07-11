@@ -5,97 +5,221 @@
 {% block content %}
 
 <html class="page_pdf" id="page_pdf">
-    <body>
-        <div id="corpo-pdf">
-            <link rel="stylesheet" href="/static/css/style.css" />
-            {% comment %} {% endcomment %}
-            <form style="width: 100%; margin: 0;" id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
-                {% csrf_token %}
-                <div id="header">
-                    <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
+
+<style>
+    #tituloTable,
+#tituloTable2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+body {
+    width: 75%;
+    background: #fff;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+}
+
+#header {
+    padding: 10px;
+    text-align: center;
+}
+
+#content {
+    padding: 20px;
+}
+
+#footer {
+    padding: 10px;
+    text-align: center;
+    margin-left: 60%;
+}
+    #table-generate {
+        width: 77%;
+        text-align: center;
+        margin-bottom: 10px;
+        border: 2px solid black;
+        float: left;
+        border-collapse: collapse;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        margin-top: -25px;
+    }
+
+    /* .table {
+        padding: 10px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 60%;
+        margin-bottom: 20px;
+        border: 0.5px solid black;
+    } */
+
+    .th-generate {
+        width: 200px;
+        font-weight: bold !important;
+    }
+
+    .td-generate {
+        width: 200px;
+    }
+
+    #form-main {
+        width: 100%;
+        background: #fff;
+    }
+
+    hr {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    #hr-generate {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #corpo-pdf {
+        size: A4;
+    }
+
+    /* #li-para, #li-cop {
+        margin-top: -200px;
+        padding: 0;
+    }
+
+    #p-princ {
+        margin-bottom: -20px;
+    } */
+
+    #corpo-memorando-pdf{
+        margin: 10px;
+    }
+
+    #img {
+    margin-right: 100%;
+    width: 35%;
+    margin-top: -90px;
+}
+
+body {
+    width: 75%;
+    background: #fff;
+    margin: 0 auto;
+}
+
+#table-recebido {
+    border: 2px solid black;
+    padding: 10px;
+}
+</style>
+
+<body>
+    <div id="corpo-pdf">
+        <link rel="stylesheet" href="/static/css/style.css" />
+        {% comment %} {% endcomment %}
+        <form id="form-main" method="post" enctype="multipart/form-data"
+            action="{% url 'upload' %}">
+            {% csrf_token %}
+            <div id="header">
+                <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
+            </div>
+            <hr id="hr-generate" />
+            <div id="content-pdf">
+                <table class="table" id="table-generate">
+                    <tr>
+                        <th style="text-align: center;" id="tituloTable" colspan="2">MEMORANDO</th>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Data:</th>
+                        <td class="td-generate">
+                            <p style="margin-bottom: 2px;">{{ data_atual }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Número do memorando:</th>
+                        <td class="td-generate"><span id="memo_numero">{{memorando.memo_numero}}</span></td>
+                    </tr>
+                    <tr>
+                        <div id="teste">
+                            <th id="teste" class="th-generate" style="vertical-align: middle;">De:</th>
+                        </div>
+                        <td class="td-generate">
+                            {{ user.groups.first.name }}
+                            <br>
+                            {{ user.get_full_name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Para:</th>
+                        <td class="td-generate" id="secretaria-escolhida">
+                            <p id="p-princ" style="margin-bottom: 15px;">Principal:</p>
+                            {% for grupo in grupo_escolhido %}
+                            <ul>
+                                <li id="li-para" style="margin-top: -15px; padding: 0px;">
+                                    {{ grupo }}
+                                </li>
+                            </ul>
+                                
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% if grupo_escolhido_copia|length > 0 %}
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Cópia para:</th>
+                        <td class="td-generate" id="secretaria-escolhida">
+                            <p id="p-cop" style="margin-bottom: 15px;">Cópia para:</p>
+                            {% for grupo in grupo_escolhido_copia %}
+                            <ul>
+                                <li id="li-cop" style="margin-top: -15px; padding: 0px;">
+                                    {{ grupo }}
+                                </li>
+                            </ul>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
+                        <td class="td-generate">
+                            <p style="margin-bottom: 2px;">{{ memorando_assunto }}</p>
+                        </td>
+                    </tr>
+                </table>
+                <div style=" margin-top: 10px; width: 50%; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
+                <div id="footer">
+                    <p></p>
+                    <fieldset id="box-field-generate">
+                        <table id="table-recebido">
+                            <tr>
+                                <th id="tituloTable2">RECEBIDO</th>
+                            </tr>
+                            <tr>
+                                <td id="em">Em: ______ /______ /______</td>
+                            </tr>
+                            <tr>
+                                <td id="ass">Ass: _____________________</td>
+                            </tr>
+                        </table>
+                    </fieldset>
                 </div>
-                <hr id="hr-generate" />
-                <div id="content-pdf">
-                    <table style="width: 100%;" class="table" id="table-generate" style="border: 1px solid blue;">
-                        <tr>
-                            <th style="text-align: center; font-weight: bold;" id="tituloTable" colspan="2">MEMORANDO</th>
-                        </tr>
-                        <tr>
-                            <th class="th-generate" style="vertical-align: middle;">Data:</th>
-                            <td class="td-generate">
-                                <p style="margin-bottom: 2px;">{{ data_atual }}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="th-generate" style="vertical-align: middle;">Número do memorando:</th>
-                            <td class="td-generate"><span id="memo_numero">{{memorando.memo_numero}}</span></td>
-                        </tr>
-                        <tr>
-                            <th class="th-generate" style="vertical-align: middle;">De:</th>
-                            <td class="td-generate">
-                                {{ user.groups.first.name }}
-                                <hr />
-                                {{ user.get_full_name }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="th-generate" style="vertical-align: middle;">Para:</th>
-                            <td class="td-generate" id="secretaria-escolhida">
-                                <p style="margin-bottom: 15px;">Principal:</p>
-                                {% for grupo in grupo_escolhido %}
-                                <ul>
-                                    <li style="margin-top: -15px; padding: 0px;">
-                                        {{ grupo }}
-                                    </li>
-                                </ul>
-                                {% endfor %}
-                            </td>
-                        </tr>
-                        {% if grupo_escolhido_copia|length > 0 %}
-                        <tr>
-                            <th class="th-generate" style="vertical-align: middle;">Cópia para:</th>
-                            <td class="td-generate" id="secretaria-escolhida">
-                                <p style="margin-bottom: 15px;">Cópia para:</p>
-                                {% for grupo in grupo_escolhido_copia %}
-                                <ul>
-                                    <li style="margin-top: -15px; padding: 0px;">
-                                        {{ grupo }}
-                                    </li>
-                                </ul>
-                                {% endfor %}
-                            </td>
-                        </tr>
-                        {% endif %}
-                        <tr>
-                            <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
-                            <td class="td-generate">
-                                <p style="margin-bottom: 2px;">{{ memorando_assunto }}</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <div style="width: 100%; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
-                    <div id="footer">
-                        <p></p>
-                        <fieldset id="box-field-generate">
-                            <table>
-                                <tr>
-                                    <th id="tituloTable2">RECEBIDO</th>
-                                </tr>
-                                <tr>
-                                    <td id="em">Em: ______ /______ /______</td>
-                                </tr>
-                                <tr>
-                                    <td id="ass">Ass: _____________________</td>
-                                </tr>
-                            </table>
-                        </fieldset>
-                    </div>
-                </div>
-                {% comment %}{% endcomment %}
-                <script src="/static/js/generate_pdf.js"></script>
-            </form>
-        </div>
-    </body>
+            </div>
+            {% comment %}{% endcomment %}
+            <script src="/static/js/generate_pdf.js"></script>
+        </form>
+    </div>
+</body>
+
 </html>
 
 {% endblock %}
