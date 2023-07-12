@@ -71,19 +71,27 @@ document.addEventListener('DOMContentLoaded', function () {
   
     selectCounterCopia++;
   
-    novoWrapper.setAttribute('class', 'select-wrapper-copia');
-    novoWrapper.id = 'select-container-copia-' + selectCounterCopia;
-    selectTable.appendChild(novoWrapper);
-  
-    let novoSelect = selectOriginal.cloneNode(true);
+    let novoSelect = document.createElement('select');
     novoSelect.name = 'destinatarios_copia';
     novoSelect.id = 'select-secretaria-copia-' + selectCounterCopia;
     novoSelect.style.width = '100%';
   
     // Adicionar classes do Bootstrap ao novo select
-    novoSelect.classList.add('select2', 'selects');
+    novoSelect.classList.add('form-control');
   
+    novoWrapper.setAttribute('class', 'select-wrapper-copia');
+    novoWrapper.id = 'select-container-copia-' + selectCounterCopia;
     novoWrapper.appendChild(novoSelect);
+    selectTable.appendChild(novoWrapper);
+  
+    // Clone as opções do select original para o novo select
+    let options = selectOriginal.options;
+    for (let i = 0; i < options.length; i++) {
+      let option = document.createElement('option');
+      option.value = options[i].value;
+      option.text = options[i].text;
+      novoSelect.appendChild(option);
+    }
     $(novoSelect).select2();
   }
   
@@ -122,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function createNewSelect() {
     let selectOriginal = document.getElementById('select-secretaria');
-    let selectClone = selectOriginal.cloneNode(true);
     let novoWrapper = document.createElement('div');
     let selectTable = document.getElementById('select-table');
 
@@ -143,21 +150,30 @@ document.addEventListener('DOMContentLoaded', function () {
         removeLastSelect();
       })
     }
-
+    
     selectCounter++;
-
-    novoWrapper.setAttribute('class', 'select-wrapper');
-    novoWrapper.id = 'select-container-' + selectCounter;
-    selectTable.appendChild(novoWrapper)
-
-    selectClone.id = 'select-secretaria-' + selectCounter;
-    selectClone.setAttribute('data-select2-id', selectClone.id);
-    selectClone.style.width = '100%';
-
-    novoWrapper.appendChild(selectClone);
-    $(selectClone).select2();
-    $(selectClone).val(null);
-    selectClone.selectedIndex = 0;
+  
+    let novoSelect = document.createElement('select');
+    novoSelect.name = 'destinatarios_copia';
+    novoSelect.id = 'select-secretaria-copia-' + selectCounter;
+    novoSelect.style.width = '100%';
+  
+    novoSelect.classList.add('form-control');
+  
+    novoWrapper.setAttribute('class', 'select-wrapper-copia');
+    novoWrapper.id = 'select-container-copia-' + selectCounter;
+    novoWrapper.appendChild(novoSelect);
+    selectTable.appendChild(novoWrapper);
+  
+    // Clone as opções do select original para o novo select
+    let options = selectOriginal.options;
+    for (let i = 0; i < options.length; i++) {
+      let option = document.createElement('option');
+      option.value = options[i].value;
+      option.text = options[i].text;
+      novoSelect.appendChild(option);
+    }
+    $(novoSelect).select2();
   }
 
 
