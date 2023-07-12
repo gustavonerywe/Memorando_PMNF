@@ -33,60 +33,68 @@ let selectCounterCopia = 1;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  function removeLastSelectCopia(){
-    if(selectCounterCopia>1){
-      let elementRemovido = document.getElementById('select-container-copia-'+selectCounterCopia);
+  function removeLastSelectCopia() {
+    if (selectCounterCopia > 1) {
+      let elementRemovido = document.getElementById('select-container-copia-' + selectCounterCopia);
       let removeBotao = document.getElementById('removeSelectCopia');
-
-      console.log(elementRemovido);
+  
       elementRemovido.remove();
       selectCounterCopia--;
-            
-      if(selectCounterCopia == 1){
+  
+      if (selectCounterCopia == 1) {
         removeBotao.remove();
       }
     }
   }
-
+  
   function createNewSelectCopia() {
     let selectOriginal = document.getElementById('select-secretaria-copia-para');
-    let selectClone = selectOriginal.cloneNode(true);
     let novoWrapper = document.createElement('div');
     let selectTable = document.getElementById('select-table-copia');
-
-    if(selectCounterCopia == 1){
+  
+    if (selectCounterCopia == 1) {
       let removeSelect = document.createElement('button');
-      removeSelect.setAttribute('class', 'cancel-button-select')
+      removeSelect.setAttribute('class', 'cancel-button-select');
       let tagIcone = document.createElement('i');
       tagIcone.setAttribute('class', 'bi bi-dash');
       removeSelect.appendChild(tagIcone);
       let container = document.getElementById('container_and_button-copia');
-      container.appendChild(removeSelect)
-
-
-      // container.appendChild(removeSelect);
-       removeSelect.id = 'removeSelectCopia';
-      // removeSelect.innerHTML = "REMOVER";
-        removeSelect.type = 'button';
-
-      removeSelect.addEventListener('click', function(){
+      container.appendChild(removeSelect);
+  
+      removeSelect.id = 'removeSelectCopia';
+      removeSelect.type = 'button';
+  
+      removeSelect.addEventListener('click', function () {
         removeLastSelectCopia();
-      })
+      });
     }
-
+  
     selectCounterCopia++;
+  
     novoWrapper.setAttribute('class', 'select-wrapper-copia');
     novoWrapper.id = 'select-container-copia-' + selectCounterCopia;
-    selectTable.appendChild(novoWrapper)
-
-
-    selectClone.id = 'select-secretaria-copia-' + selectCounterCopia;
-    selectClone.setAttribute('data-select2-id', selectClone.id);
-    selectClone.style.width = '100%';
-
-    novoWrapper.appendChild(selectClone);
-    $(selectClone).select2();
+    selectTable.appendChild(novoWrapper);
+  
+    let novoSelect = selectOriginal.cloneNode(true);
+    novoSelect.name = 'destinatarios_copia';
+    novoSelect.id = 'select-secretaria-copia-' + selectCounterCopia;
+    novoSelect.style.width = '100%';
+  
+    // Adicionar classes do Bootstrap ao novo select
+    novoSelect.classList.add('select2', 'selects');
+  
+    novoWrapper.appendChild(novoSelect);
+    $(novoSelect).select2();
   }
+  
+  
+  let selectCounterCopia = 1;
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const addSelectButtonCopia = document.getElementById('addSelectCopia');
+    addSelectButtonCopia.addEventListener('click', createNewSelectCopia);
+  });
+  
   const addSelectButtonCopia = document.getElementById('addSelectCopia')
 
   addSelectButtonCopia.addEventListener('click', () => {
