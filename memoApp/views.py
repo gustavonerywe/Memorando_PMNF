@@ -45,21 +45,21 @@ def upload(request):
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
-            if grupo_escolhido[0] == 'Todos':
-                todosGrupos = []
-                for grupo in grupos:
-                    todosGrupos.append(grupo.name)
-                grupo_escolhido = todosGrupos    
+            # if grupo_escolhido[0] == 'Todos':
+            #     todosGrupos = []
+            #     for grupo in grupos:
+            #         todosGrupos.append(grupo.name)
+            #     grupo_escolhido = todosGrupos    
                 
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
-            try:
-                if grupo_escolhido_copia[0] == 'Todos':
-                 todosGrupos = []
-                 for grupo in grupos:
-                    todosGrupos.append(grupo.name)
-                 grupo_escolhido_copia = todosGrupos    
-            except:
-                pass
+            # try:
+            #     if grupo_escolhido_copia[0] == 'Todos':
+            #      todosGrupos = []
+            #      for grupo in grupos:
+            #         todosGrupos.append(grupo.name)
+            #      grupo_escolhido_copia = todosGrupos    
+            # except:
+            #     pass
                 
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
@@ -93,6 +93,48 @@ def upload(request):
         'grupos': grupos,
     }
     return render(request, 'memo_main.html', context)
+
+@login_required
+def memorando_circular(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            memorando = Memorando()
+            memorando.assunto = request.POST.get('assunto_memorando')
+            memorando.corpo = request.POST.get('corpo')
+            memo_numero_atualizado = memorando.gerar_proximo_numero()
+            memorando.data = request.POST.get('data')
+            memorando.remetente = request.user
+            memorando.memo_numero = memo_numero_atualizado
+                
+            session = SessionStore(request.session.session_key)
+            session['memorando_corpo'] = memorando.corpo
+            session.save()
+
+            memorando.save()
+
+            for file in request.FILES.getlist('file'):
+                image = Image.objects.create(file=file)
+                image.memorando = memorando
+                image.save()
+
+            context = {
+                'memorando': memorando,
+                'memo_numero_atualizado': memo_numero_atualizado,
+                'memorando_corpo': mark_safe(memorando.corpo),
+                'memorando_remetente': memorando.remetente,
+                'memorando_assunto': memorando.assunto,
+            }
+            return render(request, 'upload_success.html', context)
+    else:
+        form = ImageForm()
+
+    context = {
+        'form': form,
+        'memo_numero_atualizado': Memorando().gerar_proximo_numero(),
+        'memorando_corpo': Memorando().corpo,
+    }
+    return render(request, 'memorando_circular.html', context)
 
 
 @login_required

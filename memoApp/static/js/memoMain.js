@@ -443,3 +443,37 @@ fecharModalAssunto.addEventListener('click', function () {
 fecharModalAsssunto2.addEventListener('click', function () {
   modalAssunto.style.display = 'none';
 })
+
+const btnTroca = document.querySelector('#btnTroca')
+const modalTrocar = document.getElementById('modal-trocar')
+const fecharTroca = document.querySelector('.fechar-trocar')
+const memorandoComum = document.getElementById('memorandoComum')
+const memorandoCircular = document.getElementById('memorandoCircular')
+const oficio = document.getElementById('oficio')
+const messageAviso = document.getElementById('message-aviso')
+
+btnTroca.addEventListener('click', function(e){
+  e.preventDefault();
+  modalTrocar.style.display = 'block';
+  messageAviso.style.display = 'none';
+})
+
+fecharTroca.addEventListener('click', function(){
+  modalTrocar.style.display = 'none'
+})
+
+memorandoComum.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(function(){
+    modalTrocar.style.display = 'none';
+  }, 1500)
+})
+
+memorandoCircular.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(() => {
+    window.location.href = '/memorando_circular'
+  }, 1500);
+})

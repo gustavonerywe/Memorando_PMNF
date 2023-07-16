@@ -9,6 +9,20 @@
 </head>
 <html class="page_main" lang="pt-br">
     <body>
+        <button type="button" class="btn btn-primary" id="btnTroca">Trocar tipo <img width="25" src="/static/img/paper.png" alt="document-img"></button>
+        <div id="modal-trocar">
+            <div class="modal-content">
+                <span class="fechar-trocar">&times;</span>
+                <p id="message-aviso"></p>
+                <p id="msg-troca" style="font-size: 17px;">Altere o tipo do memorando</p>
+                <hr>
+                <div id="button-container-troca" class="button-container">
+                    <button type="button" id="memorandoComum" class="btn btn-primary btn-sm">Memorando</button>
+                    <button type="button" id="memorandoCircular" class="btn btn-success btn-sm">Memorando Circular</button>
+                    <button type="button" id="oficio" class="btn btn-warning btn-sm">Ofício</button>
+                </div>
+            </div>
+        </div>
         <button class="btn btn-danger" id="btnTrueSair"><a href="{% url 'encerraSessao' %}" id="btnSair">Sair</a></button>
         <div id="modal-sair">
             <div class="modal-content">
@@ -55,7 +69,6 @@
                                     <div class="select-wrapper" id="select-container">
                                         <select name="destinatario" id="select-secretaria" class="select2 selects">
                                             <option id="option-disabled" disabled selected>-- Selecione um grupo -- </option>
-                                            <option id="option-all">Todos</option>
                                             {% for grupo in grupos %}
                                             <option value="{{grupo.name}}">{{ grupo.name }}</option>
                                             {% endfor %}
@@ -79,7 +92,6 @@
                                     <div class="select-wrapper-copia" id="select-container-copia">
                                         <select name="destinatarios_copia" id="select-secretaria-copia-para" class="select2 selects">
                                             <option id="option-disabled" disabled selected>-- Selecione um grupo -- </option>
-                                            <option id="option-all-copia">Todos</option>
                                             {% for grupo in grupos %}
                                             <option value="{{grupo.name}}">{{ grupo.name }}</option>
                                             {% endfor %}

@@ -10,4 +10,5 @@ urlpatterns = [
     path('gerar-pdf/<int:id_criptografado>/', views.geraEBaixaPDF, name='gerar_pdf'),
     path('force-download/', views.force_download, name='force_download'),
     path('my-pdf/<int:pk>/', views.PrintView.as_view(), name='my_pdf'),
+    path('memorando_circular', views.memorando_circular, name='memorando_circular')
 ]
