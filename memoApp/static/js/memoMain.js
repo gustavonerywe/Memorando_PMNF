@@ -37,21 +37,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (selectCounterCopia > 1) {
       let elementRemovido = document.getElementById('select-container-copia-' + selectCounterCopia);
       let removeBotao = document.getElementById('removeSelectCopia');
-  
+
       elementRemovido.remove();
       selectCounterCopia--;
-  
+
       if (selectCounterCopia == 1) {
         removeBotao.remove();
       }
     }
   }
-  
+
   function createNewSelectCopia() {
     let selectOriginal = document.getElementById('select-secretaria-copia-para');
     let novoWrapper = document.createElement('div');
     let selectTable = document.getElementById('select-table-copia');
-  
+
     if (selectCounterCopia == 1) {
       let removeSelect = document.createElement('button');
       removeSelect.setAttribute('class', 'cancel-button-select');
@@ -60,30 +60,30 @@ document.addEventListener('DOMContentLoaded', function () {
       removeSelect.appendChild(tagIcone);
       let container = document.getElementById('container_and_button-copia');
       container.appendChild(removeSelect);
-  
+
       removeSelect.id = 'removeSelectCopia';
       removeSelect.type = 'button';
-  
+
       removeSelect.addEventListener('click', function () {
         removeLastSelectCopia();
       });
     }
-  
+
     selectCounterCopia++;
-  
+
     let novoSelect = document.createElement('select');
     novoSelect.name = 'destinatarios_copia';
     novoSelect.id = 'select-secretaria-copia-' + selectCounterCopia;
     novoSelect.style.width = '100%';
-  
+
     // Adicionar classes do Bootstrap ao novo select
     novoSelect.classList.add('form-control');
-  
+
     novoWrapper.setAttribute('class', 'select-wrapper-copia');
     novoWrapper.id = 'select-container-copia-' + selectCounterCopia;
     novoWrapper.appendChild(novoSelect);
     selectTable.appendChild(novoWrapper);
-  
+
     // Clone as opções do select original para o novo select
     let options = selectOriginal.options;
     for (let i = 0; i < options.length; i++) {
@@ -94,15 +94,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     $(novoSelect).select2();
   }
-  
-  
+
+
   let selectCounterCopia = 1;
-  
+
   document.addEventListener('DOMContentLoaded', function () {
     const addSelectButtonCopia = document.getElementById('addSelectCopia');
     addSelectButtonCopia.addEventListener('click', createNewSelectCopia);
   });
-  
+
   const addSelectButtonCopia = document.getElementById('addSelectCopia')
 
   addSelectButtonCopia.addEventListener('click', () => {
@@ -113,18 +113,18 @@ let selectCounter = 1;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  function removeLastSelect(){
-    if(selectCounter>1){
-      let elementRemovido = document.getElementById('select-container-'+selectCounter);
+  function removeLastSelect() {
+    if (selectCounter > 1) {
+      let elementRemovido = document.getElementById('select-container-' + selectCounter);
       let removeBotao = document.getElementById('removeSelect');
 
       elementRemovido.remove();
       selectCounter--;
-            
-      if(selectCounter == 1){
+
+      if (selectCounter == 1) {
         removeBotao.remove();
       }
-      
+
     }
   }
 
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let novoWrapper = document.createElement('div');
     let selectTable = document.getElementById('select-table');
 
-    if(selectCounter == 1){
+    if (selectCounter == 1) {
       let removeSelect = document.createElement('button');
       let container = document.getElementById('container_and_button');
       removeSelect.setAttribute('class', 'cancel-button-select')
@@ -146,25 +146,25 @@ document.addEventListener('DOMContentLoaded', function () {
       //removeSelect.innerHTML = "REMOVER";
       removeSelect.type = 'button';
 
-      removeSelect.addEventListener('click', function(){
+      removeSelect.addEventListener('click', function () {
         removeLastSelect();
       })
     }
-    
+
     selectCounter++;
-  
+
     let novoSelect = document.createElement('select');
     novoSelect.name = 'destinatarios_copia';
     novoSelect.id = 'select-secretaria-copia-' + selectCounter;
     novoSelect.style.width = '100%';
-  
+
     novoSelect.classList.add('form-control');
-  
+
     novoWrapper.setAttribute('class', 'select-wrapper-copia');
     novoWrapper.id = 'select-container-copia-' + selectCounter;
     novoWrapper.appendChild(novoSelect);
     selectTable.appendChild(novoWrapper);
-  
+
     // Clone as opções do select original para o novo select
     let options = selectOriginal.options;
     for (let i = 0; i < options.length; i++) {
@@ -191,13 +191,13 @@ function createNewInput() {
   const newFileInput = document.createElement('input');
   let imgRemove = document.createElement('img');
   // let widthInput = document.getElementById('id_file').width;
-  newFileInput.setAttribute('id','id_file');
+  newFileInput.setAttribute('id', 'id_file');
 
   inputRow.classList.add('input-row');
   cancelButton.classList.add('cancel-button');
   cancelButton.type = 'button';
   cancelButton.id = 'cancel-button-dynamic'
-  cancelButton.setAttribute('class' , 'bi bi-dash cancel-button')
+  cancelButton.setAttribute('class', 'bi bi-dash cancel-button')
   newFileInput.type = 'file';
   newFileInput.name = 'file';
   // newFileInput.style.margin = '15px'
@@ -233,7 +233,7 @@ function createNewInput() {
   });
 }
 
-function addCancelButtonEvent(cancelButton){
+function addCancelButtonEvent(cancelButton) {
   cancelButton.type = 'button';
   cancelButton.addEventListener('click', function () {
     if (cancelButton.parentNode == document.getElementById('div-anexo-orig')) {
@@ -283,7 +283,7 @@ function addCancelButtonEvent(cancelButton){
 
 addInputButton.addEventListener('click', function () {
   createNewInput();
-  const cancelButtons = document.querySelectorAll('.cancel-button');  
+  const cancelButtons = document.querySelectorAll('.cancel-button');
   cancelButtons.forEach(function (cancelButton) {
     addCancelButtonEvent(cancelButton);
   });
@@ -348,8 +348,6 @@ botao.addEventListener('click', function (event) {
     pegarLugarTexto.innerHTML = " 'Para'";
   }
 
-
-  console.log(corpoMemo)
   // if (campoSelect.value.trim() !== valorSelect.value.trim() && assunto.value.trim() !== '') {
   //   return;
   // }
@@ -388,6 +386,31 @@ const campoSelect = document.getElementById('select-secretaria');
 const pegarLugarTexto = document.getElementById('texto-colocar')
 const pegarLugarTextoPara = document.getElementById('texto-colocar-para')
 const grupoSelected = document.getElementById('grupo_selected')
+const buttonYesSair = document.querySelector('#buttonYesSair')
+const buttonNoSair = document.querySelector('#buttonNoSair')
+const modalSair = document.querySelector('#modal-sair')
+const btnTrueSair = document.querySelector('#btnTrueSair')
+const fecharSair = document.querySelector('.fechar-sair')
+
+modalSair.style.display = 'none';
+
+btnTrueSair.addEventListener('click', function (e) {
+  e.preventDefault();
+  modalSair.style.display = 'block';
+})  
+
+buttonNoSair.addEventListener('click', function(){
+  modalSair.style.display = 'none';
+})
+
+buttonYesSair.addEventListener('click', function(){
+    window.location.href = '/encerrar-sessao/'
+})
+
+fecharSair.addEventListener('click', function(){
+  modalSair.style.display = 'none';
+})
+
 
 // buttonYesModal.addEventListener('click', function () {
 //   document.querySelector('.file-input').value = '';

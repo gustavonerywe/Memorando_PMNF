@@ -10,6 +10,16 @@
 <html class="page_main" lang="pt-br">
     <body>
         <button class="btn btn-danger" id="btnTrueSair"><a href="{% url 'encerraSessao' %}" id="btnSair">Sair</a></button>
+        <div id="modal-sair">
+            <div class="modal-content">
+                <span class="fechar-sair">&times;</span>
+                <p style="font-size: 17px;">Deseja sair da sua conta?</p>
+                <div class="button-container">
+                    <button type="button" id="buttonNoSair" class="btn btn-danger btn-sm">Não</button>
+                    <button type="button" id="buttonYesSair" class="btn btn-success btn-sm">Sim</button>
+                </div>
+            </div>
+        </div>
         <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
@@ -96,7 +106,7 @@
                     <textarea id="corpo" name="corpo"></textarea>
                 </section>
             </div>
-            <div id="footer">
+            <!-- <div id="footer">
                 <p></p>
                 <fieldset id="box-field">
                     <table>
@@ -111,7 +121,7 @@
                         </tr>
                     </table>
                 </fieldset>
-            </div>
+            </div> -->
 
             <hr />
 

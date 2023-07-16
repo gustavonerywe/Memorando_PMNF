@@ -310,11 +310,16 @@ main {
     text-decoration: none;
     color: cyan;
     cursor: pointer;
+    transform: scale(1.1);
+    background-color: #4CAF50;;
 }
 
 #link-upload-pdf:hover {
     text-decoration: none;
     color: cyan;
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #4CAF50;;
 }
 
 .link-container {
@@ -526,7 +531,8 @@ main {
 }
 
 #meuModal,
-#modal-upload {
+#modal-upload,
+#modal-sair {
     display: none;
     position: fixed;
     z-index: 1;
@@ -598,6 +604,17 @@ main {
     align-self: flex-end;
 }
 
+.fechar-sair {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
 .fecharMemorando {
     color: #aaa;
     float: right;
@@ -605,7 +622,7 @@ main {
     font-weight: bold;
     cursor: pointer;
     padding: 4px 8px;
-    width: 3%;
+    width: 2%;
     align-self: flex-end;
 }
 
@@ -614,6 +631,15 @@ main {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fechar-sair:hover,
+.fechar-sair:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .fecharMemorando:hover,
@@ -621,6 +647,7 @@ main {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 .imgModal {
@@ -635,26 +662,30 @@ hr {
 
 #buttonNoModal,
 #buttonNoModalMemorando,
+#buttonNoSair,
 #nao-envia-modal {
     background-color: #e35d6a;
 }
 
 #buttonYesModal,
 #buttonYesModalMemorando,
+#buttonYesSair
 #envia-modal {
     background-color: #479f76;
 }
 
 #buttonNoModal:hover,
 #buttonNoModalMemorando:hover,
-#nao-envia-modal:hover {
+#nao-envia-modal:hover,
+#buttonNoSair:hover {
     background-color: #e62c3e;
     transform: scale(1.1);
 }
 
 #buttonYesModal:hover,
 #buttonYesModalMemorando:hover,
-#envia-modal:hover {
+#envia-modal:hover,
+#buttonYesSair:hover {
     background-color: #6ae9ae;
     transform: scale(1.1);
 }
@@ -669,6 +700,8 @@ hr {
 #buttonYesModalMemorando,
 #envia-modal,
 #nao-envia-modal,
+#buttonYesSair,
+#buttonNoSair,
 #ok-modal {
     width: 40%;
     text-align: center;
