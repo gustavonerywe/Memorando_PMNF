@@ -97,34 +97,34 @@ def upload(request):
 @login_required
 def memorando_circular(request):
     grupos = Group.objects.all()
+    memorandocircular = MemorandoCircular()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
-            memorando = Memorando()
-            memorando.assunto = request.POST.get('assunto_memorando')
-            memorando.corpo = request.POST.get('corpo')
-            memo_numero_atualizado = memorando.gerar_proximo_numero()
-            memorando.data = request.POST.get('data')
-            memorando.remetente = request.user
-            memorando.memo_numero = memo_numero_atualizado
+            memorandocircular.assunto_circular = request.POST.get('assunto_memorando')
+            memorandocircular.corpo_circular = request.POST.get('corpo')
+            memo_numero_atualizado_circular = memorandocircular.gerar_proximo_numero_circular()
+            memorandocircular.data_circular = request.POST.get('data')
+            memorandocircular.remetente_circular = request.user
+            memorandocircular.memo_numero_circular = memo_numero_atualizado_circular
                 
             session = SessionStore(request.session.session_key)
-            session['memorando_corpo'] = memorando.corpo
+            session['memorando_corpo_circular'] = memorandocircular.corpo_circular
             session.save()
 
-            memorando.save()
+            memorandocircular.save()
 
-            for file in request.FILES.getlist('file'):
-                image = Image.objects.create(file=file)
-                image.memorando = memorando
-                image.save()
+            # for file in request.FILES.getlist('file'):
+            #     image = Image.objects.create(file=file)
+            #     image.memorando = memorando
+            #     image.save()
 
             context = {
-                'memorando': memorando,
-                'memo_numero_atualizado': memo_numero_atualizado,
-                'memorando_corpo': mark_safe(memorando.corpo),
-                'memorando_remetente': memorando.remetente,
-                'memorando_assunto': memorando.assunto,
+                'memorandocircular': memorandocircular,
+                'memo_numero_atualizado_circular': memorandocircular.memo_numero_circular,
+                'memorando_corpo_circular': mark_safe(memorandocircular.corpo_circular),
+                'memorando_remetente_circular': memorandocircular.remetente_circular,
+                'memorando_assunto_circular': memorandocircular.assunto_circular,
                 'grupos': grupos,
             }
             return render(request, 'upload_success_circular.html', context)
@@ -132,12 +132,60 @@ def memorando_circular(request):
         form = ImageForm()
 
     context = {
+    'form': form,
+    'memo_numero_atualizado': memorandocircular.gerar_proximo_numero_circular(),
+    'memorando_corpo': Memorando().corpo,
+    'grupos': grupos,
+}
+
+    return render(request, 'memorando_circular.html', context)
+
+
+@login_required
+def oficio(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            oficio = Ofício()
+            oficio.assunto_oficio = request.POST.get('assunto_memorando')
+            oficio.corpo_oficio = request.POST.get('corpo')
+            oficio_numero_atualizado = oficio.gerar_proximo_numero_oficio()
+            oficio.data_oficio = request.POST.get('data')
+            oficio.remetente_oficio = request.user
+            oficio.memo_numero_oficio = oficio_numero_atualizado
+            oficio.destinatario_oficio = request.POST.get('para-oficio')
+            oficio.destinatarios_copia_oficio = request.POST.get('copia-oficio')
+                
+            session = SessionStore(request.session.session_key)
+            session['memorando_corpo'] = oficio.corpo_oficio
+            session.save()
+
+            oficio.save()
+
+            # for file in request.FILES.getlist('file'):
+            #     image = Image.objects.create(file=file)
+            #     image.oficio = oficio
+            #     image.save()
+
+            context = {
+                'oficio': oficio,
+                'memo_numero_atualizado': oficio_numero_atualizado,
+                'oficio_corpo': mark_safe(oficio.corpo_oficio),
+                'oficio_remetente': oficio.remetente_oficio,
+                'oficio_assunto': oficio.assunto_oficio,
+                'destinatario_oficio': oficio.destinatario_oficio,
+                'destinatario_copia_oficio': oficio.destinatarios_copia_oficio
+            }
+            return render(request, 'upload_success_oficio.html', context)
+    else:
+        form = ImageForm()
+
+    context = {
         'form': form,
         'memo_numero_atualizado': Memorando().gerar_proximo_numero(),
         'memorando_corpo': Memorando().corpo,
-        'grupos': grupos,
     }
-    return render(request, 'memorando_circular.html', context)
+    return render(request, 'oficio.html', context)
 
 
 @login_required
@@ -166,25 +214,42 @@ def generate_pdf(request, id_criptografado):
 @login_required
 def generate_pdf_circular(request, id_criptografado):
     grupos = Group.objects.all()
-    memorando = Memorando.objects.get(id=id_criptografado)
-    memo_numero_atualizado = memorando.gerar_proximo_numero()
+    memorandocircular = MemorandoCircular.objects.get(id=id_criptografado)
+    memo_numero_atualizado = memorandocircular.gerar_proximo_numero_circular()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
-    text_content = session.get('memorando_corpo')
-    grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+    text_content = session.get('memorando_corpo_circular')
     context = {
-        'memorando': memorando,
+        'memorandocircular': memorandocircular,
         'memo_numero_atualizado': memo_numero_atualizado,
-        'memorando_assunto': memorando.assunto,
+        'memorando_assunto_circular': memorandocircular.assunto_circular,
         'data_atual': data_numerica,
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
-        'grupo_escolhido_copia': grupo_escolhido_copia,
         'grupos': grupos
     }
     return render(request, 'generate_pdf_circular.html', context)
+
+@login_required
+def generate_pdf_oficio(request, id_criptografado):
+    oficio = Oficio.objects.get(id=id_criptografado)
+    memo_numero_atualizado = oficio.gerar_proximo_numero_oficio()
+    data_atual = datetime.date.today()
+    data_numerica = data_atual.strftime("%d/%m/%y")
+    session = SessionStore(request.session.session_key)
+    text_content = session.get('memorando_corpo')
+    context = {
+        'oficio': oficio,
+        'memo_numero_atualizado': memo_numero_atualizado,
+        'oficio_assunto': oficio.assunto_oficio,
+        'data_atual': data_numerica,
+        'text_content': mark_safe(text_content),
+        'destinatario_oficio': oficio.destinatario_oficio,
+        'destinatario_copia_oficio': oficio.destinatarios_copia_oficio
+    }
+    return render(request, 'generate_pdf_oficio.html', context)
 
 @login_required
 def data_atual(request):
@@ -338,19 +403,18 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     # url_criptografada = quote(id_criptografado_criptografado)
     grupos = Group.objects.all()
     memorando = Memorando.objects.get(id=id_criptografado)
+    memorandocircular = MemorandoCircular()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
-    text_content = session.get('memorando_corpo')
-    grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+    text_content = session.get('memorando_corpo_circular')
     context = {
         'memorando': memorando,
-        'memorando_assunto': memorando.assunto,
+        'memorando_assunto_circular': memorandocircular.assunto_circular,
         'data_atual': data_numerica,
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
-        'grupo_escolhido_copia': grupo_escolhido_copia,
         'grupos': grupos,
     }
     
@@ -373,6 +437,48 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     with open(pathToPdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando_circular.pdf"'
+            return response
+
+def geraEBaixaPDFOficio(request, id_criptografado):
+    
+    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    # url_criptografada = quote(id_criptografado_criptografado)
+    memorando = Memorando.objects.get(id=id_criptografado)
+    oficio = Ofício.objects.get(id=id_criptografado)
+    data_atual = datetime.date.today()
+    data_numerica = data_atual.strftime("%d/%m/%y")
+    session = SessionStore(request.session.session_key)
+    text_content = session.get('memorando_corpo')
+    oficio.destinatario_oficio = request.POST.get('para-oficio')
+    oficio.destinatarios_copia_oficio = request.POST.get('copia-oficio')
+    context = {
+        'memorando': memorando,
+        'oficio_assunto': oficio.assunto_oficio,
+        'destinatario_oficio': oficio.destinatario_oficio,
+        'destinatario_copia_oficio': oficio.destinatarios_copia_oficio,
+        'data_atual': data_numerica,
+        'text_content': mark_safe(text_content),
+    }
+    
+    
+    html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_oficio.html"
+
+    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
+    # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
+    
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    pathToPdf = str(BASE_DIR)+'/pdfs/oficio' + str(id_criptografado) + '.pdf'
+
+    with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
+        conteudo = arquivoCss.read()
+    
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+    
+    
+    with open(pathToPdf, 'rb') as f:
+            response = HttpResponse(f, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="oficio.pdf"'
             return response
     
 

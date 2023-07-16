@@ -932,7 +932,9 @@ hr {
     width: 200px;
 }
 
-#id_name {
+#id_name,
+#copia-para-input,
+#para-input {
     width: 75%;
 }
 

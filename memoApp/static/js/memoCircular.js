@@ -474,6 +474,14 @@ memorandoCircular.addEventListener('click', function(){
   messageAviso.style.display = 'block'
   messageAviso.innerHTML = "Carregando..."
   setTimeout(() => {
-    modalTrocar.style.display = 'none';
+    window.location.href = '/memorando_circular'
   }, 1500);
+})
+
+oficio.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(function(){
+    window.location.href = '/oficio'
+  }, 1500)
 })

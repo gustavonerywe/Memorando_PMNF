@@ -466,7 +466,7 @@ memorandoComum.addEventListener('click', function(){
   messageAviso.style.display = 'block'
   messageAviso.innerHTML = "Carregando..."
   setTimeout(function(){
-    modalTrocar.style.display = 'none';
+    window.location.href = '/'
   }, 1500)
 })
 
@@ -475,5 +475,13 @@ memorandoCircular.addEventListener('click', function(){
   messageAviso.innerHTML = "Carregando..."
   setTimeout(() => {
     window.location.href = '/memorando_circular'
+  }, 1500);
+})
+
+oficio.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(() => {
+    window.location.href = '/oficio'
   }, 1500);
 })

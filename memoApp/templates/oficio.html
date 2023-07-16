@@ -1,6 +1,6 @@
 {% extends 'template.html' %}
 {% block subtitulo %}
-- Memorando Circular
+- Ofício
 {% endblock %}
 {% block content %}
 
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'memorando_circular' %}">
+        <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'oficio' %}">
             {% csrf_token %}
             <div id="header">
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
@@ -43,7 +43,7 @@
             <div id="content">
                 <table class="table" class="custom-table">
                     <tr>
-                        <th id="tituloTable" colspan="2" class="table-info">MEMORANDO CIRCULAR</th>
+                        <th id="tituloTable" colspan="2" class="table-info">OFÍCIO</th>
                     </tr>
                     <tr class="table-secondary">
                         <th>Data:</th>
@@ -51,7 +51,7 @@
                     </tr>
                     <tr class="table-secondary">
                         <th>Nº do memorando</th>
-                        <td><span id="memo_numero">{{memorandocircular.memo_numero_circular}}</span></td>
+                        <td><span id="memo_numero">{{memo_numero_atualizado}}</span></td>
                     </tr>
                     <tr class="table-secondary">
                         <th>De:</th>
@@ -61,54 +61,14 @@
                             {{ user.get_full_name }}
                         </td>
                     </tr>
-                    <!-- <tr class="table-secondary">
+                    <tr class="table-secondary">
                         <th><span style="color: red;">* </span>Para:</th>
-                        <td>
-                            <div id="container_and_button">
-                                <div id="select-table">
-                                    <div class="select-wrapper" id="select-container">
-                                        <select name="destinatario" id="select-secretaria" class="select2 selects">
-                                            <option id="option-disabled" disabled selected>-- Selecione um grupo -- </option>
-                                            <option id="option-all">Todos</option>
-                                            {% for grupo in grupos %}
-                                            <option value="{{grupo.name}}">{{ grupo.name }}</option>
-                                            {% endfor %}
-                                        </select>
-                                        {% comment %}
-                                        <div id="selectFather"></div>
-                                        {% endcomment %}
-                                    </div>
-                                </div>
-                                <button type="button" style="font-size: 0.7em;" id="addSelect">
-                                    <i class="bi bi-plus-lg"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr> -->
-                    <!-- <tr class="table-secondary">
+                        <td><input placeholder="Escreva seu destinatario" type="text" id="para-input" required name="para_oficio"/></td>
+                    </tr>
+                    <tr class="table-secondary">
                         <th>Cópia para:</th>
-                        <td>
-                            <div id="container_and_button-copia">
-                                <div id="select-table-copia">
-                                    <div class="select-wrapper-copia" id="select-container-copia">
-                                        <select name="destinatarios_copia" id="select-secretaria-copia-para" class="select2 selects">
-                                            <option id="option-disabled" disabled selected>-- Selecione um grupo -- </option>
-                                            <option id="option-all-copia">Todos</option>
-                                            {% for grupo in grupos %}
-                                            <option value="{{grupo.name}}">{{ grupo.name }}</option>
-                                            {% endfor %}
-                                        </select>
-                                        {% comment %}
-                                        <div id="selectFather"></div>
-                                        {% endcomment %}
-                                    </div>
-                                </div>
-                                <button type="button" style="font-size: 0.7em;" id="addSelectCopia">
-                                    <i class="bi bi-plus-lg"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr> -->
+                        <td><input placeholder="Escreva o destinatário de cópia" type="text" id="copia-para-input" name="copia_oficio"/></td>
+                    </tr>
 
                     <tr class="table-secondary">
                         <th><span style="color: red;">* </span>Assunto:</th>
@@ -232,7 +192,7 @@
                 <button type="button" id="ok-modal" class="btn btn-dark btn-sm">Ok</button>
             </div>
         </div>
-        <script src="/static/js/memoCircular.js"></script>
+        <script src="/static/js/oficio.js"></script>
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
         <script>
             tinymce.init({

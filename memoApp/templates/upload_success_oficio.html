@@ -8,13 +8,13 @@
 <body class="cor">
     <link rel="stylesheet" href="/static/css/style.css" />
     <fieldset id="box-upload">
-        <h1 id="title-upload">Memorando enviado</h1>
+        <h1 id="title-upload">Ofício enviado</h1>
         <p id="subtitle-upload">O arquivo foi carregado com sucesso.</p>
         <div class="link-container">
-            <a id="link-upload">Novo memorando circular</a>
+            <a id="link-upload">Novo ofício</a>
         </div>
         <div class="link-container">
-            <a id="link-upload-pdf" href="{% url 'gerar_pdf_circular' memorandocircular.id %}"> <img id="img-pdf"
+            <a id="link-upload-pdf" href="{% url 'gerar_pdf_oficio' oficio.id %}"> <img id="img-pdf"
                     src="/static/img/pdf.png" alt="imagem do pdf" />Gerar PDF</a>
         </div>
         <div id="modal-pdf">
@@ -23,7 +23,7 @@
                 <div style="text-align: center;">
                     <p style="font-size: 17px; text-align: center; align-items: center;"><strong
                             style="margin: 1px;">Aguarde!</strong>
-                        <hr style="margin-bottom: 10px;"> O seu memorando já está sendo baixado. <br><br>
+                        <hr style="margin-bottom: 10px;"> O seu ofício já está sendo baixado. <br><br>
                     <div id="dot-container">
                         <p id="first-dot" class="dot">•</p>
                         <p id="second-dot" class="dot">•</p>
@@ -40,7 +40,7 @@
         <div id="modal-upload">
             <div class="modal-content">
                 <span class="fechar">&times;</span>
-                <p style="font-size: 17px;">Deseja fazer um novo memorando circular?</p>
+                <p style="font-size: 17px;">Deseja fazer um novo ofício?</p>
                 <div class="button-container">
                     <button type="button" id="nao-envia-modal" class="btn btn-danger btn-sm">Não</button>
                     <button type="button" id="envia-modal" class="btn btn-success btn-sm">Sim</button>
@@ -48,7 +48,7 @@
             </div>
         </div>
     </fieldset>
-    <script src="/static/js/upload_success_circular.js"></script>
+    <script src="/static/js/upload_success_oficio.js"></script>
 </body>
 
 </html>

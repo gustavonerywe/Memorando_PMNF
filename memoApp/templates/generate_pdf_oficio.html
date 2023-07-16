@@ -159,7 +159,7 @@
             <div id="content-pdf">
                 <table class="table" id="table-generate">
                     <tr>
-                        <th style="text-align: center;" id="tituloTable" colspan="2">MEMORANDO CIRCULAR</th>
+                        <th style="text-align: center;" id="tituloTable" colspan="2">OFÍCIO</th>
                     </tr>
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Data:</th>
@@ -184,18 +184,21 @@
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
-                            <ul class="grupo-lista">
-                                {% for grupo in grupos %}
-                                <li id="li-para">{{ grupo.name }}</li>
-                                {% endfor %}
-                            </ul>
+                           {{ destinatario_oficio }}
                         </td>
                     </tr>
-
+                    {% if grupo_escolhido_copia|length > 0 %}
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Cópia para:</th>
+                        <td class="td-generate" id="secretaria-escolhida">
+                            {{ destinatario_copia_oficio }}
+                        </td>
+                    </tr>
+                    {% endif %}
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
                         <td class="td-generate">
-                            <p style="margin-bottom: 2px;">{{ memorando_assunto_circular }}</p>
+                            <p style="margin-bottom: 2px;">{{ oficio_assunto }}</p>
                         </td>
                     </tr>
                 </table>
