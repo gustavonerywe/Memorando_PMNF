@@ -221,6 +221,7 @@ def encerraSessao(request):
 
 import io
 from django.http import HttpResponse
+from django.contrib import messages
 
 
 def geraEBaixaPDF(request, id_criptografado):

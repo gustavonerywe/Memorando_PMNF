@@ -534,7 +534,8 @@ main {
 
 #meuModal,
 #modal-upload,
-#modal-sair {
+#modal-sair,
+#modal-pdf {
     display: none;
     position: fixed;
     z-index: 1;
@@ -617,6 +618,17 @@ main {
     align-self: flex-end;
 }
 
+.fechar-pdf {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
 .fecharMemorando {
     color: #aaa;
     float: right;
@@ -630,6 +642,14 @@ main {
 
 .fechar:hover,
 .fechar:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fechar-pdf:hover,
+.fechar-pdf:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -696,6 +716,10 @@ hr {
     transform: scale(1.1);
 }
 
+#ok-modal-pdf:hover {
+    transform: scale(1.1);
+}
+
 #buttonNoModal,
 #buttonYesModal,
 #buttonNoModalMemorando,
@@ -704,7 +728,8 @@ hr {
 #nao-envia-modal,
 #buttonYesSair,
 #buttonNoSair,
-#ok-modal {
+#ok-modal,
+#ok-modal-pdf {
     width: 40%;
     text-align: center;
     margin: 0 auto;

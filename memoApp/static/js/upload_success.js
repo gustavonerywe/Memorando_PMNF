@@ -21,3 +21,20 @@ enviaModal.addEventListener('click', function(){
 fechar.addEventListener('click', function(){
     uploadModal.style.display = "none";
 })
+
+const linkUploadPdf = document.getElementById('link-upload-pdf')
+const ModalPdf = document.getElementById('modal-pdf')
+const okPdf = document.querySelector('#ok-modal-pdf')
+const fecharPdf = document.querySelector('.fechar-pdf')
+
+linkUploadPdf.addEventListener('click', function(e){
+    ModalPdf.style.display = 'block'
+})
+
+fecharPdf.addEventListener('click', function(){
+    ModalPdf.style.display = 'none'
+})
+
+okPdf.addEventListener('click', function(){
+    ModalPdf.style.display = 'none'
+})
