@@ -311,7 +311,8 @@ main {
     color: cyan;
     cursor: pointer;
     transform: scale(1.1);
-    background-color: #4CAF50;;
+    background-color: #4CAF50;
+    margin-bottom: 5px;
 }
 
 #link-upload-pdf:hover {
@@ -319,7 +320,8 @@ main {
     color: cyan;
     cursor: pointer;
     transform: scale(1.1);
-    background-color: #4CAF50;;
+    background-color: #4CAF50;
+    margin-top: 10px;
 }
 
 .link-container {
