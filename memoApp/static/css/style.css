@@ -204,6 +204,7 @@ main {
     font: bold 20px times;
     background-color: #cff4fc;
 }
+
 #botao:hover {
     transform: scale(1.1);
 }
@@ -557,15 +558,17 @@ main {
 
 @keyframes loadingAnimation {
     0% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
+
     50% {
-      transform: translateY(-10px);
+        transform: translateY(-10px);
     }
+
     100% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
-  }
+}
 
 #message-aviso {
     color: #00cc00;
@@ -737,8 +740,7 @@ hr {
 
 #buttonYesModal,
 #buttonYesModalMemorando,
-#buttonYesSair
-#envia-modal {
+#buttonYesSair #envia-modal {
     background-color: #479f76;
 }
 
@@ -763,7 +765,7 @@ hr {
 
 #oficio {
     padding: 10px;
-} 
+}
 
 #buttonNoModal:hover,
 #buttonNoModalMemorando:hover,
@@ -1071,6 +1073,7 @@ hr {
     margin-left: 10px;
     margin-right: 10px;
 }
+
 #id_file1 {
     display: block;
     margin: 0 auto;
@@ -1079,9 +1082,11 @@ hr {
     border-radius: 20px;
     margin-bottom: -17px;
 }
+
 #icon-files {
     font-size: 60px;
 }
+
 #div-icon {
     text-align: center;
     margin-top: -75px;
@@ -1096,4 +1101,43 @@ hr {
 
 #content-pdf {
     width: 100%;
+}
+
+.dot {
+    animation: dotAnimation 1.5s infinite;
+    width: 10px; 
+    height: 10px;
+    margin-right: 5px; 
+}
+
+@keyframes dotAnimation {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#first-dot {
+    animation-delay: 0s;
+}
+
+#second-dot {
+    animation-delay: 0.5s;
+}
+
+#third-dot {
+    animation-delay: 1s;
+}
+
+#dot-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
 }

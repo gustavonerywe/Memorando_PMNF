@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+        <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'memorando_circular' %}">
             {% csrf_token %}
             <div id="header">
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
@@ -232,7 +232,7 @@
                 <button type="button" id="ok-modal" class="btn btn-dark btn-sm">Ok</button>
             </div>
         </div>
-        <script src="/static/js/memoMain.js"></script>
+        <script src="/static/js/memoCircular.js"></script>
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
         <script>
             tinymce.init({

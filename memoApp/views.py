@@ -96,6 +96,7 @@ def upload(request):
 
 @login_required
 def memorando_circular(request):
+    grupos = Group.objects.all()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -124,8 +125,9 @@ def memorando_circular(request):
                 'memorando_corpo': mark_safe(memorando.corpo),
                 'memorando_remetente': memorando.remetente,
                 'memorando_assunto': memorando.assunto,
+                'grupos': grupos,
             }
-            return render(request, 'upload_success.html', context)
+            return render(request, 'upload_success_circular.html', context)
     else:
         form = ImageForm()
 
@@ -133,12 +135,14 @@ def memorando_circular(request):
         'form': form,
         'memo_numero_atualizado': Memorando().gerar_proximo_numero(),
         'memorando_corpo': Memorando().corpo,
+        'grupos': grupos,
     }
     return render(request, 'memorando_circular.html', context)
 
 
 @login_required
 def generate_pdf(request, id_criptografado):
+    grupos = Group.objects.all()
     memorando = Memorando.objects.get(id=id_criptografado)
     memo_numero_atualizado = memorando.gerar_proximo_numero()
     data_atual = datetime.date.today()
@@ -159,7 +163,28 @@ def generate_pdf(request, id_criptografado):
     print(grupo_escolhido_copia)
     return render(request, 'generate_pdf.html', context)
 
-
+@login_required
+def generate_pdf_circular(request, id_criptografado):
+    grupos = Group.objects.all()
+    memorando = Memorando.objects.get(id=id_criptografado)
+    memo_numero_atualizado = memorando.gerar_proximo_numero()
+    data_atual = datetime.date.today()
+    data_numerica = data_atual.strftime("%d/%m/%y")
+    session = SessionStore(request.session.session_key)
+    grupo_escolhido = session.get('grupo_escolhido')
+    text_content = session.get('memorando_corpo')
+    grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+    context = {
+        'memorando': memorando,
+        'memo_numero_atualizado': memo_numero_atualizado,
+        'memorando_assunto': memorando.assunto,
+        'data_atual': data_numerica,
+        'grupo_escolhido': grupo_escolhido,
+        'text_content': mark_safe(text_content),
+        'grupo_escolhido_copia': grupo_escolhido_copia,
+        'grupos': grupos
+    }
+    return render(request, 'generate_pdf_circular.html', context)
 
 @login_required
 def data_atual(request):
@@ -305,6 +330,49 @@ def geraEBaixaPDF(request, id_criptografado):
     with open(pathToPdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
+            return response
+
+def geraEBaixaPDFCircular(request, id_criptografado):
+    
+    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    # url_criptografada = quote(id_criptografado_criptografado)
+    grupos = Group.objects.all()
+    memorando = Memorando.objects.get(id=id_criptografado)
+    data_atual = datetime.date.today()
+    data_numerica = data_atual.strftime("%d/%m/%y")
+    session = SessionStore(request.session.session_key)
+    grupo_escolhido = session.get('grupo_escolhido')
+    text_content = session.get('memorando_corpo')
+    grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+    context = {
+        'memorando': memorando,
+        'memorando_assunto': memorando.assunto,
+        'data_atual': data_numerica,
+        'grupo_escolhido': grupo_escolhido,
+        'text_content': mark_safe(text_content),
+        'grupo_escolhido_copia': grupo_escolhido_copia,
+        'grupos': grupos,
+    }
+    
+    
+    html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_circular.html"
+
+    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
+    # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    html_render = render_to_string('generate_pdf_circular.html', context, request=request)
+    
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    pathToPdf = str(BASE_DIR)+'/pdfs/memorando_circular' + str(id_criptografado) + '.pdf'
+
+    with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
+        conteudo = arquivoCss.read()
+    
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+    
+    
+    with open(pathToPdf, 'rb') as f:
+            response = HttpResponse(f, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="memorando_circular.pdf"'
             return response
     
 
