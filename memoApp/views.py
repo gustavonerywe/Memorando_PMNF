@@ -143,10 +143,10 @@ def memorando_circular(request):
 
 @login_required
 def oficio(request):
+    oficio = Ofício()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
-            oficio = Ofício()
             oficio.assunto_oficio = request.POST.get('assunto_memorando')
             oficio.corpo_oficio = request.POST.get('corpo')
             oficio_numero_atualizado = oficio.gerar_proximo_numero_oficio()
@@ -182,7 +182,7 @@ def oficio(request):
 
     context = {
         'form': form,
-        'memo_numero_atualizado': Memorando().gerar_proximo_numero(),
+        'memo_numero_atualizado_oficio': oficio.gerar_proximo_numero_oficio(),
         'memorando_corpo': Memorando().corpo,
     }
     return render(request, 'oficio.html', context)
@@ -235,7 +235,7 @@ def generate_pdf_circular(request, id_criptografado):
 
 @login_required
 def generate_pdf_oficio(request, id_criptografado):
-    oficio = Oficio.objects.get(id=id_criptografado)
+    oficio = Ofício.objects.get(id=id_criptografado)
     memo_numero_atualizado = oficio.gerar_proximo_numero_oficio()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -250,6 +250,7 @@ def generate_pdf_oficio(request, id_criptografado):
         'destinatario_oficio': oficio.destinatario_oficio,
         'destinatario_copia_oficio': oficio.destinatarios_copia_oficio
     }
+    print(oficio.destinatario_oficio)
     return render(request, 'generate_pdf_oficio.html', context)
 
 @login_required
@@ -297,11 +298,6 @@ def file_detail(request, id):
     }
 
     return render(request, 'upload_success.html', context)
-
-
-
-
-        
 
 @login_required
 def digital_view(request, id):
@@ -452,8 +448,8 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     text_content = session.get('memorando_corpo')
-    oficio.destinatario_oficio = request.POST.get('para-oficio')
-    oficio.destinatarios_copia_oficio = request.POST.get('copia-oficio')
+    oficio.destinatario_oficio = request.POST.get('para_oficio')
+    oficio.destinatarios_copia_oficio = request.POST.get('copia_oficio')
     context = {
         'memorando': memorando,
         'oficio_assunto': oficio.assunto_oficio,
@@ -462,6 +458,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
         'data_atual': data_numerica,
         'text_content': mark_safe(text_content),
     }
+    print(oficio.destinatario_oficio)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_oficio.html"
