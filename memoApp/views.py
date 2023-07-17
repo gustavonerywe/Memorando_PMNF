@@ -127,6 +127,7 @@ def memorando_circular(request):
                 'memorando_assunto_circular': memorandocircular.assunto_circular,
                 'grupos': grupos,
             }
+            print(memorandocircular.memo_numero_circular)
             return render(request, 'upload_success_circular.html', context)
     else:
         form = ImageForm()
