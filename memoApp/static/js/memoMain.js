@@ -125,7 +125,6 @@ let selectCounter = 1;
 
   function createNewSelect() {
     let selectOriginal = document.getElementById('select-secretaria');
-    let selectClone = selectOriginal.cloneNode(true);
     let novoWrapper = document.createElement('div');
     let selectTable = document.getElementById('select-table');
 
@@ -153,16 +152,22 @@ let selectCounter = 1;
     novoWrapper.id = 'select-container-' + selectCounter;
     selectTable.appendChild(novoWrapper)
 
+    let selectClone = document.createElement('select')
     selectClone.id = 'select-secretaria-' + selectCounter;
     selectClone.setAttribute('data-select2-id', selectClone.id);
     selectClone.style.width = '100%';
 
     novoWrapper.appendChild(selectClone);
 
-    // Adicione a chamada ao método select2() após criar o novo select
-    $(selectClone).select2();
-    $(selectClone).val(null);
-    selectClone.selectedIndex = 0;
+     // Clone as opções do select original para o novo select
+     let options = selectOriginal.options;
+     for (let i = 0; i < options.length; i++) {
+       let option = document.createElement('option');
+       option.value = options[i].value;
+       option.text = options[i].text;
+       selectClone.appendChild(option);
+     }
+     $(selectClone).select2();
   }
 
   const addSelectButton = document.getElementById('addSelect');
