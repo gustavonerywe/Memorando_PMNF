@@ -127,14 +127,13 @@ def memorando_circular(request):
                 'memorando_assunto_circular': memorandocircular.assunto_circular,
                 'grupos': grupos,
             }
-            print(memorandocircular.memo_numero_circular)
             return render(request, 'upload_success_circular.html', context)
     else:
         form = ImageForm()
 
     context = {
     'form': form,
-    'memo_numero_atualizado': memorandocircular.gerar_proximo_numero_circular(),
+    'memo_numero_atualizado_circular': memorandocircular.gerar_proximo_numero_circular(),
     'memorando_corpo': Memorando().corpo,
     'grupos': grupos,
 }
@@ -231,6 +230,7 @@ def generate_pdf_circular(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupos': grupos
     }
+    print(text_content)
     return render(request, 'generate_pdf_circular.html', context)
 
 @login_required
@@ -404,7 +404,7 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     # url_criptografada = quote(id_criptografado_criptografado)
     grupos = Group.objects.all()
     memorando = Memorando.objects.get(id=id_criptografado)
-    memorandocircular = MemorandoCircular()
+    memorandocircular = MemorandoCircular.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
@@ -412,12 +412,14 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     text_content = session.get('memorando_corpo_circular')
     context = {
         'memorando': memorando,
+        'memorandocircular': memorandocircular,
         'memorando_assunto_circular': memorandocircular.assunto_circular,
         'data_atual': data_numerica,
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
         'grupos': grupos,
     }
+    print(text_content)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_circular.html"

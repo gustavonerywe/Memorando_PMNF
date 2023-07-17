@@ -15,7 +15,7 @@ naoEnviaModal.addEventListener('click', function(){
 
 enviaModal.addEventListener('click', function(){
     uploadModal.style.display = "none";
-    window.location.href = "/";
+    window.location.href = "/oficio";
 })
 
 fechar.addEventListener('click', function(){
