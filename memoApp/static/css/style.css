@@ -1,3 +1,86 @@
+/* CSS login.html */
+
+#html-login {
+    width: 100%;
+    height: 100%;
+    background-image: url(/static/img/img-memo-login.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#body-login {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #add8e68e;
+}
+
+#login-box {
+    border-radius: 30px;
+    border: 1px solid black;
+    text-align: center;
+    width: 40%;
+    height: fit-content;
+    margin-top: 10%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: rgb(12, 12, 12);
+}
+
+
+#title-login {
+    text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8);
+    font-style: italic;
+}
+
+#btn_to_upload:hover {
+    transform: scale(1.1);
+    /* margin-left: 10px; */
+    /* text-decoration: none; */
+    margin-right: 10px;
+}
+
+#button_to_sessao:hover {
+    transform: scale(1.1);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#input-container-login {
+    text-align: right;
+    padding-left: 0px;
+    width: 70%;
+    margin-top: 5%;
+}
+
+#button-submit-login:hover {
+    transform: scale(1.1);
+    margin-right: 10px;
+}
+
+#cadastro-login:hover {
+    transform: scale(1.1);
+    margin-left: 10px;
+}
+
+
+#login-box p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#login-box button {
+    margin-bottom: 30px;
+}
+
+/* close login.html */
+
+
+/* CSS memorandos */
+
 .page_main {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -5,6 +88,273 @@
     background: #add8e68e;
     color: #000000;
 }
+
+#btnTroca {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    float: right;
+    margin-left: 5px;
+}
+
+#btnTroca:hover {
+    float: right;
+    transform: scale(1.1);
+    margin-left: 10px;
+}
+
+#message-aviso {
+    color: #00cc00;
+    margin-top: -20px;
+    animation: loadingAnimation 1.5s ease-in-out infinite;
+}
+
+#msg-troca {
+    margin-top: 0;
+}
+.fechar-trocar {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.button-container button {
+    margin-right: 10px;
+}
+
+#memorandoComum {
+    padding: 10px;
+}
+
+#memorandoCircular {
+    padding: 10px;
+}
+
+#oficio {
+    padding: 10px;
+}
+
+#memorandoComum:hover,
+#memorandoCircular:hover,
+#oficio:hover {
+    transform: scale(1.1);
+}
+
+#btnTrueSair {
+    float: right;
+    margin-right: 5px;
+}
+
+#btnSair {
+    text-decoration: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+}
+
+#form-main {
+    width: 90%;
+    background: #fff;
+    margin: 0 auto;
+}
+
+#header {
+    padding: 10px;
+    text-align: center;
+}
+#img {
+    margin-right: 75%;
+    width: 20%;
+}
+
+#content {
+    padding: 20px;
+}
+
+.table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 75%;
+    margin-bottom: 20px;
+    border: 2px solid;
+}
+
+#tituloTable,
+#tituloTable2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+#memo_numero {
+    font-size: 0.9em;
+}
+
+#td-table-memo hr {
+    margin: 7px 0;
+}
+
+#container_and_button,
+#container_and_button-copia {
+    display: flex;
+    align-items: center;
+}
+
+#select-table,
+#select-table-copia {
+    display: inline-block;
+}
+
+.select-wrapper,
+.select-wrapper-copia {
+    margin: 10px;
+}
+
+#select-secretaria {
+    text-align: center;
+    width: 100%;
+}
+
+#select-secretaria #option-disabled {
+    text-align: center;
+    color: #333333c5;
+}
+
+#addSelect:hover,
+#addSelectCopia:hover {
+    transform: scale(1.1);
+}
+
+#addSelect,
+#addSelectCopia {
+    margin-right: 10px;
+    background-color: #479f76;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+    margin-top: 7px;
+}
+
+
+/* close memorandos */
+
+
+/* CSS modal */
+
+#modal-login {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-login {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 17%;
+    padding: 20px;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#ok-modal:hover {
+    transform: scale(1.1);
+}
+
+#meuModal,
+#modal-upload,
+#modal-sair,
+#modal-pdf,
+#modal-trocar {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content p {
+    text-align: center;
+}
+
+.modal-content {
+    height: 25%;
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 43%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* .modal-content-span {
+    height: 28%;
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 43%;
+    padding-right: 15px;
+    padding-left: 15px;
+} */
+
+.modal-content-memorando {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 43%;
+    height: 20%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.fechar-sair {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
+#buttonNoModal,
+#buttonNoModalMemorando,
+#buttonNoSair,
+#nao-envia-modal {
+    background-color: #e35d6a;
+}
+
+#buttonYesModal,
+#buttonYesModalMemorando,
+#buttonYesSair #envia-modal {
+    background-color: #479f76;
+}
+
+/* close modal */
 
 .page_pdf {
     color: white;
@@ -25,14 +375,8 @@ h6 {
     font-weight: bold;
 }
 
-#header {
-    padding: 10px;
-    text-align: center;
-}
 
-#content {
-    padding: 20px;
-}
+
 
 #footer {
     padding: 10px;
@@ -40,13 +384,7 @@ h6 {
     margin-left: 67%;
 }
 
-.table {
-    margin: 0 auto;
-    border-collapse: collapse;
-    width: 75%;
-    margin-bottom: 20px;
-    border: 2px solid;
-}
+
 
 #table-header {
     background-color: #fff;
@@ -59,16 +397,8 @@ h6 {
     border: 1px solid;
 }
 
-#tituloTable,
-#tituloTable2 {
-    text-align: center;
-    font-weight: bold;
-}
 
-#img {
-    margin-right: 75%;
-    width: 20%;
-}
+
 
 #box-field {
     border: solid 1px black;
@@ -94,9 +424,6 @@ h6 {
     text-align: center;
 }
 
-#memo_numero {
-    font-size: 0.9em;
-}
 
 #section-detail {
     text-align: center;
@@ -209,15 +536,6 @@ main {
     transform: scale(1.1);
 }
 
-#select-secretaria {
-    text-align: center;
-    width: 100%;
-}
-
-#select-secretaria #option-disabled {
-    text-align: center;
-    color: #333333c5;
-}
 
 #button-file {
     display: flex;
@@ -361,11 +679,6 @@ main {
     width: 105%;
 }
 
-#form-main {
-    width: 90%;
-    background: #fff;
-    margin: 0 auto;
-}
 
 #corpo {
     display: block;
@@ -406,35 +719,6 @@ main {
     text-align: center;
 }
 
-#container_and_button,
-#container_and_button-copia {
-    display: flex;
-    align-items: center;
-}
-
-.select-wrapper,
-.select-wrapper-copia {
-    margin: 10px;
-}
-
-#addSelect:hover,
-#addSelectCopia:hover {
-    transform: scale(1.1);
-}
-
-#addSelect,
-#addSelectCopia {
-    margin-right: 10px;
-    background-color: #479f76;
-    border-radius: 60px;
-    cursor: pointer;
-    width: 32.5px;
-    height: 32.5px;
-    padding: 1px;
-    align-self: baseline;
-    border: 2px solid black;
-    margin-top: 7px;
-}
 
 .feather.feather-plus-circle.feather-icon-file-plus.custom-icon {
     padding: 1px;
@@ -508,53 +792,14 @@ main {
     */
 }
 
-.modal-content-login {
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 17%;
-    padding: 20px;
-    border: 1px solid #888;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
 
-#modal-login {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
 
-#meuModal,
-#modal-upload,
-#modal-sair,
-#modal-pdf,
-#modal-trocar {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-}
+
 
 #modal-trocar {
     height: 110%;
 }
 
-#msg-troca {
-    margin-top: 0;
-}
 
 @keyframes loadingAnimation {
     0% {
@@ -570,11 +815,6 @@ main {
     }
 }
 
-#message-aviso {
-    color: #00cc00;
-    margin-top: -20px;
-    animation: loadingAnimation 1.5s ease-in-out infinite;
-}
 
 #meuModalMemorando {
     display: none;
@@ -588,39 +828,6 @@ main {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* .modal-content-span {
-    height: 28%;
-    background-color: #fefefe;
-    margin: 15% auto;
-    border: 1px solid #888;
-    width: 43%;
-    padding-right: 15px;
-    padding-left: 15px;
-} */
-
-.modal-content p {
-    text-align: center;
-}
-
-.modal-content {
-    height: 25%;
-    background-color: #fefefe;
-    margin: 15% auto;
-    border: 1px solid #888;
-    width: 43%;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
-.modal-content-memorando {
-    background-color: #fefefe;
-    margin: 15% auto;
-    border: 1px solid #888;
-    width: 43%;
-    height: 20%;
-    padding-right: 15px;
-    padding-left: 15px;
-}
 
 .modal-body {
     padding-top: 20px;
@@ -637,27 +844,6 @@ main {
     align-self: flex-end;
 }
 
-.fechar-sair {
-    color: #aaa;
-    float: right;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 4px 8px;
-    width: 3%;
-    align-self: flex-end;
-}
-
-.fechar-trocar {
-    color: #aaa;
-    float: right;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 4px 8px;
-    width: 3%;
-    align-self: flex-end;
-}
 
 .fechar-pdf {
     color: #aaa;
@@ -731,42 +917,6 @@ hr {
     margin-top: 0;
 }
 
-#buttonNoModal,
-#buttonNoModalMemorando,
-#buttonNoSair,
-#nao-envia-modal {
-    background-color: #e35d6a;
-}
-
-#buttonYesModal,
-#buttonYesModalMemorando,
-#buttonYesSair #envia-modal {
-    background-color: #479f76;
-}
-
-#memorandoComum:hover,
-#memorandoCircular:hover,
-#oficio:hover {
-    transform: scale(1.1);
-}
-
-#button-container-troca {
-    display: flex;
-    justify-content: space-between;
-}
-
-#memorandoComum {
-    padding: 10px;
-}
-
-#memorandoCircular {
-    padding: 10px;
-}
-
-#oficio {
-    padding: 10px;
-}
-
 #buttonNoModal:hover,
 #buttonNoModalMemorando:hover,
 #nao-envia-modal:hover,
@@ -780,10 +930,6 @@ hr {
 #envia-modal:hover,
 #buttonYesSair:hover {
     background-color: #6ae9ae;
-    transform: scale(1.1);
-}
-
-#ok-modal:hover {
     transform: scale(1.1);
 }
 
@@ -892,15 +1038,6 @@ hr {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.button-container {
-    display: flex;
-    margin-top: 10px;
-}
-
-.button-container button {
-    margin-right: 10px;
-}
-
 #span-alert {
     margin-left: 35px;
     margin-bottom: 10px;
@@ -943,21 +1080,6 @@ hr {
     height: 21px;
 }
 
-#select-table,
-#select-table-copia {
-    display: inline-block;
-}
-
-#btnSair {
-    text-decoration: none;
-    color: white;
-    font-family: "Times New Roman", Times, serif;
-}
-
-#btnTrueSair {
-    float: right;
-    margin-right: 5px;
-}
 
 #btnTrueSair:hover {
     float: right;
@@ -965,66 +1087,10 @@ hr {
     margin-right: 10px;
 }
 
-#btnTroca {
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    float: right;
-    margin-left: 5px;
-}
 
-#btnTroca:hover {
-    float: right;
-    transform: scale(1.1);
-    margin-left: 10px;
-}
 
-/* CSS para a página de login */
 
-#login-box {
-    border-radius: 30px;
-    border: 1px solid black;
-    text-align: center;
-    width: 40%;
-    height: fit-content;
-    margin-top: 10%;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    text-shadow: rgb(12, 12, 12);
-}
 
-#login-box p {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#login-box button {
-    margin-bottom: 30px;
-}
-
-#body-login {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #add8e68e;
-}
-
-#input-container-login {
-    text-align: right;
-    padding-left: 0px;
-    width: 70%;
-    margin-top: 5%;
-}
-
-#html-login {
-    width: 100%;
-    height: 100%;
-    background-image: url(/static/img/img-memo-login.jpg);
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 .cancel-button-select:hover {
     transform: scale(1.1);
@@ -1044,37 +1110,6 @@ hr {
     display: inline-grid;
 }
 
-#td-table-memo hr {
-    margin: 7px 0;
-}
-
-#title-login {
-    text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8);
-    font-style: italic;
-}
-
-#button-submit-login:hover {
-    transform: scale(1.1);
-    margin-right: 10px;
-}
-
-#cadastro-login:hover {
-    transform: scale(1.1);
-    margin-left: 10px;
-}
-
-#btn_to_upload:hover {
-    transform: scale(1.1);
-    /* margin-left: 10px; */
-    /* text-decoration: none; */
-    margin-right: 10px;
-}
-
-#button_to_sessao:hover {
-    transform: scale(1.1);
-    margin-left: 10px;
-    margin-right: 10px;
-}
 
 #id_file1 {
     display: block;
