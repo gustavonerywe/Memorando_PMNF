@@ -47,10 +47,10 @@
                     </tr>
                     <tr class="table-secondary">
                         <th>Data:</th>
-                        <td><input type="date" name="data" value="{% now 'Y-m-d' %}" /></td>
+                        <td><input type="date" name="data" value="{% now 'Y-m-d' %}" readonly /></td>
                     </tr>
                     <tr class="table-secondary">
-                        <th>Nº do memorando</th>
+                        <th>Nº do ofício</th>
                         <td><span id="memo_numero">{{memo_numero_atualizado_oficio}}</span></td>
                     </tr>
                     <tr class="table-secondary">
@@ -63,11 +63,11 @@
                     </tr>
                     <tr class="table-secondary">
                         <th><span style="color: red;">* </span>Para:</th>
-                        <td><input placeholder="Escreva seu destinatario" type="text" id="para-input" required name="para_oficio"/></td>
+                        <td><input placeholder="Escreva seu destinatario" type="text" id="para-oficio" required name="para-oficio"/></td>
                     </tr>
                     <tr class="table-secondary">
                         <th>Cópia para:</th>
-                        <td><input placeholder="Escreva o destinatário de cópia" type="text" id="copia-para-input" name="copia_oficio"/></td>
+                        <td><input placeholder="Escreva o destinatário de cópia" type="text" id="copia-oficio" name="copia-oficio"/></td>
                     </tr>
 
                     <tr class="table-secondary">

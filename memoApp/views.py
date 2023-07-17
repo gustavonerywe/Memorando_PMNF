@@ -208,7 +208,7 @@ def generate_pdf(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
     }
-    print(grupo_escolhido_copia)
+    print(memorando.assunto)
     return render(request, 'generate_pdf.html', context)
 
 @login_required
@@ -372,6 +372,7 @@ def geraEBaixaPDF(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
     }
+    print(memorando.assunto)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
