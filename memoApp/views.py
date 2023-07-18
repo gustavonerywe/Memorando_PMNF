@@ -45,7 +45,7 @@ def upload(request):
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
-            memorando.anexo = form
+            # memorando.anexo = form
           
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
            
