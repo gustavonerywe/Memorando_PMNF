@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from tinymce import models as tinymce_models
 from django.utils import timezone
 from datetime import datetime
+from . import forms
 
 class Image(models.Model):
     file = models.FileField(upload_to='documents/')     
@@ -19,6 +20,7 @@ class Memorando(models.Model):
     destinatarios_copia = models.ManyToManyField(User, related_name='destinatarios_copia', null=True)
     assunto = models.CharField(max_length=225, blank=True, null=True)
     corpo = tinymce_models.HTMLField(null=True, default='')
+    anexo = models.ForeignKey(forms.ImageForm, on_delete=models.CASCADE, related_name="anexo_recebido", null=True, blank=False)
 
     def gerar_proximo_numero(self):
         memo_numero = 0

@@ -45,21 +45,10 @@ def upload(request):
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
-            # if grupo_escolhido[0] == 'Todos':
-            #     todosGrupos = []
-            #     for grupo in grupos:
-            #         todosGrupos.append(grupo.name)
-            #     grupo_escolhido = todosGrupos    
-                
+            memorando.anexo = form
+          
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
-            # try:
-            #     if grupo_escolhido_copia[0] == 'Todos':
-            #      todosGrupos = []
-            #      for grupo in grupos:
-            #         todosGrupos.append(grupo.name)
-            #      grupo_escolhido_copia = todosGrupos    
-            # except:
-            #     pass
+           
                 
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
@@ -73,6 +62,7 @@ def upload(request):
                 image = Image.objects.create(file=file)
                 image.memorando = memorando
                 image.save()
+            print(request.FILES.getlist('file'))
 
             context = {
                 'memorando': memorando,
