@@ -3,16 +3,56 @@
 - Gerar PDF
 {% endblock %}
 {% block content %}
+<html class="page_main" lang="pt-br">
 
 <body class="cor">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <fieldset id="box-upload">
-    <h1 id="title-upload">Memorando enviado</h1>
-    <p id="subtitle-upload">O arquivo foi carregado com sucesso.</p>
-    <div id="link-container">
-      <a id="link-upload" href="{% url 'file_detail' id=memorando.id %}">Clique para exibir detalhes</a>
-    </div>
-    <div id="link-container">
-      <a id="link-upload" href="{% url 'upload' %}">Novo memorando</a>
-    </div>
- {% endblock %} 
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <fieldset id="box-upload">
+        <h1 id="title-upload">Memorando enviado</h1>
+        <p id="subtitle-upload">O arquivo foi carregado com sucesso.</p>
+        <div class="link-container">
+            <a id="link-upload">Novo memorando</a>
+        </div>
+        <div class="link-container">
+            <a id="link-upload-pdf" href="{% url 'gerar_pdf' memorando.id %}"> <img id="img-pdf"
+                    src="/static/img/pdf.png" alt="imagem do pdf" />Gerar PDF</a>
+        </div>
+        <div id="modal-pdf">
+            <div style="height: 45%;" class="modal-content">
+                <span class="fechar-pdf">&times;</span>
+                <div style="text-align: center;">
+                    <p style="font-size: 17px; text-align: center; align-items: center;"><strong
+                            style="margin: 1px;">Aguarde!</strong>
+                        <hr style="margin-bottom: 10px;"> O seu memorando já está sendo baixado. <br><br>
+                    <div id="dot-container">
+                        <p id="first-dot" class="dot">•</p>
+                        <p id="second-dot" class="dot">•</p>
+                        <p id="third-dot" class="dot">•</p> <br>
+                    </div>
+                    <div id="image-container">
+                        
+                    </div>
+                    <span style="font-size: 0.5em;">Pode fechar essa aba.</span>
+                    </p>
+                </div>
+                <div class="button-container">
+                    <button type="button" id="ok-modal-pdf" class="btn btn-dark btn-sm">Ok</button>
+                </div>
+            </div>
+        </div>
+        <div id="modal-upload">
+            <div class="modal-content">
+                <span class="fechar">&times;</span>
+                <p style="font-size: 17px;">Deseja fazer um novo memorando?</p>
+                <div class="button-container">
+                    <button type="button" id="nao-envia-modal" class="btn btn-danger btn-sm">Não</button>
+                    <button type="button" id="envia-modal" class="btn btn-success btn-sm">Sim</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <script src="/static/js/upload_success.js"></script>
+</body>
+
+</html>
+{% endblock %}

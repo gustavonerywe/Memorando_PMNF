@@ -5,7 +5,7 @@ from django.utils import timezone
 from django import forms
 from django.core.exceptions import ValidationError
 
-MAX_UPLOAD_SIZE = 104857600  # Define o tamanho máximo em bytes (100 MB)
+MAX_UPLOAD_SIZE = 104857600  
 
 def validate_file_size(value):
     if value.size > MAX_UPLOAD_SIZE:
@@ -18,7 +18,7 @@ class ImageForm(forms.ModelForm):
         fields = ('file',)
 
     file = forms.FileField(
-        widget=forms.ClearableFileInput(attrs={'multiple': True}), validators=[validate_file_size])
+        widget=forms.ClearableFileInput(attrs={'allow_multiple_selected': True}), validators=[validate_file_size], required=False)
     
     def clean_file(self):
         file = self.cleaned_data.get('file')

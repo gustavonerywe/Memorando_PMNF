@@ -1,0 +1,228 @@
+{% extends 'template.html' %}
+{% block subtitulo %}
+- PDF
+{% endblock %}
+{% block content %}
+
+<html class="page_pdf" id="page_pdf">
+
+<style>
+    #tituloTable,
+    #tituloTable2 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+
+    body {
+        width: 75%;
+        background: #fff;
+        margin: 0 auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+    }
+
+    #header {
+        padding: 10px;
+        text-align: center;
+    }
+
+    #content {
+        padding: 20px;
+    }
+
+    #footer {
+        padding: 10px;
+        text-align: center;
+        margin-left: 60%;
+    }
+
+    #table-generate {
+        width: 100%;
+        margin-right: 10px;
+        /* text-align: center; */
+        margin-bottom: 10px;
+        border: 2px solid black;
+        border-collapse: collapse;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        margin-top: -25px;
+        height: 200px;
+        inline-size: none;
+    }
+
+    /* .table {
+        padding: 10px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 60%;
+        margin-bottom: 20px;
+        border: 0.5px solid black;
+    } */
+
+    .th-generate {
+        font-weight: bold !important;
+        border-right: 1px solid black;
+        width: 5%;
+        font-size: 0.8em;
+        margin: 0;
+        padding: 0;
+    }
+
+    .td-generate {
+        font-size: 0.8em;
+        margin: 0;
+        padding: 0;
+    }
+
+    #form-main {
+        width: 100%;
+        background: #fff;
+    }
+
+    hr {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    #hr-generate {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #corpo-pdf {
+        size: A4;
+    }
+
+    /* #li-para, #li-cop {
+        margin-top: -200px;
+        padding: 0;
+    }
+
+    #p-princ {
+        margin-bottom: -20px;
+    } */
+
+    #corpo-memorando-pdf {
+        margin: 0;
+        width: 100%;
+    }
+
+    #img {
+        margin-right: 110%;
+        width: 32%;
+        margin-top: -90px;
+    }
+
+    body {
+        width: 75%;
+        background: #fff;
+        margin: 0 auto;
+    }
+
+    #table-recebido {
+        border: 2px solid black;
+        padding: 8px;
+        width: 100%;
+        margin-left: 38.5%;
+    }
+
+    #body-pdf {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    #content-pdf {
+        height: 200px;
+    }
+</style>
+
+<body id="body-pdf">
+    <div id="corpo-pdf">
+        <link rel="stylesheet" href="/static/css/style.css" />
+        {% comment %} {% endcomment %}
+        <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+            {% csrf_token %}
+            <div id="header">
+                <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
+            </div>
+            <hr id="hr-generate" />
+            <div id="content-pdf">
+                <table class="table" id="table-generate">
+                    <tr>
+                        <th style="text-align: center;" id="tituloTable" colspan="2">MEMORANDO CIRCULAR</th>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Data:</th>
+                        <td class="td-generate">
+                            <p style="margin-bottom: 2px;">{{ data_atual }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Número do memorando circular:</th>
+                        <td class="td-generate"><span id="memo_numero">{{memorando.memo_numero}}</span></td>
+                    </tr>
+                    <tr>
+                        <div id="teste">
+                            <th id="teste" class="th-generate" style="vertical-align: middle;">De:</th>
+                        </div>
+                        <td class="td-generate">
+                            {{ user.groups.first.name }}
+                            <br>
+                            {{ user.get_full_name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Para:</th>
+                        <td class="td-generate" id="secretaria-escolhida">
+                            <ul class="grupo-lista">
+                                {% for grupo in grupos %}
+                                <li id="li-para">{{ grupo.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
+                        <td class="td-generate">
+                            <p style="margin-bottom: 2px;">{{ memorando_assunto_circular }}</p>
+                        </td>
+                    </tr>
+                </table>
+                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
+                <div id="footer">
+                    <p></p>
+                    <fieldset id="box-field-generate">
+                        <table id="table-recebido">
+                            <tr>
+                                <th id="tituloTable2">RECEBIDO</th>
+                            </tr>
+                            <tr>
+                                <td id="em">Em: ______ /______ /______</td>
+                            </tr>
+                            <tr>
+                                <td id="ass">Ass: _____________________</td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+            {% comment %}{% endcomment %}
+            <script src="/static/js/generate_pdf.js"></script>
+        </form>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

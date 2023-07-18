@@ -1,9 +1,13 @@
-html {
+.page_main {
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
     background: #add8e68e;
     color: #000000;
+}
+
+.page_pdf {
+    color: white;
 }
 
 body {
@@ -33,6 +37,7 @@ h6 {
 #footer {
     padding: 10px;
     text-align: center;
+    margin-left: 67%;
 }
 
 .table {
@@ -40,7 +45,7 @@ h6 {
     border-collapse: collapse;
     width: 75%;
     margin-bottom: 20px;
-    border: 1px solid;
+    border: 2px solid;
 }
 
 #table-header {
@@ -57,15 +62,12 @@ h6 {
 #tituloTable,
 #tituloTable2 {
     text-align: center;
+    font-weight: bold;
 }
 
 #img {
     margin-right: 75%;
     width: 20%;
-}
-
-#footer {
-    margin-left: 600px;
 }
 
 #box-field {
@@ -90,7 +92,6 @@ h6 {
 
 #image-name {
     text-align: center;
-
 }
 
 #memo_numero {
@@ -117,16 +118,15 @@ main#corpo {
 }
 
 main {
-    margin-top: 5%
+    margin-top: 5%;
 }
 
 .td-file {
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 25px;
     text-decoration: none;
 }
-
 
 #box-file {
     width: 40%;
@@ -141,14 +141,16 @@ main {
 }
 
 #drop-area {
-    border: 2px dashed gray;
-    width: 50%;
-    height: 100px;
+    border: 2px dashed black;
+    background-color: #cbe9f38e;
+    width: 80%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
-    margin: auto
+    margin: 0 auto;
+    padding: 5%;
 }
 
 #italic-message {
@@ -168,13 +170,16 @@ main {
 #title-footer {
     text-align: center;
     font-size: 165%;
+    font-family: "Times New Roman", Times, serif;
+    margin-top: 50px;
 }
 
 #name-file {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: 98%;
+    padding: 2px;
 }
 
 #label-file {
@@ -188,25 +193,30 @@ main {
 }
 
 #input-container {
-    margin-top: -20px;
-    padding-left: 55px;
+    margin: 0 auto;
+    display: inline-grid;
 }
 
 #botao {
     border-radius: 20px;
-    background: #a7e5fa;
-    color: #333333;
-    border-style: solid;
-    border-color: black;
-    height: 50px;
+    border: 0.2px solid black;
     width: 200px;
     font: bold 20px times;
-    text-shadow: none;
+    background-color: #cff4fc;
 }
 
 #botao:hover {
-    text-decoration: none;
-    background: #78dcfd;
+    transform: scale(1.1);
+}
+
+#select-secretaria {
+    text-align: center;
+    width: 100%;
+}
+
+#select-secretaria #option-disabled {
+    text-align: center;
+    color: #333333c5;
 }
 
 #button-file {
@@ -218,20 +228,15 @@ main {
 }
 
 #file-margin {
-    margin-top: 5px;
+    margin-top: 50px;
 }
 
 #id_file {
     display: block;
-    width: 100%;
-    margin: 0 auto 0 auto;
-    max-width: 100%;
-    margin-right: 50.1px;
-}
-
-#container-file {
-    display: flex;
-    flex-direction: column;
+    margin: 0 auto;
+    margin-right: 50px;
+    width: 358.094px;
+    border-radius: 20px;
 }
 
 #title-upload {
@@ -246,7 +251,7 @@ main {
     display: block;
     margin: 0 auto;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 20px;
     border-color: black;
     width: 100px;
     height: 40px;
@@ -270,6 +275,7 @@ main {
 
 #box-upload-main {
     border: 2px solid black;
+    background-color: #cbe9f38e;
     border-radius: 10px;
     padding: 20px;
     margin: 20px auto;
@@ -288,12 +294,38 @@ main {
     margin-top: 7px;
 }
 
-#link-upload:hover {
+#link-upload-pdf {
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
     text-decoration: none;
-    color: cyan;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-top: 7px;
+    width: 27%;
 }
 
-#link-container {
+#link-upload:hover {
+    text-decoration: none;
+    /* color: cyan; */
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+#link-upload-pdf:hover {
+    text-decoration: none;
+    /* color: cyan; */
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #4CAF50;
+    margin-top: 10px;
+}
+
+.link-container {
     text-align: center;
 }
 
@@ -301,7 +333,7 @@ main {
     pointer-events: none;
 }
 
-@media screen and (max-width: 1290px) {
+/*@media screen and (max-width: 1290px) {
     #box-field {
         margin-right: 200px;
     }
@@ -319,9 +351,14 @@ main {
     }
 
 }
+*/
 
 .cor {
     background-color: transparent;
+}
+
+#formFileSm {
+    width: 105%;
 }
 
 #form-main {
@@ -347,17 +384,16 @@ main {
     border-radius: 30px;
     padding: 20px;
     margin: 0 auto;
-
 }
 
 .style-p {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 25px;
     line-height: 35px;
 }
 
 #titulo-file-detail {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 35px;
 }
 
@@ -370,32 +406,68 @@ main {
     text-align: center;
 }
 
-.cancel-button {
-    background-color: rgba(214, 140, 140, 0.836);
+#container_and_button,
+#container_and_button-copia {
+    display: flex;
+    align-items: center;
 }
 
-.cancel-button:hover {
-    background-color: rgb(209, 97, 97);
-    color: black;
+.select-wrapper,
+.select-wrapper-copia {
+    margin: 10px;
 }
 
-#addInput {
-    margin-left: 10px;
-    background-color: rgba(157, 230, 157, 0.815);
-    ;
+#addSelect:hover,
+#addSelectCopia:hover {
+    transform: scale(1.1);
+}
+
+#addSelect,
+#addSelectCopia {
+    margin-right: 10px;
+    background-color: #479f76;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+    margin-top: 7px;
+}
+
+.feather.feather-plus-circle.feather-icon-file-plus.custom-icon {
+    padding: 1px;
+}
+
+.addInput:hover {
+    transform: scale(1.1);
+}
+
+.addInput {
+    margin-left: -40px;
+    background-color: #479f76;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+    /*
+    margin-left: 20px;
+    background-color: #479F76;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
-    width: 25px;
+    width: 30px;
     height: 25px;
+    padding: 10px;
     display: flex;
     align-items: center;
+    margin-bottom: 18px;
     justify-content: center;
-}
-
-#addInput:hover {
-    background-color: rgb(107, 216, 107);
-    color: black;
+    */
 }
 
 .input-row {
@@ -404,18 +476,52 @@ main {
     margin-bottom: 5px;
 }
 
+.cancel-button:hover {
+    transform: scale(1.1);
+}
+
 .cancel-button {
+    margin-right: 10px;
+    background-color: #e35d6a;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+    margin-bottom: -10px;
+
+    /*
     margin-right: 5px;
-    color: #333;
+    background-color: #E35D6A;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    width: 30px;
+    height: 25px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 18px;
+    */
 }
 
-#meuModal {
+.modal-content-login {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 17%;
+    padding: 20px;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#modal-login {
     display: none;
     position: fixed;
     z-index: 1;
@@ -425,6 +531,49 @@ main {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+}
+
+#meuModal,
+#modal-upload,
+#modal-sair,
+#modal-pdf,
+#modal-trocar {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#modal-trocar {
+    height: 110%;
+}
+
+#msg-troca {
+    margin-top: 0;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#message-aviso {
+    color: #00cc00;
+    margin-top: -20px;
+    animation: loadingAnimation 1.5s ease-in-out infinite;
 }
 
 #meuModalMemorando {
@@ -439,15 +588,78 @@ main {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+/* .modal-content-span {
+    height: 28%;
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
     border: 1px solid #888;
-    width: 68%;
+    width: 43%;
+    padding-right: 15px;
+    padding-left: 15px;
+} */
+
+.modal-content p {
+    text-align: center;
+}
+
+.modal-content {
+    height: 25%;
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 43%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.modal-content-memorando {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 43%;
+    height: 20%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.modal-body {
+    padding-top: 20px;
 }
 
 .fechar {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
+.fechar-sair {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
+.fechar-trocar {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
+.fechar-pdf {
     color: #aaa;
     float: right;
     font-size: 25px;
@@ -465,7 +677,7 @@ main {
     font-weight: bold;
     cursor: pointer;
     padding: 4px 8px;
-    width: 3%;
+    width: 2%;
     align-self: flex-end;
 }
 
@@ -474,6 +686,31 @@ main {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fechar-trocar:hover,
+.fechar-trocar:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fechar-pdf:hover,
+.fechar-pdf:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fechar-sair:hover,
+.fechar-sair:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .fecharMemorando:hover,
@@ -481,6 +718,7 @@ main {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 .imgModal {
@@ -493,64 +731,89 @@ hr {
     margin-top: 0;
 }
 
-#buttonYesModal {
-    width: 35%;
+#buttonNoModal,
+#buttonNoModalMemorando,
+#buttonNoSair,
+#nao-envia-modal {
+    background-color: #e35d6a;
+}
+
+#buttonYesModal,
+#buttonYesModalMemorando,
+#buttonYesSair #envia-modal {
+    background-color: #479f76;
+}
+
+#memorandoComum:hover,
+#memorandoCircular:hover,
+#oficio:hover {
+    transform: scale(1.1);
+}
+
+#button-container-troca {
+    display: flex;
+    justify-content: space-between;
+}
+
+#memorandoComum {
+    padding: 10px;
+}
+
+#memorandoCircular {
+    padding: 10px;
+}
+
+#oficio {
+    padding: 10px;
+}
+
+#buttonNoModal:hover,
+#buttonNoModalMemorando:hover,
+#nao-envia-modal:hover,
+#buttonNoSair:hover {
+    background-color: #e62c3e;
+    transform: scale(1.1);
+}
+
+#buttonYesModal:hover,
+#buttonYesModalMemorando:hover,
+#envia-modal:hover,
+#buttonYesSair:hover {
+    background-color: #6ae9ae;
+    transform: scale(1.1);
+}
+
+#ok-modal:hover {
+    transform: scale(1.1);
+}
+
+#ok-modal-pdf:hover {
+    transform: scale(1.1);
+}
+
+#buttonNoModal,
+#buttonYesModal,
+#buttonNoModalMemorando,
+#buttonYesModalMemorando,
+#envia-modal,
+#nao-envia-modal,
+#buttonYesSair,
+#buttonNoSair,
+#ok-modal,
+#ok-modal-pdf {
+    width: 40%;
     text-align: center;
     margin: 0 auto;
-    background-color: rgba(157, 230, 157, 0.815);
     border: 0.2px solid black;
     border-radius: 15px;
     margin-bottom: 10px;
-}
-
-#buttonYesModalMemorando {
-    width: 35%;
-    text-align: center;
-    margin: 0 auto;
-    background-color: rgba(157, 230, 157, 0.815);
-    border: 0.2px solid black;
-    border-radius: 15px;
-    margin-bottom: 10px;
-}
-
-#buttonNoModal {
-    width: 35%;
-    text-align: center;
-    margin: 0 auto;
-    background-color: rgba(214, 140, 140, 0.836);
-    border: 0.2px solid black;
-    border-radius: 15px;
-}
-
-#buttonNoModalMemorando {
-    width: 35%;
-    text-align: center;
-    margin: 0 auto;
-    background-color: rgba(214, 140, 140, 0.836);
-    border: 0.2px solid black;
-    border-radius: 15px;
-}
-
-#buttonNoModal:hover {
-    background-color: rgb(209, 97, 97);
-}
-
-#buttonNoModalMemorando:hover {
-    background-color: rgb(209, 97, 97);
-}
-
-#buttonYesModal:hover {
-    background-color: rgb(107, 216, 107);
-}
-
-#buttonYesModalMemorando:hover {
-    background-color: rgb(107, 216, 107);
 }
 
 #spanMessage {
     color: rgb(3, 117, 3);
     font-size: 0.7em;
-    margin-bottom: 0;
+    text-align: center;
+    margin-bottom: -1px;
 }
 
 .tox-notifications-container {
@@ -560,7 +823,350 @@ hr {
 .tox .tox-statusbar a,
 .tox .tox-statusbar__path-item,
 .tox .tox-statusbar__wordcount {
-    color: rgba(34, 47, 62, .7);
+    color: rgba(34, 47, 62, 0.7);
     text-decoration: none;
     display: none;
+}
+
+#img-pdf {
+    width: 25%;
+    padding-right: 5px;
+}
+
+.bg-custom {
+    background-color: #d3d3d3;
+}
+
+#uploadFile {
+    color: black;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+#searchInput {
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.img-remove {
+    width: 25px;
+}
+
+#img-add {
+    width: 20px;
+}
+
+#table-generate {
+    width: 80%;
+}
+
+#hr-generate {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#box-field-generate {
+    border: solid 1px black;
+    border-radius: 10px;
+    width: 200px;
+    height: 100px;
+    margin-left: 50px;
+}
+
+#campo-assunto {
+    text-align: center;
+}
+
+#meuModalAssunto {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.button-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.button-container button {
+    margin-right: 10px;
+}
+
+#span-alert {
+    margin-left: 35px;
+    margin-bottom: 10px;
+}
+
+#corpo-memorando-pdf {
+    /* border: 1px solid #ccc;
+    border-radius: 5px; */
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #fff;
+    cursor: not-allowed;
+}
+
+#container-modal-atencao {
+    margin-top: -4%;
+}
+
+#container-modal-memo {
+    margin-top: -1%;
+}
+
+.th-generate {
+    width: 200px;
+}
+
+.td-generate {
+    width: 200px;
+}
+
+#id_name,
+#copia-oficio,
+#para-oficio {
+    width: 75%;
+}
+
+.file-input {
+    width: 358.094px;
+    height: 21px;
+}
+
+#select-table,
+#select-table-copia {
+    display: inline-block;
+}
+
+#btnSair {
+    text-decoration: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+}
+
+#btnTrueSair {
+    float: right;
+    margin-right: 5px;
+}
+
+#btnTrueSair:hover {
+    float: right;
+    transform: scale(1.1);
+    margin-right: 10px;
+}
+
+#btnTroca {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    float: right;
+    margin-left: 5px;
+}
+
+#btnTroca:hover {
+    float: right;
+    transform: scale(1.1);
+    margin-left: 10px;
+}
+
+/* CSS para a página de login */
+
+#login-box {
+    border-radius: 30px;
+    border: 1px solid black;
+    text-align: center;
+    width: 40%;
+    height: fit-content;
+    margin-top: 10%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: rgb(12, 12, 12);
+}
+
+#login-box p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#login-box button {
+    margin-bottom: 30px;
+}
+
+#body-login {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #add8e68e;
+}
+
+#input-container-login {
+    text-align: right;
+    padding-left: 0px;
+    width: 70%;
+    margin-top: 5%;
+}
+
+#html-login {
+    width: 100%;
+    height: 100%;
+    background-image: url(/static/img/img-memo-login.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cancel-button-select:hover {
+    transform: scale(1.1);
+}
+
+.cancel-button-select {
+    margin-right: 10px;
+    background-color: #e35d6a;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+    padding-top: -7px;
+    display: inline-grid;
+}
+
+#td-table-memo hr {
+    margin: 7px 0;
+}
+
+#title-login {
+    text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8);
+    font-style: italic;
+}
+
+#button-submit-login:hover {
+    transform: scale(1.1);
+    margin-right: 10px;
+}
+
+#cadastro-login:hover {
+    transform: scale(1.1);
+    margin-left: 10px;
+}
+
+#btn_to_upload:hover {
+    transform: scale(1.1);
+    /* margin-left: 10px; */
+    /* text-decoration: none; */
+    margin-right: 10px;
+}
+
+#button_to_sessao:hover {
+    transform: scale(1.1);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#id_file1 {
+    display: block;
+    margin: 0 auto;
+    margin-right: 50px;
+    width: 358.094px;
+    border-radius: 20px;
+    margin-bottom: -17px;
+}
+
+#icon-files {
+    font-size: 60px;
+}
+
+#div-icon {
+    text-align: center;
+    margin-top: -75px;
+}
+
+#corpo-pdf {
+    margin: 0 auto;
+    size: A4;
+    width: 179mm;
+    height: 293mm;
+}
+
+#content-pdf {
+    width: 100%;
+}
+
+.dot {
+    animation: dotAnimation 1.5s infinite;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+@keyframes dotAnimation {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#first-dot {
+    animation-delay: 0s;
+}
+
+#second-dot {
+    animation-delay: 0.5s;
+}
+
+#third-dot {
+    animation-delay: 1s;
+}
+
+#dot-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+#img-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+    }
+
+    50% {
+        opacity: 0.5;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+#imgContainer img {
+    animation: fadeIn 3s forwards;
 }

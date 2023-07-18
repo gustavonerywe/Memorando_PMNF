@@ -1,0 +1,46 @@
+{% extends 'template.html' %}
+{% block subtitulo %}
+- Login
+{% endblock %}
+{% block content %}
+<html id="html-login">
+    <body id="body-login">
+        <div id="login-box">
+            <image src="https://pedroschuenck.github.io/prefeituraImg.png">
+                <h1 id="title-login">Memorando</h1>
+                {% if logado == True %}
+                <p class="primary"><span style="color: red;">Aviso:</span> Você já está conectado no sistema.</p>
+                <button class="btn btn-primary" id="btn_to_upload"><a href="{% url 'upload' %}" style="color: white; text-decoration: none; ">Novo memorando<a></button>
+                <button id="button_to_sessao" class="btn btn-primary"><a href="{% url 'encerraSessao' %}" style="color: white; text-decoration: none;">Encerrar Sessão<a></button>
+                {% else %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div id="input-container-login">
+                        {{ form.as_p }}
+                    </div>
+                    <button id="button-submit-login" type="submit" class="btn btn-primary">Entrar</button>
+                    <button class="btn btn-primary" id="cadastro-login">Quero me cadastrar</button>
+                    {% endif %}
+                </form>
+
+                <div id="modal-login" style="display: none;">
+                    <div class="modal-content-login">
+                        <span class="fechar">&times;</span>
+                        <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
+                        <p style="font-size: 17px; text-align: center;">
+                            Para realizar o cadastro, ligue para a Subsecretaria de T.I. <br />
+                            <b>Ramal: (9268)</b>
+                        </p>
+                        <div class="button-container">
+                            <button type="button" id="ok-modal" class="btn btn-dark btn-sm">Ok</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+                <script src="/static/js/login.js"></script>
+            </image>
+        </div>
+    </body>
+</html>
+{% endblock %}
