@@ -1048,7 +1048,7 @@ hr {
     margin: 7px 0;
 }
 
-#title-login {
+.title-login {
     text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8);
     font-style: italic;
 }

@@ -7,7 +7,8 @@
     <body id="body-login">
         <div id="login-box">
             <image src="https://pedroschuenck.github.io/prefeituraImg.png">
-                <h1 id="title-login">Memorando</h1>
+                <h1 class="title-login">MOC</h1>
+                <h2 class="title-login">Memorando / Ofício / Circular</h2>
                 {% if logado == True %}
                 <p class="primary"><span style="color: red;">Aviso:</span> Você já está conectado no sistema.</p>
                 <button class="btn btn-primary" id="btn_to_upload"><a href="{% url 'upload' %}" style="color: white; text-decoration: none; ">Novo memorando<a></button>
