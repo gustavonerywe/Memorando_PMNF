@@ -35,7 +35,7 @@ class Memorando(models.Model):
         response = f'{memo_numero:003d}/{ano_atual}'
         return response
 
-class Ofício(models.Model):
+class Oficio(models.Model):
     data_oficio = models.DateTimeField(null=True, default=None, blank=False)
     memo_numero_oficio = models.CharField(max_length=220)
     remetente_oficio = models.ForeignKey(User, on_delete=models.CASCADE, related_name='memorandos_enviados_oficio')
@@ -46,7 +46,7 @@ class Ofício(models.Model):
 
     def gerar_proximo_numero_oficio(self):
         memo_numero_oficio = 0
-        ultimo_numero = Ofício.objects.last()
+        ultimo_numero = Oficio.objects.last()
         print(ultimo_numero)
         if ultimo_numero:
             numero =  ultimo_numero.memo_numero_oficio.split('/')

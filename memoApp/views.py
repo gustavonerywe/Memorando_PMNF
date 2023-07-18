@@ -143,7 +143,7 @@ def memorando_circular(request):
 
 @login_required
 def oficio(request):
-    oficio = Ofício()
+    oficio = Oficio()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -161,7 +161,6 @@ def oficio(request):
             session.save()
 
             oficio.save()
-
             # for file in request.FILES.getlist('file'):
             #     image = Image.objects.create(file=file)
             #     image.oficio = oficio
@@ -235,7 +234,9 @@ def generate_pdf_circular(request, id_criptografado):
 
 @login_required
 def generate_pdf_oficio(request, id_criptografado):
-    oficio = Ofício.objects.get(id=id_criptografado)
+    oficio = Oficio.objects.get(id=id_criptografado)
+    destinatario = Oficio.objects.get(id=id_criptografado).destinatario_oficio
+    print(destinatario)
     memo_numero_atualizado = oficio.gerar_proximo_numero_oficio()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -444,13 +445,11 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
     # url_criptografada = quote(id_criptografado_criptografado)
     memorando = Memorando.objects.get(id=id_criptografado)
-    oficio = Ofício.objects.get(id=id_criptografado)
+    oficio = Oficio.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     text_content = session.get('memorando_corpo')
-    oficio.destinatario_oficio = request.POST.get('para_oficio')
-    oficio.destinatarios_copia_oficio = request.POST.get('copia_oficio')
     context = {
         'memorando': memorando,
         'oficio_assunto': oficio.assunto_oficio,

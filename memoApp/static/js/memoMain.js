@@ -378,6 +378,31 @@ const campoSelect = document.getElementById('select-secretaria');
 const pegarLugarTexto = document.getElementById('texto-colocar')
 const pegarLugarTextoPara = document.getElementById('texto-colocar-para')
 const grupoSelected = document.getElementById('grupo_selected')
+const buttonYesSair = document.querySelector('#buttonYesSair')
+const buttonNoSair = document.querySelector('#buttonNoSair')
+const modalSair = document.querySelector('#modal-sair')
+const btnTrueSair = document.querySelector('#btnTrueSair')
+const fecharSair = document.querySelector('.fechar-sair')
+
+modalSair.style.display = 'none';
+
+btnTrueSair.addEventListener('click', function (e) {
+  e.preventDefault();
+  modalSair.style.display = 'block';
+})  
+
+buttonNoSair.addEventListener('click', function(){
+  modalSair.style.display = 'none';
+})
+
+buttonYesSair.addEventListener('click', function(){
+    window.location.href = '/encerrar-sessao/'
+})
+
+fecharSair.addEventListener('click', function(){
+  modalSair.style.display = 'none';
+})
+
 
 // buttonYesModal.addEventListener('click', function () {
 //   document.querySelector('.file-input').value = '';
@@ -409,4 +434,46 @@ fecharModalAssunto.addEventListener('click', function () {
 })
 fecharModalAsssunto2.addEventListener('click', function () {
   modalAssunto.style.display = 'none';
+})
+
+const btnTroca = document.querySelector('#btnTroca')
+const modalTrocar = document.getElementById('modal-trocar')
+const fecharTroca = document.querySelector('.fechar-trocar')
+const memorandoComum = document.getElementById('memorandoComum')
+const memorandoCircular = document.getElementById('memorandoCircular')
+const oficio = document.getElementById('oficio')
+const messageAviso = document.getElementById('message-aviso')
+
+btnTroca.addEventListener('click', function(e){
+  e.preventDefault();
+  modalTrocar.style.display = 'block';
+  messageAviso.style.display = 'none';
+})
+
+fecharTroca.addEventListener('click', function(){
+  modalTrocar.style.display = 'none'
+})
+
+memorandoComum.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(function(){
+    window.location.href = '/'
+  }, 1500)
+})
+
+memorandoCircular.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(() => {
+    window.location.href = '/memorando_circular'
+  }, 1500);
+})
+
+oficio.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(() => {
+    window.location.href = '/oficio'
+  }, 1500);
 })
