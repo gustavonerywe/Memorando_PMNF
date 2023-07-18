@@ -309,7 +309,7 @@ main {
 
 #link-upload:hover {
     text-decoration: none;
-    color: cyan;
+    /* color: cyan; */
     cursor: pointer;
     transform: scale(1.1);
     background-color: #4CAF50;
@@ -318,7 +318,7 @@ main {
 
 #link-upload-pdf:hover {
     text-decoration: none;
-    color: cyan;
+    /* color: cyan; */
     cursor: pointer;
     transform: scale(1.1);
     background-color: #4CAF50;
