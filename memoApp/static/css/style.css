@@ -207,6 +207,7 @@ main {
 
 #botao:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #select-secretaria {
@@ -314,6 +315,7 @@ main {
     transform: scale(1.1);
     background-color: #4CAF50;
     margin-bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #link-upload-pdf:hover {
@@ -322,6 +324,7 @@ main {
     cursor: pointer;
     transform: scale(1.1);
     background-color: #4CAF50;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 10px;
 }
 
@@ -420,6 +423,7 @@ main {
 #addSelect:hover,
 #addSelectCopia:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #addSelect,
@@ -442,6 +446,7 @@ main {
 
 .addInput:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .addInput {
@@ -478,6 +483,7 @@ main {
 
 .cancel-button:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .cancel-button {
@@ -687,6 +693,7 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .fechar-trocar:hover,
@@ -695,6 +702,7 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .fechar-pdf:hover,
@@ -703,6 +711,7 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .fechar-sair:hover,
@@ -711,6 +720,7 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .fecharMemorando:hover,
@@ -719,6 +729,7 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .imgModal {
@@ -748,6 +759,7 @@ hr {
 #memorandoCircular:hover,
 #oficio:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #button-container-troca {
@@ -773,6 +785,7 @@ hr {
 #buttonNoSair:hover {
     background-color: #e62c3e;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #buttonYesModal:hover,
@@ -781,14 +794,17 @@ hr {
 #buttonYesSair:hover {
     background-color: #6ae9ae;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #ok-modal:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #ok-modal-pdf:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #buttonNoModal,
@@ -963,6 +979,7 @@ hr {
     float: right;
     transform: scale(1.1);
     margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #btnTroca {
@@ -976,6 +993,7 @@ hr {
     float: right;
     transform: scale(1.1);
     margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 /* CSS para a página de login */
@@ -1028,6 +1046,7 @@ hr {
 
 .cancel-button-select:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .cancel-button-select {
@@ -1056,11 +1075,13 @@ hr {
 #button-submit-login:hover {
     transform: scale(1.1);
     margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #cadastro-login:hover {
     transform: scale(1.1);
     margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #btn_to_upload:hover {
@@ -1068,12 +1089,14 @@ hr {
     /* margin-left: 10px; */
     /* text-decoration: none; */
     margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #button_to_sessao:hover {
     transform: scale(1.1);
     margin-left: 10px;
     margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #id_file1 {
@@ -1220,5 +1243,4 @@ hr {
         #login-box{
         width: 500px;
         }
-
   }
