@@ -25,7 +25,7 @@ from io import BytesIO
 from pathlib import Path
 from django.template.loader import render_to_string
 # from urllib.parse import quote
-from weasyprint import HTML, CSS
+from weasyprint import HTML, CSS, Attachment
 from django_weasyprint import *
 
 
@@ -48,32 +48,45 @@ def upload(request):
             # memorando.anexo = form
           
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
-           
+            
+            files = request.FILES.getlist('file')
+            
+            nomesArquivos = []
+            
+            
+            for file in files:
+                fileName = file.name
+                nomesArquivos.append(str(BASE_DIR) + '/uploads/' + fileName)
                 
+            
+                  
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
             session['memorando_corpo'] = memorando.corpo
             session['grupo_escolhido_copia'] = grupo_escolhido_copia
+            session['file_name'] = nomesArquivos
             session.save()
 
                         
-            files = request.FILES.getlist('file')
             
             memorando.save()
             
             for file in files:
                 anexo = Image()
                 anexo.file = file
-                memorando.anexo.append(anexo)
+                anexo.idDoc = memorando.id
+                anexo.tipoDoc = 'memorando'
+                anexo.save()
                 
             memorando.save()
             
-
+            print(anexo)
+            print(anexo.idDoc)
             print(files)
             
-            # for file in files:
-            #     with open(os.path.join('uploads', file.name), 'wb') as f:
-            #         f.write(file.read())
+            for file in files:
+                with open(os.path.join('uploads', file.name), 'wb') as f:
+                    f.write(file.read())
 
 
             # for file in request.FILES.getlist('file'):
@@ -371,6 +384,7 @@ def geraEBaixaPDF(request, id_criptografado):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
+    arquivos = session.get('file_name')
     text_content = session.get('memorando_corpo')
     grupo_escolhido_copia = session.get('grupo_escolhido_copia')
     context = {
@@ -381,7 +395,7 @@ def geraEBaixaPDF(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
     }
-    print(memorando.assunto)
+    print(arquivos)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
@@ -395,14 +409,22 @@ def geraEBaixaPDF(request, id_criptografado):
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
+        
+    arrayAttachment = []
     
-    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+    for arquivo in arquivos:
+        attachmentFile = Attachment(arquivo)
+        arrayAttachment.append(attachmentFile)
+        print(attachmentFile)
+    
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)], attachments=arrayAttachment)
     
     
     with open(pathToPdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
             return response
+        
 
 def geraEBaixaPDFCircular(request, id_criptografado):
     
