@@ -56,13 +56,31 @@ def upload(request):
             session['grupo_escolhido_copia'] = grupo_escolhido_copia
             session.save()
 
+                        
+            files = request.FILES.getlist('file')
+            
             memorando.save()
+            
+            for file in files:
+                anexo = Image()
+                anexo.file = file
+                memorando.anexo.append(anexo)
+                
+            memorando.save()
+            
 
-            for file in request.FILES.getlist('file'):
-                image = Image.objects.create(file=file)
-                image.memorando = memorando
-                image.save()
-            print(request.FILES.getlist('file'))
+            print(files)
+            
+            # for file in files:
+            #     with open(os.path.join('uploads', file.name), 'wb') as f:
+            #         f.write(file.read())
+
+
+            # for file in request.FILES.getlist('file'):
+            #     image = Image.objects.create(file=file)
+            #     image.memorando = memorando
+            #     image.save()
+            # print(request.FILES.getlist('file'))
 
             context = {
                 'memorando': memorando,

@@ -7,7 +7,7 @@ from datetime import datetime
 # from . import forms
 
 class Image(models.Model):
-    file = models.FileField(upload_to='documents/')     
+    file = models.FileField(upload_to='uploads/')     
     class Meta:
         app_label = 'memoApp'
         
@@ -20,6 +20,7 @@ class Memorando(models.Model):
     destinatarios_copia = models.ManyToManyField(User, related_name='destinatarios_copia', null=True)
     assunto = models.CharField(max_length=225, blank=True, null=True)
     corpo = tinymce_models.HTMLField(null=True, default='')
+    anexo = models.ManyToManyField(Image, related_name='anexo', null=True, blank=False)
     # anexo = models.ForeignKey(forms.ImageForm, on_delete=models.CASCADE, related_name="anexo_recebido", null=True, blank=False)
 
     def gerar_proximo_numero(self):
