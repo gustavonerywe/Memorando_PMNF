@@ -693,7 +693,6 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .fechar-trocar:hover,
@@ -702,7 +701,6 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .fechar-pdf:hover,
@@ -711,7 +709,6 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .fechar-sair:hover,
@@ -720,7 +717,6 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .fecharMemorando:hover,
@@ -729,7 +725,6 @@ main {
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.1);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .imgModal {

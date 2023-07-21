@@ -56,9 +56,11 @@ def upload(request):
             
             for file in files:
                 fileName = file.name
-                nomesArquivos.append(str(BASE_DIR) + '/uploads/' + fileName)
+                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = caminho_completo.replace('\\', '/')
+                nomesArquivos.append(caminho_completo)
                 
-            
+            print(caminho_completo)
                   
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido

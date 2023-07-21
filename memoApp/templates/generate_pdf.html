@@ -154,7 +154,6 @@ body {
             {% csrf_token %}
             <div id="header">
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
-                <img id="img" src="/static/img/check.png" alt="FE" />
             </div>
             <hr id="hr-generate" />
             <div id="content-pdf">
@@ -219,11 +218,8 @@ body {
                 <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
                 <div id="footer">
                     <p></p>
-                    <img src="/static/img/fe.png"</img>
                     <div> 
-                        {% for arquivo in arquivos %}
-                        <img src='{{arquivo}}'></img>
-                        {% endfor %}
+                        <img src="{{ arquivos.0 }}" alt="Imagem do arquivo"
                     
                     </div>
                     <fieldset id="box-field-generate">
