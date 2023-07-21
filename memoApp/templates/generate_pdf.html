@@ -48,7 +48,7 @@ h6 {
         margin-right: 10px;
         /* text-align: center; */
         margin-bottom: 10px;
-        border: 2px solid black;
+        border: 1px solid black;
         border-collapse: collapse;
         border-radius: 3px;
         margin-bottom: 20px;
@@ -128,7 +128,7 @@ body {
 }
 
 #table-recebido {
-    border: 2px solid black;
+    border: 1px solid black;
     padding: 8px;
     width: 100%;
     margin-left: 38.5%;
@@ -154,6 +154,7 @@ body {
             {% csrf_token %}
             <div id="header">
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
+                <img id="img" src="/static/img/check.png" alt="FE" />
             </div>
             <hr id="hr-generate" />
             <div id="content-pdf">
@@ -218,6 +219,13 @@ body {
                 <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
                 <div id="footer">
                     <p></p>
+                    <img src="/static/img/fe.png"</img>
+                    <div> 
+                        {% for arquivo in arquivos %}
+                        <img src='{{arquivo}}'></img>
+                        {% endfor %}
+                    
+                    </div>
                     <fieldset id="box-field-generate">
                         <table id="table-recebido">
                             <tr>

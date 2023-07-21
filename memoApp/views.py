@@ -80,9 +80,7 @@ def upload(request):
                 
             memorando.save()
             
-            print(anexo)
-            print(anexo.idDoc)
-            print(files)
+            print(anexo.file)
             
             for file in files:
                 with open(os.path.join('uploads', file.name), 'wb') as f:
@@ -228,7 +226,6 @@ def generate_pdf(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
     }
-    print(memorando.assunto)
     return render(request, 'generate_pdf.html', context)
 
 @login_required
@@ -250,14 +247,12 @@ def generate_pdf_circular(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupos': grupos
     }
-    print(text_content)
     return render(request, 'generate_pdf_circular.html', context)
 
 @login_required
 def generate_pdf_oficio(request, id_criptografado):
     oficio = Oficio.objects.get(id=id_criptografado)
     destinatario = Oficio.objects.get(id=id_criptografado).destinatario_oficio
-    print(destinatario)
     memo_numero_atualizado = oficio.gerar_proximo_numero_oficio()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -272,7 +267,6 @@ def generate_pdf_oficio(request, id_criptografado):
         'destinatario_oficio': oficio.destinatario_oficio,
         'destinatario_copia_oficio': oficio.destinatarios_copia_oficio
     }
-    print(oficio.destinatario_oficio)
     return render(request, 'generate_pdf_oficio.html', context)
 
 @login_required
@@ -394,6 +388,7 @@ def geraEBaixaPDF(request, id_criptografado):
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
+        'arquivos': arquivos,
     }
     print(arquivos)
     
@@ -447,7 +442,6 @@ def geraEBaixaPDFCircular(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupos': grupos,
     }
-    print(text_content)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_circular.html"
