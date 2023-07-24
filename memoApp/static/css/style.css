@@ -520,8 +520,8 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
-    height: 17%;
+    width: 43%;
+    height: 23%;
     padding: 20px;
     border: 1px solid #888;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -613,7 +613,7 @@ main {
     margin: 15% auto;
     border: 1px solid #888;
     width: 43%;
-    height: 25%;
+    height: 23%;
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -623,7 +623,7 @@ main {
     margin: 15% auto;
     border: 1px solid #888;
     width: 43%;
-    height: 25%;
+    height: 23%;
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -1004,6 +1004,7 @@ hr {
     margin-left: auto;
     margin-right: auto;
     text-shadow: rgb(12, 12, 12);
+    padding: 20px;
 }
 
 #login-box p {
@@ -1190,52 +1191,77 @@ hr {
 }
 
 @media screen and (max-width: 900px) and (max-height: 900px) {
-        body{
-            width: 95%;
-            margin: 0 auto;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-        }
-        .table{
-            font-size: 12px;
-            
-        }
-        .table th,td{
-            font-size: 12px;
-        }
+    body{
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .table{
+        font-size: 12px;
         
-        #drop-area{
-            width: 100%;
-        }
-        #meuModal{
-            height: auto;
-        }
-        .modal-content{
-            height: 200px;
-            width: 300px;
-        }
-        #img{
-            font-size: 50%;
-        }
-        .modal-body{
-            height: 200px;
-            width: 300px;
-        }
-        .modal-content-memorando{
-            height: 180px;
-            width: 350px;
-        }
-        #span-alert{
-            margin-left: auto;
-        }
+    }
+    .table th,td{
+        font-size: 12px;
+    }
+    
+    #drop-area{
+        width: 100%;
+    }
+    #meuModal{
+        height: auto;
+    }
+    .modal-content{
+        height: 180px;
+        width: 430px;
+    }
+    #img{
+        font-size: 50%;
+    }
+    #span-alert{
+        margin-left: auto;
+    }
+    .modal-body{
+        height: 180px;
+        width: 430px;
+    }
+    .modal-content-memorando{
+        height: 180px;
+        width: 430px;
+    }
 
-  }
-  @media screen and (max-width: 1300px) and (max-height: 900px){
-        #body-login{
-        height: 105%;
-        }
-        #login-box{
-        width: 500px;
-        }
-  }
+}
+@media screen and (max-width: 1300px) and (max-height: 900px){
+    #body-login{
+    height: 110%;
+    }
+    #login-box{
+    width: 500px;
+    }
+}
+
+@media screen and (min-width: 400px) and (min-height: 150px) {
+.modal-content-login{
+    height: 180px;
+    width: 430px;
+}
+}
+
+@media screen and (min-width:900px) and (max-height: 620px) {
+    .modal-body{
+    height: 180px;
+    width: 430px;
+}
+.modal-content-memorando{
+    height: 180px;
+    width: 430px;
+}
+#meuModal{
+    height: auto;
+}
+.modal-content{
+    height: 180px;
+    width: 430px;
+}
+}
