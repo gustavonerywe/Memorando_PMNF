@@ -27,7 +27,7 @@ from django.template.loader import render_to_string
 # from urllib.parse import quote
 from weasyprint import HTML, CSS, Attachment
 from django_weasyprint import *
-
+import aspose.pdf as aspose
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -398,7 +398,7 @@ def geraEBaixaPDF(request, id_criptografado):
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
 
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
-    # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
@@ -416,8 +416,10 @@ def geraEBaixaPDF(request, id_criptografado):
     
     HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)], attachments=arrayAttachment)
     
+    add_image(arquivos[0], pathToPdf, output_pdf)
     
-    with open(pathToPdf, 'rb') as f:
+    
+    with open(output_pdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
             return response
@@ -575,3 +577,33 @@ import hashlib
 #     encrypted_id = hash_object.hexdigest()
     
 #     return encrypted_id
+
+def add_image(arquivos, infile, outfile):
+
+    # Open the input PDF as a stream
+    with open(infile, 'rb') as in_stream:
+        # Create a temporary output stream to store the modified PDF
+        with open(outfile, 'wb') as out_stream:
+            # Load the input PDF document from the stream
+            document = aspose.Document(in_stream)
+
+            # Create a new empty page in the input PDF
+            page = document.pages.add()
+
+            print(arquivos)
+
+            # Load the image
+            image_path = 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/inspiração_L30wAf6.png'
+
+            # Create a Graph object to draw on the page
+            graph = aspose.Graph(page)
+
+            # Set the position and dimensions of the image on the page
+            x, y = 20, 730
+            width, height = 100, 100
+
+            # Draw the image on the page
+            graph.draw_image(image_path, x, y, width, height)
+
+            # Save the modified PDF to the temporary output stream
+            document.save(out_stream)
