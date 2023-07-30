@@ -27,7 +27,7 @@ from django.template.loader import render_to_string
 # from urllib.parse import quote
 from weasyprint import HTML, CSS, Attachment
 from django_weasyprint import *
-# import aspose.pdf as aspose
+import aspose.pdf as aspose
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
