@@ -943,7 +943,7 @@ hr {
     width: 200px;
 }
 
-#id_name,
+#id_assunto,
 #copia-oficio,
 #para-oficio {
     width: 75%;
@@ -1264,4 +1264,39 @@ hr {
     height: 180px;
     width: 430px;
 }
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group_input {
+    font: inherit;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    outline: 2px solid #fff;
+    background-color: transparent;
+    transition: outline-color 500ms;
+}
+
+.input-group_input:is(:focus, :valid){
+    outline-color: #3c59cb;
+}
+
+.input-group_label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: 10px 10px;
+    color: #fff;
+    transition: translate 500ms, scale 500ms;
+}
+
+.input-group_input:focus + .input_group_label, .input-group_input:valid + .input-group_label {
+    padding-inline: 5px;
+    translate: 10px 14px;
+    scale: 0.9;
+    background-color: #000;
 }
