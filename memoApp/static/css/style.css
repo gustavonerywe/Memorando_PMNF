@@ -43,7 +43,7 @@ h6 {
 .table {
     margin: 0 auto;
     border-collapse: collapse;
-    width: 75%;
+    width: 80%;
     margin-bottom: 20px;
     border: 2px solid;
 }
@@ -1207,7 +1207,7 @@ hr {
     }
     
     #drop-area{
-        width: 100%;
+        width: 80%;
     }
     #meuModal{
         height: auto;
@@ -1302,3 +1302,8 @@ hr {
     scale: 0.9;
     background-color: #000;
 }
+.tox-tinymce{
+    width: 80%;
+    margin: 0 auto;
+}
+
