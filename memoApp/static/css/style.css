@@ -679,11 +679,11 @@ main {
 .fecharMemorando {
     color: #aaa;
     float: right;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     cursor: pointer;
     padding: 4px 8px;
-    width: 2%;
+    width: 3%;
     align-self: flex-end;
 }
 
@@ -1221,6 +1221,7 @@ hr {
     }
     #span-alert{
         margin-left: auto;
+
     }
     .modal-body{
         height: 180px;
@@ -1228,8 +1229,9 @@ hr {
     }
     .modal-content-memorando{
         height: 180px;
-        width: 430px;
+        width: 480px;
     }
+
 
 }
 @media screen and (max-width: 1300px) and (max-height: 900px){
@@ -1248,14 +1250,14 @@ hr {
 }
 }
 
-@media screen and (min-width:900px) and (max-height: 620px) {
+@media screen and (min-width:900px) and (max-height: 700px) {
     .modal-body{
     height: 180px;
     width: 430px;
 }
 .modal-content-memorando{
     height: 180px;
-    width: 430px;
+    width: 480px;
 }
 #meuModal{
     height: auto;
