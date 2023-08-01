@@ -29,6 +29,7 @@ from weasyprint import HTML, CSS, Attachment
 from django_weasyprint import *
 import aspose.pdf as aspose
 from reportlab.pdfgen import canvas
+from PIL import Image as imgpil
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -56,6 +57,7 @@ def upload(request):
             
             
             for file in files:
+                file.name = str(datetime.date.today()) + file.name
                 fileName = file.name
                 caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
                 caminho_completo = caminho_completo.replace('\\', '/')
@@ -82,10 +84,14 @@ def upload(request):
                 anexo.save()
                 
             memorando.save()
-            
+
             for file in files:
-                with open(os.path.join('uploads', file.name), 'wb') as f:
-                    f.write(file.read())
+                with imgpil.open(file) as image:
+                    image.save(f'uploads/{file.name}')
+            
+            # for file in files:
+            #     with open(os.path.join('uploads', file.name), 'wb') as f:
+            #         f.write(file.read())
 
 
             # for file in request.FILES.getlist('file'):
@@ -415,7 +421,7 @@ def geraEBaixaPDF(request, id_criptografado):
     
     HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)], attachments=arrayAttachment)
     
-    add_image(arquivos[0], pathToPdf, output_pdf)
+    add_image(arquivos, pathToPdf, output_pdf)
     
     
     with open(output_pdf, 'rb') as f:
@@ -585,7 +591,7 @@ def add_image(arquivos, infile, outfile):
     
     in_pdf_file = infile
     out_pdf_file = outfile
-    img_file = 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/perfeito_kSdyBZs.jpg'
+    # arquivos = ['C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/perfeito_kSdyBZs.jpg', 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/phoca_thumb_l_image03_grd_0IJe7lC.png', 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/fe_ba6jcnr.png']
     
     width_a4_points = 595.276
     height_a4_points = 841.890
@@ -595,10 +601,11 @@ def add_image(arquivos, infile, outfile):
     #can.drawString(10, 100, "Hello world")
     x_start = (width_a4_points) / 2
     y_start = (height_a4_points) / 2
-    can.drawImage(img_file, x_start, y_start, width=600, preserveAspectRatio=True,  mask='auto', anchorAtXY=True)
-    can.showPage()
-    can.showPage()
-    can.showPage()
+    
+    for arquivo in arquivos:
+        can.drawImage(arquivo, x_start, y_start, width=600, preserveAspectRatio=True,  mask='auto', anchorAtXY=True)
+        can.showPage()
+        
     can.save()
     
     # move to the beginning of the StringIO buffer
