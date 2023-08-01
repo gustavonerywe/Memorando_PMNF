@@ -27,7 +27,7 @@ from django.template.loader import render_to_string
 # from urllib.parse import quote
 from weasyprint import HTML, CSS, Attachment
 from django_weasyprint import *
-import aspose.pdf as aspose
+# import aspose.pdf as aspose
 from reportlab.pdfgen import canvas
 from PIL import Image as imgpil
 
@@ -133,17 +133,40 @@ def memorando_circular(request):
             memorandocircular.data_circular = request.POST.get('data')
             memorandocircular.remetente_circular = request.user
             memorandocircular.memo_numero_circular = memo_numero_atualizado_circular
+
+            files = request.FILES.getlist('file')
+            
+            nomesArquivos = []
+            
+            
+            for file in files:
+                file.name = str(datetime.date.today()) + file.name
+                fileName = file.name
+                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = caminho_completo.replace('\\', '/')
+                nomesArquivos.append(caminho_completo)
+                
                 
             session = SessionStore(request.session.session_key)
             session['memorando_corpo_circular'] = memorandocircular.corpo_circular
+            session['file_name'] = nomesArquivos
             session.save()
 
             memorandocircular.save()
 
-            # for file in request.FILES.getlist('file'):
-            #     image = Image.objects.create(file=file)
-            #     image.memorando = memorando
-            #     image.save()
+            for file in files:
+                anexo = Image()
+                anexo.file = file
+                anexo.idDoc = memorandocircular.id
+                anexo.tipoDoc = 'memorando-circular'
+                anexo.save()
+                
+            memorandocircular.save()
+
+            for file in files:
+                with imgpil.open(file) as image:
+                    image.save(f'uploads/{file.name}')
+
 
             context = {
                 'memorandocircular': memorandocircular,
@@ -181,17 +204,40 @@ def oficio(request):
             oficio.memo_numero_oficio = oficio_numero_atualizado
             oficio.destinatario_oficio = request.POST.get('para-oficio')
             oficio.destinatarios_copia_oficio = request.POST.get('copia-oficio')
+
+            files = request.FILES.getlist('file')
+            
+            nomesArquivos = []
+            
+            
+            for file in files:
+                file.name = str(datetime.date.today()) + file.name
+                fileName = file.name
+                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = caminho_completo.replace('\\', '/')
+                nomesArquivos.append(caminho_completo)
+                
                 
             session = SessionStore(request.session.session_key)
             session['memorando_corpo'] = oficio.corpo_oficio
+            session['file_name'] = nomesArquivos
             session.save()
 
             oficio.save()
-            # for file in request.FILES.getlist('file'):
-            #     image = Image.objects.create(file=file)
-            #     image.oficio = oficio
-            #     image.save()
 
+            for file in files:
+                anexo = Image()
+                anexo.file = file
+                anexo.idDoc = oficio.id
+                anexo.tipoDoc = 'oficio'
+                anexo.save()
+                
+            oficio.save()
+
+            for file in files:
+                with imgpil.open(file) as image:
+                    image.save(f'uploads/{file.name}')
+           
             context = {
                 'oficio': oficio,
                 'memo_numero_atualizado': oficio_numero_atualizado,
@@ -441,6 +487,7 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
+    arquivos = session.get('file_name')
     text_content = session.get('memorando_corpo_circular')
     context = {
         'memorando': memorando,
@@ -450,13 +497,14 @@ def geraEBaixaPDFCircular(request, id_criptografado):
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
         'grupos': grupos,
+        'arquivos': arquivos,
     }
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_circular.html"
 
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
-    # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf_circular.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
@@ -464,8 +512,17 @@ def geraEBaixaPDFCircular(request, id_criptografado):
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
+
+    arrayAttachment = []
+    
+    for arquivo in arquivos:
+        attachmentFile = Attachment(arquivo)
+        arrayAttachment.append(attachmentFile)
+        print(attachmentFile)
     
     HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+
+    add_image(arquivos, pathToPdf, output_pdf)
     
     
     with open(pathToPdf, 'rb') as f:
@@ -483,6 +540,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     text_content = session.get('memorando_corpo')
+    arquivos = session.get('file_name')
     context = {
         'memorando': memorando,
         'oficio_assunto': oficio.assunto_oficio,
@@ -490,6 +548,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
         'destinatario_copia_oficio': oficio.destinatarios_copia_oficio,
         'data_atual': data_numerica,
         'text_content': mark_safe(text_content),
+        'arquivos': arquivos,
     }
     print(oficio.destinatario_oficio)
     
@@ -497,7 +556,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_oficio.html"
 
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
-    # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
@@ -505,8 +564,17 @@ def geraEBaixaPDFOficio(request, id_criptografado):
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
+
+    arrayAttachment = []
+    
+    for arquivo in arquivos:
+        attachmentFile = Attachment(arquivo)
+        arrayAttachment.append(attachmentFile)
+        print(attachmentFile)
     
     HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+
+    add_image(arquivos, pathToPdf, output_pdf)
     
     
     with open(pathToPdf, 'rb') as f:
