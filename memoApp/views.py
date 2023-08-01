@@ -28,6 +28,7 @@ from django.template.loader import render_to_string
 from weasyprint import HTML, CSS, Attachment
 from django_weasyprint import *
 import aspose.pdf as aspose
+from reportlab.pdfgen import canvas
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -60,7 +61,7 @@ def upload(request):
                 caminho_completo = caminho_completo.replace('\\', '/')
                 nomesArquivos.append(caminho_completo)
                 
-            print(caminho_completo)
+            # print(caminho_completo)
                   
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
@@ -81,8 +82,6 @@ def upload(request):
                 anexo.save()
                 
             memorando.save()
-            
-            print(anexo.file)
             
             for file in files:
                 with open(os.path.join('uploads', file.name), 'wb') as f:
@@ -578,32 +577,57 @@ import hashlib
     
 #     return encrypted_id
 
+
 def add_image(arquivos, infile, outfile):
 
-    # Open the input PDF as a stream
-    with open(infile, 'rb') as in_stream:
-        # Create a temporary output stream to store the modified PDF
-        with open(outfile, 'wb') as out_stream:
-            # Load the input PDF document from the stream
-            document = aspose.Document(in_stream)
+    from PyPDF2 import PdfWriter, PdfReader
+    import io
+    
+    in_pdf_file = infile
+    out_pdf_file = outfile
+    img_file = 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/perfeito_kSdyBZs.jpg'
+    
+    width_a4_points = 595.276
+    height_a4_points = 841.890
+ 
+    packet = io.BytesIO()
+    can = canvas.Canvas(packet)
+    #can.drawString(10, 100, "Hello world")
+    x_start = (width_a4_points) / 2
+    y_start = (height_a4_points) / 2
+    can.drawImage(img_file, x_start, y_start, width=600, preserveAspectRatio=True,  mask='auto', anchorAtXY=True)
+    can.showPage()
+    can.showPage()
+    can.showPage()
+    can.save()
+    
+    # move to the beginning of the StringIO buffer
+    packet.seek(0)
+ 
+    new_pdf = PdfReader(packet)
+ 
+    # read the existing PDF
+    existing_pdf = PdfReader(open(in_pdf_file, "rb"))
+    output = PdfWriter()
+    
+    for i in range(len(existing_pdf.pages)):
+        page = existing_pdf.pages[i]                                                                                                              
+        output.add_page(page)
+ 
+    for i in range(len(new_pdf.pages)):
+        page = new_pdf.pages[i]                                                                                                              
+        output.add_page(page)
+ 
+    outputStream = open(out_pdf_file, "wb")
+    output.write(outputStream)
+    outputStream.close()
 
-            # Create a new empty page in the input PDF
-            page = document.pages.add()
-
-            print(arquivos)
-
-            # Load the image
-            image_path = 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/inspiração_L30wAf6.png'
-
-            # Create a Graph object to draw on the page
-            graph = aspose.Graph(page)
-
-            # Set the position and dimensions of the image on the page
-            x, y = 20, 730
-            width, height = 100, 100
-
-            # Draw the image on the page
-            graph.draw_image(image_path, x, y, width, height)
-
-            # Save the modified PDF to the temporary output stream
-            document.save(out_stream)
+    # document = aspose.Document(infile)
+    
+    # image_path = 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/phoca_thumb_l_image03_grd_0IJe7lC.png'
+    
+    # document.pages.add()
+    # document.pages[2].add_image(image_path, aspose.Rectangle(20, 730, 120, 830, True))
+    
+    # document.save(outfile)
+    
