@@ -518,14 +518,14 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     for arquivo in arquivos:
         attachmentFile = Attachment(arquivo)
         arrayAttachment.append(attachmentFile)
-        print(attachmentFile)
     
     HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
 
+    print(arquivos)
     add_image(arquivos, pathToPdf, output_pdf)
     
     
-    with open(pathToPdf, 'rb') as f:
+    with open(output_pdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando_circular.pdf"'
             return response
@@ -577,7 +577,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     add_image(arquivos, pathToPdf, output_pdf)
     
     
-    with open(pathToPdf, 'rb') as f:
+    with open(output_pdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="oficio.pdf"'
             return response
@@ -656,6 +656,8 @@ def add_image(arquivos, infile, outfile):
 
     from PyPDF2 import PdfWriter, PdfReader
     import io
+    
+    print(arquivos)
     
     in_pdf_file = infile
     out_pdf_file = outfile
