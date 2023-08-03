@@ -72,7 +72,12 @@ def upload(request):
             session['file_name'] = nomesArquivos
             session.save()
 
-                        
+            for file in files:
+                try:
+                    with imgpil.open(file) as image:
+                        image.save(f'uploads/{file.name}')
+                except ValueError as e:
+                    return redirect('erro')
             
             memorando.save()
             
@@ -85,9 +90,6 @@ def upload(request):
                 
             memorando.save()
 
-            for file in files:
-                with imgpil.open(file) as image:
-                    image.save(f'uploads/{file.name}')
             
             # for file in files:
             #     with open(os.path.join('uploads', file.name), 'wb') as f:
@@ -708,3 +710,7 @@ def add_image(arquivos, infile, outfile):
     
     # document.save(outfile)
     
+
+@login_required
+def error_image(request):
+    return render(request, 'erro.html')

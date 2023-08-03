@@ -156,6 +156,7 @@ let selectCounter = 1;
     selectClone.id = 'select-secretaria-' + selectCounter;
     selectClone.setAttribute('data-select2-id', selectClone.id);
     selectClone.style.width = '100%';
+    selectClone.name = 'destinatario'
 
     novoWrapper.appendChild(selectClone);
 

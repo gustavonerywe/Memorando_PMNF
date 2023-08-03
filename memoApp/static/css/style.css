@@ -6,6 +6,10 @@
     color: #000000;
 }
 
+#erro_page {
+    background: #add8e68e;
+}
+
 .page_pdf {
     color: white;
 }
@@ -266,12 +270,13 @@ main {
     height: 40px;
 }
 
-#box-upload {
+.box-upload {
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
     margin: 20px auto;
     width: 55%;
+    margin-top: 20%;
 }
 
 #box-upload-main {
@@ -848,10 +853,14 @@ hr {
     background-color: #d3d3d3;
 }
 
-#uploadFile {
+#uploadFile, #message-file{
     color: black;
     font-size: 0.8em;
     text-align: center;
+}
+
+#message-file{
+    margin-top: -3%;
 }
 
 #searchInput {
@@ -947,6 +956,12 @@ hr {
 #copia-oficio,
 #para-oficio {
     width: 75%;
+}
+
+#id_assunto,
+#para-oficio,
+#copia-oficio {
+    background-color: #fff;
 }
 
 .file-input {
@@ -1385,3 +1400,13 @@ hr {
         width: 100px;
     }
 } */
+
+
+#title-error {
+    text-align: center;
+    color: red;
+}
+
+.message-error{
+    text-align: center;
+}
