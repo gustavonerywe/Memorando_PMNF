@@ -1045,7 +1045,7 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.cancel-button-select {
+.cancel-button-select{
     margin-right: 10px;
     background-color: #e35d6a;
     border-radius: 60px;
@@ -1207,7 +1207,7 @@ hr {
     }
     
     #drop-area{
-        width: 80%;
+        width: 90%;
     }
     #meuModal{
         height: auto;
@@ -1217,7 +1217,7 @@ hr {
         width: 430px;
     }
     #img{
-        font-size: 50%;
+        width: 50%;
     }
     #span-alert{
         margin-left: auto;
@@ -1251,7 +1251,7 @@ hr {
 }
 
 @media screen and (min-width:900px) and (max-height: 700px) {
-    .modal-body{
+.modal-body{
     height: 180px;
     width: 430px;
 }
@@ -1302,8 +1302,86 @@ hr {
     scale: 0.9;
     background-color: #000;
 }
-.tox-tinymce{
+.tox{
     width: 80%;
     margin: 0 auto;
 }
 
+/* @media screen and (max-width:400px) 
+{
+    .page_main{
+        width: 80%;
+    }
+    body{
+        width: 115%;
+        margin-left: 5%;
+    }
+    .table{
+        font-size: 9px;
+        margin-left: -20px;
+        margin-bottom: 25px;
+        
+    }
+    .table th,td{
+        font-size: 9px;
+    }
+    #addSelect{
+        width: 20px;
+        height: 20px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #removeSelect{
+        width: 20px;
+        height: 20px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #addSelectCopia{
+        width: 20px;
+        height: 20px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #removeSelectCopia{
+        width: 20px;
+        height: 20px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    .tox{
+        width:120%;
+        margin-left:-20px;
+    }
+    #drop-area{
+        width: 110%;
+        margin-left: -13.5px;
+    }
+    #id_file1,#id_file{
+        width:180px;
+    }
+    .modal-body{
+        width: 200px;
+        height: 130px;
+    }
+    .modal-content-memorando{
+        width: 200px;
+        height: 130px;
+    }
+    #meuModal{
+        height: auto;
+    }
+    .modal-content{
+        width: 300px;
+        height: 180px;
+        margin-left: 10px;
+    }
+    .modal-content-memorando{
+        width: 250px;
+        height: 250px;
+        margin-left: 5px;
+    }
+    #select-container, #select-container-copia{
+        width: 100px;
+    }
+} */
