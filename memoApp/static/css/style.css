@@ -238,7 +238,6 @@ main {
 
 #id_file {
     display: block;
-    margin: 0 auto;
     margin-right: 50px;
     width: 358.094px;
     border-radius: 20px;
@@ -270,7 +269,7 @@ main {
     height: 40px;
 }
 
-.box-upload {
+#box-upload {
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
@@ -1209,16 +1208,13 @@ hr {
     body{
         width: 95%;
         margin: 0 auto;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
     }
     .table{
         font-size: 12px;
-        
+
     }
     .table th,td{
-        font-size: 12px;
+        font-size: 13px;
     }
     
     #drop-area{
@@ -1230,9 +1226,6 @@ hr {
     .modal-content{
         height: 180px;
         width: 430px;
-    }
-    #img{
-        width: 50%;
     }
     #span-alert{
         margin-left: auto;
@@ -1246,6 +1239,10 @@ hr {
         height: 180px;
         width: 480px;
     }
+    .tox-tinymce{
+        width: 500px;
+    }
+    
 
 
 }
@@ -1322,7 +1319,7 @@ hr {
     margin: 0 auto;
 }
 
-/* @media screen and (max-width:400px) 
+@media screen and (min-width:320px) and (max-width:400px)
 {
     .page_main{
         width: 80%;
@@ -1332,13 +1329,17 @@ hr {
         margin-left: 5%;
     }
     .table{
-        font-size: 9px;
-        margin-left: -20px;
+        font-size: 11px;
         margin-bottom: 25px;
+        margin-left: -10px;
         
     }
-    .table th,td{
-        font-size: 9px;
+    .table th,td,tr{
+        font-size: 11px;
+    }
+    .table tr{
+        padding: 1px;
+        padding-top: -10px;
     }
     #addSelect{
         width: 20px;
@@ -1366,20 +1367,16 @@ hr {
     }
     .tox{
         width:120%;
-        margin-left:-20px;
+        margin-left:-30px;
     }
     #drop-area{
-        width: 110%;
-        margin-left: -13.5px;
+        width: 105%;
+        margin-left: -9px;
     }
     #id_file1,#id_file{
-        width:180px;
+        width:200px;
     }
     .modal-body{
-        width: 200px;
-        height: 130px;
-    }
-    .modal-content-memorando{
         width: 200px;
         height: 130px;
     }
@@ -1388,23 +1385,265 @@ hr {
     }
     .modal-content{
         width: 300px;
-        height: 180px;
-        margin-left: 10px;
+        height: 200px;
+        margin-left: 35px;
     }
     .modal-content-memorando{
         width: 250px;
         height: 250px;
-        margin-left: 5px;
+        margin-left: 70px;
     }
-    #select-container, #select-container-copia{
-        width: 100px;
+    .select2-container{
+        width: 100px!important;
     }
-} */
+    #hr-table{
+        width:  180px;
+    }
+    @media screen and (min-width:320px) and (max-width:350px){
+        .table{
+            font-size: 75%;
+            margin-bottom: 25px;
+            margin-left: -10px;
+            
+        }
+        .table th,td,tr{
+            font-size: 75%;
+        }
+        #id_file1,#id_file{
+            width:180px;
+        }
+        #drop-area{
+            width: 107%;
+            margin-left: -9px;
+        }
 
+        .modal-content{
+        width: 300px;
+        height: 200px;
+        margin-left: 10px;
+        }
+        .modal-content-memorando{
+        width: 250px;
+        height: 250px;
+        margin-left: 35px;
+        }
+        .modal-body{
+            width: 200px;
+            height: 130px;
+        }
 
-#title-error {
-    text-align: center;
-    color: red;
+        
+    }
+    
+}
+@media screen and (min-width:400px) and (max-width:500px)
+{
+    .page_main{
+        width: 80%;
+    }
+    body{
+        width: 115%;
+        margin-left: 5%;
+    }
+    .table{
+        font-size: 11px;
+        margin-left: -30px;
+        margin-bottom: 25px;
+        
+    }
+    .table th,td,tr{
+        font-size: 11px;
+    }
+    .table tr{
+        padding: 1px;
+        padding-top: -10px;
+    }
+    #addSelect{
+        width: 23px;
+        height: 23px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #removeSelect{
+        width: 24px;
+        height: 24px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #addSelectCopia{
+        width: 23px;
+        height: 23px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #removeSelectCopia{
+        width: 24px;
+        height: 24px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    .tox{
+        width:110%;
+        margin-left:-20px;
+    }
+    #drop-area{
+        width: 105%;
+        margin-left: -9px;
+    }
+    #id_file1,#id_file{
+        width:245px;
+    }
+    .modal-body{
+        width: 200px;
+        height: 130px;
+    }
+    #meuModal{
+        height: auto;
+    }
+    .modal-content{
+        width: 300px;
+        height: 200px;
+        margin-left: 50px;
+    }
+    .modal-content-memorando{
+        width: 250px;
+        height: 250px;
+        margin-left: 75px;
+    }
+    .select2-container{
+        width: 160px!important;
+    }
+    #hr-table{
+        width:  250px;
+    }
+    #addSelect, #addSelectCopia{
+        margin-inline-start:4px;
+    }
+    @media screen and (min-width:450px) and (max-width:500px)
+    {
+        .table{
+            font-size: 13px;
+            margin-left: -30px;
+            margin-bottom: 25px;
+            
+        }
+        .table th,td,tr{
+            font-size: 13px;
+        }
+        #hr-table{
+            width:  280px;
+        }
+        #id_file1,#id_file{
+            width:290px;
+        }
+        .select2-container{
+            width: 180px!important;
+        }
+        .modal-content{
+            width: 350px;
+            height: 200px;
+            margin-left: 50px;
+        }
+        .modal-content-memorando{
+            width: 250px;
+            height: 250px;
+            margin-left: 100px;
+        }
+    }
+    }
+@media screen and (min-width:500px) and (max-width:600px){
+    .page_main{
+        width: 80%;
+    }
+    body{
+        width: 115%;
+        margin-left: 5%;
+    }
+    .table{
+        font-size: 14px;
+        margin-left:-23px;
+        margin-bottom: 25px;
+        
+    }
+    .table th,td,tr{
+        font-size: 13px;
+    }
+    #hr-table{
+        width: 310px;
+    }
+    #id_file1,#id_file{
+        width:300px;
+    }
+    .select2-container{
+        width: 200px!important;
+    }
+    .tox{
+        width:110%;
+        margin-left:-15px;
+    }
+    #addSelect{
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+    #removeSelect{
+        width:32.5px;
+        height:32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+    #addSelectCopia{
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+    #removeSelectCopia{
+        width: 32.5px;
+        height:32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+    #drop-area{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .modal-content{
+        width: 350px;
+         height: 200px;
+        margin-left: 75px;
+}
+    .modal-content-memorando{
+        width: 250px;
+        height: 250px;
+        margin-left: 150px;
+}   
+@media screen and (min-width:570px) and (max-width:600px){
+    #hr-table{
+        width: 360px;
+    }
+    #id_file1,#id_file{
+        width:330px;
+    }
+    .select2-container{
+        width: 250px!important;
+    }
+    .tox{
+        width:110%;
+        margin-left:-20px;
+    }
+    .modal-content{
+        width: 350px;
+         height: 200px;
+        margin-left:100px;
+}
+    .modal-content-memorando{
+        width: 250px;
+        height: 250px;
+        margin-left: 150px;
+}   
+}
 }
 
 .message-error{
