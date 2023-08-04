@@ -269,7 +269,7 @@ main {
     height: 40px;
 }
 
-#box-upload {
+.box-upload {
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
@@ -309,7 +309,7 @@ main {
     border-radius: 4px;
     font-size: 15px;
     margin-top: 7px;
-    width: 27%;
+    width: 35%;
 }
 
 #link-upload:hover {
@@ -1253,6 +1253,9 @@ hr {
     #login-box{
     width: 500px;
     }
+    #link-upload-pdf{
+        width: 50%;
+    }
 }
 
 @media screen and (min-width: 400px) and (min-height: 150px) {
@@ -1299,6 +1302,8 @@ hr {
     outline-color: #3c59cb;
 }
 
+
+
 .input-group_label {
     position: absolute;
     top: 0;
@@ -1328,6 +1333,11 @@ hr {
         width: 115%;
         margin-left: 5%;
     }
+
+    #link-upload-pdf{
+        width: 100%;
+    }
+
     .table{
         font-size: 11px;
         margin-bottom: 25px;
@@ -1417,6 +1427,10 @@ hr {
             margin-left: -9px;
         }
 
+        #link-upload-pdf{
+            width: 100%;
+        }
+
         .modal-content{
         width: 300px;
         height: 200px;
@@ -1451,6 +1465,11 @@ hr {
         margin-bottom: 25px;
         
     }
+
+    #link-upload-pdf{
+        width: 100%;
+    }
+
     .table th,td,tr{
         font-size: 11px;
     }
@@ -1536,6 +1555,9 @@ hr {
         #id_file1,#id_file{
             width:290px;
         }
+        #link-upload-pdf{
+            width: 100%;
+        }
         .select2-container{
             width: 180px!important;
         }
@@ -1567,6 +1589,9 @@ hr {
     }
     .table th,td,tr{
         font-size: 13px;
+    }
+    #link-upload-pdf{
+        width: 100%;
     }
     #hr-table{
         width: 310px;
@@ -1626,6 +1651,9 @@ hr {
     #id_file1,#id_file{
         width:330px;
     }
+    #link-upload-pdf{
+        width: 100%;
+    }
     .select2-container{
         width: 250px!important;
     }
@@ -1648,4 +1676,9 @@ hr {
 
 .message-error{
     text-align: center;
+}
+
+#title-error {
+    text-align: center;
+    color: red;
 }

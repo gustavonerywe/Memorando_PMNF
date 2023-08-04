@@ -552,7 +552,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'arquivos': arquivos,
     }
-    print(oficio.destinatario_oficio)
+    print(oficio.destinatarios_copia_oficio)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_oficio.html"
