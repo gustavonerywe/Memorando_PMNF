@@ -630,11 +630,12 @@ main {
     height: 23%;
     padding-right: 15px;
     padding-left: 15px;
+    padding-top: 10px;
 }
 
-.modal-body {
+/* .modal-body {
     padding-top: 20px;
-}
+} */
 
 .fechar {
     color: #aaa;
@@ -1231,10 +1232,10 @@ hr {
         margin-left: auto;
 
     }
-    .modal-body{
+    /* .modal-body{
         height: 180px;
         width: 430px;
-    }
+    } */
     .modal-content-memorando{
         height: 180px;
         width: 480px;
@@ -1268,11 +1269,12 @@ hr {
 }
 
 @media screen and (max-height: 700px) {
-.modal-body{
+/* .modal-body{
     height: 180px;
-}
+} */
 .modal-content-memorando{
     height: 180px;
+    padding-top: 10px;
 }
 #meuModal{
     height: auto;
@@ -1385,10 +1387,10 @@ hr {
     #id_file1,#id_file{
         width:200px;
     }
-    .modal-body{
-        width: 200px;
+    /* .modal-body{
+        width: 500px;
         height: 130px;
-    }
+    } */
     #meuModal{
         height: auto;
     }
@@ -1398,9 +1400,10 @@ hr {
         margin-left: 35px;
     }
     .modal-content-memorando{
-        width: 250px;
-        height: 250px;
-        margin-left: 70px;
+        width: 300px;
+        height: 200px;
+        margin-left: 35px;
+        padding-top: 10px;
     }
     .select2-container{
         width: 100px!important;
@@ -1443,15 +1446,11 @@ hr {
         margin-left: 10px;
         }
         .modal-content-memorando{
-        width: 250px;
-        height: 250px;
-        margin-left: 35px;
+        width: 300px;
+        height: 200px;
+        margin-left: 10px;
+        padding-top: 10px;
         }
-        .modal-body{
-            width: 200px;
-            height: 130px;
-        }
-
     }
 }
 
@@ -1517,10 +1516,10 @@ hr {
     #id_file1,#id_file{
         width:245px;
     }
-    .modal-body{
+    /* .modal-body{
         width: 200px;
         height: 130px;
-    }
+    } */
     #meuModal{
         height: auto;
     }
@@ -1530,9 +1529,10 @@ hr {
         margin-left: 50px;
     }
     .modal-content-memorando{
-        width: 250px;
-        height: 250px;
-        margin-left: 75px;
+        width: 350px;
+        height: 200px;
+        margin-left: 30px;
+        padding-top: 10px;
     }
     .select2-container{
         width: 160px!important;
@@ -1579,9 +1579,10 @@ hr {
             margin-left: 50px;
         }
         .modal-content-memorando{
-            width: 250px;
-            height: 250px;
-            margin-left: 100px;
+            width: 350px;
+            height: 200px;
+            margin-left: 50px;
+            padding-top: 10px;
         }
     }
     }
@@ -1652,9 +1653,10 @@ hr {
         margin-left: 75px;
 }
     .modal-content-memorando{
-        width: 250px;
-        height: 250px;
-        margin-left: 150px;
+        width: 400px;
+        height: 200px;
+        margin-left: 50px;
+        padding-top: 10px;
 }   
     #img{
         width: 30%;
@@ -1686,9 +1688,10 @@ hr {
         margin-left:100px;
 }
     .modal-content-memorando{
-        width: 250px;
-        height: 250px;
-        margin-left: 150px;
+        width: 400px;
+        height: 200px;
+        margin-left: 100px;
+        padding-top: 10px;
 }   
 }
 }
