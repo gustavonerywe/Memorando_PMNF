@@ -1402,6 +1402,10 @@ hr {
         font-size: 11px!important;
         text-align: center!important;
     }
+    #body-login {
+        height:100%;
+    }   
+
     @media screen and (min-width:320px) and (max-width:350px){
         .table{
             font-size: 75%;
@@ -1528,6 +1532,10 @@ hr {
         font-size: 12px!important;
         text-align: left!important;
     }
+    #body-login {
+        height:100%;
+    }   
+
     @media screen and (min-width:450px) and (max-width:500px)
     {
         .table{
@@ -1637,6 +1645,10 @@ hr {
         width: 110%;
         margin-left:-15px!important;
     }
+    #body-login {
+        height:100%;
+    }   
+
 @media screen and (min-width:570px) and (max-width:600px){
     #hr-table{
         width: 360px;
