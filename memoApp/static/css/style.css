@@ -335,6 +335,12 @@ main {
 .link-container {
     text-align: center;
 }
+#link-upload{
+    width: 200px;
+}
+#link-upload-pdf{
+    width: 200px;
+}
 
 #label-file {
     pointer-events: none;
@@ -845,7 +851,7 @@ hr {
 }
 
 #img-pdf {
-    width: 25%;
+    width: 30px;
     padding-right: 5px;
 }
 
@@ -1246,28 +1252,7 @@ hr {
     #img{
         width: 30%;
     }
-    
-
-
 }
-/* @media screen and (max-height: 900px){
-    #body-login{
-    height: 110%;
-    }
-    #login-box{
-    width: 500px;
-    }
-    #link-upload-pdf{
-        width: 50%;
-    }
-} */
-
-@media screen and (max-height: 700px) {
-.modal-content-login{
-    height: 180px;
-}
-}
-
 @media screen and (max-height: 700px) {
 /* .modal-body{
     height: 180px;
@@ -1334,11 +1319,6 @@ hr {
         width: 115%;
         margin-left: 5%;
     }
-
-    #link-upload-pdf{
-        width: 100%;
-    }
-
     .table{
         font-size: 11px;
         margin-bottom: 25px;
@@ -1435,11 +1415,6 @@ hr {
             width: 107%;
             margin-left: -9px;
         }
-
-        #link-upload-pdf{
-            width: 100%;
-        }
-
         .modal-content{
         width: 300px;
         height: 200px;
@@ -1469,11 +1444,6 @@ hr {
         margin-bottom: 25px;
         
     }
-
-    #link-upload-pdf{
-        width: 100%;
-    }
-
     .table th,td,tr{
         font-size: 11px;
     }
@@ -1567,9 +1537,6 @@ hr {
         #id_file1,#id_file{
             width:290px;
         }
-        #link-upload-pdf{
-            width: 100%;
-        }
         .select2-container{
             width: 180px!important;
         }
@@ -1602,9 +1569,6 @@ hr {
     }
     .table th,td,tr{
         font-size: 13px;
-    }
-    #link-upload-pdf{
-        width: 100%;
     }
     #hr-table{
         width: 310px;
@@ -1671,9 +1635,6 @@ hr {
     }
     #id_file1,#id_file{
         width:330px;
-    }
-    #link-upload-pdf{
-        width: 100%;
     }
     .select2-container{
         width: 250px!important;
@@ -1778,6 +1739,10 @@ hr {
     #input-container-login{
         width: 79%;
     }
+    .modal-content-login{
+        width: 90%;
+        height: 180px;
+    }
 }
 @media screen and (min-width:600px) and (max-width:1300px){
     #login-box{
@@ -1786,5 +1751,50 @@ hr {
     #input-container-login{
         width: 73%;
     }
+    /* .modal-content-login{
+        width: 90%;
+        height: 180px;
+    } */
 
 }
+@media screen and (max-height: 800px) {
+    .modal-content-login{
+        height: 200px;
+    }
+}
+@media screen and (min-width:600px) and (max-width:900px){
+    .modal-content-login{
+        width: 500px;
+    }
+}
+/* responsividade upload */
+@media screen and (min-width: 320px) and (max-width:500px){
+    .box-upload{
+        width: 100%;
+        margin-top: 25%;
+    }
+    #img-pdf{
+        width: 30px;
+    }
+    .link-container{
+        width: 300px;
+        margin: 0 auto;
+    } 
+    #link-upload{
+        width: 200px;
+    }
+    #link-upload-pdf{
+        width: 200px;
+    }
+}
+@media screen and (min-width:500px) and (max-width:600px){
+    .box-upload{
+        width: 400px;
+    }
+}
+@media screen and (min-width:600px) and (max-width:900px){
+    .box-upload{
+        width: 55%;
+    }
+}
+
