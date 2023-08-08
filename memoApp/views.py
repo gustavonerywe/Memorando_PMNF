@@ -16,8 +16,8 @@ from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 import os
 from django.shortcuts import get_object_or_404
 from django.conf import settings
@@ -404,10 +404,12 @@ def loginPage(request):
                 if user is not None:        
                     login(request, user)
                     return redirect('upload')
-                    # Redirect to a success page
         else:
             form = AuthenticationForm(request)
-        return render(request, 'login.html', {'form': form})
+        
+        # Adicionar o formulário de alteração de senha ao contexto
+        password_change_form = PasswordChangeForm()
+        return render(request, 'login.html', {'form': form, 'password_change_form': password_change_form})
     
     
 def encerraSessao(request):
@@ -714,3 +716,7 @@ def add_image(arquivos, infile, outfile):
 @login_required
 def error_image(request):
     return render(request, 'erro.html')
+
+@login_required
+def change_password(request):
+    return render(request, 'change_password.html')

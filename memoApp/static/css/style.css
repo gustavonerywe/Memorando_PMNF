@@ -643,7 +643,7 @@ main {
     padding-top: 20px;
 } */
 
-.fechar {
+.fechar, #fechar-senha {
     color: #aaa;
     float: right;
     font-size: 25px;
@@ -699,9 +699,14 @@ main {
 }
 
 .fechar:hover,
-.fechar:focus {
+.fechar:focus, #fechar-senha:hover, #fechar-senha:focus {
     color: #000;
     text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#perfil:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
@@ -803,7 +808,7 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#ok-modal:hover {
+#ok-modal:hover, #confirma-senha:hover {
     transform: scale(1.1);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -822,7 +827,8 @@ hr {
 #buttonYesSair,
 #buttonNoSair,
 #ok-modal,
-#ok-modal-pdf {
+#ok-modal-pdf,
+#confirma-senha {
     width: 40%;
     text-align: center;
     margin: 0 auto;
@@ -1089,9 +1095,10 @@ hr {
     font-style: italic;
 }
 
-#button-submit-login:hover {
+#button-submit-login:hover, #alterar_senha:hover {
     transform: scale(1.1);
     margin-right: 10px;
+    margin-left: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -1840,4 +1847,10 @@ hr {
 }
 .select2-conatiner{
     width: 300px;
+}
+
+#botoes-login{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

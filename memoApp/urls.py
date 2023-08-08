@@ -16,5 +16,6 @@ urlpatterns = [
     path('my-pdf/<int:pk>/', views.PrintView.as_view(), name='my_pdf'),
     path('memorando_circular', views.memorando_circular, name='memorando_circular'),
     path('oficio', views.oficio, name='oficio'),
-    path('erro/', views.error_image, name='erro')
+    path('erro/', views.error_image, name='erro'),
+    path('alterar-senha/', views.change_password, name='change_password'),
 ]

@@ -4,9 +4,11 @@
 {% endblock %}
 {% block content %}
 
+
 <head>
     <link rel="stylesheet" href="/static/css/style.css" />
 </head>
+ <a href="{% url 'loginPage' %}"><img id="perfil" style="float: left;" src="/static/img/usuario-de-perfil.png" width="30" alt="perfil"></a> 
 <html class="page_main" lang="pt-br">
     <body>
         <button type="button" class="btn btn-primary" id="btnTroca">Trocar tipo <img width="25" src="/static/img/paper.png" alt="document-img"></button>

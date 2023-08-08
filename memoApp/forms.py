@@ -4,6 +4,7 @@ from django.db import models
 from django.utils import timezone
 from django import forms
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import AuthenticationForm
 
 MAX_UPLOAD_SIZE = 104857600  
 
