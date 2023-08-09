@@ -33,105 +33,115 @@ let selectCounterCopia = 1;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  function removeLastSelectCopia(){
-    if(selectCounterCopia>1){
-      let elementRemovido = document.getElementById('select-container-copia-'+selectCounterCopia);
+  function removeLastSelectCopia() {
+    if (selectCounterCopia > 1) {
+      let elementRemovido = document.getElementById('select-container-copia-' + selectCounterCopia);
       let removeBotao = document.getElementById('removeSelectCopia');
-
-      console.log(elementRemovido);
+  
       elementRemovido.remove();
       selectCounterCopia--;
-            
-      if(selectCounterCopia == 1){
+  
+      if (selectCounterCopia == 1) {
         removeBotao.remove();
       }
     }
   }
-
+  
   function createNewSelectCopia() {
     let selectOriginal = document.getElementById('select-secretaria-copia-para');
-    let selectClone = selectOriginal.cloneNode(true);
     let novoWrapper = document.createElement('div');
     let selectTable = document.getElementById('select-table-copia');
-
-    if(selectCounterCopia == 1){
+  
+    if (selectCounterCopia == 1) {
       let removeSelect = document.createElement('button');
-      removeSelect.setAttribute('class', 'cancel-button-select')
+      removeSelect.setAttribute('class', 'cancel-button-select');
       let tagIcone = document.createElement('i');
       tagIcone.setAttribute('class', 'bi bi-dash');
       removeSelect.appendChild(tagIcone);
       let container = document.getElementById('container_and_button-copia');
-      container.appendChild(removeSelect)
-
-
-      // container.appendChild(removeSelect);
-       removeSelect.id = 'removeSelectCopia';
-      // removeSelect.innerHTML = "REMOVER";
-        removeSelect.type = 'button';
-
-      removeSelect.addEventListener('click', function(){
+      container.appendChild(removeSelect);
+  
+      removeSelect.id = 'removeSelectCopia';
+      removeSelect.type = 'button';
+  
+      removeSelect.addEventListener('click', function () {
         removeLastSelectCopia();
-      })
+      });
     }
-
+  
     selectCounterCopia++;
+  
+    let novoSelect = document.createElement('select');
+    novoSelect.name = 'destinatarios_copia';
+    novoSelect.id = 'select-secretaria-copia-' + selectCounterCopia;
+    novoSelect.style.width = '100%';
+  
     novoWrapper.setAttribute('class', 'select-wrapper-copia');
     novoWrapper.id = 'select-container-copia-' + selectCounterCopia;
-    selectTable.appendChild(novoWrapper)
-
-
-    selectClone.id = 'select-secretaria-copia-' + selectCounterCopia;
-    selectClone.setAttribute('data-select2-id', selectClone.id);
-    selectClone.style.width = '100%';
-
-    novoWrapper.appendChild(selectClone);
-    $(selectClone).select2();
+    novoWrapper.appendChild(novoSelect);
+    selectTable.appendChild(novoWrapper);
+  
+    // Clone as opções do select original para o novo select
+    let options = selectOriginal.options;
+    for (let i = 0; i < options.length; i++) {
+      let option = document.createElement('option');
+      option.value = options[i].value;
+      option.text = options[i].text;
+      novoSelect.appendChild(option);
+    }
+    $(novoSelect).select2();
   }
+  
+  
+  let selectCounterCopia = 1;
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const addSelectButtonCopia = document.getElementById('addSelectCopia');
+    addSelectButtonCopia.addEventListener('click', createNewSelectCopia);
+  });
+  
   const addSelectButtonCopia = document.getElementById('addSelectCopia')
 
   addSelectButtonCopia.addEventListener('click', () => {
     createNewSelectCopia()
   })
 })
+
 let selectCounter = 1;
 
-document.addEventListener('DOMContentLoaded', function () {
-
-  function removeLastSelect(){
-    if(selectCounter>1){
-      let elementRemovido = document.getElementById('select-container-'+selectCounter);
+  function removeLastSelect() {
+    if (selectCounter > 1) {
+      let elementRemovido = document.getElementById('select-container-' + selectCounter);
       let removeBotao = document.getElementById('removeSelect');
 
       elementRemovido.remove();
       selectCounter--;
-            
-      if(selectCounter == 1){
+
+      if (selectCounter == 1) {
         removeBotao.remove();
       }
-      
     }
   }
 
   function createNewSelect() {
     let selectOriginal = document.getElementById('select-secretaria');
-    let selectClone = selectOriginal.cloneNode(true);
     let novoWrapper = document.createElement('div');
     let selectTable = document.getElementById('select-table');
 
-    if(selectCounter == 1){
+    if (selectCounter == 1) {
       let removeSelect = document.createElement('button');
-      let container = document.getElementById('container_and_button');
-      removeSelect.setAttribute('class', 'cancel-button-select')
+      removeSelect.setAttribute('class', 'cancel-button-select');
       let tagIcone = document.createElement('i');
       tagIcone.setAttribute('class', 'bi bi-dash');
       removeSelect.appendChild(tagIcone);
+      let container = document.getElementById('container_and_button');
+      container.appendChild(removeSelect);
 
       container.appendChild(removeSelect);
       removeSelect.id = 'removeSelect';
-      //removeSelect.innerHTML = "REMOVER";
       removeSelect.type = 'button';
 
-      removeSelect.addEventListener('click', function(){
+      removeSelect.addEventListener('click', function () {
         removeLastSelect();
       })
     }
@@ -142,31 +152,37 @@ document.addEventListener('DOMContentLoaded', function () {
     novoWrapper.id = 'select-container-' + selectCounter;
     selectTable.appendChild(novoWrapper)
 
+    let selectClone = document.createElement('select')
     selectClone.id = 'select-secretaria-' + selectCounter;
     selectClone.setAttribute('data-select2-id', selectClone.id);
     selectClone.style.width = '100%';
+    selectClone.name = 'destinatario'
 
     novoWrapper.appendChild(selectClone);
-    $(selectClone).select2();
-    $(selectClone).val(null);
-    selectClone.selectedIndex = 0;
-  }
 
+     // Clone as opções do select original para o novo select
+     let options = selectOriginal.options;
+     for (let i = 0; i < options.length; i++) {
+       let option = document.createElement('option');
+       option.value = options[i].value;
+       option.text = options[i].text;
+       selectClone.appendChild(option);
+     }
+     $(selectClone).select2();
+  }
 
   const addSelectButton = document.getElementById('addSelect');
   addSelectButton.addEventListener('click', function () {
     createNewSelect();
-    // const newSelect = createNewSelect()
-    // console.log(document.getElementById('selectFather').innerHTML = newSelect)
   });
-})
 
 function createNewInput() {
   const inputRow = document.createElement('div');
   const cancelButton = document.createElement('button');
   const newFileInput = document.createElement('input');
   let imgRemove = document.createElement('img');
-  let widthInput = document.getElementById('id_file').width;
+  // let widthInput = document.getElementById('id_file').width;
+  newFileInput.setAttribute('id','id_file');
 
   inputRow.classList.add('input-row');
   cancelButton.classList.add('cancel-button');
@@ -177,6 +193,7 @@ function createNewInput() {
   newFileInput.name = 'file';
   // newFileInput.style.margin = '15px'
   // newFileInput.style.width = '100%';
+  newFileInput.setAttribute('id', 'id_file');
   newFileInput.classList.add('form-control', 'form-control-sm');
   newFileInput.classList.add('file-input');
   newFileInput.multiple = true;
@@ -256,7 +273,6 @@ function addCancelButtonEvent(cancelButton){
 }
 
 addInputButton.addEventListener('click', function () {
-  console.log("p")
   createNewInput();
   const cancelButtons = document.querySelectorAll('.cancel-button');  
   cancelButtons.forEach(function (cancelButton) {
@@ -355,7 +371,7 @@ const buttonYesModalMemorando = document.querySelector('#buttonYesModalMemorando
 const buttonNoModalMemorando = document.querySelector('#buttonNoModalMemorando')
 const spanMessage = document.querySelector('#spanMessage')
 const form = document.querySelector('#form-main')
-const assunto = document.querySelector('#id_name')
+const assunto = document.querySelector('#id_assunto')
 const modalAssunto = document.querySelector('#meuModalAssunto')
 const fecharModalAssunto = document.querySelector('#ok-modal')
 const fecharModalAsssunto2 = document.getElementById('botaoFechar');
@@ -363,6 +379,31 @@ const campoSelect = document.getElementById('select-secretaria');
 const pegarLugarTexto = document.getElementById('texto-colocar')
 const pegarLugarTextoPara = document.getElementById('texto-colocar-para')
 const grupoSelected = document.getElementById('grupo_selected')
+const buttonYesSair = document.querySelector('#buttonYesSair')
+const buttonNoSair = document.querySelector('#buttonNoSair')
+const modalSair = document.querySelector('#modal-sair')
+const btnTrueSair = document.querySelector('#btnTrueSair')
+const fecharSair = document.querySelector('.fechar-sair')
+
+modalSair.style.display = 'none';
+
+btnTrueSair.addEventListener('click', function (e) {
+  e.preventDefault();
+  modalSair.style.display = 'block';
+})  
+
+buttonNoSair.addEventListener('click', function(){
+  modalSair.style.display = 'none';
+})
+
+buttonYesSair.addEventListener('click', function(){
+    window.location.href = '/encerrar-sessao/'
+})
+
+fecharSair.addEventListener('click', function(){
+  modalSair.style.display = 'none';
+})
+
 
 // buttonYesModal.addEventListener('click', function () {
 //   document.querySelector('.file-input').value = '';
@@ -394,4 +435,46 @@ fecharModalAssunto.addEventListener('click', function () {
 })
 fecharModalAsssunto2.addEventListener('click', function () {
   modalAssunto.style.display = 'none';
+})
+
+const btnTroca = document.querySelector('#btnTroca')
+const modalTrocar = document.getElementById('modal-trocar')
+const fecharTroca = document.querySelector('.fechar-trocar')
+const memorandoComum = document.getElementById('memorandoComum')
+const memorandoCircular = document.getElementById('memorandoCircular')
+const oficio = document.getElementById('oficio')
+const messageAviso = document.getElementById('message-aviso')
+
+btnTroca.addEventListener('click', function(e){
+  e.preventDefault();
+  modalTrocar.style.display = 'block';
+  messageAviso.style.display = 'none';
+})
+
+fecharTroca.addEventListener('click', function(){
+  modalTrocar.style.display = 'none'
+})
+
+memorandoComum.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(function(){
+    window.location.href = '/'
+  }, 1500)
+})
+
+memorandoCircular.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(() => {
+    window.location.href = '/memorando_circular'
+  }, 1500);
+})
+
+oficio.addEventListener('click', function(){
+  messageAviso.style.display = 'block'
+  messageAviso.innerHTML = "Carregando..."
+  setTimeout(() => {
+    window.location.href = '/oficio'
+  }, 1500);
 })

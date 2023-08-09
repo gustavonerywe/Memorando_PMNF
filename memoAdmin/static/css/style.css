@@ -6,6 +6,10 @@
     color: #000000;
 }
 
+#erro_page {
+    background: #add8e68e;
+}
+
 .page_pdf {
     color: white;
 }
@@ -37,15 +41,15 @@ h6 {
 #footer {
     padding: 10px;
     text-align: center;
-    margin-left: 700px;
+    margin-left: 67%;
 }
 
 .table {
     margin: 0 auto;
     border-collapse: collapse;
-    width: 75%;
+    width: 80%;
     margin-bottom: 20px;
-    border: 1px solid;
+    border: 2px solid;
 }
 
 #table-header {
@@ -62,15 +66,12 @@ h6 {
 #tituloTable,
 #tituloTable2 {
     text-align: center;
+    font-weight: bold;
 }
 
 #img {
     margin-right: 75%;
-    width: 20%;
-}
-
-#footer {
-    margin-left: 600px;
+    width: 30%;
 }
 
 #box-field {
@@ -95,7 +96,6 @@ h6 {
 
 #image-name {
     text-align: center;
-
 }
 
 #memo_numero {
@@ -122,16 +122,15 @@ main#corpo {
 }
 
 main {
-    margin-top: 5%
+    margin-top: 5%;
 }
 
 .td-file {
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 25px;
     text-decoration: none;
 }
-
 
 #box-file {
     width: 40%;
@@ -148,13 +147,14 @@ main {
 #drop-area {
     border: 2px dashed black;
     background-color: #cbe9f38e;
-    width: 60%;
-    height: 180px;
+    width: 80%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
-    margin: auto
+    margin: 0 auto;
+    padding: 5%;
 }
 
 #italic-message {
@@ -174,7 +174,7 @@ main {
 #title-footer {
     text-align: center;
     font-size: 165%;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     margin-top: 50px;
 }
 
@@ -197,8 +197,7 @@ main {
 }
 
 #input-container {
-    margin-top: -20px;
-    padding-left: 55px;
+    margin: 0 auto;
     display: inline-grid;
 }
 
@@ -207,10 +206,12 @@ main {
     border: 0.2px solid black;
     width: 200px;
     font: bold 20px times;
-    background-color: #CFF4FC;
+    background-color: #cff4fc;
 }
-#botao:hover{
+
+#botao:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #select-secretaria {
@@ -223,7 +224,6 @@ main {
     color: #333333c5;
 }
 
-
 #button-file {
     display: flex;
     justify-content: center;
@@ -233,23 +233,14 @@ main {
 }
 
 #file-margin {
-    margin-top: 5px;
+    margin-top: 50px;
 }
 
 #id_file {
     display: block;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 100%;
-    margin-right: 50.1px;
+    margin-right: 50px;
     width: 358.094px;
-    height: 21px;
-    margin-bottom: -15px;
-}
-
-#container-file {
-    display: flex;
-    flex-direction: column;
+    border-radius: 20px;
 }
 
 #title-upload {
@@ -278,12 +269,13 @@ main {
     height: 40px;
 }
 
-#box-upload {
+.box-upload {
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
     margin: 20px auto;
     width: 55%;
+    margin-top: 10%;
 }
 
 #box-upload-main {
@@ -317,22 +309,37 @@ main {
     border-radius: 4px;
     font-size: 15px;
     margin-top: 7px;
-    width: 27%;
+    width: 35%;
 }
 
 #link-upload:hover {
     text-decoration: none;
-    color: cyan;
+    /* color: cyan; */
     cursor: pointer;
+    transform: scale(1.1);
+    background-color: #4CAF50;
+    margin-bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #link-upload-pdf:hover {
     text-decoration: none;
-    color: cyan;
+    /* color: cyan; */
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #4CAF50;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 10px;
 }
 
-#link-container {
+.link-container {
     text-align: center;
+}
+#link-upload{
+    width: 200px;
+}
+#link-upload-pdf{
+    width: 200px;
 }
 
 #label-file {
@@ -390,17 +397,16 @@ main {
     border-radius: 30px;
     padding: 20px;
     margin: 0 auto;
-
 }
 
 .style-p {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 25px;
     line-height: 35px;
 }
 
 #titulo-file-detail {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 35px;
 }
 
@@ -412,9 +418,6 @@ main {
     margin-bottom: 5px;
     text-align: center;
 }
-
-
-
 
 #container_and_button,
 #container_and_button-copia {
@@ -430,12 +433,13 @@ main {
 #addSelect:hover,
 #addSelectCopia:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #addSelect,
 #addSelectCopia {
     margin-right: 10px;
-    background-color: #479F76;
+    background-color: #479f76;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
@@ -443,7 +447,7 @@ main {
     padding: 1px;
     align-self: baseline;
     border: 2px solid black;
-    margin-top: 7px;
+    margin-top: 10px;
 }
 
 .feather.feather-plus-circle.feather-icon-file-plus.custom-icon {
@@ -452,11 +456,12 @@ main {
 
 .addInput:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .addInput {
     margin-left: -40px;
-    background-color: #479F76;
+    background-color: #479f76;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
@@ -480,20 +485,20 @@ main {
     */
 }
 
-
 .input-row {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.cancel-button:hover{
+.cancel-button:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .cancel-button {
     margin-right: 10px;
-    background-color: #E35D6A;
+    background-color: #e35d6a;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
@@ -525,8 +530,8 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
-    height: 17%;
+    width: 43%;
+    height: 23%;
     padding: 20px;
     border: 1px solid #888;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -545,7 +550,10 @@ main {
 }
 
 #meuModal,
-#modal-upload {
+#modal-upload,
+#modal-sair,
+#modal-pdf,
+#modal-trocar {
     display: none;
     position: fixed;
     z-index: 1;
@@ -554,6 +562,34 @@ main {
     width: 100%;
     height: 100%;
     overflow: auto;
+}
+
+#modal-trocar {
+    height: 110%;
+}
+
+#msg-troca {
+    margin-top: 0;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#message-aviso {
+    color: #00cc00;
+    margin-top: -20px;
+    animation: loadingAnimation 1.5s ease-in-out infinite;
 }
 
 #meuModalMemorando {
@@ -583,11 +619,11 @@ main {
 }
 
 .modal-content {
-    height: 25%;
     background-color: #fefefe;
     margin: 15% auto;
     border: 1px solid #888;
     width: 43%;
+    height: 23%;
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -597,16 +633,50 @@ main {
     margin: 15% auto;
     border: 1px solid #888;
     width: 43%;
-    height: 20%;
+    height: 23%;
     padding-right: 15px;
     padding-left: 15px;
+    padding-top: 10px;
 }
 
-.modal-body {
+/* .modal-body {
     padding-top: 20px;
+} */
+
+.fechar, #fechar-senha {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
 }
 
-.fechar {
+.fechar-sair {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
+.fechar-trocar {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 3%;
+    align-self: flex-end;
+}
+
+.fechar-pdf {
     color: #aaa;
     float: right;
     font-size: 25px;
@@ -620,7 +690,7 @@ main {
 .fecharMemorando {
     color: #aaa;
     float: right;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     cursor: pointer;
     padding: 4px 8px;
@@ -629,10 +699,40 @@ main {
 }
 
 .fechar:hover,
-.fechar:focus {
+.fechar:focus, #fechar-senha:hover, #fechar-senha:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    transform: scale(1.1);
+}
+
+#perfil:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fechar-trocar:hover,
+.fechar-trocar:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fechar-pdf:hover,
+.fechar-pdf:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fechar-sair:hover,
+.fechar-sair:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .fecharMemorando:hover,
@@ -640,6 +740,7 @@ main {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 .imgModal {
@@ -654,32 +755,67 @@ hr {
 
 #buttonNoModal,
 #buttonNoModalMemorando,
+#buttonNoSair,
 #nao-envia-modal {
-    background-color:  #E35D6A;
+    background-color: #e35d6a;
 }
 
 #buttonYesModal,
 #buttonYesModalMemorando,
-#envia-modal {
-    background-color: #479F76;
+#buttonYesSair #envia-modal {
+    background-color: #479f76;
+}
+
+#memorandoComum:hover,
+#memorandoCircular:hover,
+#oficio:hover {
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#button-container-troca {
+    display: flex;
+    justify-content: space-between;
+}
+
+#memorandoComum {
+    padding: 10px;
+}
+
+#memorandoCircular {
+    padding: 10px;
+}
+
+#oficio {
+    padding: 10px;
 }
 
 #buttonNoModal:hover,
 #buttonNoModalMemorando:hover,
-#nao-envia-modal:hover {
-    background-color:  #e62c3e;
+#nao-envia-modal:hover,
+#buttonNoSair:hover {
+    background-color: #e62c3e;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #buttonYesModal:hover,
 #buttonYesModalMemorando:hover,
-#envia-modal:hover {
+#envia-modal:hover,
+#buttonYesSair:hover {
     background-color: #6ae9ae;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#ok-modal:hover{
+#ok-modal:hover, #confirma-senha:hover {
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#ok-modal-pdf:hover {
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #buttonNoModal,
@@ -688,7 +824,11 @@ hr {
 #buttonYesModalMemorando,
 #envia-modal,
 #nao-envia-modal,
-#ok-modal {
+#buttonYesSair,
+#buttonNoSair,
+#ok-modal,
+#ok-modal-pdf,
+#confirma-senha {
     width: 40%;
     text-align: center;
     margin: 0 auto;
@@ -700,7 +840,8 @@ hr {
 #spanMessage {
     color: rgb(3, 117, 3);
     font-size: 0.7em;
-    margin-bottom: 0;
+    text-align: center;
+    margin-bottom: -1px;
 }
 
 .tox-notifications-container {
@@ -710,13 +851,13 @@ hr {
 .tox .tox-statusbar a,
 .tox .tox-statusbar__path-item,
 .tox .tox-statusbar__wordcount {
-    color: rgba(34, 47, 62, .7);
+    color: rgba(34, 47, 62, 0.7);
     text-decoration: none;
     display: none;
 }
 
 #img-pdf {
-    width: 25%;
+    width: 30px;
     padding-right: 5px;
 }
 
@@ -724,10 +865,14 @@ hr {
     background-color: #d3d3d3;
 }
 
-#drop-area p {
+#uploadFile, #message-file{
     color: black;
-    font-size: 20px;
+    font-size: 0.8em;
     text-align: center;
+}
+
+#message-file{
+    margin-top: -3%;
 }
 
 #searchInput {
@@ -747,7 +892,6 @@ hr {
 
 #table-generate {
     width: 80%;
-
 }
 
 #hr-generate {
@@ -782,7 +926,7 @@ hr {
 
 .button-container {
     display: flex;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .button-container button {
@@ -790,8 +934,8 @@ hr {
 }
 
 #span-alert {
-    margin-left: 35px;
-    margin-bottom: 10px;
+    margin-left: 50px;
+    margin-top: 20px;
 }
 
 #corpo-memorando-pdf {
@@ -820,8 +964,16 @@ hr {
     width: 200px;
 }
 
-#id_name {
+#id_assunto,
+#copia-oficio,
+#para-oficio {
     width: 75%;
+}
+
+#id_assunto,
+#para-oficio,
+#copia-oficio {
+    background-color: #fff;
 }
 
 .file-input {
@@ -837,16 +989,33 @@ hr {
 #btnSair {
     text-decoration: none;
     color: white;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #btnTrueSair {
     float: right;
+    margin-right: 5px;
 }
 
 #btnTrueSair:hover {
     float: right;
     transform: scale(1.1);
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#btnTroca {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    float: right;
+    margin-left: 5px;
+}
+
+#btnTroca:hover {
+    float: right;
+    transform: scale(1.1);
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 /* CSS para a página de login */
@@ -862,7 +1031,7 @@ hr {
     margin-left: auto;
     margin-right: auto;
     text-shadow: rgb(12, 12, 12);
-    ;
+    padding: 20px;
 }
 
 #login-box p {
@@ -876,7 +1045,7 @@ hr {
 
 #body-login {
     width: 100%;
-    height: 100%;
+    height:780px;
     position: absolute;
     background-color: #add8e68e;
 }
@@ -898,14 +1067,14 @@ hr {
     background-repeat: no-repeat;
 }
 
-.cancel-button-select:hover{
+.cancel-button-select:hover {
     transform: scale(1.1);
-
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.cancel-button-select {
+.cancel-button-select{
     margin-right: 10px;
-    background-color: #E35D6A; 
+    background-color: #e35d6a;
     border-radius: 60px;
     cursor: pointer;
     width: 32.5px;
@@ -921,19 +1090,22 @@ hr {
     margin: 7px 0;
 }
 
-#title-login {
+.title-login {
     text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8);
     font-style: italic;
 }
 
-#button-submit-login:hover {
+#button-submit-login:hover, #alterar_senha:hover {
     transform: scale(1.1);
     margin-right: 10px;
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #cadastro-login:hover {
     transform: scale(1.1);
     margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #btn_to_upload:hover {
@@ -941,10 +1113,744 @@ hr {
     /* margin-left: 10px; */
     /* text-decoration: none; */
     margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #button_to_sessao:hover {
     transform: scale(1.1);
     margin-left: 10px;
     margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#id_file1 {
+    display: block;
+    margin: 0 auto;
+    margin-right: 50px;
+    width: 358.094px;
+    border-radius: 20px;
+    margin-bottom: -17px;
+}
+
+#icon-files {
+    font-size: 60px;
+}
+
+#div-icon {
+    text-align: center;
+    margin-top: -75px;
+}
+
+#corpo-pdf {
+    margin: 0 auto;
+    size: A4;
+    width: 179mm;
+    height: 293mm;
+}
+
+#content-pdf {
+    width: 100%;
+}
+
+.dot {
+    animation: dotAnimation 1.5s infinite;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+@keyframes dotAnimation {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#first-dot {
+    animation-delay: 0s;
+}
+
+#second-dot {
+    animation-delay: 0.5s;
+}
+
+#third-dot {
+    animation-delay: 1s;
+}
+
+#dot-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+#img-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+    }
+
+    50% {
+        opacity: 0.5;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+#imgContainer img {
+    animation: fadeIn 3s forwards;
+}
+
+@media screen and (max-width: 900px) and (max-height: 900px) {
+    body{
+        width: 95%;
+        margin: 0 auto;
+    }
+    .table{
+        font-size: 12px;
+
+    }
+    .table th,td{
+        font-size: 13px;
+    }
+    
+    #drop-area{
+        width: 90%;
+    }
+    #meuModal{
+        height: auto;
+    }
+    .modal-content{
+        height: 180px;
+        width: 430px;
+    }
+    #span-alert{
+        margin-left: auto;
+
+    }
+    /* .modal-body{
+        height: 180px;
+        width: 430px;
+    } */
+    .modal-content-memorando{
+        height: 180px;
+        width: 480px;
+    }
+    .tox-tinymce{
+        width: 500px;
+    }
+    #img{
+        width: 30%;
+    }
+}
+@media screen and (max-height: 700px) {
+/* .modal-body{
+    height: 180px;
+} */
+.modal-content-memorando{
+    height: 180px;
+    padding-top: 10px;
+}
+#meuModal{
+    height: auto;
+}
+.modal-content{
+    height: 180px;
+}
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group_input {
+    font: inherit;
+    color: #000;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    outline: 2px solid #fff;
+    background-color: transparent;
+    transition: outline-color 500ms;
+}
+
+.input-group_input:is(:focus, :valid){
+    outline-color: #3c59cb;
+}
+
+
+
+.input-group_label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: 10px 10px;
+    color: #fff;
+    transition: translate 500ms, scale 500ms;
+}
+
+.input-group_input:focus + .input_group_label, .input-group_input:valid + .input-group_label {
+    padding-inline: 5px;
+    translate: 10px 14px;
+    scale: 0.9;
+    background-color: #000;
+}
+.tox{
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media screen and (min-width:320px) and (max-width:400px)
+{
+    .page_main{
+        width: 80%;
+    }
+    body{
+        width: 115%;
+        margin-left: 5%;
+    }
+    .table{
+        font-size: 11px;
+        margin-bottom: 25px;
+        margin-left: -10px;
+        
+    }
+    .table th,td,tr{
+        font-size: 11px;
+    }
+    .table tr{
+        padding: 1px;
+        padding-top: -10px;
+    }
+    #addSelect{
+        width: 20px;
+        height: 20px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #removeSelect{
+        width: 20px;
+        height: 20px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #addSelectCopia{
+        width: 20px;
+        height: 20px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #removeSelectCopia{
+        width: 20px;
+        height: 20px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    .tox{
+        width:120%;
+        margin-left:-30px;
+    }
+    #drop-area{
+        width: 105%;
+        margin-left: -9px;
+    }
+    #id_file1,#id_file{
+        width:200px;
+    }
+    /* .modal-body{
+        width: 500px;
+        height: 130px;
+    } */
+    #meuModal{
+        height: auto;
+    }
+    .modal-content{
+        width: 300px;
+        height: 200px;
+        margin-left: 35px;
+    }
+    .modal-content-memorando{
+        width: 300px;
+        height: 200px;
+        margin-left: 35px;
+        padding-top: 10px;
+    }
+    .select2-container{
+        width: 100px!important;
+    }
+    #hr-table{
+        width:  180px;
+    }
+    #img{
+        width: 30%;
+    }
+    .custom-table{
+        width: 110%;
+        margin-left:-15px!important;
+    }
+    .select2-container--default .select2-selection--single {
+        font-size: 11px!important;
+        text-align: center!important;
+    }
+    #body-login {
+        height:100%;
+    }   
+
+    @media screen and (min-width:320px) and (max-width:350px){
+        .table{
+            font-size: 75%;
+            margin-bottom: 25px;
+            margin-left: -10px;
+            
+        }
+        .table th,td,tr{
+            font-size: 75%;
+        }
+        #id_file1,#id_file{
+            width:180px;
+        }
+        #drop-area{
+            width: 107%;
+            margin-left: -9px;
+        }
+        .modal-content{
+        width: 300px;
+        height: 200px;
+        margin-left: 10px;
+        }
+        .modal-content-memorando{
+        width: 300px;
+        height: 200px;
+        margin-left: 10px;
+        padding-top: 10px;
+        }
+    }
+}
+
+@media screen and (min-width:400px) and (max-width:500px)
+{
+    .page_main{
+        width: 80%;
+    }
+    body{
+        width: 115%;
+        margin-left: 5%;
+    }
+    .table{
+        font-size: 11px;
+        margin-left: -30px;
+        margin-bottom: 25px;
+        
+    }
+    .table th,td,tr{
+        font-size: 11px;
+    }
+    .table tr{
+        padding: 1px;
+        padding-top: -10px;
+    }
+    #addSelect{
+        width: 23px;
+        height: 23px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #removeSelect{
+        width: 24px;
+        height: 24px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #addSelectCopia{
+        width: 23px;
+        height: 23px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    #removeSelectCopia{
+        width: 24px;
+        height: 24px;
+        border: black solid 1px;
+        margin-top: 12px
+    }
+    .tox{
+        width:110%;
+        margin-left:-20px;
+    }
+    #drop-area{
+        width: 105%;
+        margin-left: -9px;
+    }
+    #id_file1,#id_file{
+        width:245px;
+    }
+    /* .modal-body{
+        width: 200px;
+        height: 130px;
+    } */
+    #meuModal{
+        height: auto;
+    }
+    .modal-content{
+        width: 300px;
+        height: 200px;
+        margin-left: 50px;
+    }
+    .modal-content-memorando{
+        width: 350px;
+        height: 200px;
+        margin-left: 30px;
+        padding-top: 10px;
+    }
+    .select2-container{
+        width: 160px!important;
+    }
+    #hr-table{
+        width:  250px;
+    }
+    #addSelect, #addSelectCopia{
+        margin-inline-start:4px;
+    }
+    #img{
+        width:30%
+    }
+    .custom-table{
+        width: 110%;
+        margin-left:-20px!important;
+    }
+    .select2-container--default .select2-selection--single {
+        font-size: 12px!important;
+        text-align: left!important;
+    }
+    #body-login {
+        height:100%;
+    }   
+
+    @media screen and (min-width:450px) and (max-width:500px)
+    {
+        .table{
+            font-size: 13px;
+            margin-left: -30px;
+            margin-bottom: 25px;
+            
+        }
+        .table th,td,tr{
+            font-size: 13px;
+        }
+        #hr-table{
+            width:  280px;
+        }
+        #id_file1,#id_file{
+            width:290px;
+        }
+        .select2-container{
+            width: 180px!important;
+        }
+        .modal-content{
+            width: 350px;
+            height: 200px;
+            margin-left: 50px;
+        }
+        .modal-content-memorando{
+            width: 350px;
+            height: 200px;
+            margin-left: 50px;
+            padding-top: 10px;
+        }
+    }
+    }
+@media screen and (min-width:500px) and (max-width:600px){
+    .page_main{
+        width: 80%;
+    }
+    body{
+        width: 115%;
+        margin-left: 5%;
+    }
+    .table{
+        font-size: 14px;
+        margin-left:-23px;
+        margin-bottom: 25px;
+        
+    }
+    .table th,td,tr{
+        font-size: 13px;
+    }
+    #hr-table{
+        width: 310px;
+    }
+    #id_file1,#id_file{
+        width:300px;
+    }
+    .select2-container{
+        width: 200px!important;
+    }
+    .tox{
+        width:110%;
+        margin-left:-15px;
+    }
+    #addSelect{
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+    #removeSelect{
+        width:32.5px;
+        height:32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+    #addSelectCopia{
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+    #removeSelectCopia{
+        width: 32.5px;
+        height:32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+    #drop-area{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .modal-content{
+        width: 350px;
+         height: 200px;
+        margin-left: 75px;
+}
+    .modal-content-memorando{
+        width: 400px;
+        height: 200px;
+        margin-left: 50px;
+        padding-top: 10px;
+}   
+    #img{
+        width: 30%;
+    }
+    .custom-table{
+        width: 110%;
+        margin-left:-15px!important;
+    }
+    #body-login {
+        height:100%;
+    }   
+
+@media screen and (min-width:570px) and (max-width:600px){
+    #hr-table{
+        width: 360px;
+    }
+    #id_file1,#id_file{
+        width:330px;
+    }
+    .select2-container{
+        width: 250px!important;
+    }
+    .tox{
+        width:110%;
+        margin-left:-20px;
+    }
+    .modal-content{
+        width: 350px;
+         height: 200px;
+        margin-left:100px;
+}
+    .modal-content-memorando{
+        width: 400px;
+        height: 200px;
+        margin-left: 100px;
+        padding-top: 10px;
+}   
+}           
+.select2-container--default .select2-selection--single {
+    font-size: 15px!important;
+    text-align: center!important;
+}
+}
+
+.message-error{
+    text-align: center;
+}
+
+#title-error {
+    text-align: center;
+    color: red;
+}
+/* responsividade página login */
+@media screen and (min-width:320px) and (max-width:360px){
+    #login-box{
+        width:300px;
+        margin-top: 30%;
+    }
+    #img-login{
+        width:80%;
+    }
+    .title-login{
+        font-size: 20px;
+    }
+    #id_username{
+        width: 170px;
+    }
+    #id_password{
+        width: 170px;
+    }  
+    #input-container-login{
+        width: 95%;
+    }
+    .modal-content-login{
+        width: 90%;
+        height: 180px;
+    }
+}
+@media screen and (min-width:360px) and (max-width:400px){
+    #login-box{
+        width:340px;
+        margin-top: 30%;
+    } 
+    #id_username{
+        width: 170px;
+    }
+    #id_password{
+        width: 170px;
+    }  
+    #input-container-login{
+        width: 89%;
+    }
+    .modal-content-login{
+        width: 90%;
+        height: 180px;
+    }
+}
+    
+@media screen and (min-width:400px) and (max-width:500px){
+    #login-box{
+        width:380px;
+        margin-top: 30%;
+    } 
+    #id_username{
+        width: 180px;
+
+    }
+    #id_password{
+        width: 180px;
+    } 
+    #input-container-login{
+        width: 85%;
+    }
+    .modal-content-login{
+        width: 90%;
+        height: 180px;
+    }
+}
+@media screen and (min-width:500px) and (max-width:600px){
+    #login-box{
+        width:450px;
+        margin-top: 40%;
+    } 
+    #input-container-login{
+        width: 79%;
+    }
+    .modal-content-login{
+        width: 90%;
+        height: 180px;
+    }
+}
+@media screen and (min-width:600px) and (max-width:1300px){
+    #login-box{
+        width:522px;
+    } 
+    #input-container-login{
+        width: 73%;
+    }
+    /* .modal-content-login{
+        width: 90%;
+        height: 180px;
+    } */
+
+}
+@media screen and (max-height: 800px) {
+    .modal-content-login{
+        height: 200px;
+    }
+}
+@media screen and (min-width:600px) and (max-width:900px){
+    .modal-content-login{
+        width: 500px;
+    }
+}
+/* responsividade upload */
+@media screen and (min-width: 320px) and (max-width:500px){
+    .box-upload{
+        width: 100%;
+        margin-top: 25%;
+    }
+    #img-pdf{
+        width: 30px;
+    }
+    .link-container{
+        width: 300px;
+        margin: 0 auto;
+    } 
+    #link-upload{
+        width: 200px;
+    }
+    #link-upload-pdf{
+        width: 200px;
+    }
+}
+@media screen and (min-width:500px) and (max-width:600px){
+    .box-upload{
+        width: 400px;
+    }
+}
+@media screen and (min-width:600px) and (max-width:900px){
+    .box-upload{
+        width: 55%;
+    }
+}
+
+.select2-container--default .select2-selection--single {
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color 0.2s; 
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 30px;
+}
+
+.select2-container--default .select2-selection--single:hover {
+    border-color: #80bdff; 
+    color: white; 
+    box-shadow: 0 0 5px rgb(120, 170, 228); 
+}
+.select2-conatiner{
+    width: 300px;
+}
+
+#botoes-login{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
