@@ -184,7 +184,7 @@
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
-                           {{ destinatario_oficio }}
+                            {{ destinatario_oficio }}
                         </td>
                     </tr>
                     {% if grupo_escolhido_copia_oficio != '' %}
@@ -202,7 +202,8 @@
                         </td>
                     </tr>
                 </table>
-                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
+                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{
+                    text_content|safe }}</div>
                 <div id="footer">
                     <p></p>
                     <fieldset id="box-field-generate">

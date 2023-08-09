@@ -8,41 +8,42 @@
 
 <style>
     #tituloTable,
-#tituloTable2 {
-    text-align: center;
-    font-weight: bold;
-}
+    #tituloTable2 {
+        text-align: center;
+        font-weight: bold;
+    }
 
 
-body {
-    width: 75%;
-    background: #fff;
-    margin: 0 auto;
-}
+    body {
+        width: 75%;
+        background: #fff;
+        margin: 0 auto;
+    }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: bold;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+    }
 
-#header {
-    padding: 10px;
-    text-align: center;
-}
+    #header {
+        padding: 10px;
+        text-align: center;
+    }
 
-#content {
-    padding: 20px;
-}
+    #content {
+        padding: 20px;
+    }
 
-#footer {
-    padding: 10px;
-    text-align: center;
-    margin-left: 60%;
-}
+    #footer {
+        padding: 10px;
+        text-align: center;
+        margin-left: 60%;
+    }
+
     #table-generate {
         width: 100%;
         margin-right: 10px;
@@ -76,9 +77,9 @@ h6 {
     }
 
     .td-generate {
-       font-size: 0.8em;
-       margin: 0;
-       padding: 0;
+        font-size: 0.8em;
+        margin: 0;
+        padding: 0;
     }
 
     #form-main {
@@ -110,49 +111,46 @@ h6 {
         margin-bottom: -20px;
     } */
 
-    #corpo-memorando-pdf{
+    #corpo-memorando-pdf {
         margin: 0;
         width: 100%;
     }
 
     #img {
-    margin-right: 110%;
-    width: 32%;
-    margin-top: -90px;
-}
+        margin-right: 110%;
+        width: 32%;
+        margin-top: -90px;
+    }
 
-body {
-    width: 75%;
-    background: #fff;
-    margin: 0 auto;
-}
+    body {
+        width: 75%;
+        background: #fff;
+        margin: 0 auto;
+    }
 
-#table-recebido {
-    border: 1px solid black;
-    padding: 8px;
-    width: 100%;
-    margin-left: 38.5%;
-}
+    #table-recebido {
+        border: 1px solid black;
+        padding: 8px;
+        width: 100%;
+        margin-left: 38.5%;
+    }
 
-#body-pdf {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
+    #body-pdf {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
 
-#content-pdf {
-    height: 200px;
-}
-
-
+    #content-pdf {
+        height: 200px;
+    }
 </style>
 
 <body id="body-pdf">
     <div id="corpo-pdf">
         <link rel="stylesheet" href="/static/css/style.css" />
         {% comment %} {% endcomment %}
-        <form id="form-main" method="post" enctype="multipart/form-data"
-            action="{% url 'upload' %}">
+        <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
@@ -192,7 +190,7 @@ body {
                                     {{ grupo }}
                                 </li>
                             </ul>
-                                
+
                             {% endfor %}
                         </td>
                     </tr>
@@ -217,7 +215,8 @@ body {
                         </td>
                     </tr>
                 </table>
-                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
+                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{
+                    text_content|safe }}</div>
                 <div id="footer">
                     {% for grupo in grupo_escolhido %}
                     <fieldset id="box-field-generate">
