@@ -396,9 +396,8 @@ def loginPage(request):
         if request.method == 'POST':
             print('panqueca')
             form = PasswordChangeForm(request.user, request.POST)
-            if form.is_valid():
+            if form.is_valid():    
                 user = form.save()
-                update_session_auth_hash(request, user)  # Manually update the session to prevent log out
                 messages.success(request, 'Sua senha foi alterada com sucesso!')
                 return redirect('loginPage')
                 # print('panquecas')

@@ -18,6 +18,7 @@
             <button id="button_to_sessao" class="btn btn-primary"><a href="{% url 'encerraSessao' %}"
                     style="color: white; text-decoration: none;">Encerrar Sessão<a></button>
             <button id="alterar_senha" class="btn btn-primary">Alterar senha</button>
+            
 
             <div id="modal-senha" style="display: none;">
                 <div class="modal-content-login" id="change_passwrd">
@@ -28,7 +29,6 @@
 
                         <!-- Exibir o formulário de alteração de senha -->
                         {{ password_change_form.as_p }}
-
                         <button type="submit" id="confirma-senha" class="btn btn-dark btn-sm">Confirmar</button>
                     </form>
                 </div>

@@ -26,7 +26,7 @@ class Memorando(models.Model):
     # anexo = models.ForeignKey(forms.ImageForm, on_delete=models.CASCADE, related_name="anexo_recebido", null=True, blank=False)
 
     def gerar_proximo_numero(self):
-        memo_numero = 0
+        memo_numero = 201
         ultimo_numero = Memorando.objects.last()
         print(ultimo_numero)
         if ultimo_numero:
