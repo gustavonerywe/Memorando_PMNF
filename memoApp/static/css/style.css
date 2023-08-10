@@ -1854,3 +1854,8 @@ hr {
     flex-direction: column;
     gap: 10px;
 }
+
+#change_passwrd {
+    height: auto;
+    margin-top: -10%;
+}

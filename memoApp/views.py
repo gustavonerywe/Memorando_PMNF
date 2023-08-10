@@ -393,7 +393,22 @@ def file_list(request):
 
 def loginPage(request):
     if request.user.is_authenticated:
-        return render(request, 'login.html', {'logado': True})
+        if request.method == 'POST':
+            print('panqueca')
+            form = PasswordChangeForm(request.user, request.POST)
+            if form.is_valid():
+                user = form.save()
+                update_session_auth_hash(request, user)  # Manually update the session to prevent log out
+                messages.success(request, 'Sua senha foi alterada com sucesso!')
+                return redirect('loginPage')
+                # print('panquecas')
+                # if form.get('new_password1') == form.get('new_password2'):
+                #     request.user.password = form.get('new_password1')
+                #     print(request.user.password)
+                #     return redirect('loginPage')
+        else:
+            form = PasswordChangeForm(request.user)
+        return render(request, 'login.html', {'logado': True, 'password_change_form': form})
     else:
         if request.method == 'POST':
             form = AuthenticationForm(request, data=request.POST)
@@ -408,8 +423,7 @@ def loginPage(request):
             form = AuthenticationForm(request)
         
         # Adicionar o formulário de alteração de senha ao contexto
-        password_change_form = PasswordChangeForm()
-        return render(request, 'login.html', {'form': form, 'password_change_form': password_change_form})
+        return render(request, 'login.html', {'form': form})
     
     
 def encerraSessao(request):

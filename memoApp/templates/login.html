@@ -20,7 +20,7 @@
             <button id="alterar_senha" class="btn btn-primary">Alterar senha</button>
 
             <div id="modal-senha" style="display: none;">
-                <div class="modal-content-login">
+                <div class="modal-content-login" id="change_passwrd">
                     <span id="fechar-senha">&times;</span>
                     <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
                     <form method="post">
@@ -29,12 +29,8 @@
                         <!-- Exibir o formulário de alteração de senha -->
                         {{ password_change_form.as_p }}
 
-                        <button type="submit">Login</button>
+                        <button type="submit" id="confirma-senha" class="btn btn-dark btn-sm">Confirmar</button>
                     </form>
-
-                    <div class="button-container">
-                        <button type="button" id="confirma-senha" class="btn btn-dark btn-sm">Confirmar</button>
-                    </div>
                 </div>
             </div>
             {% else %}
