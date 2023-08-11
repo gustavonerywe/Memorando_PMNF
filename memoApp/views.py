@@ -75,7 +75,7 @@ def upload(request):
             for file in files:
                 try:
                     with imgpil.open(file) as image:
-                        image.save(f'uploads/{file.name}')
+                        image.save(f'fileStorage/{file.name}')
                 except ValueError as e:
                     return redirect('erro')
             
@@ -167,7 +167,7 @@ def memorando_circular(request):
 
             for file in files:
                 with imgpil.open(file) as image:
-                    image.save(f'uploads/{file.name}')
+                    image.save(f'fileStorage/{file.name}')
 
 
             context = {
