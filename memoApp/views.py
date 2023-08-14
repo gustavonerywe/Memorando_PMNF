@@ -48,8 +48,13 @@ def upload(request):
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
             # memorando.anexo = form
-          
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
+            
+            try:
+                grupo_escolhido.remove('-- Selecione um grupo --')
+                grupo_escolhido_copia.remove('-- Selecione um grupo --')
+            except:
+                pass
             
             files = request.FILES.getlist('file')
             
@@ -470,7 +475,7 @@ def geraEBaixaPDF(request, id_criptografado):
     html_render = render_to_string('generate_pdf.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pathToPdf = str(BASE_DIR)+'/pdfs/memorando' + str(id_criptografado) + '.pdf'
+    pathToPdf = str(BASE_DIR)+'/fileStorage/memorando' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
@@ -525,7 +530,7 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     html_render = render_to_string('generate_pdf_circular.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pathToPdf = str(BASE_DIR)+'/pdfs/memorando_circular' + str(id_criptografado) + '.pdf'
+    pathToPdf = str(BASE_DIR)+'/fileStorage/memorando_circular' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
@@ -577,7 +582,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pathToPdf = str(BASE_DIR)+'/pdfs/oficio' + str(id_criptografado) + '.pdf'
+    pathToPdf = str(BASE_DIR)+'/fileStorage/oficio' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
