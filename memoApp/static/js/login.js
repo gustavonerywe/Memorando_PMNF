@@ -7,18 +7,25 @@ const modalSenha = document.getElementById('modal-senha')
 const confirmaSenha = document.getElementById('confirma-senha')
 const fecharSenha = document.querySelector('#fechar-senha')
 
-alterarSenha.addEventListener('click', function(e){
-    e.preventDefault();
-    modalSenha.style.display = "block"
-})
+try {
 
-confirmaSenha.addEventListener('click', function(){
-    modalSenha.style.display = "none"
-})
+    alterarSenha.addEventListener('click', function(e){
+        e.preventDefault();
+        modalSenha.style.display = "block"
+    })
+    
+    confirmaSenha.addEventListener('click', function(){
+        modalSenha.style.display = "none"
+    })
+    
+    fecharSenha.addEventListener('click', function(){
+        modalSenha.style.display = "none";
+    })
+    
+} catch (error) {
+    
+}
 
-fecharSenha.addEventListener('click', function(){
-    modalSenha.style.display = "none";
-})
 
 cadastroLogin.addEventListener('click', function (e) {
     e.preventDefault();
