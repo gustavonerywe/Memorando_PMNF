@@ -41,7 +41,7 @@
    <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'memorando_circular' %}">
       {% csrf_token %}
       <div id="header">
-         <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
+         <img id="img" src="/memoApp/static/img/prefeitura.png" alt="Logo da prefeitura" />
       </div>
       <hr />
       <div id="content">
@@ -231,7 +231,6 @@
    <div id="meuModalAssunto">
       <div class="modal-content">
          <span class="fechar" id="botaoFechar">&times;</span>
-         <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
          <div id="container-modal-atencao"></div>
          <span
             style="font-size: 1.6em; margin-bottom: 0; margin-top: 0; text-align: center; color: rgb(168, 67, 67);">Atenção!</span>

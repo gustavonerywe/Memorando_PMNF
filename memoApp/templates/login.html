@@ -7,7 +7,7 @@
 
 <body id="body-login">
     <div id="login-box">
-        <image src="https://pedroschuenck.github.io/prefeituraImg.png" id="img-login">
+        <image src="/memoApp/static/img/prefeitura.png" id="img-login">
             <h1 class="title-login">MOC</h1>
             <h2 class="title-login">Memorando / Ofício / Circular</h2>
             <hr id="hr-login">
@@ -23,10 +23,7 @@
             <div id="modal-senha" style="display: none;">
                 <div class="modal-content-login" id="change_passwrd">
                     <span id="fechar-senha">&times;</span>
-                    <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
-                    <form method="post">
                         {% csrf_token %}
-
                         <!-- Exibir o formulário de alteração de senha -->
                         {{ password_change_form.as_p }}
                         <button type="submit" id="confirma-senha" class="btn btn-dark btn-sm">Confirmar</button>
@@ -49,7 +46,6 @@
             <div id="modal-login" style="display: none;">
                 <div class="modal-content-login">
                     <span class="fechar">&times;</span>
-                    <!-- <img src="https://pedroschuenck.github.io/prefeituraImg.png" style="position: fixed;" width="200px" height="100px" alt="brasao-pmnf"> -->
                     <p style="font-size: 17px; text-align: center;">
                         Para realizar o cadastro, ligue para a Subsecretaria de T.I. <br />
                         <b>Ramal: (9268)</b>
