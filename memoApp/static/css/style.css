@@ -1805,6 +1805,9 @@ hr {
     .modal-content-login{
         width: 500px;
     }
+        .select2-container{
+        width: 280px!important; /*código responsividade select memoMain*/
+    }
 }
 /* responsividade upload */
 @media screen and (min-width: 320px) and (max-width:500px){
