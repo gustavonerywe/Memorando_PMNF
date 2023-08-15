@@ -1876,12 +1876,13 @@ hr {
 
 
 #mensagem_sucesso {
-    background-color: #4CAF50; 
-    color: white; 
+    background-color: #a6eca9; 
+    color: #000; 
     padding: 10px; 
-    border-radius: 20px; 
+    border-radius: 5px; 
     text-align: center; 
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #4CAF50;
     width: 100%;
 }
 
