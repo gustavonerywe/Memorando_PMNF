@@ -1873,3 +1873,18 @@ hr {
 #id_old_password, #id_new_password1, #id_new_password2{
     border: solid black 1px;
 }
+
+
+#mensagem_sucesso {
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px; 
+    border-radius: 20px; 
+    text-align: center; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+#erro_acontecido {
+    display: none;
+}

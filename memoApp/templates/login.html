@@ -18,11 +18,13 @@
             <button id="button_to_sessao" class="btn btn-primary"><a href="{% url 'encerraSessao' %}"
                     style="color: white; text-decoration: none;">Encerrar Sessão<a></button>
             <button id="alterar_senha" class="btn btn-primary">Alterar senha</button>
+                               
             
 
             <div id="modal-senha" style="display: none;">
                 <div class="modal-content-login" id="change_passwrd">
                     <span id="fechar-senha">&times;</span>
+                    <form id="form-senha" method="post">
                         {% csrf_token %}
                         <!-- Exibir o formulário de alteração de senha -->
                         {{ password_change_form.as_p }}
@@ -36,6 +38,9 @@
                 <div id="input-container-login">
                     {{ form.as_p }}
                 </div>
+                {% if message_success%}
+                <p id="mensagem_sucesso">{{ message_success }}</p>
+                {% endif %}
                 <div id="botoes_login">
                     <button id="button-submit-login" type="submit" class="btn btn-primary">Entrar</button>
                     <button class="btn btn-primary" id="cadastro-login" type="button">Quero me cadastrar</button>

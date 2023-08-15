@@ -6,6 +6,10 @@ const alterarSenha = document.querySelector('#alterar_senha')
 const modalSenha = document.getElementById('modal-senha')
 const confirmaSenha = document.getElementById('confirma-senha')
 const fecharSenha = document.querySelector('#fechar-senha')
+const mensagemSucesso = document.querySelector('#mensagem_sucesso')
+const erroAcontecido = document.querySelector('#erro_acontecido')
+const formSenha = document.querySelector('#form-senha')
+
 
 try {
 
@@ -15,12 +19,17 @@ try {
     })
     
     confirmaSenha.addEventListener('click', function(){
-        modalSenha.style.display = "none"
+        e.preventDefault();
+        setTimeout(() => {
+            modalSenha.style.display = "none";    
+        }, 5000);
+        
     })
     
     fecharSenha.addEventListener('click', function(){
         modalSenha.style.display = "none";
     })
+
     
 } catch (error) {
     
@@ -41,3 +50,8 @@ okModal.addEventListener('click', function () {
     modalLogin.style.display = 'none';
 })
 
+setTimeout(() => {
+    mensagemSucesso.style.display = 'none';
+}, 5000);
+
+console.log(errorList)

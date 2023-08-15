@@ -401,10 +401,20 @@ def loginPage(request):
         if request.method == 'POST':
             print('panqueca')
             form = PasswordChangeForm(request.user, request.POST)
+            erro = form.errors
+            print(erro)
+            form_authentication = AuthenticationForm(request)
             if form.is_valid():    
                 user = form.save()
-                messages.success(request, 'Sua senha foi alterada com sucesso!')
-                return redirect('loginPage')
+                message_success = 'Senha alterada com sucesso!'
+                context = {
+                    'form': form_authentication,
+                    'form_senha': form,
+                    'message_success': message_success,
+                    'logado': False,
+                    'erro': erro,
+                }
+                return render(request, 'login.html', context)
                 # print('panquecas')
                 # if form.get('new_password1') == form.get('new_password2'):
                 #     request.user.password = form.get('new_password1')
