@@ -16,8 +16,8 @@ from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 import os
 from django.shortcuts import get_object_or_404
 from django.conf import settings
@@ -25,8 +25,12 @@ from io import BytesIO
 from pathlib import Path
 from django.template.loader import render_to_string
 # from urllib.parse import quote
-from weasyprint import HTML, CSS
+from weasyprint import HTML, CSS, Attachment
 from django_weasyprint import *
+# import aspose.pdf as aspose
+from reportlab.pdfgen import canvas
+from PIL import Image as imgpil
+from django.forms.utils import ErrorDict
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,34 +49,65 @@ def upload(request):
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
-            # if grupo_escolhido[0] == 'Todos':
-            #     todosGrupos = []
-            #     for grupo in grupos:
-            #         todosGrupos.append(grupo.name)
-            #     grupo_escolhido = todosGrupos    
-                
+            # memorando.anexo = form
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
-            # try:
-            #     if grupo_escolhido_copia[0] == 'Todos':
-            #      todosGrupos = []
-            #      for grupo in grupos:
-            #         todosGrupos.append(grupo.name)
-            #      grupo_escolhido_copia = todosGrupos    
-            # except:
-            #     pass
+            
+            try:
+                grupo_escolhido.remove('-- Selecione um grupo --')
+                grupo_escolhido_copia.remove('-- Selecione um grupo --')
+            except:
+                pass
+            
+            files = request.FILES.getlist('file')
+            
+            nomesArquivos = []
+            
+            
+            for file in files:
+                file.name = str(datetime.date.today()) + file.name
+                fileName = file.name
+                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = caminho_completo.replace('\\', '/')
+                nomesArquivos.append(caminho_completo)
                 
+            # print(caminho_completo)
+                  
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
             session['memorando_corpo'] = memorando.corpo
             session['grupo_escolhido_copia'] = grupo_escolhido_copia
+            session['file_name'] = nomesArquivos
             session.save()
 
+            for file in files:
+                try:
+                    with imgpil.open(file) as image:
+                        image.save(f'fileStorage/{file.name}')
+                except ValueError as e:
+                    return redirect('erro')
+            
+            memorando.save()
+            
+            for file in files:
+                anexo = Image()
+                anexo.file = file
+                anexo.idDoc = memorando.id
+                anexo.tipoDoc = 'memorando'
+                anexo.save()
+                
             memorando.save()
 
-            for file in request.FILES.getlist('file'):
-                image = Image.objects.create(file=file)
-                image.memorando = memorando
-                image.save()
+            
+            # for file in files:
+            #     with open(os.path.join('uploads', file.name), 'wb') as f:
+            #         f.write(file.read())
+
+
+            # for file in request.FILES.getlist('file'):
+            #     image = Image.objects.create(file=file)
+            #     image.memorando = memorando
+            #     image.save()
+            # print(request.FILES.getlist('file'))
 
             context = {
                 'memorando': memorando,
@@ -107,17 +142,40 @@ def memorando_circular(request):
             memorandocircular.data_circular = request.POST.get('data')
             memorandocircular.remetente_circular = request.user
             memorandocircular.memo_numero_circular = memo_numero_atualizado_circular
+
+            files = request.FILES.getlist('file')
+            
+            nomesArquivos = []
+            
+            
+            for file in files:
+                file.name = str(datetime.date.today()) + file.name
+                fileName = file.name
+                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = caminho_completo.replace('\\', '/')
+                nomesArquivos.append(caminho_completo)
+                
                 
             session = SessionStore(request.session.session_key)
             session['memorando_corpo_circular'] = memorandocircular.corpo_circular
+            session['file_name'] = nomesArquivos
             session.save()
 
             memorandocircular.save()
 
-            # for file in request.FILES.getlist('file'):
-            #     image = Image.objects.create(file=file)
-            #     image.memorando = memorando
-            #     image.save()
+            for file in files:
+                anexo = Image()
+                anexo.file = file
+                anexo.idDoc = memorandocircular.id
+                anexo.tipoDoc = 'memorando-circular'
+                anexo.save()
+                
+            memorandocircular.save()
+
+            for file in files:
+                with imgpil.open(file) as image:
+                    image.save(f'fileStorage/{file.name}')
+
 
             context = {
                 'memorandocircular': memorandocircular,
@@ -155,17 +213,40 @@ def oficio(request):
             oficio.memo_numero_oficio = oficio_numero_atualizado
             oficio.destinatario_oficio = request.POST.get('para-oficio')
             oficio.destinatarios_copia_oficio = request.POST.get('copia-oficio')
+
+            files = request.FILES.getlist('file')
+            
+            nomesArquivos = []
+            
+            
+            for file in files:
+                file.name = str(datetime.date.today()) + file.name
+                fileName = file.name
+                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = caminho_completo.replace('\\', '/')
+                nomesArquivos.append(caminho_completo)
+                
                 
             session = SessionStore(request.session.session_key)
             session['memorando_corpo'] = oficio.corpo_oficio
+            session['file_name'] = nomesArquivos
             session.save()
 
             oficio.save()
-            # for file in request.FILES.getlist('file'):
-            #     image = Image.objects.create(file=file)
-            #     image.oficio = oficio
-            #     image.save()
 
+            for file in files:
+                anexo = Image()
+                anexo.file = file
+                anexo.idDoc = oficio.id
+                anexo.tipoDoc = 'oficio'
+                anexo.save()
+                
+            oficio.save()
+
+            for file in files:
+                with imgpil.open(file) as image:
+                    image.save(f'fileStorage/{file.name}')
+           
             context = {
                 'oficio': oficio,
                 'memo_numero_atualizado': oficio_numero_atualizado,
@@ -207,7 +288,6 @@ def generate_pdf(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
     }
-    print(memorando.assunto)
     return render(request, 'generate_pdf.html', context)
 
 @login_required
@@ -229,14 +309,12 @@ def generate_pdf_circular(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupos': grupos
     }
-    print(text_content)
     return render(request, 'generate_pdf_circular.html', context)
 
 @login_required
 def generate_pdf_oficio(request, id_criptografado):
     oficio = Oficio.objects.get(id=id_criptografado)
     destinatario = Oficio.objects.get(id=id_criptografado).destinatario_oficio
-    print(destinatario)
     memo_numero_atualizado = oficio.gerar_proximo_numero_oficio()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -251,7 +329,6 @@ def generate_pdf_oficio(request, id_criptografado):
         'destinatario_oficio': oficio.destinatario_oficio,
         'destinatario_copia_oficio': oficio.destinatarios_copia_oficio
     }
-    print(oficio.destinatario_oficio)
     return render(request, 'generate_pdf_oficio.html', context)
 
 @login_required
@@ -323,7 +400,37 @@ def file_list(request):
 
 def loginPage(request):
     if request.user.is_authenticated:
-        return render(request, 'login.html', {'logado': True})
+        if request.method == 'POST':
+            form = PasswordChangeForm(request.user, request.POST)
+            erro = form.errors
+            
+            form_authentication = AuthenticationForm(request)
+            if form.is_valid():    
+                user = form.save()
+                message_success = 'Senha alterada com sucesso!'
+                context = {
+                    'form': form_authentication,
+                    'form_senha': form,
+                    'message_success': message_success, 
+                    'logado': False,
+                    'erro': erro
+                }
+                return render(request, 'login.html', context)
+
+        else:
+            form = PasswordChangeForm(request.user)
+            
+        try:
+            erro
+        except:
+            erro = False
+        
+        print(erro.as_text())
+        print(type(erro.as_text()))
+        print(erro.as_ul())
+        print(type(erro.as_ul()))
+        
+        return render(request, 'login.html', {'logado': True, 'password_change_form': form, 'erros': erro})
     else:
         if request.method == 'POST':
             form = AuthenticationForm(request, data=request.POST)
@@ -333,10 +440,11 @@ def loginPage(request):
                 user = authenticate(username=username, password=password)
                 if user is not None:        
                     login(request, user)
-                    return redirect('upload')
-                    # Redirect to a success page
+                    return redirect('loginPage')
         else:
             form = AuthenticationForm(request)
+        
+        # Adicionar o formulário de alteração de senha ao contexto
         return render(request, 'login.html', {'form': form})
     
     
@@ -363,6 +471,7 @@ def geraEBaixaPDF(request, id_criptografado):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
+    arquivos = session.get('file_name')
     text_content = session.get('memorando_corpo')
     grupo_escolhido_copia = session.get('grupo_escolhido_copia')
     context = {
@@ -372,29 +481,40 @@ def geraEBaixaPDF(request, id_criptografado):
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
+        'arquivos': arquivos,
     }
-    print(memorando.assunto)
+    print(arquivos)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
 
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
-    # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pathToPdf = str(BASE_DIR)+'/pdfs/memorando' + str(id_criptografado) + '.pdf'
+    pathToPdf = str(BASE_DIR)+'/fileStorage/memorando' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
+        
+    arrayAttachment = []
     
-    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+    for arquivo in arquivos:
+        attachmentFile = Attachment(arquivo)
+        arrayAttachment.append(attachmentFile)
+        print(attachmentFile)
+    
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)], attachments=arrayAttachment)
+    
+    add_image(arquivos, pathToPdf, output_pdf)
     
     
-    with open(pathToPdf, 'rb') as f:
+    with open(output_pdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
             return response
+        
 
 def geraEBaixaPDFCircular(request, id_criptografado):
     
@@ -407,6 +527,7 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
+    arquivos = session.get('file_name')
     text_content = session.get('memorando_corpo_circular')
     context = {
         'memorando': memorando,
@@ -416,26 +537,35 @@ def geraEBaixaPDFCircular(request, id_criptografado):
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
         'grupos': grupos,
+        'arquivos': arquivos,
     }
-    print(text_content)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_circular.html"
 
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
-    # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf_circular.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pathToPdf = str(BASE_DIR)+'/pdfs/memorando_circular' + str(id_criptografado) + '.pdf'
+    pathToPdf = str(BASE_DIR)+'/fileStorage/memorando_circular' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
+
+    arrayAttachment = []
+    
+    for arquivo in arquivos:
+        attachmentFile = Attachment(arquivo)
+        arrayAttachment.append(attachmentFile)
     
     HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+
+    print(arquivos)
+    add_image(arquivos, pathToPdf, output_pdf)
     
     
-    with open(pathToPdf, 'rb') as f:
+    with open(output_pdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando_circular.pdf"'
             return response
@@ -450,6 +580,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     text_content = session.get('memorando_corpo')
+    arquivos = session.get('file_name')
     context = {
         'memorando': memorando,
         'oficio_assunto': oficio.assunto_oficio,
@@ -457,26 +588,36 @@ def geraEBaixaPDFOficio(request, id_criptografado):
         'destinatario_copia_oficio': oficio.destinatarios_copia_oficio,
         'data_atual': data_numerica,
         'text_content': mark_safe(text_content),
+        'arquivos': arquivos,
     }
-    print(oficio.destinatario_oficio)
+    print(oficio.destinatarios_copia_oficio)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_oficio.html"
 
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
-    # output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    pathToPdf = str(BASE_DIR)+'/pdfs/oficio' + str(id_criptografado) + '.pdf'
+    pathToPdf = str(BASE_DIR)+'/fileStorage/oficio' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
         conteudo = arquivoCss.read()
+
+    arrayAttachment = []
+    
+    for arquivo in arquivos:
+        attachmentFile = Attachment(arquivo)
+        arrayAttachment.append(attachmentFile)
+        print(attachmentFile)
     
     HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+
+    add_image(arquivos, pathToPdf, output_pdf)
     
     
-    with open(pathToPdf, 'rb') as f:
+    with open(output_pdf, 'rb') as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="oficio.pdf"'
             return response
@@ -549,3 +690,69 @@ import hashlib
 #     encrypted_id = hash_object.hexdigest()
     
 #     return encrypted_id
+
+
+def add_image(arquivos, infile, outfile):
+
+    from PyPDF2 import PdfWriter, PdfReader
+    import io
+    
+    print(arquivos)
+    
+    in_pdf_file = infile
+    out_pdf_file = outfile
+    # arquivos = ['C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/perfeito_kSdyBZs.jpg', 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/phoca_thumb_l_image03_grd_0IJe7lC.png', 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/fe_ba6jcnr.png']
+    
+    width_a4_points = 595.276
+    height_a4_points = 841.890
+ 
+    packet = io.BytesIO()
+    can = canvas.Canvas(packet)
+    #can.drawString(10, 100, "Hello world")
+    x_start = (width_a4_points) / 2
+    y_start = (height_a4_points) / 2
+    
+    for arquivo in arquivos:
+        can.drawImage(arquivo, x_start, y_start, width=600, preserveAspectRatio=True,  mask='auto', anchorAtXY=True)
+        can.showPage()
+        
+    can.save()
+    
+    # move to the beginning of the StringIO buffer
+    packet.seek(0)
+ 
+    new_pdf = PdfReader(packet)
+ 
+    # read the existing PDF
+    existing_pdf = PdfReader(open(in_pdf_file, "rb"))
+    output = PdfWriter()
+    
+    for i in range(len(existing_pdf.pages)):
+        page = existing_pdf.pages[i]                                                                                                              
+        output.add_page(page)
+ 
+    for i in range(len(new_pdf.pages)):
+        page = new_pdf.pages[i]                                                                                                              
+        output.add_page(page)
+ 
+    outputStream = open(out_pdf_file, "wb")
+    output.write(outputStream)
+    outputStream.close()
+
+    # document = aspose.Document(infile)
+    
+    # image_path = 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/phoca_thumb_l_image03_grd_0IJe7lC.png'
+    
+    # document.pages.add()
+    # document.pages[2].add_image(image_path, aspose.Rectangle(20, 730, 120, 830, True))
+    
+    # document.save(outfile)
+    
+
+@login_required
+def error_image(request):
+    return render(request, 'erro.html')
+
+@login_required
+def change_password(request):
+    return render(request, 'change_password.html')

@@ -1,0 +1,38 @@
+{% extends 'template.html' %}
+{% block subtitulo %}
+- Erro
+{% endblock %}
+{% block content %}
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body id="erro_page">
+    <fieldset class="box-upload">
+        <h1 id="title-error">ERRO: ANEXO INVÁLIDO</h1>
+        <p class="message-error">O tipo do anexo não condiz às condições requisitadas.</p>
+        <hr>
+        <p class="message-error">Anexe apenas arquivos de imagem do tipo
+        <ul>
+            <li>
+                png
+            </li>
+            <li>
+                jpg
+            </li>
+            <li>
+                jpeg
+            </li>
+            <li>
+                webp
+            </li>
+        </ul>
+        </p>
+    </fieldset>
+</body>
+
+</html>
+{% endblock %}

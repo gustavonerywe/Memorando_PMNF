@@ -85,7 +85,19 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+     },
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+
+    #     'NAME': 'memorando',
+    #     'PORT': '3306',
+
+    #     'USER': 'memouser',
+    #     'PASSWORD': 'memo@pmnf2023',
+    #     'HOST': '192.168.3.210',
+    # },
+    
 }
 
 
@@ -122,6 +134,8 @@ TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 
 USE_TZ = True
+
+USE_X_FORWARDED_HOST = True
 
 
 # Static files (CSS, JavaScript, Images)

@@ -49,7 +49,7 @@
         margin-right: 10px;
         /* text-align: center; */
         margin-bottom: 10px;
-        border: 2px solid black;
+        border: 1px solid black;
         border-collapse: collapse;
         border-radius: 3px;
         margin-bottom: 20px;
@@ -129,7 +129,7 @@
     }
 
     #table-recebido {
-        border: 2px solid black;
+        border: 1px solid black;
         padding: 8px;
         width: 100%;
         margin-left: 38.5%;
@@ -153,6 +153,7 @@
         <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
+                {% comment %} <img id="img" src="/static/img/prefeitura.png" alt="Logo da prefeitura" /> {% endcomment %}
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
             </div>
             <hr id="hr-generate" />
@@ -199,22 +200,21 @@
                         </td>
                     </tr>
                 </table>
-                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{ text_content|safe }}</div>
-                <div id="footer">
+                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{
+                    text_content|safe }}</div>
+                <div>
                     <p></p>
-                    <fieldset id="box-field-generate">
-                        <table id="table-recebido">
-                            <tr>
-                                <th id="tituloTable2">RECEBIDO</th>
-                            </tr>
-                            <tr>
-                                <td id="em">Em: ______ /______ /______</td>
-                            </tr>
-                            <tr>
-                                <td id="ass">Ass: _____________________</td>
-                            </tr>
-                        </table>
-                    </fieldset>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
             {% comment %}{% endcomment %}

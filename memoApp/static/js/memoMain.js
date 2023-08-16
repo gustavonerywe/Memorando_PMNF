@@ -156,6 +156,7 @@ let selectCounter = 1;
     selectClone.id = 'select-secretaria-' + selectCounter;
     selectClone.setAttribute('data-select2-id', selectClone.id);
     selectClone.style.width = '100%';
+    selectClone.name = 'destinatario'
 
     novoWrapper.appendChild(selectClone);
 
@@ -370,7 +371,7 @@ const buttonYesModalMemorando = document.querySelector('#buttonYesModalMemorando
 const buttonNoModalMemorando = document.querySelector('#buttonNoModalMemorando')
 const spanMessage = document.querySelector('#spanMessage')
 const form = document.querySelector('#form-main')
-const assunto = document.querySelector('#id_name')
+const assunto = document.querySelector('#id_assunto')
 const modalAssunto = document.querySelector('#meuModalAssunto')
 const fecharModalAssunto = document.querySelector('#ok-modal')
 const fecharModalAsssunto2 = document.getElementById('botaoFechar');
