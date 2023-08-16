@@ -425,11 +425,6 @@ def loginPage(request):
         except:
             erro = False
         
-        print(erro.as_text())
-        print(type(erro.as_text()))
-        print(erro.as_ul())
-        print(type(erro.as_ul()))
-        
         return render(request, 'login.html', {'logado': True, 'password_change_form': form, 'erros': erro})
     else:
         if request.method == 'POST':
