@@ -30,6 +30,8 @@ from django_weasyprint import *
 # import aspose.pdf as aspose
 from reportlab.pdfgen import canvas
 from PIL import Image as imgpil
+from django.forms.utils import ErrorDict
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -399,10 +401,9 @@ def file_list(request):
 def loginPage(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
-            print('panqueca')
             form = PasswordChangeForm(request.user, request.POST)
             erro = form.errors
-            print(erro)
+            
             form_authentication = AuthenticationForm(request)
             if form.is_valid():    
                 user = form.save()
@@ -410,19 +411,26 @@ def loginPage(request):
                 context = {
                     'form': form_authentication,
                     'form_senha': form,
-                    'message_success': message_success,
+                    'message_success': message_success, 
                     'logado': False,
-                    'erro': erro,
+                    'erro': erro
                 }
                 return render(request, 'login.html', context)
-                # print('panquecas')
-                # if form.get('new_password1') == form.get('new_password2'):
-                #     request.user.password = form.get('new_password1')
-                #     print(request.user.password)
-                #     return redirect('loginPage')
+
         else:
             form = PasswordChangeForm(request.user)
-        return render(request, 'login.html', {'logado': True, 'password_change_form': form})
+            
+        try:
+            erro
+        except:
+            erro = False
+        
+        print(erro.as_text())
+        print(type(erro.as_text()))
+        print(erro.as_ul())
+        print(type(erro.as_ul()))
+        
+        return render(request, 'login.html', {'logado': True, 'password_change_form': form, 'erros': erro})
     else:
         if request.method == 'POST':
             form = AuthenticationForm(request, data=request.POST)
@@ -432,7 +440,7 @@ def loginPage(request):
                 user = authenticate(username=username, password=password)
                 if user is not None:        
                     login(request, user)
-                    return redirect('upload')
+                    return redirect('loginPage')
         else:
             form = AuthenticationForm(request)
         

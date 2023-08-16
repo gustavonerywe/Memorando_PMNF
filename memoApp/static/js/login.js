@@ -9,6 +9,7 @@ const fecharSenha = document.querySelector('#fechar-senha')
 const mensagemSucesso = document.querySelector('#mensagem_sucesso')
 const erroAcontecido = document.querySelector('#erro_acontecido')
 const formSenha = document.querySelector('#form-senha')
+const errorBox = document.querySelector('#error_box')
 
 
 try {
@@ -30,7 +31,10 @@ try {
         modalSenha.style.display = "none";
     })
 
-    
+    setTimeout(() => {
+       errorBox.style.display = "none"; 
+    }, 10000);
+
 } catch (error) {
     
 }
@@ -52,6 +56,6 @@ okModal.addEventListener('click', function () {
 
 setTimeout(() => {
     mensagemSucesso.style.display = 'none';
-}, 5000);
+}, 10000);
 
 console.log(errorList)
