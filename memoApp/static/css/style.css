@@ -331,7 +331,7 @@ main {
     /* color: cyan; */
     cursor: pointer;
     transform: scale(1.1);
-    background-color: #4CAF50;
+    background-color: #4caf50;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 10px;
 }
