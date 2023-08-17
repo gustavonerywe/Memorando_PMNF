@@ -66,7 +66,7 @@ def upload(request):
             for file in files:
                 file.name = str(datetime.date.today()) + file.name
                 fileName = file.name
-                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = os.path.join(BASE_DIR, 'fileStorage', fileName)
                 caminho_completo = caminho_completo.replace('\\', '/')
                 nomesArquivos.append(caminho_completo)
                 
@@ -151,7 +151,7 @@ def memorando_circular(request):
             for file in files:
                 file.name = str(datetime.date.today()) + file.name
                 fileName = file.name
-                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = os.path.join(BASE_DIR, 'fileStorage', fileName)
                 caminho_completo = caminho_completo.replace('\\', '/')
                 nomesArquivos.append(caminho_completo)
                 
@@ -222,7 +222,7 @@ def oficio(request):
             for file in files:
                 file.name = str(datetime.date.today()) + file.name
                 fileName = file.name
-                caminho_completo = os.path.join(BASE_DIR, 'uploads', fileName)
+                caminho_completo = os.path.join(BASE_DIR, 'fileStorage', fileName)
                 caminho_completo = caminho_completo.replace('\\', '/')
                 nomesArquivos.append(caminho_completo)
                 
