@@ -19,6 +19,9 @@
             <a id="link-upload-pdf" href="{% url 'gerar_pdf' memorando.id %}"> <img id="img-pdf"
                     src="/static/img/pdf.png" alt="imagem do pdf" />Gerar PDF</a>
         </div>
+        <div class="link-container">
+            <a id="link-upload-pdf" href="{% url 'encerraSessao' %}">Sair</a>
+        </div>
         <div id="modal-pdf">
             <div style="height: 45%;" class="modal-content">
                 <span class="fechar-pdf">&times;</span>
