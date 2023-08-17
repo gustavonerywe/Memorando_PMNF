@@ -20,7 +20,7 @@ class Memorando(models.Model):
     remetente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='memorandos_enviados')
     destinatario = models.ManyToManyField(User, related_name='memorandos_recebidos')
     destinatarios_copia = models.ManyToManyField(User, related_name='destinatarios_copia', null=True)
-    assunto = models.CharField(max_length=225, blank=True, null=True)
+    assunto = models.CharField(max_length=1024, blank=True, null=True)
     corpo = tinymce_models.HTMLField(null=True, default='')
     # anexo = models.ManyToManyField(Image, related_name='anexo', null=True, blank=False)
     # anexo = models.ForeignKey(forms.ImageForm, on_delete=models.CASCADE, related_name="anexo_recebido", null=True, blank=False)

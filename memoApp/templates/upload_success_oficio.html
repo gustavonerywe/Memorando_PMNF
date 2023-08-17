@@ -4,6 +4,8 @@
 {% endblock %}
 {% block content %}
 <html class="page_main" lang="pt-br">
+<a style="margin-top: -10%;" href="{% url 'loginPage' %}"><img id="perfil-upload" style="float: left;" src="/static/img/menu.png" width="30"
+        alt="perfil"></a>
 
 <body class="cor">
     <link rel="stylesheet" href="/static/css/style.css" />
@@ -16,6 +18,19 @@
         <div class="link-container">
             <a id="link-upload-pdf" href="{% url 'gerar_pdf_oficio' oficio.id %}"> <img id="img-pdf"
                     src="/static/img/pdf.png" alt="imagem do pdf" />Gerar PDF</a>
+        </div>
+        <div class="link-container">
+           <a href="{% url 'encerraSessao' %}" id="link-upload-sair">Sair</a>
+        </div>
+        <div id="modal-sair">
+            <div class="modal-content">
+                <span class="fechar-sair">&times;</span>
+                <p style="font-size: 17px;">Deseja sair da sua conta?</p>
+                <div class="button-container">
+                    <button type="button" id="buttonNoSair" class="btn btn-danger btn-sm">Não</button>
+                    <button type="button" id="buttonYesSair" class="btn btn-success btn-sm">Sim</button>
+                </div>
+            </div>
         </div>
         <div id="modal-pdf">
             <div style="height: 45%;" class="modal-content">
