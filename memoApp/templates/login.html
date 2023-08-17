@@ -13,6 +13,19 @@
             <hr id="hr-login">
             {% if logado == True %}
             <p class="primary">Olá, {{ user.get_full_name }}!</p>
+            {% if erros %}
+
+            <div id="error_box">
+                <ul id='lista_erros'>
+                {% for campo, mensagens in erros.items %}
+                    {% for mensagem in mensagens %}
+                      <li>{{ mensagem }}</li>
+                    {% endfor %}
+                {% endfor %}  
+                </ul>
+            </div>
+
+            {% endif %}
             <button class="btn btn-primary" id="btn_to_upload"><a href="{% url 'upload' %}"
                     style="color: white; text-decoration: none; ">Novo memorando<a></button>
             <button id="button_to_sessao" class="btn btn-primary"><a href="{% url 'encerraSessao' %}"
@@ -70,4 +83,5 @@
 </body>
 
 </html>
+
 {% endblock %}
