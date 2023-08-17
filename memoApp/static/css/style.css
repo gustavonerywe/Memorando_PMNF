@@ -1907,3 +1907,14 @@ hr {
 #error_box ul {
     list-style: none;
 }
+
+#perfil-upload {
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-top: -10%;
+}
+
+#perfil-upload:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
