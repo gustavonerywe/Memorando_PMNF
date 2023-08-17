@@ -19,6 +19,19 @@
             <a id="link-upload-pdf" href="{% url 'gerar_pdf_circular' memorandocircular.id %}"> <img id="img-pdf"
                     src="/static/img/pdf.png" alt="imagem do pdf" />Gerar PDF</a>
         </div>
+        <div class="link-container">
+            <a href="{% url 'encerraSessao' %}" id="link-upload-sair">Sair</a>
+        </div>
+        <div id="modal-sair">
+            <div class="modal-content">
+                <span class="fechar-sair">&times;</span>
+                <p style="font-size: 17px;">Deseja sair da sua conta?</p>
+                <div class="button-container">
+                    <button type="button" id="buttonNoSair" class="btn btn-danger btn-sm">Não</button>
+                    <button type="button" id="buttonYesSair" class="btn btn-success btn-sm">Sim</button>
+                </div>
+            </div>
+        </div>
         <div id="modal-pdf">
             <div style="height: 45%;" class="modal-content">
                 <span class="fechar-pdf">&times;</span>

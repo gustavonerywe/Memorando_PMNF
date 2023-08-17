@@ -54,3 +54,28 @@ fecharPdf.addEventListener('click', function(){
 okPdf.addEventListener('click', function(){
     ModalPdf.style.display = 'none'
 })
+
+const buttonYesSair = document.querySelector('#buttonYesSair')
+const buttonNoSair = document.querySelector('#buttonNoSair')
+const modalSair = document.querySelector('#modal-sair')
+const btnTrueSair = document.querySelector('#link-upload-sair')
+const fecharSair = document.querySelector('.fechar-sair')
+
+modalSair.style.display = 'none';
+
+btnTrueSair.addEventListener('click', function (e) {
+  e.preventDefault();
+  modalSair.style.display = 'block';
+})  
+
+buttonNoSair.addEventListener('click', function(){
+  modalSair.style.display = 'none';
+})
+
+buttonYesSair.addEventListener('click', function(){
+    window.location.href = '/encerrar-sessao/'
+})
+
+fecharSair.addEventListener('click', function(){
+  modalSair.style.display = 'none';
+})
