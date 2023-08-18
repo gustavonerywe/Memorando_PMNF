@@ -1030,6 +1030,10 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+#imgTroca {
+    padding-left: 5%;
+}
+
 /* CSS para a página de login */
 
 #login-box {
