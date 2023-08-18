@@ -1135,7 +1135,7 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#id_file1 {
+.id_file1 {
     display: block;
     margin: 0 auto;
     margin-right: 50px;
