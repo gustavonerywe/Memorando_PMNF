@@ -245,6 +245,7 @@ def oficio(request):
             for file in files:
                 with imgpil.open(file) as image:
                     image.save(f'fileStorage/{file.name}')
+            
            
             context = {
                 'oficio': oficio,

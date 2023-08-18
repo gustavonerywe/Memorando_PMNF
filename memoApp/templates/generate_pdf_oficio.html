@@ -188,7 +188,7 @@
                             {{ destinatario_oficio }}
                         </td>
                     </tr>
-                    {% if grupo_escolhido_copia_oficio != '' %}
+                    {% if destinatario_copia_oficio != '' %}
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Cópia para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
@@ -203,8 +203,7 @@
                         </td>
                     </tr>
                 </table>
-                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{
-                    text_content|safe }}</div>
+                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
                 <div id="footer">
                     <p></p>
                     <fieldset id="box-field-generate">
