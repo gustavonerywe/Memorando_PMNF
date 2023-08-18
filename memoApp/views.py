@@ -52,12 +52,11 @@ def upload(request):
             # memorando.anexo = form
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
             
-            try:
-                grupo_escolhido.remove('-- Selecione um grupo --')
-                grupo_escolhido_copia.remove('-- Selecione um grupo --')
-            except:
-                pass
-            
+            for i in range(grupo_escolhido.count('-- Selecione um grupo --')):
+                   grupo_escolhido.remove('-- Selecione um grupo --')
+            for i in range(grupo_escolhido_copia.count('-- Selecione um grupo --')):
+                   grupo_escolhido_copia.remove('-- Selecione um grupo --')
+                       
             files = request.FILES.getlist('file')
             
             nomesArquivos = []
