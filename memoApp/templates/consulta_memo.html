@@ -1,0 +1,23 @@
+{% extends 'template.html' %}
+{% block subtitulo %}
+- Consulta
+{% endblock %}
+{% block content %}
+
+<html>
+
+<head>
+    <div class='search-box'>
+           <form>
+            {% csrf_token %}
+                <input></input>
+           </form>
+    </div>
+</head>
+
+<body id="consulta-page">
+
+</body>
+
+</html>
+{% endblock %}

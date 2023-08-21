@@ -749,5 +749,7 @@ def error_image(request):
     return render(request, 'erro.html')
 
 @login_required
-def change_password(request):
-    return render(request, 'change_password.html')
+def consultaMemo(request):
+
+    return render(request, 'consulta_memo.html')
+    
