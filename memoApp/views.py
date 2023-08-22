@@ -17,7 +17,7 @@ from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
 from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, Form
 import os
 from django.shortcuts import get_object_or_404
 from django.conf import settings
@@ -750,6 +750,26 @@ def error_image(request):
 
 @login_required
 def consultaMemo(request):
-
-    return render(request, 'consulta_memo.html')
+    
+    context = {}
+    
+    if request.method == 'POST':
+        form = Form(request.POST)
+        if form.is_valid():
+            termoBusca = form.cleaned_data['termo']
+            
+            buscapornum = Memorando.objects.filter(memo_numero=termoBusca)
+            buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
+            
+            context = {
+                'buscando': True,
+                'objectListNum': buscapornum,
+                'objectListAssunto': buscaporAssunto,
+                'form':form,
+            }
+    else:
+        form = Form()
+        context = {'form': form}
+        
+    return render(request, 'consulta_memo.html', context)
     
