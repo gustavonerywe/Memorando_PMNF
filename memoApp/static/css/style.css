@@ -2193,3 +2193,10 @@ hr {
 #numero-consulta {
     width: 92%;
 }
+
+#button_consulta:hover {
+    transform: scale(1.1);
+    margin-right: 10px;
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
