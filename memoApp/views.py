@@ -3,8 +3,13 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
+<<<<<<< HEAD
 from django.http import Http404, HttpResponse
 from .forms import ImageForm
+=======
+from django.http import Http404, FileResponse, HttpResponse
+from .forms import ImageForm, SearchForm
+>>>>>>> 92789c4cfd4c073e037497e46cd069f0af30aac9
 from django.utils import timezone
 import datetime
 from django.contrib.auth.models import Group
@@ -651,5 +656,40 @@ def error_image(request):
     return render(request, 'erro.html')
 
 @login_required
-def change_password(request):
-    return render(request, 'change_password.html')
+def consultaMemo(request):
+    
+    context = {}
+     
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            tipo = form.cleaned_data['tipo_moc']
+            numBusca = form.cleaned_data['numBusca']
+            termoBusca = form.cleaned_data['termoBusca']
+            
+            if tipo == 'Memorando':
+                buscapornum = Memorando.objects.filter(memo_numero=termoBusca)
+                buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
+            if tipo == 'Oficio':
+                buscapornum = Oficio.objects.filter(memo_numero=termoBusca)
+                buscaporAssunto = Oficio.objects.filter(assunto__icontains=termoBusca)
+            if tipo == 'Circular':
+                buscapornum = MemorandoCircular.objects.filter(memo_numero=termoBusca)
+                buscaporAssunto = MemorandoCircular.objects.filter(assunto__icontains=termoBusca)
+            
+        
+            print(buscapornum)
+            print(buscaporAssunto)
+            
+            context = {
+                'buscando': True,
+                'objectListNum': buscapornum,
+                'objectListAssunto': buscaporAssunto,
+                'form':form,
+            }
+    else:
+        form = SearchForm()
+        context = {'form': form}
+        
+    return render(request, 'consulta_memo.html', context)
+    

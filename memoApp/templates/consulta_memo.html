@@ -1,0 +1,90 @@
+{% extends 'template.html' %}
+{% block subtitulo %}
+- Consulta
+{% endblock %}
+{% block content %}
+
+<html class="consulta-page">
+
+<head>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body id="consulta-body">
+    <div class='search-box'>
+        <button class="btn btn-danger" id="btnTrueSair"><a href="{% url 'encerraSessao' %}" id="btnSair">Sair</a></button>
+        <a href="{% url 'loginPage' %}"><img id="perfil" style="float: left;" src="/static/img/menu.png" width="30"
+            alt="perfil"></a>
+            <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
+        <form>
+         {% csrf_token %}
+            <p id="title-consulta">Consulta Memorando</p>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Tipo Memorando</span>
+                    <select name='tipo'>
+                        <option>Memorando</option>
+                        <option>Ofício</option>
+                        <option>Circular</option>
+                    </select>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">N° do memorando</span>
+                <input name='numBusca' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Assunto - MOC</span>
+                <input name='termoBusca'type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" id="submit-consulta" class="btn btn-outline-primary btn-lg">Pesquisar</button>
+            </div>
+            
+        </form>
+ </div>
+
+<div>
+    {% if buscando %}
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% if tipo == 'Memorando'%}
+            {% for obj in objectListNum %}
+            <tr>
+                <td>{{ obj.memo_numero }}</td>
+                <td>{{ obj.assunto }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+
+            {% if tipo == 'Oficio'%}
+            {% for obj in objectListNum %}
+            <tr>
+                <td>{{ obj.memo_numero_oficio }}</td>
+                <td>{{ obj.assunto_oficio }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+
+            {% if tipo == 'Circular'%}
+            {% for obj in objectListNum %}
+            <tr>
+                <td>{{ obj.memo_numero_circular }}</td>
+                <td>{{ obj.assunto_circular }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+</body>
+
+</html>
+{% endblock %}
