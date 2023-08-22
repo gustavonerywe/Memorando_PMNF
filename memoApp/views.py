@@ -6,7 +6,7 @@ from django.urls import reverse
 from django import forms
 from .models import *
 from django.http import Http404, FileResponse, HttpResponse
-from .forms import ImageForm
+from .forms import ImageForm, SearchForm
 from django.utils import timezone
 import datetime
 from bs4 import BeautifulSoup
@@ -17,7 +17,7 @@ from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
 from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, Form
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 import os
 from django.shortcuts import get_object_or_404
 from django.conf import settings
@@ -752,14 +752,27 @@ def error_image(request):
 def consultaMemo(request):
     
     context = {}
-    
+     
     if request.method == 'POST':
-        form = Form(request.POST)
+        form = SearchForm(request.POST)
         if form.is_valid():
-            termoBusca = form.cleaned_data['termo']
+            tipo = form.cleaned_data['tipo_moc']
+            numBusca = form.cleaned_data['numBusca']
+            termoBusca = form.cleaned_data['termoBusca']
             
-            buscapornum = Memorando.objects.filter(memo_numero=termoBusca)
-            buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
+            if tipo == 'Memorando':
+                buscapornum = Memorando.objects.filter(memo_numero=termoBusca)
+                buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
+            if tipo == 'Oficio':
+                buscapornum = Oficio.objects.filter(memo_numero=termoBusca)
+                buscaporAssunto = Oficio.objects.filter(assunto__icontains=termoBusca)
+            if tipo == 'Circular':
+                buscapornum = MemorandoCircular.objects.filter(memo_numero=termoBusca)
+                buscaporAssunto = MemorandoCircular.objects.filter(assunto__icontains=termoBusca)
+            
+        
+            print(buscapornum)
+            print(buscaporAssunto)
             
             context = {
                 'buscando': True,
@@ -768,7 +781,7 @@ def consultaMemo(request):
                 'form':form,
             }
     else:
-        form = Form()
+        form = SearchForm()
         context = {'form': form}
         
     return render(request, 'consulta_memo.html', context)

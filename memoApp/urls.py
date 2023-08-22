@@ -19,5 +19,5 @@ urlpatterns = [
     path('erro/', views.error_image, name='erro'),
     # path('alterar-senha/', views.change_password, name='change_password'),
     path('consulta-memo/', views.consultaMemo, name='consulta_memo'),
-    path('encontra-memo/', views.encontraMemo, name='consulta_memo'),
+    # path('encontra-memo/', views.encontraMemo, name='consulta_memo'),
 ]
