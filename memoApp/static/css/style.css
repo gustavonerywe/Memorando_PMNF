@@ -287,7 +287,8 @@ main {
     width: 105%;
 }
 
-#link-upload, #link-upload-sair {
+#link-upload,
+#link-upload-sair {
     display: inline-block;
     background-color: black;
     color: #fff;
@@ -316,7 +317,8 @@ main {
     width: 36.5%;
 }
 
-#link-upload:hover, #link-upload-sair:hover {
+#link-upload:hover,
+#link-upload-sair:hover {
     text-decoration: none;
     /* color: cyan; */
     cursor: pointer;
@@ -339,10 +341,12 @@ main {
 .link-container {
     text-align: center;
 }
-#link-upload{
+
+#link-upload {
     width: 200px;
 }
-#link-upload-pdf{
+
+#link-upload-pdf {
     width: 200px;
 }
 
@@ -647,7 +651,8 @@ main {
     padding-top: 20px;
 } */
 
-.fechar, #fechar-senha {
+.fechar,
+#fechar-senha {
     color: #aaa;
     float: right;
     font-size: 25px;
@@ -703,7 +708,9 @@ main {
 }
 
 .fechar:hover,
-.fechar:focus, #fechar-senha:hover, #fechar-senha:focus {
+.fechar:focus,
+#fechar-senha:hover,
+#fechar-senha:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -817,7 +824,8 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#ok-modal:hover, #confirma-senha:hover {
+#ok-modal:hover,
+#confirma-senha:hover {
     transform: scale(1.1);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -874,13 +882,14 @@ hr {
     background-color: #d3d3d3;
 }
 
-#uploadFile, #message-file{
+#uploadFile,
+#message-file {
     color: black;
     font-size: 0.8em;
     text-align: center;
 }
 
-#message-file{
+#message-file {
     margin-top: -3%;
 }
 
@@ -1061,7 +1070,7 @@ hr {
 
 #body-login {
     width: 100%;
-    height:100%;
+    height: 100%;
     position: absolute;
     background-color: #add8e68e;
 }
@@ -1088,7 +1097,7 @@ hr {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.cancel-button-select{
+.cancel-button-select {
     margin-right: 10px;
     background-color: #e35d6a;
     border-radius: 60px;
@@ -1111,7 +1120,8 @@ hr {
     font-style: italic;
 }
 
-#button-submit-login:hover, #alterar_senha:hover {
+#button-submit-login:hover,
+#alterar_senha:hover {
     transform: scale(1.1);
     margin-right: 10px;
     margin-left: 10px;
@@ -1235,61 +1245,74 @@ hr {
 }
 
 @media screen and (max-width: 900px) and (max-height: 900px) {
-    body{
+    body {
         width: 95%;
         margin: 0 auto;
     }
-    .table{
+
+    .table {
         font-size: 12px;
 
     }
-    .table th,td{
+
+    .table th,
+    td {
         font-size: 13px;
     }
-    
-    #drop-area{
+
+    #drop-area {
         width: 90%;
     }
-    #meuModal{
+
+    #meuModal {
         height: auto;
     }
-    .modal-content{
+
+    .modal-content {
         height: 180px;
         width: 430px;
     }
-    #span-alert{
+
+    #span-alert {
         margin-left: auto;
 
     }
+
     /* .modal-body{
         height: 180px;
         width: 430px;
     } */
-    .modal-content-memorando{
+    .modal-content-memorando {
         height: 180px;
         width: 480px;
     }
-    .tox-tinymce{
+
+    .tox-tinymce {
         width: 500px;
     }
-    #img{
+
+    #img {
         width: 30%;
     }
 }
+
 @media screen and (max-height: 700px) {
-/* .modal-body{
+
+    /* .modal-body{
     height: 180px;
 } */
-.modal-content-memorando{
-    height: 180px;
-    padding-top: 10px;
-}
-#meuModal{
-    height: auto;
-}
-.modal-content{
-    height: 180px;
-}
+    .modal-content-memorando {
+        height: 180px;
+        padding-top: 10px;
+    }
+
+    #meuModal {
+        height: auto;
+    }
+
+    .modal-content {
+        height: 180px;
+    }
 }
 
 .input-group {
@@ -1307,7 +1330,7 @@ hr {
     transition: outline-color 500ms;
 }
 
-.input-group_input:is(:focus, :valid){
+.input-group_input:is(:focus, :valid) {
     outline-color: #3c59cb;
 }
 
@@ -1322,389 +1345,481 @@ hr {
     transition: translate 500ms, scale 500ms;
 }
 
-.input-group_input:focus + .input_group_label, .input-group_input:valid + .input-group_label {
+.input-group_input:focus+.input_group_label,
+.input-group_input:valid+.input-group_label {
     padding-inline: 5px;
     translate: 10px 14px;
     scale: 0.9;
     background-color: #000;
 }
-.tox{
+
+.tox {
     width: 80%;
     margin: 0 auto;
 }
 
-@media screen and (min-width:320px) and (max-width:400px)
-{
-    .page_main{
+@media screen and (min-width:320px) and (max-width:400px) {
+    .page_main {
         width: 80%;
     }
-    body{
+
+    body {
         width: 115%;
         margin-left: 5%;
     }
-    .table{
+
+    .table {
         font-size: 11px;
         margin-bottom: 25px;
         margin-left: -10px;
-        
+
     }
-    .table th,td,tr{
+
+    .table th,
+    td,
+    tr {
         font-size: 11px;
     }
-    .table tr{
+
+    .table tr {
         padding: 1px;
         padding-top: -10px;
     }
-    #addSelect{
+
+    #addSelect {
         width: 20px;
         height: 20px;
         border: black solid 1px;
         margin-top: 12px
     }
-    #removeSelect{
+
+    #removeSelect {
         width: 20px;
         height: 20px;
         border: black solid 1px;
         margin-top: 12px
     }
-    #addSelectCopia{
+
+    #addSelectCopia {
         width: 20px;
         height: 20px;
         border: black solid 1px;
         margin-top: 12px
     }
-    #removeSelectCopia{
+
+    #removeSelectCopia {
         width: 20px;
         height: 20px;
         border: black solid 1px;
         margin-top: 12px
     }
-    .tox{
-        width:120%;
-        margin-left:-30px;
+
+    .tox {
+        width: 120%;
+        margin-left: -30px;
     }
-    #drop-area{
+
+    #drop-area {
         width: 105%;
         margin-left: -9px;
     }
-    #id_file1,#id_file{
-        width:200px;
+
+    #id_file1,
+    #id_file {
+        width: 200px;
     }
+
     /* .modal-body{
         width: 500px;
         height: 130px;
     } */
-    #meuModal{
+    #meuModal {
         height: auto;
     }
-    .modal-content{
+
+    .modal-content {
         width: 300px;
         height: 200px;
         margin-left: 35px;
     }
-    .modal-content-memorando{
+
+    .modal-content-memorando {
         width: 300px;
         height: 200px;
         margin-left: 35px;
         padding-top: 10px;
     }
-    .select2-container{
-        width: 100px!important;
+
+    .select2-container {
+        width: 100px !important;
     }
-    #hr-table{
-        width:  180px;
+
+    #hr-table {
+        width: 180px;
     }
-    #img{
+
+    #img {
         width: 30%;
     }
-    .custom-table{
-        width: 110%;
-        margin-left:-15px!important;
-    }
-    .select2-container--default .select2-selection--single {
-        font-size: 11px!important;
-        text-align: center!important;
-    }
-    #body-login {
-        height:100%;
-    }   
 
-    @media screen and (min-width:320px) and (max-width:350px){
-        .table{
+    .custom-table {
+        width: 110%;
+        margin-left: -15px !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        font-size: 11px !important;
+        text-align: center !important;
+    }
+
+    #body-login {
+        height: 100%;
+    }
+
+    @media screen and (min-width:320px) and (max-width:350px) {
+        .table {
             font-size: 75%;
             margin-bottom: 25px;
             margin-left: -10px;
-            
+
         }
-        .table th,td,tr{
+
+        .table th,
+        td,
+        tr {
             font-size: 75%;
         }
-        #id_file1,#id_file{
-            width:180px;
+
+        #id_file1,
+        #id_file {
+            width: 180px;
         }
-        #drop-area{
+
+        #drop-area {
             width: 107%;
             margin-left: -9px;
         }
-        .modal-content{
-        width: 300px;
-        height: 200px;
-        margin-left: 10px;
+
+        .modal-content {
+            width: 300px;
+            height: 200px;
+            margin-left: 10px;
         }
-        .modal-content-memorando{
-        width: 300px;
-        height: 200px;
-        margin-left: 10px;
-        padding-top: 10px;
+
+        .modal-content-memorando {
+            width: 300px;
+            height: 200px;
+            margin-left: 10px;
+            padding-top: 10px;
         }
     }
 }
 
-@media screen and (min-width:400px) and (max-width:500px)
-{
-    .page_main{
+@media screen and (min-width:400px) and (max-width:500px) {
+    .page_main {
         width: 80%;
     }
-    body{
+
+    body {
         width: 115%;
         margin-left: 5%;
     }
-    .table{
+
+    .table {
         font-size: 11px;
         margin-left: -30px;
         margin-bottom: 25px;
-        
+
     }
-    .table th,td,tr{
+
+    .table th,
+    td,
+    tr {
         font-size: 11px;
     }
-    .table tr{
+
+    .table tr {
         padding: 1px;
         padding-top: -10px;
     }
-    #addSelect{
+
+    #addSelect {
         width: 23px;
         height: 23px;
         border: black solid 1px;
         margin-top: 12px
     }
-    #removeSelect{
+
+    #removeSelect {
         width: 24px;
         height: 24px;
         border: black solid 1px;
         margin-top: 12px
     }
-    #addSelectCopia{
+
+    #addSelectCopia {
         width: 23px;
         height: 23px;
         border: black solid 1px;
         margin-top: 12px
     }
-    #removeSelectCopia{
+
+    #removeSelectCopia {
         width: 24px;
         height: 24px;
         border: black solid 1px;
         margin-top: 12px
     }
-    .tox{
-        width:110%;
-        margin-left:-20px;
+
+    .tox {
+        width: 110%;
+        margin-left: -20px;
     }
-    #drop-area{
+
+    #drop-area {
         width: 105%;
         margin-left: -9px;
     }
-    #id_file1,#id_file{
-        width:245px;
+
+    #id_file1,
+    #id_file {
+        width: 245px;
     }
+
     /* .modal-body{
         width: 200px;
         height: 130px;
     } */
-    #meuModal{
+    #meuModal {
         height: auto;
     }
-    .modal-content{
+
+    .modal-content {
         width: 300px;
         height: 200px;
         margin-left: 50px;
     }
-    .modal-content-memorando{
+
+    .modal-content-memorando {
         width: 350px;
         height: 200px;
         margin-left: 30px;
         padding-top: 10px;
     }
-    .select2-container{
-        width: 160px!important;
-    }
-    #hr-table{
-        width:  250px;
-    }
-    #addSelect, #addSelectCopia{
-        margin-inline-start:4px;
-    }
-    #img{
-        width:30%
-    }
-    .custom-table{
-        width: 110%;
-        margin-left:-20px!important;
-    }
-    .select2-container--default .select2-selection--single {
-        font-size: 12px!important;
-        text-align: left!important;
-    }
-    #body-login {
-        height:100%;
-    }   
 
-    @media screen and (min-width:450px) and (max-width:500px)
-    {
-        .table{
+    .select2-container {
+        width: 160px !important;
+    }
+
+    #hr-table {
+        width: 250px;
+    }
+
+    #addSelect,
+    #addSelectCopia {
+        margin-inline-start: 4px;
+    }
+
+    #img {
+        width: 30%
+    }
+
+    .custom-table {
+        width: 110%;
+        margin-left: -20px !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        font-size: 12px !important;
+        text-align: left !important;
+    }
+
+    #body-login {
+        height: 100%;
+    }
+
+    @media screen and (min-width:450px) and (max-width:500px) {
+        .table {
             font-size: 13px;
             margin-left: -30px;
             margin-bottom: 25px;
-            
+
         }
-        .table th,td,tr{
+
+        .table th,
+        td,
+        tr {
             font-size: 13px;
         }
-        #hr-table{
-            width:  280px;
+
+        #hr-table {
+            width: 280px;
         }
-        #id_file1,#id_file{
-            width:290px;
+
+        #id_file1,
+        #id_file {
+            width: 290px;
         }
-        .select2-container{
-            width: 180px!important;
+
+        .select2-container {
+            width: 180px !important;
         }
-        .modal-content{
+
+        .modal-content {
             width: 350px;
             height: 200px;
             margin-left: 50px;
         }
-        .modal-content-memorando{
+
+        .modal-content-memorando {
             width: 350px;
             height: 200px;
             margin-left: 50px;
             padding-top: 10px;
         }
     }
-    }
-@media screen and (min-width:500px) and (max-width:600px){
-    .page_main{
+}
+
+@media screen and (min-width:500px) and (max-width:600px) {
+    .page_main {
         width: 80%;
     }
-    body{
+
+    body {
         width: 115%;
         margin-left: 5%;
     }
-    .table{
+
+    .table {
         font-size: 14px;
-        margin-left:-23px;
+        margin-left: -23px;
         margin-bottom: 25px;
-        
+
     }
-    .table th,td,tr{
+
+    .table th,
+    td,
+    tr {
         font-size: 13px;
     }
-    #hr-table{
+
+    #hr-table {
         width: 310px;
     }
-    #id_file1,#id_file{
-        width:300px;
+
+    #id_file1,
+    #id_file {
+        width: 300px;
     }
-    .select2-container{
-        width: 200px!important;
+
+    .select2-container {
+        width: 200px !important;
     }
-    .tox{
-        width:110%;
-        margin-left:-15px;
+
+    .tox {
+        width: 110%;
+        margin-left: -15px;
     }
-    #addSelect{
+
+    #addSelect {
         width: 32.5px;
         height: 32.5px;
         border: black solid 2px;
         margin-top: 10px;
     }
-    #removeSelect{
-        width:32.5px;
-        height:32.5px;
-        border: black solid 2px;
-        margin-top: 10px;
-    }
-    #addSelectCopia{
+
+    #removeSelect {
         width: 32.5px;
         height: 32.5px;
         border: black solid 2px;
         margin-top: 10px;
     }
-    #removeSelectCopia{
+
+    #addSelectCopia {
         width: 32.5px;
-        height:32.5px;
+        height: 32.5px;
         border: black solid 2px;
         margin-top: 10px;
     }
-    #drop-area{
+
+    #removeSelectCopia {
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+
+    #drop-area {
         width: 100%;
         margin: 0 auto;
     }
-    .modal-content{
+
+    .modal-content {
         width: 350px;
-         height: 200px;
+        height: 200px;
         margin-left: 75px;
-}
-    .modal-content-memorando{
+    }
+
+    .modal-content-memorando {
         width: 400px;
         height: 200px;
         margin-left: 50px;
         padding-top: 10px;
-}   
-    #img{
+    }
+
+    #img {
         width: 30%;
     }
-    .custom-table{
+
+    .custom-table {
         width: 110%;
-        margin-left:-15px!important;
+        margin-left: -15px !important;
     }
+
     #body-login {
-        height:100%;
-    }   
+        height: 100%;
+    }
 
-@media screen and (min-width:570px) and (max-width:600px){
-    #hr-table{
-        width: 360px;
+    @media screen and (min-width:570px) and (max-width:600px) {
+        #hr-table {
+            width: 360px;
+        }
+
+        #id_file1,
+        #id_file {
+            width: 330px;
+        }
+
+        .select2-container {
+            width: 250px !important;
+        }
+
+        .tox {
+            width: 110%;
+            margin-left: -20px;
+        }
+
+        .modal-content {
+            width: 350px;
+            height: 200px;
+            margin-left: 100px;
+        }
+
+        .modal-content-memorando {
+            width: 400px;
+            height: 200px;
+            margin-left: 100px;
+            padding-top: 10px;
+        }
     }
-    #id_file1,#id_file{
-        width:330px;
+
+    .select2-container--default .select2-selection--single {
+        font-size: 15px !important;
+        text-align: center !important;
     }
-    .select2-container{
-        width: 250px!important;
-    }
-    .tox{
-        width:110%;
-        margin-left:-20px;
-    }
-    .modal-content{
-        width: 350px;
-         height: 200px;
-        margin-left:100px;
-}
-    .modal-content-memorando{
-        width: 400px;
-        height: 200px;
-        margin-left: 100px;
-        padding-top: 10px;
-}   
-}           
-.select2-container--default .select2-selection--single {
-    font-size: 15px!important;
-    text-align: center!important;
-}
 }
 
-.message-error{
+.message-error {
     text-align: center;
 }
 
@@ -1712,138 +1827,171 @@ hr {
     text-align: center;
     color: red;
 }
+
 /* responsividade página login */
-@media screen and (min-width:320px) and (max-width:360px){
-    #login-box{
-        width:300px;
+@media screen and (min-width:320px) and (max-width:360px) {
+    #login-box {
+        width: 300px;
         margin-top: 30%;
     }
-    #img-login{
-        width:80%;
+
+    #img-login {
+        width: 80%;
     }
-    .title-login{
+
+    .title-login {
         font-size: 20px;
     }
-    #id_username{
+
+    #id_username {
         width: 170px;
     }
-    #id_password{
+
+    #id_password {
         width: 170px;
-    }  
-    #input-container-login{
+    }
+
+    #input-container-login {
         width: 95%;
     }
-    .modal-content-login{
+
+    .modal-content-login {
         width: 90%;
         height: 180px;
     }
 }
-@media screen and (min-width:360px) and (max-width:400px){
-    #login-box{
-        width:340px;
+
+@media screen and (min-width:360px) and (max-width:400px) {
+    #login-box {
+        width: 340px;
         margin-top: 30%;
-    } 
-    #id_username{
+    }
+
+    #id_username {
         width: 170px;
     }
-    #id_password{
+
+    #id_password {
         width: 170px;
-    }  
-    #input-container-login{
+    }
+
+    #input-container-login {
         width: 89%;
     }
-    .modal-content-login{
+
+    .modal-content-login {
         width: 90%;
         height: 180px;
     }
 }
-    
-@media screen and (min-width:400px) and (max-width:500px){
-    #login-box{
-        width:380px;
+
+@media screen and (min-width:400px) and (max-width:500px) {
+    #login-box {
+        width: 380px;
         margin-top: 30%;
-    } 
-    #id_username{
+    }
+
+    #id_username {
         width: 180px;
 
     }
-    #id_password{
+
+    #id_password {
         width: 180px;
-    } 
-    #input-container-login{
+    }
+
+    #input-container-login {
         width: 85%;
     }
-    .modal-content-login{
+
+    .modal-content-login {
         width: 90%;
         height: 180px;
     }
 }
-@media screen and (min-width:500px) and (max-width:600px){
-    #login-box{
-        width:450px;
+
+@media screen and (min-width:500px) and (max-width:600px) {
+    #login-box {
+        width: 450px;
         margin-top: 40%;
-    } 
-    #input-container-login{
+    }
+
+    #input-container-login {
         width: 79%;
     }
-    .modal-content-login{
+
+    .modal-content-login {
         width: 90%;
         height: 180px;
     }
 }
-@media screen and (min-width:600px) and (max-width:1300px){
-    #login-box{
-        width:522px;
-    } 
-    #input-container-login{
+
+@media screen and (min-width:600px) and (max-width:1300px) {
+    #login-box {
+        width: 522px;
+    }
+
+    #input-container-login {
         width: 73%;
     }
+
     /* .modal-content-login{
         width: 90%;
         height: 180px;
     } */
 
 }
+
 @media screen and (max-height: 800px) {
-    .modal-content-login{
+    .modal-content-login {
         height: 200px;
     }
 }
-@media screen and (min-width:600px) and (max-width:900px){
-    .modal-content-login{
+
+@media screen and (min-width:600px) and (max-width:900px) {
+    .modal-content-login {
         width: 500px;
     }
-        .select2-container{
-        width: 280px!important; /*código responsividade select memoMain*/
+
+    .select2-container {
+        width: 280px !important;
+        /*código responsividade select memoMain*/
     }
 }
+
 /* responsividade upload */
-@media screen and (min-width: 320px) and (max-width:500px){
-    .box-upload{
+@media screen and (min-width: 320px) and (max-width:500px) {
+    .box-upload {
         width: 100%;
         margin-top: 25%;
     }
-    #img-pdf{
+
+    #img-pdf {
         width: 30px;
     }
-    .link-container{
+
+    .link-container {
         width: 300px;
         margin: 0 auto;
-    } 
-    #link-upload{
+    }
+
+    #link-upload {
         width: 200px;
     }
-    #link-upload-pdf{
+
+    #link-upload-pdf {
         width: 200px;
     }
 }
-@media screen and (min-width:500px) and (max-width:600px){
-    .box-upload{
+
+@media screen and (min-width:500px) and (max-width:600px) {
+    .box-upload {
         width: 400px;
     }
 }
-@media screen and (min-width:600px) and (max-width:900px){
-    .box-upload{
+
+@media screen and (min-width:600px) and (max-width:900px) {
+    .box-upload {
         width: 55%;
     }
 }
@@ -1852,7 +2000,7 @@ hr {
     border: 1px solid #ced4da;
     font-size: 1rem;
     line-height: 1.5;
-    transition: border-color 0.2s; 
+    transition: border-color 0.2s;
     border-radius: 10px;
     text-align: center;
     padding-top: 5px;
@@ -1860,15 +2008,16 @@ hr {
 }
 
 .select2-container--default .select2-selection--single:hover {
-    border-color: #80bdff; 
-    color: white; 
-    box-shadow: 0 0 5px rgb(120, 170, 228); 
+    border-color: #80bdff;
+    color: white;
+    box-shadow: 0 0 5px rgb(120, 170, 228);
 }
-.select2-conatiner{
+
+.select2-conatiner {
     width: 300px;
 }
 
-#botoes-login{
+#botoes-login {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1878,17 +2027,20 @@ hr {
     height: auto;
     margin-top: -30px;
 }
-#id_old_password, #id_new_password1, #id_new_password2{
+
+#id_old_password,
+#id_new_password1,
+#id_new_password2 {
     border: solid black 1px;
 }
 
 
 #mensagem_sucesso {
-    background-color: #a6eca9; 
-    color: #000; 
-    padding: 10px; 
-    border-radius: 5px; 
-    text-align: center; 
+    background-color: #a6eca9;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border: 2px solid #4CAF50;
     width: 100%;
@@ -1900,11 +2052,11 @@ hr {
 
 
 #error_box {
-    background-color: #f09d9d; 
-    color: #000; 
-    padding: 10px; 
-    border-radius: 3px; 
-    text-align: center; 
+    background-color: #f09d9d;
+    color: #000;
+    padding: 10px;
+    border-radius: 3px;
+    text-align: center;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border: 3px solid #d61818;
     width: 100%;
@@ -1926,45 +2078,63 @@ hr {
     cursor: pointer;
     transform: scale(1.1);
 }
-.page_pdf{
+
+.page_pdf {
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
     background: #add8e68e;
-    color: #000000; 
+    color: #000000;
 }
-.search-box{
+
+.search-box {
     border-radius: 30px;
     border: 1px solid black;
     text-align: center;
-    width: 40%;
+    width: 90%;
     height: fit-content;
-    margin-top: 10%;
+    margin-top: 1%;
     background-color: white;
     margin-left: auto;
     margin-right: auto;
     text-shadow: rgb(12, 12, 12);
     padding: 20px;
 }
-#title-consulta{
+
+/* 
+    ISSO AQUI É UM CRIME!!!
+#title-consulta {
     font-size: 30px;
     text-align: center;
-}
-.input-group-text{
+} */
+
+.input-group-text {
     width: 30%;
 }
-.input-consulta{
+
+.input-consulta {
     width: 100px;
 }
-.form-control{
+
+.form-control {
     height: 50px;
     font-size: 20px;
 }
-#submit-consulta{
+
+#submit-consulta {
     display: flex;
     text-align: center;
+    background-color: #4CAF50;
+    border: 1px solid black;
+    /* margin-bottom: 25%; */
+  }
+
+#submit-consulta:hover {
+    background-color: #82d685;
 }
-.consulta-page{
+
+
+.consulta-page {
     width: 100%;
     height: 100%;
     background-image: url(/static/img/img-memo-login.jpg);
@@ -1973,9 +2143,53 @@ hr {
     background-size: cover;
     background-repeat: no-repeat;
 }
-#consulta-body{
+
+#consulta-body {
     width: 100%;
-    height:100%;
+    height: 100%;
     position: absolute;
     background-color: #add8e68e;
+}
+
+#consulta-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+
+#tipo-e-ano {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#assunto-consulta {
+    margin-left: 3%;
+}
+
+#ano-select-consulta {
+    width: 40%;
+    text-align: center;
+}
+
+#tipo-select-consulta {
+    width: 34.5%;
+    text-align: center;
+  }
+
+#numero-consulta {
+    margin-left: 2%;
+}
+
+#tipo-consulta {
+    width: 94%;
+}
+
+#numero-consulta {
+    width: 92%;
 }
