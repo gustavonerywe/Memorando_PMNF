@@ -2200,3 +2200,37 @@ hr {
     margin-left: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.query_result {
+    background-color: white;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 30px;
+    border-collapse: collapse;
+}
+
+.query_table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.query_table td:nth-child(1),
+.query_table td:nth-child(2) {
+    border-collapse: collapse;
+    border-right: 1px solid black;
+}
+
+.query_table td {
+    border-collapse: collapse;
+    border-top: 1px solid black;
+    padding: 1px;
+    text-align: center;
+}
+.query_table th {
+    font-size: larger;
+    padding: 1px;
+    text-align: center;
+}

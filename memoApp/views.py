@@ -49,8 +49,9 @@ def upload(request):
             memorando.remetente = request.user
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
-            # memorando.anexo = form
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
+            memorando.destinatario = grupo_escolhido
+            memorando.destinatarios_copia = grupo_escolhido_copia
             
             for i in range(grupo_escolhido.count('-- Selecione um grupo --')):
                    grupo_escolhido.remove('-- Selecione um grupo --')
@@ -755,30 +756,33 @@ def consultaMemo(request):
      
     if request.method == 'POST':
         form = SearchForm(request.POST)
+        print(form.errors)
         if form.is_valid():
+            buscapornum = None
+            buscaporAssunto = None
+            print('formulário valido')
             tipo = form.cleaned_data['tipo_moc']
             numBusca = form.cleaned_data['numBusca']
             termoBusca = form.cleaned_data['termoBusca']
             
             if tipo == 'Memorando':
-                buscapornum = Memorando.objects.filter(memo_numero=termoBusca)
+                buscapornum = Memorando.objects.filter(memo_numero=numBusca)
                 buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
             if tipo == 'Oficio':
-                buscapornum = Oficio.objects.filter(memo_numero=termoBusca)
+                buscapornum = Oficio.objects.filter(memo_numero=numBusca)
                 buscaporAssunto = Oficio.objects.filter(assunto__icontains=termoBusca)
             if tipo == 'Circular':
-                buscapornum = MemorandoCircular.objects.filter(memo_numero=termoBusca)
+                buscapornum = MemorandoCircular.objects.filter(memo_numero=numBusca)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto__icontains=termoBusca)
             
         
-            print(buscapornum)
-            print(buscaporAssunto)
+            resultadoQuery = buscapornum.union(buscaporAssunto, all=True)
             
             context = {
                 'buscando': True,
-                'objectListNum': buscapornum,
-                'objectListAssunto': buscaporAssunto,
-                'form':form,
+                'objectList': resultadoQuery,
+                'form': form,
+                'tipo': tipo,
             }
     else:
         form = SearchForm()
@@ -786,3 +790,19 @@ def consultaMemo(request):
         
     return render(request, 'consulta_memo.html', context)
     
+    
+@login_required
+def visualizaMoc(request, id_criptografado):
+    memorando = Memorando.objects.get(id=id_criptografado)
+    print(memorando.destinatario)
+    print(type(memorando.destinatario))
+    context = {
+        'memorando': memorando,
+        'memo_numero': memorando.memo_numero,
+        'memorando_assunto': memorando.assunto,
+        'data_atual': memorando.data,
+        'grupo_escolhido': memorando.destinatario,
+        'text_content': mark_safe(memorando.corpo),
+        'grupo_escolhido_copia': memorando.destinatarios_copia,
+    }
+    return render(request, 'visualiza_moc.html', context)

@@ -14,15 +14,15 @@
         <a href="{% url 'loginPage' %}"><img id="perfil" style="float: left;" src="/static/img/menu.png" width="30"
             alt="perfil"></a>
             <img width="200" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
-        <form>
+        <form method='post'>
          {% csrf_token %}
             <div id="tipo-e-ano">
                 <div class="input-group mb-3 divConsulta" id="tipo-consulta">
                     <span class="input-group-text " id="inputGroup-sizing-default" style="width: 50%;">Tipo</span>
-                        <select name='tipo' id="tipo-select-consulta" style="width: 48%;">
-                            <option>Memorando</option>
-                            <option>Ofício</option>
-                            <option>Circular</option>
+                        <select name='tipo_moc' id="tipo-select-consulta" style="width: 48%;">
+                            <option value='Memorando' selected>Memorando Comum</option>
+                            <option value='Oficio'>Ofício</option>
+                            <option value='Circular'>Circular</option>
                         </select>
                 </div>
                 <div id="numero-consulta" class="input-group mb-3 divSubmit">
@@ -35,14 +35,14 @@
                 <div class="input-group mb-3 divConsulta">
                     <span class="input-group-text" id="inputGroup-sizing-default-ano" style="width: 50%;">Ano</span>
                         <select name='ano' id="ano-select-consulta" style="width: 50%;">
-                            <option>2023</option>
-                            <option>2024</option>
-                            <option>2025</option>
-                            <option>2026</option>
-                            <option>2027</option>
-                            <option>2028</option>
-                            <option>2029</option>
-                            <option>2030</option>
+                            <option value='2023' selected>2023</option>
+                            <option value='2024'>2024</option>
+                            <option value='2025'>2025</option>
+                            <option value='2026'>2026</option>
+                            <option value='2027'>2027</option>
+                            <option value='2028'>2028</option>
+                            <option value='2029'>2029</option>
+                            <option value='2030'>2030</option>
                         </select>
                 </div>
                 <div id="assunto-consulta" class="input-group mb-3 divSubmit">
@@ -56,40 +56,44 @@
         </form>
  </div>
 
-<div>
+<div class="query_result">
     {% if buscando %}
-    <table>
+    <table class="query_table">
         <thead>
             <tr>
-                <th>Number</th>
-                <th>Subject</th>
+                <th style="border-right: 1px solid black">N° M.O.C.</th>
+                <th style="border-right: 1px solid black">Assunto</th>
+                <th>Ver M.O.C.</th>
             </tr>
         </thead>
         <tbody>
 
             {% if tipo == 'Memorando'%}
-            {% for obj in objectListNum %}
+            {% for obj in objectList %}
             <tr>
                 <td>{{ obj.memo_numero }}</td>
                 <td>{{ obj.assunto }}</td>
+                <td><a href="{% url 'visualiza_moc' obj.id %}">Ver Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}
 
             {% if tipo == 'Oficio'%}
-            {% for obj in objectListNum %}
+            {% for obj in objectList %}
             <tr>
                 <td>{{ obj.memo_numero_oficio }}</td>
                 <td>{{ obj.assunto_oficio }}</td>
+                <td><a href="{% url 'generate_pdf' obj.id %}">Ver Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}
 
             {% if tipo == 'Circular'%}
-            {% for obj in objectListNum %}
+            {% for obj in objectList %}
             <tr>
                 <td>{{ obj.memo_numero_circular }}</td>
                 <td>{{ obj.assunto_circular }}</td>
+                <td><a href="{% url 'generate_pdf' obj.id %}">Ver Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}
