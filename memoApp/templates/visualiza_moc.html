@@ -13,12 +13,14 @@
         <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
+                <a href="{% url 'loginPage' %}"><img class="back" style="float: left;" src="/static/img/back.png" width="30"
+                    alt="back"></a>
                 {% comment %} <img id="img" src="/static/img/prefeitura.png" alt="Logo da prefeitura" /> {% endcomment %}
-                <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
+                <img class="img-visualiza" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
             </div>
-            <hr id="hr-generate" />
+            <hr class="hr-generate" />
             <div id="content-pdf">
-                <table class="table" id="table-generate">
+                <table class="table table-visualiza">
                     <tr>
                         <th style="text-align: center;" id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
