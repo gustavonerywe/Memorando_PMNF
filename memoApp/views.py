@@ -50,14 +50,21 @@ def upload(request):
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
-            memorando.destinatario = grupo_escolhido
-            memorando.destinatarios_copia = grupo_escolhido_copia
             
             for i in range(grupo_escolhido.count('-- Selecione um grupo --')):
                    grupo_escolhido.remove('-- Selecione um grupo --')
             for i in range(grupo_escolhido_copia.count('-- Selecione um grupo --')):
                    grupo_escolhido_copia.remove('-- Selecione um grupo --')
                        
+            memorando.save()
+            
+            for i in range(len(grupo_escolhido)):
+                grupoDestinado = Group.objects.get(name=grupo_escolhido[i])
+                memorando.destinatario.add(grupoDestinado)
+            for i in range(len(grupo_escolhido_copia)):
+                grupoDestinado = Group.objects.get(name=grupo_escolhido_copia[i])
+                memorando.destinatarios_copia.add(grupoDestinado)
+                
             files = request.FILES.getlist('file')
             
             nomesArquivos = []
@@ -794,15 +801,18 @@ def consultaMemo(request):
 @login_required
 def visualizaMoc(request, id_criptografado):
     memorando = Memorando.objects.get(id=id_criptografado)
-    print(memorando.destinatario)
-    print(type(memorando.destinatario))
+
+    groupUser = memorando.remetente.groups.first()
+    
     context = {
         'memorando': memorando,
         'memo_numero': memorando.memo_numero,
+        'remetente': memorando.remetente,
+        'grupo_remetente': groupUser,
         'memorando_assunto': memorando.assunto,
         'data_atual': memorando.data,
-        'grupo_escolhido': memorando.destinatario,
+        'grupo_escolhido': memorando.destinatario.all(),
         'text_content': mark_safe(memorando.corpo),
-        'grupo_escolhido_copia': memorando.destinatarios_copia,
+        'grupo_escolhido_copia': memorando.destinatarios_copia.all(),
     }
     return render(request, 'visualiza_moc.html', context)

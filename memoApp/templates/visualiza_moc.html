@@ -37,35 +37,35 @@
                             <th id="teste" class="th-generate" style="vertical-align: middle;">De:</th>
                         </div>
                         <td class="td-generate">
-                            {{ user.groups.first.name }}
+                            {{ grupo_remetente.name }}
                             <br>
-                            {{ user.get_full_name }}
+                            {{ remetente.get_full_name }}
                         </td>
                     </tr>
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
-                            {% comment %} {% for grupo in grupo_escolhido %}
+                            {% for grupo in grupo_escolhido %}
                             <ul>
                                 <li id="li-para" style="margin-bottom: -10px;">
-                                    {{ grupo }}
+                                    {{ grupo.name }}
                                 </li>
                             </ul>
 
-                            {% endfor %} {% endcomment %}
+                            {% endfor %}
                         </td>
                     </tr>
                     {% if grupo_escolhido_copia|length > 0 %}
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Cópia para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
-                            {% comment %} {% for grupo in grupo_escolhido_copia %}
+                            {% for grupo in grupo_escolhido_copia %}
                             <ul>
                                 <li id="li-cop" style="margin-bottom: -10px;">
-                                    {{ grupo }}
+                                    {{ grupo.name }}
                                 </li>
                             </ul>
-                            {% endfor %} {% endcomment %}
+                            {% endfor %}
                         </td>
                     </tr>
                     {% endif %}
@@ -78,7 +78,7 @@
                 </table>
                 <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
                 <div id="footer">
-                    {% comment %} {% for grupo in grupo_escolhido %}
+                    {% for grupo in grupo_escolhido %}
                     <fieldset id="box-field-generate">
                         <table id="table-recebido">
                             <tr>
@@ -94,10 +94,9 @@
                         <br>
                         <br>
                     </fieldset>
-                    {% endfor %} {% endcomment %}
+                    {% endfor %}
                 </div>
             </div>
-            {% comment %}{% endcomment %}
             <script src="/static/js/generate_pdf.js"></script>
         </form>
     </div>

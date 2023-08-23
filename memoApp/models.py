@@ -1,6 +1,6 @@
 from django.db import models
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from tinymce import models as tinymce_models
 from django.utils import timezone
 from datetime import datetime
@@ -18,8 +18,8 @@ class Memorando(models.Model):
     data = models.DateTimeField(null=True, default=None, blank=False)
     memo_numero = models.CharField(max_length=220)
     remetente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='memorandos_enviados')
-    destinatario = models.ManyToManyField(User, related_name='memorandos_recebidos')
-    destinatarios_copia = models.ManyToManyField(User, related_name='destinatarios_copia', null=True)
+    destinatario = models.ManyToManyField(Group, related_name='memorandos_recebidos')
+    destinatarios_copia = models.ManyToManyField(Group, related_name='destinatarios_copia', null=True)
     assunto = models.CharField(max_length=1024, blank=True, null=True)
     corpo = tinymce_models.HTMLField(null=True, default='')
     # anexo = models.ManyToManyField(Image, related_name='anexo', null=True, blank=False)
