@@ -767,10 +767,13 @@ def consultaMemo(request):
         if form.is_valid():
             buscapornum = None
             buscaporAssunto = None
-            print('formulário valido')
             tipo = form.cleaned_data['tipo_moc']
             numBusca = form.cleaned_data['numBusca']
             termoBusca = form.cleaned_data['termoBusca']
+            ano = form.cleaned_data['ano']
+            
+            print(termoBusca)
+            numBusca = str(numBusca).zfill(3)+"/"+str(ano)
             
             if tipo == 'Memorando':
                 buscapornum = Memorando.objects.filter(memo_numero=numBusca)
@@ -782,9 +785,13 @@ def consultaMemo(request):
                 buscapornum = MemorandoCircular.objects.filter(memo_numero=numBusca)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto__icontains=termoBusca)
             
-        
-            resultadoQuery = buscapornum.union(buscaporAssunto, all=True)
-            
+            if termoBusca != "":    
+                resultadoQuery = buscapornum.union(buscaporAssunto, all=True)
+            elif len(buscapornum) == 0:
+                resultadoQuery = buscaporAssunto
+            else:
+                resultadoQuery = buscapornum.union(buscaporAssunto, all=True)
+                
             context = {
                 'buscando': True,
                 'objectList': resultadoQuery,
