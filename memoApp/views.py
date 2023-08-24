@@ -773,24 +773,24 @@ def consultaMemo(request):
             ano = form.cleaned_data['ano']
             
             print(termoBusca)
-            numBusca = str(numBusca).zfill(3)+"/"+str(ano)
+            numBuscaComAno = str(numBusca).zfill(3)+"/"+str(ano)
             
             if tipo == 'Memorando':
-                buscapornum = Memorando.objects.filter(memo_numero=numBusca)
+                buscapornum = Memorando.objects.filter(memo_numero=numBuscaComAno)
                 buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
             if tipo == 'Oficio':
-                buscapornum = Oficio.objects.filter(memo_numero=numBusca)
-                buscaporAssunto = Oficio.objects.filter(assunto__icontains=termoBusca)
+                buscapornum = Oficio.objects.filter(memo_numero_oficio=numBuscaComAno)
+                buscaporAssunto = Oficio.objects.filter(assunto_oficio__icontains=termoBusca)
             if tipo == 'Circular':
-                buscapornum = MemorandoCircular.objects.filter(memo_numero=numBusca)
-                buscaporAssunto = MemorandoCircular.objects.filter(assunto__icontains=termoBusca)
+                buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
+                buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
             
             if termoBusca != "":    
-                resultadoQuery = buscapornum.union(buscaporAssunto, all=True)
-            elif len(buscapornum) == 0:
-                resultadoQuery = buscaporAssunto
+                resultadoQuery = buscapornum.union(buscaporAssunto)
+            elif numBusca is not None:
+                resultadoQuery = buscapornum
             else:
-                resultadoQuery = buscapornum.union(buscaporAssunto, all=True)
+                resultadoQuery = buscapornum.union(buscaporAssunto)
                 
             context = {
                 'buscando': True,
@@ -798,6 +798,7 @@ def consultaMemo(request):
                 'form': form,
                 'tipo': tipo,
             }
+            
     else:
         form = SearchForm()
         context = {'form': form}

@@ -77,25 +77,7 @@
                     </tr>
                 </table>
                 <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
-                <div id="footer">
-                    {% for grupo in grupo_escolhido %}
-                    <fieldset id="box-field-generate">
-                        <table id="table-recebido">
-                            <tr>
-                                <th id="tituloTable2">{{grupo}}</th>
-                            </tr>
-                            <tr>
-                                <td id="em">Em: ______ /______ /______</td>
-                            </tr>
-                            <tr>
-                                <td id="ass">Ass: _____________________</td>
-                            </tr>
-                        </table>
-                        <br>
-                        <br>
-                    </fieldset>
-                    {% endfor %}
-                </div>
+                
             </div>
             <script src="/static/js/generate_pdf.js"></script>
         </form>
