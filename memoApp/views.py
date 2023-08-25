@@ -104,18 +104,6 @@ def upload(request):
                 
             memorando.save()
 
-            
-            # for file in files:
-            #     with open(os.path.join('uploads', file.name), 'wb') as f:
-            #         f.write(file.read())
-
-
-            # for file in request.FILES.getlist('file'):
-            #     image = Image.objects.create(file=file)
-            #     image.memorando = memorando
-            #     image.save()
-            # print(request.FILES.getlist('file'))
-
             context = {
                 'memorando': memorando,
                 'memo_numero_atualizado': memo_numero_atualizado,
@@ -767,30 +755,38 @@ def consultaMemo(request):
         if form.is_valid():
             buscapornum = None
             buscaporAssunto = None
-            print('formulário valido')
             tipo = form.cleaned_data['tipo_moc']
             numBusca = form.cleaned_data['numBusca']
             termoBusca = form.cleaned_data['termoBusca']
+            ano = form.cleaned_data['ano']
+            
+            print(termoBusca)
+            numBuscaComAno = str(numBusca).zfill(3)+"/"+str(ano)
             
             if tipo == 'Memorando':
-                buscapornum = Memorando.objects.filter(memo_numero=numBusca)
+                buscapornum = Memorando.objects.filter(memo_numero=numBuscaComAno)
                 buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
             if tipo == 'Oficio':
-                buscapornum = Oficio.objects.filter(memo_numero=numBusca)
-                buscaporAssunto = Oficio.objects.filter(assunto__icontains=termoBusca)
+                buscapornum = Oficio.objects.filter(memo_numero_oficio=numBuscaComAno)
+                buscaporAssunto = Oficio.objects.filter(assunto_oficio__icontains=termoBusca)
             if tipo == 'Circular':
-                buscapornum = MemorandoCircular.objects.filter(memo_numero=numBusca)
-                buscaporAssunto = MemorandoCircular.objects.filter(assunto__icontains=termoBusca)
+                buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
+                buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
             
-        
-            resultadoQuery = buscapornum.union(buscaporAssunto, all=True)
-            
+            if termoBusca != "":    
+                resultadoQuery = buscapornum.union(buscaporAssunto)
+            elif numBusca is not None:
+                resultadoQuery = buscapornum
+            else:
+                resultadoQuery = buscapornum.union(buscaporAssunto)
+                
             context = {
                 'buscando': True,
                 'objectList': resultadoQuery,
                 'form': form,
                 'tipo': tipo,
             }
+            
     else:
         form = SearchForm()
         context = {'form': form}
@@ -799,20 +795,59 @@ def consultaMemo(request):
     
     
 @login_required
-def visualizaMoc(request, id_criptografado):
-    memorando = Memorando.objects.get(id=id_criptografado)
+def visualizaMoc(request, id_criptografado, tipo):
+    if tipo == 'Memorando':
+        memorando = Memorando.objects.get(id=id_criptografado)
 
-    groupUser = memorando.remetente.groups.first()
+        groupUser = memorando.remetente.groups.first()
+        
+        context = {
+            'memorando': memorando,
+            'memo_numero': memorando.memo_numero,
+            'remetente': memorando.remetente,
+            'grupo_remetente': groupUser,
+            'memorando_assunto': memorando.assunto,
+            'data_atual': memorando.data,
+            'grupo_escolhido': memorando.destinatario.all(),
+            'text_content': mark_safe(memorando.corpo),
+            'grupo_escolhido_copia': memorando.destinatarios_copia.all(),
+            'tipo': tipo
+        }
+        return render(request, 'visualiza_moc.html', context)
+
+    if tipo == 'Circular':
+        memorando = MemorandoCircular.objects.get(id=id_criptografado)
+
+        groupUser = memorando.remetente_circular.groups.first()
+        
+        context = {
+            'memorando': memorando,
+            'memo_numero': memorando.memo_numero_circular,
+            'remetente': memorando.remetente_circular,
+            'grupo_remetente': groupUser,
+            'memorando_assunto': memorando.assunto_circular,
+            'data_atual': memorando.data_circular,
+            'grupo_escolhido': memorando.destinatario_circular.all(),
+            'text_content': mark_safe(memorando.corpo_circular),
+            'tipo': tipo
+        }
+        return render(request, 'visualiza_moc.html', context)
     
-    context = {
-        'memorando': memorando,
-        'memo_numero': memorando.memo_numero,
-        'remetente': memorando.remetente,
-        'grupo_remetente': groupUser,
-        'memorando_assunto': memorando.assunto,
-        'data_atual': memorando.data,
-        'grupo_escolhido': memorando.destinatario.all(),
-        'text_content': mark_safe(memorando.corpo),
-        'grupo_escolhido_copia': memorando.destinatarios_copia.all(),
-    }
-    return render(request, 'visualiza_moc.html', context)
+    if tipo == 'Oficio':
+        memorando = Oficio.objects.get(id=id_criptografado)
+
+        groupUser = memorando.remetente_oficio.groups.first()
+        
+        context = {
+            'memorando': memorando,
+            'memo_numero': memorando.memo_numero_oficio,
+            'remetente': memorando.remetente_oficio,
+            'grupo_remetente': groupUser,
+            'memorando_assunto': memorando.assunto_oficio,
+            'data_atual': memorando.data_oficio,
+            'grupo_escolhido': memorando.destinatario_oficio,
+            'text_content': mark_safe(memorando.corpo_oficio),
+            'grupo_escolhido_copia': memorando.destinatarios_copia_oficio,
+            'tipo': tipo
+        }
+        return render(request, 'visualiza_moc.html', context)

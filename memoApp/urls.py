@@ -18,6 +18,6 @@ urlpatterns = [
     path('oficio', views.oficio, name='oficio'),
     path('erro/', views.error_image, name='erro'),
     path('consulta-memo/', views.consultaMemo, name='consulta_memo'),
-    path('visualiza_moc/<int:id_criptografado>', views.visualizaMoc, name='visualiza_moc'),
+    path('visualiza_moc/<int:id_criptografado>/<str:tipo>', views.visualizaMoc, name='visualiza_moc'),
 
 ]

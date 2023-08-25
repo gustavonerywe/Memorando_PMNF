@@ -74,7 +74,7 @@
             <tr>
                 <td>{{ obj.memo_numero }}</td>
                 <td>{{ obj.assunto }}</td>
-                <td><a href="{% url 'visualiza_moc' obj.id %}">Ver Detalhes</a></td>
+                <td><a href="{% url 'visualiza_moc' obj.id tipo %}">Ver Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}
@@ -84,7 +84,7 @@
             <tr>
                 <td>{{ obj.memo_numero_oficio }}</td>
                 <td>{{ obj.assunto_oficio }}</td>
-                <td><a href="{% url 'generate_pdf' obj.id %}">Ver Detalhes</a></td>
+                <td><a href="{% url 'visualiza_moc' obj.id tipo %}">Ver Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}
@@ -94,7 +94,7 @@
             <tr>
                 <td>{{ obj.memo_numero_circular }}</td>
                 <td>{{ obj.assunto_circular }}</td>
-                <td><a href="{% url 'generate_pdf' obj.id %}">Ver Detalhes</a></td>
+                <td><a href="{% url 'visualiza_moc' obj.id tipo %}">Ver Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}
@@ -105,6 +105,14 @@
     {% endif %}
 
 <script src="/static/js/consulta.js"></script>
+<script>
+    let tipo = "{{tipo}}"; 
+    let select = document.getElementById("tipo-select-consulta");
+    if (tipo != ""){
+        select.value = tipo;
+    }
+
+</script>
 </body>
 
 </html>
