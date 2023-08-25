@@ -2228,7 +2228,7 @@ hr {
 }
 .query_table th {
     font-size: larger;
-    padding: 1px;
+    padding: 11px;
     text-align: center;
 }
 .table-visualiza{
@@ -2252,6 +2252,35 @@ hr {
     margin-left: -38%;
     width: 7%;
     padding: 5px;
-    border: #000 solid 1px;
     border-radius: 10px;
+}
+
+.back:hover {
+    transform: scale(1.1);
+}
+
+.query_table td:nth-child(1), .query_table td:nth-child(2) {
+    border-collapse: collapse;
+    border-right: 1px solid black;
+    padding: 11px;
+  }
+
+  .styled-link {
+    display: inline-block;
+    padding: 20px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 5px;
+}
+
+.styled-link:hover {
+    background-color: #2980b9;
+    color: #fff;
+    transform: scale(1.1);
 }

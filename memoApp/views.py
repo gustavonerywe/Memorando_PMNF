@@ -746,9 +746,7 @@ def error_image(request):
 
 @login_required
 def consultaMemo(request):
-    
-    context = {}
-     
+       
     if request.method == 'POST':
         form = SearchForm(request.POST)
         print(form.errors)

@@ -11,7 +11,7 @@
 </head>
 <body id="consulta-body">
     <div class='search-box'>
-        <a href="{% url 'loginPage' %}"><img id="perfil" style="float: left;" src="/static/img/menu.png" width="30"
+        <a id="backPage"><img id="perfil" style="float: left;" src="/static/img/menu.png" width="30"
             alt="perfil"></a>
             <img width="200" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
         <form method='post'>
@@ -63,6 +63,7 @@
         <thead>
             <tr>
                 <th style="border-right: 1px solid black">N° M.O.C.</th>
+                <th style="border-right: 1px solid black">Tipo</th>
                 <th style="border-right: 1px solid black">Assunto</th>
                 <th>Ver M.O.C.</th>
             </tr>
@@ -72,9 +73,10 @@
             {% if tipo == 'Memorando'%}
             {% for obj in objectList %}
             <tr>
-                <td>{{ obj.memo_numero }}</td>
-                <td>{{ obj.assunto }}</td>
-                <td><a href="{% url 'visualiza_moc' obj.id tipo %}">Ver Detalhes</a></td>
+                <td style="font-family: 'Times New Roman', Times, serif;">{{ obj.memo_numero }}</td>
+                <td style="font-family: 'Times New Roman', Times, serif;" >{{tipo}}</td>
+                <td style="font-family: 'Times New Roman', Times, serif; border-right: 1px solid black;">{{ obj.assunto }}</td>
+                <td><a class="styled-link" href="{% url 'visualiza_moc' obj.id tipo %}">Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}
@@ -82,9 +84,10 @@
             {% if tipo == 'Oficio'%}
             {% for obj in objectList %}
             <tr>
-                <td>{{ obj.memo_numero_oficio }}</td>
-                <td>{{ obj.assunto_oficio }}</td>
-                <td><a href="{% url 'visualiza_moc' obj.id tipo %}">Ver Detalhes</a></td>
+                <td style="font-family: 'Times New Roman', Times, serif;">{{ obj.memo_numero_oficio }}</td>
+                <td style="font-family: 'Times New Roman', Times, serif;" >{{tipo}}</td>
+                <td style="font-family: 'Times New Roman', Times, serif; border-right: 1px solid black;">{{ obj.assunto_oficio }}</td>
+                <td><a class="styled-link" href="{% url 'visualiza_moc' obj.id tipo %}">Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}
@@ -92,9 +95,10 @@
             {% if tipo == 'Circular'%}
             {% for obj in objectList %}
             <tr>
-                <td>{{ obj.memo_numero_circular }}</td>
-                <td>{{ obj.assunto_circular }}</td>
-                <td><a href="{% url 'visualiza_moc' obj.id tipo %}">Ver Detalhes</a></td>
+                <td style="font-family: 'Times New Roman', Times, serif;">{{ obj.memo_numero_circular }}</td>
+                <td style="font-family: 'Times New Roman', Times, serif;" >{{tipo}}</td>
+                <td style="font-family: 'Times New Roman', Times, serif; border-right: 1px solid black;">{{ obj.assunto_circular }}</td>
+                <td><a class="styled-link" href="{% url 'visualiza_moc' obj.id tipo %}">Detalhes</a></td>
             </tr>
             {% endfor %}
             {% endif %}

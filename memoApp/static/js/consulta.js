@@ -4,3 +4,9 @@ buttonConsulta.addEventListener("click", function(){
     consultaBody.style.height = "auto";
 });
 
+const backPage = document.getElementById('backPage');
+
+backPage.addEventListener('click', () =>{
+    window.history.back()
+})
+
