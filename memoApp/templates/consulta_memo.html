@@ -108,8 +108,9 @@
 <script>
     let tipo = "{{tipo}}"; 
     let select = document.getElementById("tipo-select-consulta");
-
-    select.value = tipo;
+    if (tipo != ""){
+        select.value = tipo;
+    }
 
 </script>
 </body>
