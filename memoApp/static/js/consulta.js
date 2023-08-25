@@ -7,6 +7,7 @@ buttonConsulta.addEventListener("click", function(){
 const backPage = document.getElementById('backPage');
 
 backPage.addEventListener('click', () =>{
+    console.log('oi')
     window.history.back()
 })
 
