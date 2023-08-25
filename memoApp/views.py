@@ -104,18 +104,6 @@ def upload(request):
                 
             memorando.save()
 
-            
-            # for file in files:
-            #     with open(os.path.join('uploads', file.name), 'wb') as f:
-            #         f.write(file.read())
-
-
-            # for file in request.FILES.getlist('file'):
-            #     image = Image.objects.create(file=file)
-            #     image.memorando = memorando
-            #     image.save()
-            # print(request.FILES.getlist('file'))
-
             context = {
                 'memorando': memorando,
                 'memo_numero_atualizado': memo_numero_atualizado,
