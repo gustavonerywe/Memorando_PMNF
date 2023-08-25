@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Número do memorando:</th>
-                        <td class="td-generate"><span id="memo_numero">{{memorando.memo_numero}}</span></td>
+                        <td class="td-generate"><span id="memo_numero">{{memo_numero}}</span></td>
                     </tr>
                     <tr>
                         <div id="teste">
@@ -42,9 +42,11 @@
                             {{ remetente.get_full_name }}
                         </td>
                     </tr>
+                    {% if tipo != 'Circular'%}
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
+                            {% if tipo != 'Oficio'%}
                             {% for grupo in grupo_escolhido %}
                             <ul>
                                 <li id="li-para" style="margin-bottom: -10px;">
@@ -53,12 +55,20 @@
                             </ul>
 
                             {% endfor %}
+                            {% else %}
+                            <ul>
+                                <li id="li-para" style="margin-bottom: -10px;">
+                                    {{ grupo_escolhido }}
+                                </li>
+                            </ul>
+                            {% endif %}
                         </td>
                     </tr>
                     {% if grupo_escolhido_copia|length > 0 %}
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Cópia para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
+                            {% if tipo != 'Oficio'%}
                             {% for grupo in grupo_escolhido_copia %}
                             <ul>
                                 <li id="li-cop" style="margin-bottom: -10px;">
@@ -66,8 +76,16 @@
                                 </li>
                             </ul>
                             {% endfor %}
+                            {% else %}
+                            <ul>
+                                <li id="li-para" style="margin-bottom: -10px;">
+                                    {{ grupo_escolhido }}
+                                </li>
+                            </ul>
+                            {% endif %}
                         </td>
                     </tr>
+                    {% endif %}
                     {% endif %}
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
