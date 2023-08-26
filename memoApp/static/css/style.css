@@ -2294,3 +2294,15 @@ hr {
 #clearButton:hover{
     transform: scale(1.1);
 }
+
+#removeBusca {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#removeBusca:hover{
+    transform: scale(1.1);
+}

@@ -48,8 +48,9 @@
                 </div>
                 <div id="assunto-consulta" class="input-group mb-3 divSubmit">
                     <span class="input-group-text" id="inputGroup-sizing-default">Assunto - MOC</span>
-                    <input name='termoBusca'type="text" class="form-control input-consulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>   
+                    <input id="termoBusca" name='termoBusca'type="text" class="form-control input-consulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <button id="removeBusca" type="button"><img width="30" src="/static/img/remove.png" alt="X"></button>
+                </div>  
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" id="submit-consulta" class="btn btn-outline-primary btn-lg"><img width="25" height="25" src="/static/img/lupa.png" alt="Pesquisar"></button>
@@ -129,6 +130,24 @@
             let inputNumero = document.getElementById("numBusca");
             localStorage.setItem("numBusca", inputNumero.value);
         });
+
+    document.addEventListener("DOMContentLoaded", function () {
+            let termoBusca = document.getElementById("termoBusca");
+            let removeBusca = document.getElementById("removeBusca");
+            let storedTermo = localStorage.getItem("termoBusca");
+            if (storedTermo) {
+                termoBusca.value = storedTermo;
+            }
+
+            removeBusca.addEventListener("click", function () {
+                termoBusca.value = "";
+            });
+        });
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            let termoBusca = document.getElementById("termoBusca");
+            localStorage.setItem("termoBusca", termoBusca.value);
+    });
 
     let tipo = "{{tipo}}"; 
     let select = document.getElementById("tipo-select-consulta");

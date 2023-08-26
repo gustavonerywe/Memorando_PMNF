@@ -771,9 +771,11 @@ def consultaMemo(request):
                 buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
             
-            if termoBusca != "":    
+            if termoBusca and numBusca:    
+                resultadoQuery = buscapornum
+            elif termoBusca:
                 resultadoQuery = buscapornum.union(buscaporAssunto)
-            elif numBusca is not None:
+            elif numBusca:
                 resultadoQuery = buscapornum
             else:
                 resultadoQuery = buscapornum.union(buscaporAssunto)
