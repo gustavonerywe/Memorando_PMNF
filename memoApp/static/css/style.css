@@ -2132,18 +2132,17 @@ hr {
 .consulta-page {
     width: 100%;
     height: 100%;
-    background-image: url(/static/img/img-memo-login.jpg);
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 #consulta-body {
     width: 100%;
     min-height: 100vh;
     position: absolute;
-    background-color: #add8e68e;
+    background-image: url(/static/img/img-memo-login.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #consulta-search {
@@ -2201,7 +2200,8 @@ hr {
     width: 90%;
     height: auto;
     margin: 0 auto;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border: 1px solid black;
     border-radius: 30px;
     border-collapse: collapse;
@@ -2280,5 +2280,17 @@ hr {
 .styled-link:hover {
     background-color: #2980b9;
     color: #fff;
+    transform: scale(1.1);
+}
+
+#clearButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#clearButton:hover{
     transform: scale(1.1);
 }

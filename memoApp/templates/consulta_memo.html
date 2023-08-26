@@ -19,7 +19,7 @@
             <div id="tipo-e-ano">
                 <div class="input-group mb-3 divConsulta" id="tipo-consulta">
                     <span class="input-group-text input-consulta" id="inputGroup-sizing-default" style="width: 50%;">Tipo</span>
-                        <select name='tipo_moc' id="tipo-select-consulta" style="width: 48%;">
+                        <select class="select2 selects" name='tipo_moc' id="tipo-select-consulta" style="width: 48%;">
                             <option value='Memorando' selected>Memorando Comum</option>
                             <option value='Oficio'>Ofício</option>
                             <option value='Circular'>Circular</option>
@@ -27,14 +27,15 @@
                 </div>
                 <div id="numero-consulta" class="input-group mb-3 divSubmit">
                     <span class="input-group-text" id="inputGroup-sizing-default">N° do memorando</span>
-                    <input name='numBusca' type="text" class="form-control input-consulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input id="numBusca" name='numBusca' type="text" class="form-control input-consulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <button id="clearButton" type="button"><img width="30" src="/static/img/remove.png" alt="X"></button>
                 </div>
             </div> 
 
             <div id="consulta-search">
                 <div class="input-group mb-3 divConsulta">
                     <span class="input-group-text input-consulta" id="inputGroup-sizing-default-ano" style="width: 50%;">Ano</span>
-                        <select name='ano' id="ano-select-consulta" style="width: 50%;">
+                        <select class="select2 selects"  name='ano' id="ano-select-consulta" style="width: 50%;">
                             <option value='2023' selected>2023</option>
                             <option value='2024'>2024</option>
                             <option value='2025'>2025</option>
@@ -110,6 +111,25 @@
 
 <script src="/static/js/consulta.js"></script>
 <script>
+   
+   document.addEventListener("DOMContentLoaded", function () {
+            let inputNumero = document.getElementById("numBusca");
+            let clearButton = document.getElementById("clearButton");
+            let storedNumero = localStorage.getItem("numBusca");
+            if (storedNumero) {
+                inputNumero.value = storedNumero;
+            }
+
+            clearButton.addEventListener("click", function () {
+                inputNumero.value = "";
+            });
+        });
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            let inputNumero = document.getElementById("numBusca");
+            localStorage.setItem("numBusca", inputNumero.value);
+        });
+
     let tipo = "{{tipo}}"; 
     let select = document.getElementById("tipo-select-consulta");
     if (tipo != ""){

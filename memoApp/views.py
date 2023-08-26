@@ -783,6 +783,7 @@ def consultaMemo(request):
                 'objectList': resultadoQuery,
                 'form': form,
                 'tipo': tipo,
+                'numBusca': numBusca,
             }
             
     else:
