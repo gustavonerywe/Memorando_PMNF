@@ -28,12 +28,7 @@
     h6 {
         font-weight: bold;
     }
-
-    #header {
-        padding: 10px;
-        text-align: center;
-    }
-
+    
     #content {
         padding: 20px;
     }
@@ -42,7 +37,6 @@
         padding: 10px;
         text-align: center;
         margin-left: 60%;
-        margin-top: 100%;
     }
 
     #table-generate {
@@ -156,7 +150,7 @@
         <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
-                {% comment %} <img id="img" src="/static/img/prefeitura.png" alt="Logo da prefeitura" /> {% endcomment %}
+                <!-- <img id="img" src="/static/img/prefeitura.png" alt="Logo da prefeitura" />  -->
                 <img id="img" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
             </div>
             <hr id="hr-generate" />
