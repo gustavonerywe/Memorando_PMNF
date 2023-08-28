@@ -4,41 +4,41 @@
 {% endblock %}
 {% block content %}
 
-<html class="page_pdf" id="page_pdf">
+<html class="page_visualiza" id="page_visualiza">
 
-<body id="body-pdf">
-    <div id="corpo-pdf">
+<body id="body-visualiza">
+    <div id="corpo-visualiza">
         <link rel="stylesheet" href="/static/css/style.css" />
         {% comment %} {% endcomment %}
         <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
             {% csrf_token %}
             <div id="header">
-                <a href="{% url 'consulta_memo' %}"><img class="back" style="float: left;" src="/static/img/botao-voltar.png" width="30"
+                <a href="{% url 'consulta_memo' %}"><img id="back" src="/static/img/botao-voltar.png" width="30"
                     alt="back"></a>
-                {% comment %} <img id="img" src="/static/img/prefeitura.png" alt="Logo da prefeitura" /> {% endcomment %}
+                {% comment %}{% endcomment %}
                 <img class="img-visualiza" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
             </div>
-            <hr class="hr-generate" />
-            <div id="content-pdf">
+            <hr class="hr-visualiza"/>
+            <div id="content-visualiza">
                 <table class="table table-visualiza">
                     <tr>
                         <th style="text-align: center;" id="tituloTable" colspan="2">MEMORANDO</th>
                     </tr>
                     <tr>
-                        <th class="th-generate" style="vertical-align: middle;">Data:</th>
-                        <td class="td-generate">
+                        <th class="th-visualiza" style="vertical-align: middle;">Data:</th>
+                        <td class="td-visualiza">
                             <p style="margin-bottom: 2px;">{{ data_atual }}</p>
                         </td>
                     </tr>
                     <tr>
-                        <th class="th-generate" style="vertical-align: middle;">Número do memorando:</th>
-                        <td class="td-generate"><span id="memo_numero">{{memo_numero}}</span></td>
+                        <th class="th-visualiza" style="vertical-align: middle;">Número do memorando:</th>
+                        <td class="td-visualiza"><span id="memo_numero">{{memo_numero}}</span></td>
                     </tr>
                     <tr>
                         <div id="teste">
-                            <th id="teste" class="th-generate" style="vertical-align: middle;">De:</th>
+                            <th id="teste" class="th-visualiza" style="vertical-align: middle;">De:</th>
                         </div>
-                        <td class="td-generate">
+                        <td class="td-visualiza">
                             {{ grupo_remetente.name }}
                             <br>
                             {{ remetente.get_full_name }}
@@ -46,8 +46,8 @@
                     </tr>
                     {% if tipo != 'Circular'%}
                     <tr>
-                        <th class="th-generate" style="vertical-align: middle;">Para:</th>
-                        <td class="td-generate" id="secretaria-escolhida">
+                        <th class="th-visualiza" style="vertical-align: middle;">Para:</th>
+                        <td class="td-visualiza" id="secretaria-escolhida">
                             {% if tipo != 'Oficio'%}
                             {% for grupo in grupo_escolhido %}
                             <ul>
@@ -68,8 +68,8 @@
                     </tr>
                     {% if grupo_escolhido_copia|length > 0 %}
                     <tr>
-                        <th class="th-generate" style="vertical-align: middle;">Cópia para:</th>
-                        <td class="td-generate" id="secretaria-escolhida">
+                        <th class="th-" style="vertical-align: middle;">Cópia para:</th>
+                        <td class="td-visualiza" id="secretaria-escolhida">
                             {% if tipo != 'Oficio'%}
                             {% for grupo in grupo_escolhido_copia %}
                             <ul>
@@ -90,21 +90,19 @@
                     {% endif %}
                     {% endif %}
                     <tr>
-                        <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
-                        <td class="td-generate">
+                        <th class="th-visualiza" style="vertical-align: middle;">Assunto:</th>
+                        <td class="td-visualiza">
                             <p style="margin-bottom: 2px;">{{ memorando_assunto }}</p>
                         </td>
                     </tr>
                 </table>
-                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
-                
+                <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-visualiza" contenteditable="false">{{text_content|safe }}</div>
             </div>
             <div>
                 {% for anexo in anexos %}
                 <img src={{anexo.file}}></img>
                 {% endfor %}
             </div>
-            <script src="/static/js/generate_pdf.js"></script>
         </form>
     </div>
 </body>
