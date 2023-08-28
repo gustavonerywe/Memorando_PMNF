@@ -771,14 +771,14 @@ def consultaMemo(request):
                 buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
             
-            if termoBusca and numBusca:    
-                resultadoQuery = buscapornum
-            elif termoBusca:
-                resultadoQuery = buscapornum.union(buscaporAssunto)
+            # if termoBusca and numBusca:    
+            #     resultadoQuery = buscapornum
+            if termoBusca:
+                resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
             elif numBusca:
                 resultadoQuery = buscapornum
             else:
-                resultadoQuery = buscapornum.union(buscaporAssunto)
+                resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
                 
             context = {
                 'buscando': True,
@@ -802,6 +802,8 @@ def visualizaMoc(request, id_criptografado, tipo):
 
         groupUser = memorando.remetente.groups.first()
         
+        queryAnexo = Image.objects.filter(idDoc=id_criptografado, tipoDoc='memorando')
+        
         context = {
             'memorando': memorando,
             'memo_numero': memorando.memo_numero,
@@ -812,7 +814,8 @@ def visualizaMoc(request, id_criptografado, tipo):
             'grupo_escolhido': memorando.destinatario.all(),
             'text_content': mark_safe(memorando.corpo),
             'grupo_escolhido_copia': memorando.destinatarios_copia.all(),
-            'tipo': tipo
+            'tipo': tipo,
+            'anexos': queryAnexo,
         }
         return render(request, 'visualiza_moc.html', context)
 

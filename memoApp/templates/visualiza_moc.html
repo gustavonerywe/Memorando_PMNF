@@ -99,6 +99,11 @@
                 <div style=" margin-top: 10px; text-align: justify;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
                 
             </div>
+            <div>
+                {% for anexo in anexos %}
+                <img src={{anexo.file}}></img>
+                {% endfor %}
+            </div>
             <script src="/static/js/generate_pdf.js"></script>
         </form>
     </div>
