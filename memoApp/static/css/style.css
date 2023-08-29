@@ -2313,3 +2313,8 @@ hr {
     width: 30%;
     margin-right: 75%;
 }
+
+.img-container{
+    width: auto;
+    text-align: center;
+}

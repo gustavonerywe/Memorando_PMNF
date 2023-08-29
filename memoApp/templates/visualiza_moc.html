@@ -103,9 +103,9 @@
             <script src="/static/js/generate_pdf.js"></script>
         </form>
     </div>
-    <div>
+    <div class="img-container">
         {% for anexo in anexos %}
-        <img src='/fileStorage/{{anexo.file}}'></img>
+        <img src='/fileStorage/{{anexo.file}}' style="width: 80%; margin: 10px;"></img>
         {% endfor %}
     </div>
 </body>
