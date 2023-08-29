@@ -2229,31 +2229,23 @@ hr {
     padding: 11px;
     text-align: center;
 }
-.table-visualiza{
-    margin-left: -75px;
-    border-collapse: collapse;
-    width: 120%;
-    margin-top: 20px;
-    border: 2px solid;
-}
-.img-visualiza{
-    margin-top: 30px;
-    margin-left: -100%;
-    width: 40%;
-}
 .hr-generate{
     width: 150%;
     margin: 0 auto;
     margin-left: -150px;
 }
-.back{
+#back{
     margin-left: -38%;
-    width: 7%;
-    padding: 5px;
+    width: 45px;
+    padding: 4px;
     border-radius: 10px;
+    border: #000 2px solid;
+    margin-left: 90%;
+    position: relative;
+    top: 80px;
 }
 
-.back:hover {
+#back:hover {
     transform: scale(1.1);
 }
 
@@ -2305,4 +2297,19 @@ hr {
 
 #removeBusca:hover{
     transform: scale(1.1);
+}
+
+.th-visualiza, .td-visualiza{
+    width: 200px;
+}
+.table-visualiza{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 2px solid;
+    margin-bottom: 40px;
+}
+.img-visualiza{
+    width: 30%;
+    margin-right: 75%;
 }
