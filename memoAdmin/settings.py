@@ -143,6 +143,9 @@ USE_X_FORWARDED_HOST = True
 
 STATIC_URL = '/static/'
 LOGIN_URL='/login'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'fileStorage')
+MEDIA_URL = '/fileStorage/'
+
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -71,7 +71,7 @@ def upload(request):
             
             
             for file in files:
-                file.name = str(datetime.date.today()) + file.name
+                file.name = str(datetime.date.today()) + "-" + file.name
                 fileName = file.name
                 caminho_completo = os.path.join(BASE_DIR, 'fileStorage', fileName)
                 caminho_completo = caminho_completo.replace('\\', '/')
@@ -816,6 +816,7 @@ def visualizaMoc(request, id_criptografado, tipo):
             'grupo_escolhido_copia': memorando.destinatarios_copia.all(),
             'tipo': tipo,
             'anexos': queryAnexo,
+            'basedir': BASE_DIR
         }
         return render(request, 'visualiza_moc.html', context)
 

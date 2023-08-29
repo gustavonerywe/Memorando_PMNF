@@ -9,7 +9,7 @@ from datetime import datetime
 class Image(models.Model):
     idDoc = models.IntegerField(null=True, blank=False)
     tipoDoc = models.CharField(max_length=50, null=True, blank=False)
-    file = models.FileField(upload_to='uploads/')     
+    file = models.FileField()     
     class Meta:
         app_label = 'memoApp'
         
