@@ -816,7 +816,6 @@ def visualizaMoc(request, id_criptografado, tipo):
             'grupo_escolhido_copia': memorando.destinatarios_copia.all(),
             'tipo': tipo,
             'anexos': queryAnexo,
-            'basedir': BASE_DIR
         }
         return render(request, 'visualiza_moc.html', context)
 
@@ -824,6 +823,8 @@ def visualizaMoc(request, id_criptografado, tipo):
         memorando = MemorandoCircular.objects.get(id=id_criptografado)
 
         groupUser = memorando.remetente_circular.groups.first()
+        
+        queryAnexo = Image.objects.filter(idDoc=id_criptografado, tipoDoc='memorando-circular')
         
         context = {
             'memorando': memorando,
@@ -834,7 +835,8 @@ def visualizaMoc(request, id_criptografado, tipo):
             'data_atual': memorando.data_circular.date(),
             'grupo_escolhido': memorando.destinatario_circular.all(),
             'text_content': mark_safe(memorando.corpo_circular),
-            'tipo': tipo
+            'tipo': tipo,
+            'anexos': queryAnexo,
         }
         return render(request, 'visualiza_moc.html', context)
     
@@ -842,6 +844,8 @@ def visualizaMoc(request, id_criptografado, tipo):
         memorando = Oficio.objects.get(id=id_criptografado)
 
         groupUser = memorando.remetente_oficio.groups.first()
+        
+        queryAnexo = Image.objects.filter(idDoc=id_criptografado, tipoDoc='oficio')
         
         context = {
             'memorando': memorando,
@@ -853,6 +857,7 @@ def visualizaMoc(request, id_criptografado, tipo):
             'grupo_escolhido': memorando.destinatario_oficio,
             'text_content': mark_safe(memorando.corpo_oficio),
             'grupo_escolhido_copia': memorando.destinatarios_copia_oficio,
-            'tipo': tipo
+            'tipo': tipo,
+            'anexos': queryAnexo
         }
         return render(request, 'visualiza_moc.html', context)
