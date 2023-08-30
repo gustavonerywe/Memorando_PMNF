@@ -52,7 +52,7 @@
                 </tr>
                 <tr class="table-secondary">
                     <th>Data:</th>
-                    <td><input type="date" name="data" value="{% now 'Y-m-d' %}" readonly /></td>
+                    <td><input class="date-input" type="date" name="data" value="{% now 'Y-m-d' %}" readonly /></td>
                 </tr>
                 <tr class="table-secondary">
                     <th>Nº do memorando</th>
@@ -131,8 +131,9 @@
                 <textarea id="corpo" name="corpo"></textarea>
             </section>
         </div>
-        <!-- <div id="footer">
-                <p></p>
+        <p class="endereco-pmnf">Endereço prefeitura</p>
+            <div id="footer">
+                {% comment %} <p></p>
                 <fieldset id="box-field">
                     <table>
                         <tr>
@@ -145,8 +146,8 @@
                             <td id="ass">Ass: _____________________</td>
                         </tr>
                     </table>
-                </fieldset>
-            </div> -->
+                </fieldset> {% endcomment %}
+            </div> 
 
         <hr />
 

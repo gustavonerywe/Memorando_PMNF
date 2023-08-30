@@ -2318,3 +2318,17 @@ hr {
     width: auto;
     text-align: center;
 }
+
+.date-input{
+    border: none;
+    display: inline;
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: none;
+    width: auto;
+}
+
+.endereco-pmnf{
+    text-align: center;
+}
