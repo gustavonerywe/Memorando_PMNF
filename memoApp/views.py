@@ -3,13 +3,8 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
-<<<<<<< HEAD
-from django.http import Http404, HttpResponse
-from .forms import ImageForm
-=======
 from django.http import Http404, FileResponse, HttpResponse
 from .forms import ImageForm, SearchForm
->>>>>>> 92789c4cfd4c073e037497e46cd069f0af30aac9
 from django.utils import timezone
 import datetime
 from django.contrib.auth.models import Group
