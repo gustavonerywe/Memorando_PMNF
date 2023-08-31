@@ -761,6 +761,9 @@ def consultaMemo(request):
             print(termoBusca)
             numBuscaComAno = str(numBusca).zfill(3)+"/"+str(ano)
             
+            # if tipo == 'Todos':
+            #     mostraTodos(request, numBuscaComAno, termoBusca, ano, form)
+                
             if tipo == 'Memorando':
                 buscapornum = Memorando.objects.filter(memo_numero=numBuscaComAno)
                 buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
@@ -771,8 +774,6 @@ def consultaMemo(request):
                 buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
             
-            # if termoBusca and numBusca:    
-            #     resultadoQuery = buscapornum
             if termoBusca:
                 resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
             elif numBusca:
@@ -797,6 +798,7 @@ def consultaMemo(request):
     
 @login_required
 def visualizaMoc(request, id_criptografado, tipo):
+    
     if tipo == 'Memorando':
         memorando = Memorando.objects.get(id=id_criptografado)
 
