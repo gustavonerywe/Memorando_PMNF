@@ -41,8 +41,9 @@ class UltimoNumero(models.Model):
     
 
 class SearchForm(forms.Form):
-    tipo_moc = forms.CharField(label='tipo', max_length=50)
-    numBusca = forms.IntegerField(label='numBusca')
-    termoBusca = forms.CharField(label='termoBusca', max_length=100)
+    tipo_moc = forms.CharField(label='tipo_moc', max_length=50, required=True)
+    numBusca = forms.IntegerField(label='numBusca', required=False)
+    termoBusca = forms.CharField(label='termoBusca', max_length=100, required=False)
+    ano = forms.IntegerField(label='ano', required=True)
     
     

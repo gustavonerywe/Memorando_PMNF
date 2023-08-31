@@ -17,7 +17,7 @@ urlpatterns = [
     path('memorando_circular', views.memorando_circular, name='memorando_circular'),
     path('oficio', views.oficio, name='oficio'),
     path('erro/', views.error_image, name='erro'),
-    # path('alterar-senha/', views.change_password, name='change_password'),
     path('consulta-memo/', views.consultaMemo, name='consulta_memo'),
-    # path('encontra-memo/', views.encontraMemo, name='consulta_memo'),
+    path('visualiza_moc/<int:id_criptografado>/<str:tipo>', views.visualizaMoc, name='visualiza_moc'),
+
 ]
