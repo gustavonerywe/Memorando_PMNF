@@ -1,4 +1,4 @@
-const fileInput = document.querySelector('#id_file');
+const fileInput = document.querySelector('#id_file1');
 const dropArea = document.getElementById('drop-area');
 const inputContainer = document.getElementById('container-file');
 const addInputButton = document.getElementById('addInput');
@@ -233,6 +233,7 @@ function addCancelButtonEvent(cancelButton){
         buttonYesModal.addEventListener('click', function () {
           setTimeout(function () {
             fileInput.value = '';
+            firstCancelButton.style.display = "none";
           }, 100);
           meuModal.style.display = 'none';
         }
@@ -478,3 +479,17 @@ oficio.addEventListener('click', function(){
     window.location.href = '/oficio'
   }, 1500);
 })
+
+// function verificarInput() {
+//   const buttonFileCancel = document.querySelector(".cancel-button");
+//   if (buttonFileCancel.value === "") {
+//     buttonFileCancel.style.display = "none";
+//   } else {
+//     buttonFileCancel.style.display = "block";
+//   }
+// }
+const id_file = document.getElementById("id_file1");
+
+id_file.addEventListener('change', function() {
+  firstCancelButton.style.display = "block";
+});

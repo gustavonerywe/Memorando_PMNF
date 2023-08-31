@@ -505,7 +505,7 @@ main {
 }
 
 .cancel-button {
-    margin-right: 10px;
+    margin-right: 50px;
     background-color: #e35d6a;
     border-radius: 60px;
     cursor: pointer;
@@ -530,6 +530,18 @@ main {
     justify-content: center;
     margin-bottom: 18px;
     */
+}
+#botaoModal{
+    margin-right: -30px;
+    background-color: #e35d6a;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 32.5px;
+    height: 32.5px;
+    padding: 1px;
+    align-self: baseline;
+    border: 2px solid black;
+    margin-bottom: -10px;
 }
 
 .modal-content-login {
@@ -1151,11 +1163,16 @@ hr {
 .id_file1 {
     display: block;
     margin: 0 auto;
+    margin-left: 40px;
     margin-right: 50px;
     width: 358.094px;
     border-radius: 20px;
     margin-bottom: -17px;
 }
+#id_file{
+    margin-left: -40px;
+}
+
 
 #icon-files {
     font-size: 60px;
@@ -1425,7 +1442,7 @@ hr {
 
     #id_file1,
     #id_file {
-        width: 200px;
+        width: 250px;
     }
 
     /* .modal-body{
@@ -1487,11 +1504,6 @@ hr {
         td,
         tr {
             font-size: 75%;
-        }
-
-        #id_file1,
-        #id_file {
-            width: 180px;
         }
 
         #drop-area {
@@ -1580,10 +1592,6 @@ hr {
         margin-left: -9px;
     }
 
-    #id_file1,
-    #id_file {
-        width: 245px;
-    }
 
     /* .modal-body{
         width: 200px;

@@ -164,10 +164,10 @@
                 <div id="input-container">
                     <div id="container-file">
                         <div class="input-row" id="div-anexo-orig">
-                            <button type="button" id="botaoModal" class="cancel-button" data-index="original"><i
+                            <button type="button" id="botaoModal" class="cancel-button" data-index="original" style="display: none;"><i
                                     class="bi bi-dash"></i></button>
                             <div class="mb-3">
-                                <input class="form-control form-control-sm id_file1" id="id_file" type="file" name="file" />
+                                <input class="form-control form-control-sm id_file1" id="id_file1" type="file" name="file" />
                             </div>
                             <button type="button" style="font-size: 1em;" class="addInput" id="addInput">
                                 <i class="bi bi-plus"></i>
@@ -254,7 +254,7 @@
             <button type="button" id="ok-modal" class="btn btn-dark btn-sm">Ok</button>
         </div>
     </div>
-    <script src="/static/js/memoMain.js"></script>
+
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
     <script>
         tinymce.init({
@@ -283,6 +283,7 @@
             $("#select-secretaria-copia-para").select2();
         });
     </script>
+        <script defer src="/static/js/memoMain.js"></script>
 </body>
 
 </html>
