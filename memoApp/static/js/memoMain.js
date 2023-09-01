@@ -493,3 +493,8 @@ const id_file = document.getElementById("id_file1");
 id_file.addEventListener('change', function() {
   firstCancelButton.style.display = "block";
 });
+
+id_file.addEventListener('drop', e=>{
+  e.preventDefault();
+  firstCancelButton.style.display = "block";
+})

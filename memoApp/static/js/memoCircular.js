@@ -1,4 +1,4 @@
-const fileInput = document.querySelector('#id_file');
+const fileInput = document.querySelector('#id_file1');
 const dropArea = document.getElementById('drop-area');
 const inputContainer = document.getElementById('container-file');
 const addInputButton = document.getElementById('addInput');
@@ -233,7 +233,7 @@ function createNewInput() {
   });
 }
 
-function addCancelButtonEvent(cancelButton) {
+function addCancelButtonEvent(cancelButton){
   cancelButton.type = 'button';
   cancelButton.addEventListener('click', function () {
     if (cancelButton.parentNode == document.getElementById('div-anexo-orig')) {
@@ -242,7 +242,12 @@ function addCancelButtonEvent(cancelButton) {
         buttonYesModal.addEventListener('click', function () {
           setTimeout(function () {
             fileInput.value = '';
+            firstCancelButton.style.display = "none";
           }, 100);
+          spanMessage.textContent = "Arquivo removido com sucesso!";
+          setTimeout(function () {
+            spanMessage.textContent = '';
+          }, 2500)
           meuModal.style.display = 'none';
         }
         )
@@ -484,4 +489,15 @@ oficio.addEventListener('click', function(){
   setTimeout(function(){
     window.location.href = '/oficio'
   }, 1500)
+})
+
+const id_file = document.getElementById("id_file1");
+
+id_file.addEventListener('change', function() {
+  firstCancelButton.style.display = "block";
+});
+
+id_file.addEventListener('drop', e=>{
+  e.preventDefault();
+  firstCancelButton.style.display = "block";
 })

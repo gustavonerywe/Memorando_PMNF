@@ -51,7 +51,7 @@
             </tr>
             <tr class="table-secondary">
                <th>Data:</th>
-               <<td><input class="date-input" type="date" name="data" value="{% now 'Y-m-d' %}" readonly /></td>
+               <td><input class="date-input" type="date" name="data" value="{% now 'Y-m-d' %}" readonly /></td>
             </tr>
             <tr class="table-secondary">
                <th>Nº do memorando circular</th>
@@ -154,10 +154,10 @@
             <div id="input-container">
                <div id="container-file">
                   <div class="input-row" id="div-anexo-orig">
-                     <button type="button" id="botaoModal" class="cancel-button" data-index="original"><i
+                     <button type="button" id="botaoModal" class="cancel-button" data-index="original" style="display: none;"><i
                            class="bi bi-dash"></i></button>
                      <div class="mb-3">
-                        <input class="form-control form-control-sm id_file1" id="id_file" type="file" name="file" />
+                        <input class="form-control form-control-sm id_file1" id="id_file1" type="file" name="file" />
                      </div>
                      <button type="button" style="font-size: 1em;" class="addInput" id="addInput">
                         <i class="bi bi-plus"></i>
