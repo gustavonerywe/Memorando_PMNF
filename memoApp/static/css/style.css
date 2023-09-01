@@ -2340,3 +2340,12 @@ hr {
 .endereco-pmnf{
     text-align: center;
 }
+
+#nenhumMemo {
+    margin-top: 2%;
+    text-align: center;
+    color: red;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}

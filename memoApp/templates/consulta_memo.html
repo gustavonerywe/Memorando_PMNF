@@ -104,9 +104,14 @@
             </tr>
             {% endfor %}
             {% endif %}
+            
+            
 
         </tbody>
     </table>
+    {% if objectList|length == 0 %}
+        <p id="nenhumMemo">Nenhum encontrado</p>
+    {% endif %}
     </div>
     {% endif %}
 
