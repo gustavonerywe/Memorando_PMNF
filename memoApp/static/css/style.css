@@ -2349,3 +2349,42 @@ hr {
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
 }
+/* responsividade página consulta-memo */
+@media screen and (min-width:400px) and (max-width:500px){
+    #consulta-body{
+        margin: 0 auto; /* alinhar body no centro */
+    }
+    #tipo-e-ano {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-type{
+        width: 105px!important;
+    }
+    #tipo-select-consulta{
+        width: 65%!important;
+    }
+    #inputGroup-sizing-default-number{
+        width: 150px!important;
+        margin-left: -10px;
+    }
+    #consulta-search {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-ano{
+        width: 155px!important;
+        margin-left: 5px;
+    }
+    #ano-select-consulta{
+        width: 50%!important;
+    }
+   #inputGroup-sizing-default-topic{
+        width: 150px!important;
+   }
+
+}
+
+@media screen and (min-width:500px) and (max-width:600px){
+/*códigos*/
+}
