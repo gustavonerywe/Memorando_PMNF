@@ -1,26 +1,36 @@
 from typing import Any
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,  get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django import forms
 from .models import *
 from django.http import Http404, FileResponse, HttpResponse
 from .forms import ImageForm, SearchForm
 from django.utils import timezone
 import datetime
+from bs4 import BeautifulSoup
+from django.utils.html import strip_tags
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.contrib.sessions.backends.db import SessionStore
 from django.utils.safestring import mark_safe
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 import os
+from django.shortcuts import get_object_or_404
 from django.conf import settings
 from io import BytesIO
 from pathlib import Path
 from django.template.loader import render_to_string
+# from urllib.parse import quote
 from weasyprint import HTML, CSS, Attachment
 from django_weasyprint import *
+# import aspose.pdf as aspose
 from reportlab.pdfgen import canvas
 from PIL import Image as imgpil
+from django.forms.utils import ErrorDict
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,6 +76,8 @@ def upload(request):
                 caminho_completo = os.path.join(BASE_DIR, 'fileStorage', fileName)
                 caminho_completo = caminho_completo.replace('\\', '/')
                 nomesArquivos.append(caminho_completo)
+                
+            # print(caminho_completo)
                   
             session = SessionStore(request.session.session_key)
             session['grupo_escolhido'] = grupo_escolhido
@@ -254,6 +266,7 @@ def oficio(request):
 
 @login_required
 def generate_pdf(request, id_criptografado):
+    grupos = Group.objects.all()
     memorando = Memorando.objects.get(id=id_criptografado)
     memo_numero_atualizado = memorando.gerar_proximo_numero()
     data_atual = datetime.date.today()
@@ -297,6 +310,7 @@ def generate_pdf_circular(request, id_criptografado):
 @login_required
 def generate_pdf_oficio(request, id_criptografado):
     oficio = Oficio.objects.get(id=id_criptografado)
+    destinatario = Oficio.objects.get(id=id_criptografado).destinatario_oficio
     memo_numero_atualizado = oficio.gerar_proximo_numero_oficio()
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -341,6 +355,7 @@ def file_detail(request, id):
         raise Http404("Image file not found")
 
     try:
+        # Calcular a soma dos tamanhos de todos os arquivos
         total_size_mb = 0
         images = Image.objects.filter(file=image.file)
         for img in images:
@@ -357,6 +372,21 @@ def file_detail(request, id):
     }
 
     return render(request, 'upload_success.html', context)
+
+@login_required
+def digital_view(request, id):
+    try: 
+        image = Image.objects.get(id=id)
+        # with open(str(image.file), 'rb') as pdf_file:
+        #     pdf_reader = PyPDF2.PdfReader(pdf_file)
+        #     num_pages = len(pdf_reader.pages)
+        #     for page_num in range(num_pages):
+        #         page = pdf_reader.pages[page_num]
+        #         print(page.extract_text())
+    except Image.DoesNotExist:
+        raise Http404("Image does not exist")
+    
+    return JsonResponse(str(image.file), safe=False)
 
 @login_required
 def file_list(request):
@@ -405,6 +435,7 @@ def loginPage(request):
         else:
             form = AuthenticationForm(request)
         
+        # Adicionar o formulário de alteração de senha ao contexto
         return render(request, 'login.html', {'form': form})
     
     
@@ -412,10 +443,20 @@ def encerraSessao(request):
     logout(request)
     return redirect('loginPage')
 
+# def geraEBaixaPDF(request, id_criptografado):
+#     pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(id_criptografado))
+#     response = FileResponse(pdf, as_attachment=True, filename='memorando.pdf')
+#     return response
+
+import io
 from django.http import HttpResponse
+from django.contrib import messages
 
 
 def geraEBaixaPDF(request, id_criptografado):
+    
+    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    # url_criptografada = quote(id_criptografado_criptografado)
     memorando = Memorando.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -435,9 +476,14 @@ def geraEBaixaPDF(request, id_criptografado):
     }
     print(arquivos)
     
+    
+    html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
+
+    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf.html', context, request=request)
     
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     pathToPdf = str(BASE_DIR)+'/fileStorage/memorando' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
@@ -463,6 +509,8 @@ def geraEBaixaPDF(request, id_criptografado):
 
 def geraEBaixaPDFCircular(request, id_criptografado):
     
+    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    # url_criptografada = quote(id_criptografado_criptografado)
     grupos = Group.objects.all()
     memorando = Memorando.objects.get(id=id_criptografado)
     memorandocircular = MemorandoCircular.objects.get(id=id_criptografado)
@@ -483,9 +531,14 @@ def geraEBaixaPDFCircular(request, id_criptografado):
         'arquivos': arquivos,
     }
     
+    
+    html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_circular.html"
+
+    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf_circular.html', context, request=request)
     
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     pathToPdf = str(BASE_DIR)+'/fileStorage/memorando_circular' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
@@ -509,6 +562,9 @@ def geraEBaixaPDFCircular(request, id_criptografado):
             return response
 
 def geraEBaixaPDFOficio(request, id_criptografado):
+    
+    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    # url_criptografada = quote(id_criptografado_criptografado)
     memorando = Memorando.objects.get(id=id_criptografado)
     oficio = Oficio.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
@@ -527,9 +583,14 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     }
     print(oficio.destinatarios_copia_oficio)
     
+    
+    html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_oficio.html"
+
+    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
     
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     pathToPdf = str(BASE_DIR)+'/fileStorage/oficio' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
@@ -555,6 +616,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
 
 @login_required
 def force_download(request, pdf):
+    # file_path = str(BASE_DIR) + '/memoApp/static/teste.txt'
     with BytesIO(pdf) as f:
             response = HttpResponse(f, content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
@@ -610,6 +672,15 @@ class PrintView(WeasyTemplateResponseMixin, MyDetailView):
     response_class = WeasyTemplateResponse
     
 
+import hashlib
+
+# def criptografar_id_criptografado(id_criptografado):
+#     id_criptografado_str = str(id_criptografado)
+    
+#     hash_object = hashlib.sha256(id_criptografado_str.encode())
+#     encrypted_id = hash_object.hexdigest()
+    
+#     return encrypted_id
 
 
 def add_image(arquivos, infile, outfile):
@@ -621,12 +692,14 @@ def add_image(arquivos, infile, outfile):
     
     in_pdf_file = infile
     out_pdf_file = outfile
+    # arquivos = ['C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/perfeito_kSdyBZs.jpg', 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/phoca_thumb_l_image03_grd_0IJe7lC.png', 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/fe_ba6jcnr.png']
     
     width_a4_points = 595.276
     height_a4_points = 841.890
  
     packet = io.BytesIO()
     can = canvas.Canvas(packet)
+    #can.drawString(10, 100, "Hello world")
     x_start = (width_a4_points) / 2
     y_start = (height_a4_points) / 2
     
@@ -636,10 +709,12 @@ def add_image(arquivos, infile, outfile):
         
     can.save()
     
+    # move to the beginning of the StringIO buffer
     packet.seek(0)
  
     new_pdf = PdfReader(packet)
  
+    # read the existing PDF
     existing_pdf = PdfReader(open(in_pdf_file, "rb"))
     output = PdfWriter()
     
@@ -654,6 +729,16 @@ def add_image(arquivos, infile, outfile):
     outputStream = open(out_pdf_file, "wb")
     output.write(outputStream)
     outputStream.close()
+
+    # document = aspose.Document(infile)
+    
+    # image_path = 'C:/Users/yan.silva/Documents/Projetos/Memorando_PMNF/uploads/phoca_thumb_l_image03_grd_0IJe7lC.png'
+    
+    # document.pages.add()
+    # document.pages[2].add_image(image_path, aspose.Rectangle(20, 730, 120, 830, True))
+    
+    # document.save(outfile)
+    
 
 @login_required
 def error_image(request):
