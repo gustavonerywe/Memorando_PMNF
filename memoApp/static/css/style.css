@@ -2250,7 +2250,7 @@ hr {
     border: #000 2px solid;
     margin-left: 90%;
     position: relative;
-    top: 80px;
+    top: 90px;
 }
 
 #back:hover {
@@ -2317,8 +2317,14 @@ hr {
     border: 2px solid;
     margin-bottom: 40px;
 }
+.table-visualiza th,
+.table-visualiza td {
+    text-align: left;
+    padding: 1%;
+    border: 1px solid;
+}
 .img-visualiza{
-    width: 30%;
+    width: 40%;
     margin-right: 75%;
 }
 
@@ -2514,3 +2520,64 @@ hr {
    }
 
 }
+/* códigos para responsividade da página vizualiza_moc */
+    @media screen and (min-width:320px) and (max-width:400px) {
+        .table-visualiza {
+         font-size: 11px;
+         width: 80%;
+            margin-left: -5px;
+        }
+        .table-visualiza th,
+        td {
+            font-size: 11px;
+        }
+        #back{
+            margin-left: 120px;
+            position: relative;
+            top: 45px;
+            width: 35px;
+        }
+        .hr-visualiza{
+            width: 75%;
+        }
+    }
+    @media screen and (min-width:400px) and (max-width:500px){
+        .table-visualiza {
+            font-size: 12px;
+            width: 80%;
+            margin-left: -5px;
+        }
+        .table-visualiza th,
+        td {
+            font-size: 12px;
+        }
+        #back{
+            margin-left: 140px;
+            position: relative;
+            top: 50px;
+            width: 35px;
+        }
+        .hr-visualiza{
+            width: 75%;
+        }
+    }
+    @media screen and (min-width:500px) and (max-width:600px){
+        .table-visualiza {
+            font-size: 13px;
+            width: 80%;
+            margin-left: -5px;
+        }
+        .table-visualiza th,
+        td {
+            font-size: 13px;
+        }
+        #back{
+            margin-left: 180px;
+            position: relative;
+            top: 63px;
+            width: 40px;
+        }
+        .hr-visualiza{
+            width: 77%;
+        }
+    }
