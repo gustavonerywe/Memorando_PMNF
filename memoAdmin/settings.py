@@ -26,7 +26,7 @@ WKHTMLTOPDF_CMD = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
 SECRET_KEY = 'django-insecure-_-&=sbl-$9p9u*&x8a#ihz6#0h=h3whts#9+xzb!ltjaxzow1y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
