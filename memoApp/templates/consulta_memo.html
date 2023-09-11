@@ -18,7 +18,7 @@
          {% csrf_token %}
             <div id="tipo-e-ano">
                 <div class="input-group mb-3 divConsulta" id="tipo-consulta">
-                    <span class="input-group-text input-consulta" id="inputGroup-sizing-default" style="width: 50%;">Tipo</span>
+                    <span class="input-group-text input-consulta" id="inputGroup-sizing-default-type" style="width: 50%;">Tipo</span>
                         <select class="select2 selects" name='tipo_moc' id="tipo-select-consulta" style="width: 48%;">
                             <option value='Memorando' selected>Memorando Comum</option>
                             <option value='Oficio'>Ofício</option>
@@ -26,7 +26,7 @@
                         </select>
                 </div>
                 <div id="numero-consulta" class="input-group mb-3 divSubmit">
-                    <span class="input-group-text" id="inputGroup-sizing-default">N° do memorando</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default-number">N° do memorando</span>
                     <input id="numBusca" name='numBusca' type="text" class="form-control input-consulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     {% comment %} <button id="clearButton" type="button"><img width="30" src="/static/img/remove.png" alt="X"></button> {% endcomment %}
                 </div>
@@ -47,7 +47,7 @@
                         </select>
                 </div>
                 <div id="assunto-consulta" class="input-group mb-3 divSubmit">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Assunto - MOC</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default-topic">Assunto - MOC</span>
                     <input id="termoBusca" name='termoBusca'type="text" class="form-control input-consulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     {% comment %} <button id="removeBusca" type="button"><img width="30" src="/static/img/remove.png" alt="X"></button> {% endcomment %}
                 </div>  

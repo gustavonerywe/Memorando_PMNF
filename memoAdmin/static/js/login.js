@@ -33,7 +33,7 @@ try {
 
     setTimeout(() => {
        errorBox.style.display = "none"; 
-    }, 10000);
+    }, 5000);
 
 } catch (error) {
     
