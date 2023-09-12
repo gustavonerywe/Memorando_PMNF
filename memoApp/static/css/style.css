@@ -1432,7 +1432,7 @@ hr {
 
     .tox {
         width: 120%;
-        margin-left: -30px;
+        margin-left: -25px;
     }
 
     #drop-area {
@@ -1442,7 +1442,8 @@ hr {
 
     #id_file1,
     #id_file {
-        width: 250px;
+        width: 200px;
+        font-size: 12px;
     }
 
     /* .modal-body{
@@ -1484,7 +1485,7 @@ hr {
     }
 
     .select2-container--default .select2-selection--single {
-        font-size: 11px !important;
+        font-size: 8.5px !important;
         text-align: center !important;
     }
 
@@ -1493,17 +1494,23 @@ hr {
     }
 
     @media screen and (min-width:320px) and (max-width:350px) {
+        #id_file1,
+        #id_file {
+            width: 180px;
+            font-size: 11px;
+        }
+        
         .table {
-            font-size: 75%;
+            font-size: 80%;
             margin-bottom: 25px;
-            margin-left: -10px;
+            margin-left: -20px;
 
         }
 
         .table th,
         td,
         tr {
-            font-size: 75%;
+            font-size: 80%;
         }
 
         #drop-area {
@@ -1591,7 +1598,11 @@ hr {
         width: 105%;
         margin-left: -9px;
     }
-
+    #id_file1,
+    #id_file {
+        width: 240px;
+        font-size: 12px;
+    }
 
     /* .modal-body{
         width: 200px;
@@ -1665,7 +1676,8 @@ hr {
 
         #id_file1,
         #id_file {
-            width: 290px;
+            width: 280px;
+            font-size: 13px;
         }
 
         .select2-container {
@@ -2250,7 +2262,7 @@ hr {
     border: #000 2px solid;
     margin-left: 90%;
     position: relative;
-    top: 80px;
+    top: 90px;
 }
 
 #back:hover {
@@ -2317,8 +2329,14 @@ hr {
     border: 2px solid;
     margin-bottom: 40px;
 }
+.table-visualiza th,
+.table-visualiza td {
+    text-align: left;
+    padding: 1%;
+    border: 1px solid;
+}
 .img-visualiza{
-    width: 30%;
+    width: 40%;
     margin-right: 75%;
 }
 
@@ -2349,3 +2367,253 @@ hr {
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
 }
+
+
+/* responsividade página consulta-memo */
+
+@media screen and (min-width:320px) and (max-width:400px){
+    #consulta-body{
+        margin: 0 auto; /* alinhar body no centro */
+    }
+    #tipo-e-ano {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-type{
+        width: 60px!important;
+        margin-left: -5px;
+    }
+    #tipo-select-consulta{
+        width: 75%!important;
+    }
+    #inputGroup-sizing-default-number{
+        width: 150px!important;
+        margin-left: -10px;
+    }
+    #consulta-search {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-ano{
+        width: 60px!important;
+        margin-left: 5px;
+    }
+    #ano-select-consulta{
+        width: 70%!important;
+    }
+   #inputGroup-sizing-default-topic{
+        width: 150px!important;
+        margin: 0 auto!important;
+   }
+   .styled-link{
+        width: 50px;
+        margin-left: -0.2px;
+        text-indent: -17px;
+   }
+    .query_result {
+        width: 98.5%;
+        height: auto;
+        border-radius: 15px;
+}
+}
+@media screen and (min-width:400px) and (max-width:500px){
+    #consulta-body{
+        margin: 0 auto; /* alinhar body no centro */
+    }
+    #tipo-e-ano {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-type{
+        width: 105px!important;
+    }
+    #tipo-select-consulta{
+        width: 65%!important;
+    }
+    #inputGroup-sizing-default-number{
+        width: 150px!important;
+        margin-left: -10px;
+    }
+    #consulta-search {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-ano{
+        width: 110px!important;
+        margin-left: 5px;
+    }
+    #ano-select-consulta{
+        width: 62%!important;
+    }
+   #inputGroup-sizing-default-topic{
+        width: 150px!important;
+   }
+   .query_result {
+    border-radius: 15px;
+}
+    .styled-link{
+        width: 65px;
+        text-indent: -10px;
+   }
+   
+}
+@media screen and (min-width:500px) and (max-width:600px){
+    #consulta-body{
+        margin: 0 auto; /* alinhar body no centro */
+    }
+    #tipo-e-ano {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-type{
+        width: 153px!important;
+        margin-left: -5px;
+    }
+    #tipo-select-consulta{
+        width: 61%!important;
+    }
+    #inputGroup-sizing-default-number{
+        width: 150px!important;
+        margin-left: -10px;
+    }
+    #consulta-search {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-ano{
+        width: 150px!important;
+        margin-left: 10px;
+    }
+    #ano-select-consulta{
+        width: 59%!important;
+    }
+   #inputGroup-sizing-default-topic{
+        width: 150px!important;
+        margin: 0 auto!important;
+   }
+}
+@media screen and (min-width:600px) and (max-width:700px){
+    #inputGroup-sizing-default-number{
+        width: 60%!important;
+
+    }
+    #inputGroup-sizing-default-topic{
+        width: 60%!important;
+   }
+    /* #consulta-body{
+        margin: 0 auto; 
+    }
+    #tipo-e-ano {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-type{
+        width: 230px!important;
+        margin-left: -5px;
+    }
+    #tipo-select-consulta{
+        width: 52%!important;
+    }
+    #inputGroup-sizing-default-number{
+        width: 230px!important;
+        margin-left: -15px;
+    }
+    #consulta-search {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-ano{
+        width: 230px!important;
+        margin-left: 10px;
+    }
+    #ano-select-consulta{
+        width: 49%!important;
+    }
+   #inputGroup-sizing-default-topic{
+        width: 150px!important;
+        margin: 0 auto!important;
+   } */
+}
+@media screen and (min-width:700px) and (max-width:1200px) {
+    #inputGroup-sizing-default-number{
+        width: 52%!important;
+
+    }
+    #inputGroup-sizing-default-topic{
+        width: 52%!important;
+   }
+
+}
+/* códigos para responsividade da página vizualiza_moc */
+    @media screen and (min-width:320px) and (max-width:400px) {
+        .page_visualiza{
+            width: 100%;
+        }
+        .table-visualiza {
+            font-size: 11px;
+            width: 100%;
+            margin-left: -5px;
+        }
+        .table-visualiza th,
+        td {
+            font-size: 11px;
+        }
+        #back{
+            margin-left: 120px;
+            position: relative;
+            top: 45px;
+            width: 35px;
+        }
+        .hr-visualiza{
+            width: 75%;
+        }
+        #content-visualiza{
+            width: 80%;
+        }
+    }
+    @media screen and (min-width:400px) and (max-width:500px){
+        .table-visualiza {
+            font-size: 12px;
+            width: 100%;
+            margin-left: -5px;
+        }
+        .table-visualiza th,
+        td {
+            font-size: 12px;
+        }
+        #back{
+            margin-left: 140px;
+            position: relative;
+            top: 50px;
+            width: 35px;
+        }
+        .hr-visualiza{
+            width: 75%;
+        }
+        #content-visualiza{
+            width: 80%;
+        }
+    }
+    @media screen and (min-width:500px) and (max-width:600px){
+        .table-visualiza {
+            font-size: 13px;
+            width: 100%;
+            margin-left: -5px;
+        }
+        .table-visualiza th,
+        td {
+            font-size: 13px;
+        }
+        #back{
+            margin-left: 180px;
+            position: relative;
+            top: 63px;
+            width: 40px;
+        }
+        .hr-visualiza{
+            width: 77%;
+        }
+        #content-visualiza{
+            width: 80%;
+        }
+    }
