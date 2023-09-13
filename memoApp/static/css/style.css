@@ -38,11 +38,11 @@ h6 {
     padding: 20px;
 }
 
-#footer {
+/* #footer {
     padding: 10px;
     text-align: center;
     margin-left: 67%;
-}
+} */
 
 .table {
     margin: 0 auto;
@@ -90,8 +90,10 @@ h6 {
 
 #ass,
 #em {
-    text-align: left;
-    padding-left: 10px;
+    text-align: center;
+    font-size: small;
+    padding: 5px;
+    width: 100%;
 }
 
 #image-name {
