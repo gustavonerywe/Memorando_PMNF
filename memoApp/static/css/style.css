@@ -351,6 +351,9 @@ main {
 #link-upload-pdf {
     width: 200px;
 }
+#link-upload-sair{
+    width: 200px;
+}
 
 #label-file {
     pointer-events: none;
@@ -2114,10 +2117,32 @@ hr {
 }
 
 /* responsividade upload */
-@media screen and (min-width: 320px) and (max-width:500px) {
+@media screen and (min-width: 320px) and (max-width:400px) {
     .box-upload {
         width: 100%;
-        margin-top: 25%;
+    }
+
+    #img-pdf {
+        width: 30px;
+    }
+
+    .link-container {
+        width: 300px;
+        margin-left: -25px;
+    }
+    #perfil-upload{
+        margin-bottom: 10px;
+        margin-top: 100px;
+    }
+    @media screen and (min-width:350px) {
+        .link-container {
+            margin: 0 auto;
+        }
+    }
+}
+@media screen and (min-width:400px) and (max-width:500px){
+    .box-upload {
+        width: 100%;
     }
 
     #img-pdf {
@@ -2128,16 +2153,7 @@ hr {
         width: 300px;
         margin: 0 auto;
     }
-
-    #link-upload {
-        width: 200px;
-    }
-
-    #link-upload-pdf {
-        width: 200px;
-    }
 }
-
 @media screen and (min-width:500px) and (max-width:600px) {
     .box-upload {
         width: 400px;
@@ -2633,6 +2649,9 @@ hr {
         width: 150px!important;
         margin: 0 auto!important;
    }
+   #consulta-body{
+    margin: 0 auto; /* alinhar body no centro */
+}
 }
 @media screen and (min-width:600px) and (max-width:700px){
     #inputGroup-sizing-default-number{
@@ -2642,6 +2661,9 @@ hr {
     #inputGroup-sizing-default-topic{
         width: 60%!important;
    }
+   #consulta-body{
+    margin: 0 auto; /* alinhar body no centro */
+}
     /* #consulta-body{
         margin: 0 auto; 
     }
@@ -2684,6 +2706,9 @@ hr {
     #inputGroup-sizing-default-topic{
         width: 52%!important;
    }
+   #consulta-body{
+    margin: 0 auto; /* alinhar body no centro */
+}
 
 }
 /* códigos para responsividade da página vizualiza_moc */
@@ -2758,4 +2783,9 @@ hr {
         #content-visualiza{
             width: 80%;
         }
+    }
+
+    #perfil-upload{
+        margin-top: 50px;
+        width: 35px;
     }
