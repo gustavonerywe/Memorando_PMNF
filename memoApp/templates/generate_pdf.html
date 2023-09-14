@@ -128,9 +128,9 @@
     #table-recebido {
         border: 1px solid black;
         padding: 8px;
-        width: 70%;
+        width: 65%;
         margin-top: 20px;
-        margin-left: 15%;
+        margin-left: 17.5%;
     } 
 
     #body-pdf {
@@ -181,6 +181,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Matrícula:</th>
+                        <td class="td-generate">
+                           <span>{{usermoc.matricula}}</span> 
+                        </td>
+                    </tr>
+                    <tr>
                         <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
                             {% for grupo in grupo_escolhido %}
@@ -217,6 +223,9 @@
                 <div style=" margin-top: 10px; text-align: justify;  word-wrap: break-word;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
                 <div id="footer">
                     <table id="table-recebido">
+                        <tr>
+                            <th style="font-weight: bold; text-align: center; font-size: small;">RECEBIDO</th>
+                        </tr>
                         {% for grupo in grupo_escolhido %}
                             <tr style="border-top: 1px solid black;">
                                 <th id="tituloTable2">{{grupo}}</th>
@@ -224,8 +233,11 @@
                             <tr>
                                 <td id="em">Em: _________ /_________ /_________</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid black;">
+                            <tr>
                                 <td id="ass">Ass: ______________________________</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid black;">
+                                <td id="ass">Matrícula: ________________________</td>
                             </tr>
                         {% endfor %}
                     </table>

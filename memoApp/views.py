@@ -111,6 +111,7 @@ def upload(request):
                 'memorando_remetente': memorando.remetente,
                 'memorando_assunto': memorando.assunto,
                 'grupos': grupos,
+                'usermoc': UserMoc.objects.get(user=request.user),
             }
             return render(request, 'upload_success.html', context)
     else:
@@ -121,6 +122,7 @@ def upload(request):
         'memo_numero_atualizado': Memorando().gerar_proximo_numero(),
         'memorando_corpo': Memorando().corpo,
         'grupos': grupos,
+        'usermoc': UserMoc.objects.get(user=request.user)
     }
     return render(request, 'memo_main.html', context)
 
@@ -179,6 +181,7 @@ def memorando_circular(request):
                 'memorando_remetente_circular': memorandocircular.remetente_circular,
                 'memorando_assunto_circular': memorandocircular.assunto_circular,
                 'grupos': grupos,
+                'usermoc': UserMoc.objects.get(user=request.user),
             }
             return render(request, 'upload_success_circular.html', context)
     else:
@@ -189,6 +192,7 @@ def memorando_circular(request):
     'memo_numero_atualizado_circular': memorandocircular.gerar_proximo_numero_circular(),
     'memorando_corpo': Memorando().corpo,
     'grupos': grupos,
+    'usermoc': UserMoc.objects.get(user=request.user),
 }
 
     return render(request, 'memorando_circular.html', context)
@@ -250,7 +254,8 @@ def oficio(request):
                 'oficio_remetente': oficio.remetente_oficio,
                 'oficio_assunto': oficio.assunto_oficio,
                 'destinatario_oficio': oficio.destinatario_oficio,
-                'destinatario_copia_oficio': oficio.destinatarios_copia_oficio
+                'destinatario_copia_oficio': oficio.destinatarios_copia_oficio,
+                'usermoc': UserMoc.objects.get(user=request.user),
             }
             return render(request, 'upload_success_oficio.html', context)
     else:
@@ -260,6 +265,7 @@ def oficio(request):
         'form': form,
         'memo_numero_atualizado_oficio': oficio.gerar_proximo_numero_oficio(),
         'memorando_corpo': Memorando().corpo,
+        'usermoc': UserMoc.objects.get(user=request.user),
     }
     return render(request, 'oficio.html', context)
 
@@ -275,6 +281,7 @@ def generate_pdf(request, id_criptografado):
     grupo_escolhido = session.get('grupo_escolhido')
     text_content = session.get('memorando_corpo')
     grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+    usermoc = UserMoc.objects.get(user=memorando.remetente)
     context = {
         'memorando': memorando,
         'memo_numero_atualizado': memo_numero_atualizado,
@@ -283,6 +290,7 @@ def generate_pdf(request, id_criptografado):
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
+        'usermoc': usermoc,
     }
     return render(request, 'generate_pdf.html', context)
 
@@ -296,6 +304,7 @@ def generate_pdf_circular(request, id_criptografado):
     session = SessionStore(request.session.session_key)
     grupo_escolhido = session.get('grupo_escolhido')
     text_content = session.get('memorando_corpo_circular')
+    usermoc = UserMoc.objects.get(user=memorandocircular.remetente_circular)
     context = {
         'memorandocircular': memorandocircular,
         'memo_numero_atualizado': memo_numero_atualizado,
@@ -303,7 +312,8 @@ def generate_pdf_circular(request, id_criptografado):
         'data_atual': data_numerica,
         'grupo_escolhido': grupo_escolhido,
         'text_content': mark_safe(text_content),
-        'grupos': grupos
+        'grupos': grupos,
+        'usermoc': usermoc,
     }
     return render(request, 'generate_pdf_circular.html', context)
 
@@ -316,6 +326,7 @@ def generate_pdf_oficio(request, id_criptografado):
     data_numerica = data_atual.strftime("%d/%m/%y")
     session = SessionStore(request.session.session_key)
     text_content = session.get('memorando_corpo')
+    usermoc = UserMoc.objects.get(user=oficio.remetente_oficio)
     context = {
         'oficio': oficio,
         'memo_numero_atualizado': memo_numero_atualizado,
@@ -323,7 +334,8 @@ def generate_pdf_oficio(request, id_criptografado):
         'data_atual': data_numerica,
         'text_content': mark_safe(text_content),
         'destinatario_oficio': oficio.destinatario_oficio,
-        'destinatario_copia_oficio': oficio.destinatarios_copia_oficio
+        'destinatario_copia_oficio': oficio.destinatarios_copia_oficio,
+        'usermoc': usermoc,
     }
     return render(request, 'generate_pdf_oficio.html', context)
 
@@ -465,6 +477,7 @@ def geraEBaixaPDF(request, id_criptografado):
     arquivos = session.get('file_name')
     text_content = session.get('memorando_corpo')
     grupo_escolhido_copia = session.get('grupo_escolhido_copia')
+    usermoc = UserMoc.objects.get(user=memorando.remetente)
     context = {
         'memorando': memorando,
         'memorando_assunto': memorando.assunto,
@@ -473,8 +486,8 @@ def geraEBaixaPDF(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupo_escolhido_copia': grupo_escolhido_copia,
         'arquivos': arquivos,
+        'usermoc': usermoc,
     }
-    print(arquivos)
     
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
@@ -520,6 +533,7 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     grupo_escolhido = session.get('grupo_escolhido')
     arquivos = session.get('file_name')
     text_content = session.get('memorando_corpo_circular')
+    usermoc = UserMoc.objects.get(user=memorandocircular.remetente_circular)
     context = {
         'memorando': memorando,
         'memorandocircular': memorandocircular,
@@ -529,6 +543,7 @@ def geraEBaixaPDFCircular(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'grupos': grupos,
         'arquivos': arquivos,
+        'usermoc': usermoc,
     }
     
     
@@ -572,6 +587,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     session = SessionStore(request.session.session_key)
     text_content = session.get('memorando_corpo')
     arquivos = session.get('file_name')
+    usermoc = UserMoc.objects.get(user=oficio.remetente_oficio)
     context = {
         'memorando': memorando,
         'oficio_assunto': oficio.assunto_oficio,
@@ -580,6 +596,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
         'data_atual': data_numerica,
         'text_content': mark_safe(text_content),
         'arquivos': arquivos,
+        'usermoc': usermoc,
     }
     print(oficio.destinatarios_copia_oficio)
     

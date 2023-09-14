@@ -86,3 +86,7 @@ class MemorandoCircular(models.Model):
         ano_atual = data_atual.year
         response = f'{memo_numero_circular:003d}/{ano_atual}'
         return response
+    
+class UserMoc(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    matricula = models.CharField(max_length=7)
