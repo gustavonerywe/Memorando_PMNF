@@ -15,6 +15,10 @@
         padding: 3px;
     }
 
+    #tituloTable2 {
+        background-color: rgb(216, 213, 213);
+    }
+
 
     body {
         width: 75%;
@@ -127,10 +131,14 @@
 
     #table-recebido {
         border: 1px solid black;
-        padding: 8px;
+        padding: 0;
         width: 100%;
-        margin-top: 20px;
+        font-size: xx-small;
     } 
+
+    #ass, #em, #tituloTable2, #matr {
+        font-size: xx-small;
+    }
 
     #body-pdf {
         margin: 0;
@@ -141,6 +149,8 @@
     #content-pdf {
         height: 200px;
     }
+
+
 </style>
 
 
@@ -207,15 +217,12 @@
                 <div style=" margin-top: 10px; text-align: justify;  word-wrap: break-word;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
                 <div id="footer">
                     <table id="table-recebido">
-                        <tr>
-                            <th style="font-weight: bold; text-align: center; font-size: small;">RECEBIDO</th>
-                        </tr>
                         {% for grupo in grupos %}
                             <tr style="border-top: 1px solid black;">
                                 <th id="tituloTable2" style="border-right: 1px solid black;">{{grupo}}</th>
-                                <td id="em" style="width: 25%;">Em: _____/_____/_____</td>
-                                <td id="ass" style="width: 25%;">Ass: ____________________________</td>
-                                <td id="ass" style="width: 25%;">Matrícula: ______________________</td>
+                                <td id="em" style="width: 25%;"> Em: <br> __________/__________/__________</td>
+                                <td id="ass" style="width: 25%;">Ass: <br> __________________________________</td>
+                                <td id="matr" style="width: 25%;">&nbsp; &nbsp; &nbsp; &nbsp; Matrícula: <br> _________ . _________ </td>
                             </tr>
                         {% endfor %}
                     </table>
