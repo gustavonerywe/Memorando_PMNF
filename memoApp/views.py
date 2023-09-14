@@ -38,6 +38,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 @login_required
 def upload(request):
     grupos = Group.objects.all()
+    groupuser = request.user.groups.first()
+    groupaddress = GroupMoc.objects.get(group=groupuser)
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -112,17 +114,19 @@ def upload(request):
                 'memorando_assunto': memorando.assunto,
                 'grupos': grupos,
                 'usermoc': UserMoc.objects.get(user=request.user),
+                'grupomoc': groupaddress,
             }
             return render(request, 'upload_success.html', context)
     else:
         form = ImageForm()
-
+    
     context = {
         'form': form,
         'memo_numero_atualizado': Memorando().gerar_proximo_numero(),
         'memorando_corpo': Memorando().corpo,
         'grupos': grupos,
-        'usermoc': UserMoc.objects.get(user=request.user)
+        'usermoc': UserMoc.objects.get(user=request.user),
+        'grupomoc': groupaddress,
     }
     return render(request, 'memo_main.html', context)
 
@@ -130,6 +134,8 @@ def upload(request):
 def memorando_circular(request):
     grupos = Group.objects.all()
     memorandocircular = MemorandoCircular()
+    groupuser = request.user.groups.first()
+    groupaddress = GroupMoc.objects.get(group=groupuser)
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -182,6 +188,7 @@ def memorando_circular(request):
                 'memorando_assunto_circular': memorandocircular.assunto_circular,
                 'grupos': grupos,
                 'usermoc': UserMoc.objects.get(user=request.user),
+                'grupomoc': groupaddress,
             }
             return render(request, 'upload_success_circular.html', context)
     else:
@@ -193,6 +200,7 @@ def memorando_circular(request):
     'memorando_corpo': Memorando().corpo,
     'grupos': grupos,
     'usermoc': UserMoc.objects.get(user=request.user),
+    'grupomoc': groupaddress,
 }
 
     return render(request, 'memorando_circular.html', context)
@@ -201,6 +209,8 @@ def memorando_circular(request):
 @login_required
 def oficio(request):
     oficio = Oficio()
+    groupuser = request.user.groups.first()
+    groupaddress = GroupMoc.objects.get(group=groupuser)
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -256,6 +266,7 @@ def oficio(request):
                 'destinatario_oficio': oficio.destinatario_oficio,
                 'destinatario_copia_oficio': oficio.destinatarios_copia_oficio,
                 'usermoc': UserMoc.objects.get(user=request.user),
+                'grupomoc': groupaddress,
             }
             return render(request, 'upload_success_oficio.html', context)
     else:
@@ -266,6 +277,7 @@ def oficio(request):
         'memo_numero_atualizado_oficio': oficio.gerar_proximo_numero_oficio(),
         'memorando_corpo': Memorando().corpo,
         'usermoc': UserMoc.objects.get(user=request.user),
+        'grupomoc': groupaddress,
     }
     return render(request, 'oficio.html', context)
 
@@ -478,6 +490,9 @@ def geraEBaixaPDF(request, id_criptografado):
     text_content = session.get('memorando_corpo')
     grupo_escolhido_copia = session.get('grupo_escolhido_copia')
     usermoc = UserMoc.objects.get(user=memorando.remetente)
+    groupuser = memorando.remetente.groups.first()
+    groupaddress = GroupMoc.objects.get(group=groupuser)
+    
     context = {
         'memorando': memorando,
         'memorando_assunto': memorando.assunto,
@@ -487,6 +502,7 @@ def geraEBaixaPDF(request, id_criptografado):
         'grupo_escolhido_copia': grupo_escolhido_copia,
         'arquivos': arquivos,
         'usermoc': usermoc,
+        'grupomoc': groupaddress,
     }
     
     
@@ -534,6 +550,8 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     arquivos = session.get('file_name')
     text_content = session.get('memorando_corpo_circular')
     usermoc = UserMoc.objects.get(user=memorandocircular.remetente_circular)
+    groupuser = memorandocircular.remetente_circular.groups.first()
+    groupaddress = GroupMoc.objects.get(group=groupuser)
     context = {
         'memorando': memorando,
         'memorandocircular': memorandocircular,
@@ -544,6 +562,7 @@ def geraEBaixaPDFCircular(request, id_criptografado):
         'grupos': grupos,
         'arquivos': arquivos,
         'usermoc': usermoc,
+        'grupomoc': groupaddress,
     }
     
     
@@ -588,6 +607,8 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     text_content = session.get('memorando_corpo')
     arquivos = session.get('file_name')
     usermoc = UserMoc.objects.get(user=oficio.remetente_oficio)
+    groupuser = oficio.remetente_oficio.groups.first()
+    groupaddress = GroupMoc.objects.get(group=groupuser)
     context = {
         'memorando': memorando,
         'oficio_assunto': oficio.assunto_oficio,
@@ -597,6 +618,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
         'text_content': mark_safe(text_content),
         'arquivos': arquivos,
         'usermoc': usermoc,
+        'grupomoc': groupaddress,
     }
     print(oficio.destinatarios_copia_oficio)
     
@@ -825,6 +847,9 @@ def visualizaMoc(request, id_criptografado, tipo):
         
         queryAnexo = Image.objects.filter(idDoc=id_criptografado, tipoDoc='memorando')
         
+        groupuser = memorando.remetente.groups.first()
+        groupaddress = GroupMoc.objects.get(group=groupuser)
+        
         context = {
             'memorando': memorando,
             'memo_numero': memorando.memo_numero,
@@ -838,6 +863,7 @@ def visualizaMoc(request, id_criptografado, tipo):
             'tipo': tipo,
             'anexos': queryAnexo,
             'usermoc': usermoc,
+            'grupomoc': groupaddress
         }
         return render(request, 'visualiza_moc.html', context)
 
@@ -849,6 +875,9 @@ def visualizaMoc(request, id_criptografado, tipo):
         groupUser = memorando.remetente_circular.groups.first()
         
         queryAnexo = Image.objects.filter(idDoc=id_criptografado, tipoDoc='memorando-circular')
+        
+        groupuser = memorando.remetente_circular.groups.first()
+        groupaddress = GroupMoc.objects.get(group=groupuser)
         
         context = {
             'memorando': memorando,
@@ -862,6 +891,7 @@ def visualizaMoc(request, id_criptografado, tipo):
             'tipo': tipo,
             'anexos': queryAnexo,
             'usermoc': usermoc,
+            'grupomoc': groupaddress,
         }
         return render(request, 'visualiza_moc.html', context)
     
@@ -873,6 +903,9 @@ def visualizaMoc(request, id_criptografado, tipo):
         groupUser = memorando.remetente_oficio.groups.first()
         
         queryAnexo = Image.objects.filter(idDoc=id_criptografado, tipoDoc='oficio')
+        
+        groupuser = memorando.remetente_oficio.groups.first()
+        groupaddress = GroupMoc.objects.get(group=groupuser)
         
         context = {
             'memorando': memorando,
@@ -887,5 +920,6 @@ def visualizaMoc(request, id_criptografado, tipo):
             'tipo': tipo,
             'anexos': queryAnexo,
             'usermoc': usermoc,
+            'grupomoc': groupaddress,
         }
         return render(request, 'visualiza_moc.html', context)
