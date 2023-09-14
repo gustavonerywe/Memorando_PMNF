@@ -44,6 +44,18 @@ h6 {
     margin-left: 67%;
 } */
 
+#table-recebido {
+    border: 1px solid black;
+    padding: 0;
+    width: 100%;
+    font-size: xx-small;
+}
+
+#ass, #em, #tituloTable2, #matr {
+    font-size: xx-small;
+}
+
+
 .table {
     margin: 0 auto;
     border-collapse: collapse;
@@ -2784,7 +2796,7 @@ hr {
     }
 
     #perfil-upload{
-        margin-top: 50px;
+        /* margin-top: 50px; */
         width: 35px;
     }
 

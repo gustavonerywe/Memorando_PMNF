@@ -15,6 +15,9 @@
         padding: 3px;
     }
 
+    #tituloTable2 {
+        background-color: rgb(216, 213, 213);
+    }
 
     body {
         width: 75%;
@@ -127,12 +130,14 @@
 
     #table-recebido {
         border: 1px solid black;
-        width: 40%;
-        margin-top: 20px;
-        /* position: relative; */
-        /* float: right; */
-        margin-left: 60%;
+        padding: 0;
+        width: 100%;
+        font-size: xx-small;
     } 
+
+    #ass, #em, #tituloTable2, #matr {
+        font-size: xx-small;
+    }
 
     #body-pdf {
         margin: 0;
@@ -225,21 +230,12 @@
                 <span class="grupomoc-endereco">{{grupomoc.endereco}}</span> 
                 <div id="footer">
                     <table id="table-recebido">
-                        <tr>
-                            <th style="font-weight: bold; text-align: center; font-size: small;">RECEBIDO</th>
-                        </tr>
                         {% for grupo in grupo_escolhido %}
                             <tr style="border-top: 1px solid black;">
-                                <th id="tituloTable2">{{grupo}}</th>
-                            </tr>
-                            <tr>
-                                <td id="em">Em: _________ /_________ /_________</td>
-                            </tr>
-                            <tr>
-                                <td id="ass">Ass: ______________________________</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid black;">
-                                <td id="ass">Matrícula: ________________________</td>
+                                <th id="tituloTable2" style="border-right: 1px solid black;">{{grupo}}</th>
+                                <td id="em" style="width: 25%;"> Em: <br> __________/__________/__________</td>
+                                <td id="ass" style="width: 25%;">Ass: <br> __________________________________</td>
+                                <td id="matr" style="width: 25%;">&nbsp; &nbsp; &nbsp; &nbsp; Matrícula: <br> _________ . _________ </td>
                             </tr>
                         {% endfor %}
                     </table>
