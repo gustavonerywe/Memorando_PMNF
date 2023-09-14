@@ -2792,3 +2792,9 @@ hr {
     font-size: 0.9em;
     font-family: 'Times New Roman', Times, serif;
 }
+
+.grupomoc-endereco {
+    font-size: 0.7em;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 10px;
+}
