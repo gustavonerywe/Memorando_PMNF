@@ -988,7 +988,7 @@ hr {
 }
 
 #container-modal-memo {
-    margin-top: -1%;
+    margin-top: 4%;
 }
 
 .th-generate {
@@ -2787,3 +2787,8 @@ hr {
         margin-top: 50px;
         width: 35px;
     }
+
+.usermoc-matricula {
+    font-size: 0.9em;
+    font-family: 'Times New Roman', Times, serif;
+}
