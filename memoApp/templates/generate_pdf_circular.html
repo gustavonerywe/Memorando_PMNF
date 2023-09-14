@@ -11,6 +11,8 @@
     #tituloTable2 {
         text-align: center;
         font-weight: bold;
+        font-size: small;
+        padding: 3px;
     }
 
 
@@ -28,21 +30,16 @@
     h6 {
         font-weight: bold;
     }
-
-    #header {
-        padding: 10px;
-        text-align: center;
-    }
-
+    
     #content {
         padding: 20px;
     }
 
-    #footer {
+    /* #footer {
         padding: 10px;
         text-align: center;
         margin-left: 60%;
-    }
+    } */
 
     #table-generate {
         width: 100%;
@@ -132,8 +129,8 @@
         border: 1px solid black;
         padding: 8px;
         width: 100%;
-        margin-left: 38.5%;
-    }
+        margin-top: 20px;
+    } 
 
     #body-pdf {
         margin: 0;
@@ -145,6 +142,7 @@
         height: 200px;
     }
 </style>
+
 
 <body id="body-pdf">
     <div id="corpo-pdf">
@@ -207,23 +205,22 @@
                     </tr>
                 </table>
                 <div style=" margin-top: 10px; text-align: justify;  word-wrap: break-word;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
-                <span class="grupomoc-endereco">{{grupomoc.endereco}}</span> 
-                <div>
-                    <p></p>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                <div id="footer">
+                    <table id="table-recebido">
+                        <tr>
+                            <th style="font-weight: bold; text-align: center; font-size: small;">RECEBIDO</th>
+                        </tr>
+                        {% for grupo in grupos %}
+                            <tr style="border-top: 1px solid black;">
+                                <th id="tituloTable2" style="border-right: 1px solid black;">{{grupo}}</th>
+                                <td id="em" style="width: 25%;">Em: _____/_____/_____</td>
+                                <td id="ass" style="width: 25%;">Ass: ____________________________</td>
+                                <td id="ass" style="width: 25%;">Matrícula: ______________________</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
-            {% comment %}{% endcomment %}
             <script src="/static/js/generate_pdf.js"></script>
         </form>
     </div>
