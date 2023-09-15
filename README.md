@@ -8,7 +8,7 @@ In this way, in order to make the issuance of these documents more effective and
 ## Autores
 
 - [@gustavonerywe](https://www.github.com/gustavonerywe)
-- [@YanIgncaio](https://www.github.com/YanIgnacio)
+- [@YanIgnacio](https://www.github.com/YanIgnacio)
 - [@PedroSchuenck](https://www.github.com/PedroSchuenck)
 
 
