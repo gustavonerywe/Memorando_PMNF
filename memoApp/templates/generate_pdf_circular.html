@@ -11,6 +11,12 @@
     #tituloTable2 {
         text-align: center;
         font-weight: bold;
+        font-size: small;
+        padding: 3px;
+    }
+
+    #tituloTable2 {
+        background-color: rgb(216, 213, 213);
     }
 
 
@@ -28,21 +34,16 @@
     h6 {
         font-weight: bold;
     }
-
-    #header {
-        padding: 10px;
-        text-align: center;
-    }
-
+    
     #content {
         padding: 20px;
     }
 
-    #footer {
+    /* #footer {
         padding: 10px;
         text-align: center;
         margin-left: 60%;
-    }
+    } */
 
     #table-generate {
         width: 100%;
@@ -130,9 +131,13 @@
 
     #table-recebido {
         border: 1px solid black;
-        padding: 8px;
+        padding: 0;
         width: 100%;
-        margin-left: 38.5%;
+        font-size: xx-small;
+    } 
+
+    #ass, #em, #tituloTable2, #matr {
+        font-size: xx-small;
     }
 
     #body-pdf {
@@ -144,7 +149,10 @@
     #content-pdf {
         height: 200px;
     }
+
+
 </style>
+
 
 <body id="body-pdf">
     <div id="corpo-pdf">
@@ -183,6 +191,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Matrícula:</th>
+                        <td class="td-generate">
+                           <span>{{usermoc.matricula}}</span> 
+                        </td>
+                    </tr>
+                    <tr>
                         <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
                             <ul class="grupo-lista">
@@ -201,22 +215,19 @@
                     </tr>
                 </table>
                 <div style=" margin-top: 10px; text-align: justify;  word-wrap: break-word;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
-                <div>
-                    <p></p>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                <div id="footer">
+                    <table id="table-recebido">
+                        {% for grupo in grupos %}
+                            <tr style="border-top: 1px solid black;">
+                                <th id="tituloTable2" style="border-right: 1px solid black;">{{grupo}}</th>
+                                <td id="em" style="width: 25%;"> Em: <br> __________/__________/__________</td>
+                                <td id="ass" style="width: 25%;">Ass: <br> __________________________________</td>
+                                <td id="matr" style="width: 25%;">&nbsp; &nbsp; &nbsp; &nbsp; Matrícula: <br> _________ . _________ </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
-            {% comment %}{% endcomment %}
             <script src="/static/js/generate_pdf.js"></script>
         </form>
     </div>

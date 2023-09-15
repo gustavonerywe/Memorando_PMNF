@@ -46,6 +46,14 @@
                             {{ remetente.get_full_name }}
                         </td>
                     </tr>
+                    <tr>
+                        <div id="teste">
+                            <th id="teste" class="th-visualiza" style="vertical-align: middle;">Matrícula:</th>
+                        </div>
+                        <td class="td-visualiza">
+                            {{ usermoc.matricula }}
+                        </td>
+                    </tr>
                     {% if tipo != 'Circular'%}
                     <tr>
                         <th class="th-visualiza" style="vertical-align: middle;">Para:</th>
@@ -99,6 +107,7 @@
                     </tr>
                 </table>
                 <div style=" margin-top: 10px; text-align: justify; word-wrap: break-word;" id="corpo-memorando-visualiza" contenteditable="false">{{text_content|safe }}</div>
+                <span class="grupomoc-endereco">{{grupomoc.endereco}}</span> 
             </div>
             <script src="/static/js/generate_pdf.js"></script>
         </form>

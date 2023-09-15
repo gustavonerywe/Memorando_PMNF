@@ -38,11 +38,23 @@ h6 {
     padding: 20px;
 }
 
-#footer {
+/* #footer {
     padding: 10px;
     text-align: center;
     margin-left: 67%;
+} */
+
+#table-recebido {
+    border: 1px solid black;
+    padding: 0;
+    width: 100%;
+    font-size: xx-small;
 }
+
+#ass, #em, #tituloTable2, #matr {
+    font-size: xx-small;
+}
+
 
 .table {
     margin: 0 auto;
@@ -90,8 +102,10 @@ h6 {
 
 #ass,
 #em {
-    text-align: left;
-    padding-left: 10px;
+    text-align: center;
+    font-size: small;
+    padding: 5px;
+    width: 100%;
 }
 
 #image-name {
@@ -333,7 +347,7 @@ main {
     /* color: cyan; */
     cursor: pointer;
     transform: scale(1.1);
-    background-color: #4caf50;
+    background-color: #4CAF50;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 10px;
 }
@@ -347,6 +361,9 @@ main {
 }
 
 #link-upload-pdf {
+    width: 200px;
+}
+#link-upload-sair{
     width: 200px;
 }
 
@@ -983,7 +1000,7 @@ hr {
 }
 
 #container-modal-memo {
-    margin-top: -1%;
+    margin-top: 4%;
 }
 
 .th-generate {
@@ -1432,7 +1449,7 @@ hr {
 
     .tox {
         width: 120%;
-        margin-left: -30px;
+        margin-left: -25px;
     }
 
     #drop-area {
@@ -1442,7 +1459,8 @@ hr {
 
     #id_file1,
     #id_file {
-        width: 250px;
+        width: 200px;
+        font-size: 12px;
     }
 
     /* .modal-body{
@@ -1461,7 +1479,7 @@ hr {
 
     .modal-content-memorando {
         width: 300px;
-        height: 200px;
+        height: 230px;
         margin-left: 35px;
         padding-top: 10px;
     }
@@ -1475,7 +1493,8 @@ hr {
     }
 
     #img {
-        width: 30%;
+        margin-top: 15px;
+        width: 50%;
     }
 
     .custom-table {
@@ -1484,7 +1503,7 @@ hr {
     }
 
     .select2-container--default .select2-selection--single {
-        font-size: 11px !important;
+        font-size: 8.5px !important;
         text-align: center !important;
     }
 
@@ -1493,17 +1512,23 @@ hr {
     }
 
     @media screen and (min-width:320px) and (max-width:350px) {
+        #id_file1,
+        #id_file {
+            width: 180px;
+            font-size: 11px;
+        }
+        
         .table {
-            font-size: 75%;
+            font-size: 80%;
             margin-bottom: 25px;
-            margin-left: -10px;
+            margin-left: -20px;
 
         }
 
         .table th,
         td,
         tr {
-            font-size: 75%;
+            font-size: 80%;
         }
 
         #drop-area {
@@ -1518,8 +1543,6 @@ hr {
         }
 
         .modal-content-memorando {
-            width: 300px;
-            height: 200px;
             margin-left: 10px;
             padding-top: 10px;
         }
@@ -1591,7 +1614,11 @@ hr {
         width: 105%;
         margin-left: -9px;
     }
-
+    #id_file1,
+    #id_file {
+        width: 240px;
+        font-size: 12px;
+    }
 
     /* .modal-body{
         width: 200px;
@@ -1628,7 +1655,7 @@ hr {
     }
 
     #img {
-        width: 30%
+        width: 40%
     }
 
     .custom-table {
@@ -1665,7 +1692,8 @@ hr {
 
         #id_file1,
         #id_file {
-            width: 290px;
+            width: 280px;
+            font-size: 13px;
         }
 
         .select2-container {
@@ -1775,7 +1803,7 @@ hr {
     }
 
     #img {
-        width: 30%;
+        width: 40%;
     }
 
     .custom-table {
@@ -1825,6 +1853,138 @@ hr {
         text-align: center !important;
     }
 }
+@media screen and (min-width:600px) and (max-width:900px){
+    .page_main {
+        width: 80%;
+    }
+
+    body {
+        width: 115%;
+        margin-left: 5%;
+    }
+
+    .table {
+        width: 80%;
+        font-size: 14px;
+        margin-left: 10px;
+        margin-bottom: 25px;
+
+    }
+
+    .table th,
+    td,
+    tr {
+        font-size: 13px;
+    }
+
+    #hr-table {
+        width: 310px;
+    }
+
+    #id_file1,
+    #id_file {
+        width: 300px;
+    }
+
+    .select2-container {
+        width: 200px !important;
+    }
+
+    .tox {
+        width: 100%;
+        margin-left: 10px;
+    }
+
+    #addSelect {
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+
+    #removeSelect {
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+
+    #addSelectCopia {
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+
+    #removeSelectCopia {
+        width: 32.5px;
+        height: 32.5px;
+        border: black solid 2px;
+        margin-top: 10px;
+    }
+
+    #drop-area {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .modal-content {
+        width: 350px;
+        height: 200px;
+        margin-left: 75px;
+    }
+    #img {
+        width: 40%;
+    }
+
+    .custom-table {
+        width: 110%;
+        margin-left: -15px !important;
+    }
+
+    #body-login {
+        height: 100%;
+    }
+    .modal-content {
+        width: 350px;
+        height: 200px;
+        margin-left: 125px;
+    }
+
+    .modal-content-memorando {
+        width: 400px;
+        height: 200px;
+        padding-top: 10px;
+    }
+
+
+    @media screen and (min-width:700px){
+    .table {
+        width: 80%;
+        font-size: 14px;
+        margin-left: 50px;
+        margin-bottom: 25px;
+
+    }
+    .modal-content {
+        width: 350px;
+        height: 200px;
+        margin-left: 200px;
+    }
+
+    .modal-content-memorando {
+        width: 400px;
+        height: 200px;
+        padding-top: 10px;
+    }
+    }
+
+    .select2-container--default .select2-selection--single {
+        font-size: 15px !important;
+        text-align: center !important;
+    }
+}
+
 
 .message-error {
     text-align: center;
@@ -1967,10 +2127,32 @@ hr {
 }
 
 /* responsividade upload */
-@media screen and (min-width: 320px) and (max-width:500px) {
+@media screen and (min-width: 320px) and (max-width:400px) {
     .box-upload {
         width: 100%;
-        margin-top: 25%;
+    }
+
+    #img-pdf {
+        width: 30px;
+    }
+
+    .link-container {
+        width: 300px;
+        margin-left: -25px;
+    }
+    #perfil-upload{
+        margin-bottom: 10px;
+        margin-top: 100px;
+    }
+    @media screen and (min-width:350px) {
+        .link-container {
+            margin: 0 auto;
+        }
+    }
+}
+@media screen and (min-width:400px) and (max-width:500px){
+    .box-upload {
+        width: 100%;
     }
 
     #img-pdf {
@@ -1981,16 +2163,7 @@ hr {
         width: 300px;
         margin: 0 auto;
     }
-
-    #link-upload {
-        width: 200px;
-    }
-
-    #link-upload-pdf {
-        width: 200px;
-    }
 }
-
 @media screen and (min-width:500px) and (max-width:600px) {
     .box-upload {
         width: 400px;
@@ -2355,41 +2528,9 @@ hr {
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
 }
-/* responsividade página consulta-memo */
-@media screen and (min-width:400px) and (max-width:500px){
-    #consulta-body{
-        margin: 0 auto; /* alinhar body no centro */
-    }
-    #tipo-e-ano {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-type{
-        width: 105px!important;
-    }
-    #tipo-select-consulta{
-        width: 65%!important;
-    }
-    #inputGroup-sizing-default-number{
-        width: 150px!important;
-        margin-left: -10px;
-    }
-    #consulta-search {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-ano{
-        width: 110px!important;
-        margin-left: 5px;
-    }
-    #ano-select-consulta{
-        width: 62%!important;
-    }
-   #inputGroup-sizing-default-topic{
-        width: 150px!important;
-   }
 
-}
+
+/* responsividade página consulta-memo */
 
 @media screen and (min-width:320px) and (max-width:400px){
     #consulta-body{
@@ -2425,13 +2566,64 @@ hr {
         width: 150px!important;
         margin: 0 auto!important;
    }
-   @media screen and (min-width:320px) and (max-width:390px) {
+   .styled-link{
+        width: 47px;
+        margin-left: -7px;
+        text-indent: -19px;
+   }
     .query_result {
         width: 98.5%;
         height: auto;
-        border-radius: 20px;
-   }
+        border-radius: 15px;
 }
+@media screen and (min-width:335px) {
+    .styled-link{
+        width: 60px;
+        margin-left: 5px;
+        text-indent: -13px;
+    }
+}
+}
+@media screen and (min-width:400px) and (max-width:500px){
+    #consulta-body{
+        margin: 0 auto; /* alinhar body no centro */
+    }
+    #tipo-e-ano {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-type{
+        width: 105px!important;
+    }
+    #tipo-select-consulta{
+        width: 65%!important;
+    }
+    #inputGroup-sizing-default-number{
+        width: 150px!important;
+        margin-left: -10px;
+    }
+    #consulta-search {
+        display: flex;
+        flex-direction: column;
+}
+    #inputGroup-sizing-default-ano{
+        width: 110px!important;
+        margin-left: 5px;
+    }
+    #ano-select-consulta{
+        width: 62%!important;
+    }
+   #inputGroup-sizing-default-topic{
+        width: 150px!important;
+   }
+   .query_result {
+    border-radius: 15px;
+}
+    .styled-link{
+        width: 65px;
+        text-indent: -10px;
+   }
+   
 }
 @media screen and (min-width:500px) and (max-width:600px){
     #consulta-body{
@@ -2467,6 +2659,9 @@ hr {
         width: 150px!important;
         margin: 0 auto!important;
    }
+   #consulta-body{
+    margin: 0 auto; /* alinhar body no centro */
+}
 }
 @media screen and (min-width:600px) and (max-width:700px){
     #inputGroup-sizing-default-number{
@@ -2476,6 +2671,9 @@ hr {
     #inputGroup-sizing-default-topic{
         width: 60%!important;
    }
+   #consulta-body{
+    margin: 0 auto; /* alinhar body no centro */
+}
     /* #consulta-body{
         margin: 0 auto; 
     }
@@ -2518,13 +2716,19 @@ hr {
     #inputGroup-sizing-default-topic{
         width: 52%!important;
    }
+   #consulta-body{
+    margin: 0 auto; /* alinhar body no centro */
+}
 
 }
 /* códigos para responsividade da página vizualiza_moc */
     @media screen and (min-width:320px) and (max-width:400px) {
+        .page_visualiza{
+            width: 100%;
+        }
         .table-visualiza {
-         font-size: 11px;
-         width: 80%;
+            font-size: 11px;
+            width: 100%;
             margin-left: -5px;
         }
         .table-visualiza th,
@@ -2540,11 +2744,14 @@ hr {
         .hr-visualiza{
             width: 75%;
         }
+        #content-visualiza{
+            width: 80%;
+        }
     }
     @media screen and (min-width:400px) and (max-width:500px){
         .table-visualiza {
             font-size: 12px;
-            width: 80%;
+            width: 100%;
             margin-left: -5px;
         }
         .table-visualiza th,
@@ -2560,11 +2767,14 @@ hr {
         .hr-visualiza{
             width: 75%;
         }
+        #content-visualiza{
+            width: 80%;
+        }
     }
     @media screen and (min-width:500px) and (max-width:600px){
         .table-visualiza {
             font-size: 13px;
-            width: 80%;
+            width: 100%;
             margin-left: -5px;
         }
         .table-visualiza th,
@@ -2580,4 +2790,23 @@ hr {
         .hr-visualiza{
             width: 77%;
         }
+        #content-visualiza{
+            width: 80%;
+        }
     }
+
+    #perfil-upload{
+        /* margin-top: 50px; */
+        width: 35px;
+    }
+
+.usermoc-matricula {
+    font-size: 0.9em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.grupomoc-endereco {
+    font-size: 0.7em;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 10px;
+}

@@ -67,6 +67,12 @@
                     </td>
                 </tr>
                 <tr class="table-secondary">
+                    <th>Matrícula:</th>
+                    <td>
+                       <span class="usermoc-matricula">{{usermoc.matricula}}</span> 
+                    </td>
+                </tr>
+                <tr class="table-secondary">
                     <th><span style="color: red;">* </span>Para:</th>
                     <td>
                         <div id="container_and_button">
@@ -130,6 +136,7 @@
             <section id="corpoMemorando">
                 <textarea id="corpo" name="corpo"></textarea>
             </section>
+            <span class="grupomoc-endereco">{{grupomoc.endereco}}</span> 
         </div>
             <div id="footer">
                 {% comment %} <p></p>
@@ -208,13 +215,13 @@
         </div>
         <div></div>
         <div id="button-file">
-            <button id="botao" class="btn btn btn-lg" type="submit">Enviar</button>
+            <button id="botao" class="btn btn btn-lg" type="submit">Gerar</button>
             <div id="meuModalMemorando">
                 <div class="modal-content-memorando">
                     <span class="fecharMemorando">&times;</span>
                     <!-- <div class="modal-body"> -->
                     <div id="container-modal-memo">
-                        <p style="text-align: center; font-size: 20px; margin-bottom: 20px;">Deseja enviar o memorando?
+                        <p style="text-align: center; font-size: 20px; margin-bottom: 20px;">Deseja gerar o memorando?
                         </p>
                         <span id="span-alert"
                             style="font-size: 0.8em; margin-top: 10px; text-align: center; color: rgb(168, 67, 67);">
@@ -238,7 +245,7 @@
             {% endif %}
         </div>
         <div id="verify-message">
-            <em style="font-size: 0.6em;">Confira todo o memorando antes de enviar.</em>
+            <em style="font-size: 0.6em;">Confira todo o memorando antes de gerar.</em>
         </div>
     </form>
     <div id="meuModalAssunto">

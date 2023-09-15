@@ -183,6 +183,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <th class="th-generate" style="vertical-align: middle;">Matrícula:</th>
+                        <td class="td-generate">
+                           <span>{{usermoc.matricula}}</span> 
+                        </td>
+                    </tr>
+                    <tr>
                         <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
                             {{ destinatario_oficio }}
@@ -204,6 +210,7 @@
                     </tr>
                 </table>
                 <div style=" margin-top: 10px; text-align: justify;  word-wrap: break-word;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
+                <span class="grupomoc-endereco">{{grupomoc.endereco}}</span> 
                 <div id="footer">
                     <p></p>
                     <fieldset id="box-field-generate">
@@ -217,6 +224,10 @@
                             <tr>
                                 <td id="ass">Ass: _____________________</td>
                             </tr>
+                            <tr>
+                                <td id="matr">Matrícula: _____________________ </td>
+                            </tr>
+
                         </table>
                     </fieldset>
                 </div>

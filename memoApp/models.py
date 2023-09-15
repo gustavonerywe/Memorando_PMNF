@@ -1,10 +1,7 @@
 from django.db import models
-from django import forms
 from django.contrib.auth.models import User, Group
 from tinymce import models as tinymce_models
 from django.utils import timezone
-from datetime import datetime
-# from . import forms
 
 class Image(models.Model):
     idDoc = models.IntegerField(null=True, blank=False)
@@ -86,3 +83,11 @@ class MemorandoCircular(models.Model):
         ano_atual = data_atual.year
         response = f'{memo_numero_circular:003d}/{ano_atual}'
         return response
+    
+class UserMoc(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    matricula = models.CharField(max_length=7)
+
+class GroupMoc(models.Model):
+    group = models.OneToOneField(Group, on_delete=models.CASCADE)
+    endereco = models.CharField(max_length=225)
