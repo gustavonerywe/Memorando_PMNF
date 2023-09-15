@@ -68,6 +68,10 @@ Install dependencies
 ```
 
 ```bash
+  pip install pymsql
+```
+
+```bash
   pip install bs4
 ```
 
