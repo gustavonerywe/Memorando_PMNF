@@ -3,9 +3,9 @@
 - Gerar PDF
 {% endblock %}
 {% block content %}
-<a href="{% url 'loginPage' %}"><img id="perfil-upload"  src="/static/img/menu.png"
-    alt="perfil"></a>
 <html class="page_main" lang="pt-br">
+    <a style="margin-top: -10%;" href="{% url 'loginPage' %}"><img id="perfil-upload" style="float: left;" src="/static/img/menu.png" width="30"
+        alt="perfil"></a>
 
 <body class="cor">
     <link rel="stylesheet" href="/static/css/style.css" />
@@ -44,7 +44,7 @@
                         <p id="second-dot" class="dot">○</p>
                         <p id="third-dot" class="dot">○</p> <br>
                     </div>
-                    <div id="image-container"></div>
+                    <div id="image-container"><img width=30 src='static/img/check.png' alt='check' id="check-img" style="display: none;"></div>
                     <span style="font-size: 0.5em;">Pode fechar esse aviso.</span>
                     </p>
                 </div>

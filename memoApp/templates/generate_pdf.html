@@ -38,11 +38,12 @@
         padding: 20px;
     }
 
-     /* #footer {
-        padding: 10px;
+     #footer {
+        /* padding: 10px;
         text-align: center;
-        margin-left: 60%;
-    } */
+        margin-left: 60%; */
+        margin-top: 10px;
+    }
 
     #table-generate {
         width: 100%;
@@ -148,6 +149,16 @@
     #content-pdf {
         height: 200px;
     }
+
+    #recebido {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .endereco-pdf {
+        border-bottom: 1px solid black;
+    }
 </style>
 
 <body id="body-pdf">
@@ -227,9 +238,12 @@
                     </tr>
                 </table>
                 <div style=" margin-top: 10px; text-align: justify;  word-wrap: break-word;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
-                <span class="grupomoc-endereco">{{grupomoc.endereco}}</span> 
+                <div class="endereco-container endereco-pdf">
+                    <span class="grupomoc-endereco">{{grupomoc.endereco}}</span>
+                </div> 
                 <div id="footer">
                     <table id="table-recebido">
+                        <h3 id="recebido">RECEBIDO</h3>
                         {% for grupo in grupo_escolhido %}
                             <tr style="border-top: 1px solid black;">
                                 <th id="tituloTable2" style="border-right: 1px solid black;">{{grupo}}</th>

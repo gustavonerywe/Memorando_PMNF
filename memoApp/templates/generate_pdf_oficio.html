@@ -7,12 +7,17 @@
 <html class="page_pdf" id="page_pdf">
 
 <style>
-    #tituloTable,
+       #tituloTable,
     #tituloTable2 {
         text-align: center;
         font-weight: bold;
+        font-size: small;
+        padding: 3px;
     }
 
+    #tituloTable2 {
+        background-color: rgb(216, 213, 213);
+    }
 
     body {
         width: 75%;
@@ -28,20 +33,16 @@
     h6 {
         font-weight: bold;
     }
-
-    #header {
-        padding: 10px;
-        text-align: center;
-    }
-
+    
     #content {
         padding: 20px;
     }
 
-    #footer {
-        padding: 10px;
+     #footer {
+        /* padding: 10px;
         text-align: center;
-        margin-left: 60%;
+        margin-left: 60%; */
+        margin-top: 10px;
     }
 
     #table-generate {
@@ -130,9 +131,13 @@
 
     #table-recebido {
         border: 1px solid black;
-        padding: 8px;
+        padding: 0;
         width: 100%;
-        margin-left: 38.5%;
+        font-size: xx-small;
+    } 
+
+    #ass, #em, #tituloTable2, #matr {
+        font-size: xx-small;
     }
 
     #body-pdf {
@@ -143,6 +148,16 @@
 
     #content-pdf {
         height: 200px;
+    }
+
+    #recebido {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .endereco-pdf {
+        border-bottom: 1px solid black;
     }
 </style>
 
@@ -210,26 +225,19 @@
                     </tr>
                 </table>
                 <div style=" margin-top: 10px; text-align: justify;  word-wrap: break-word;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
-                <span class="grupomoc-endereco">{{grupomoc.endereco}}</span> 
+                <div class="endereco-container endereco-pdf">
+                    <span class="grupomoc-endereco">{{grupomoc.endereco}}</span>
+                </div> 
                 <div id="footer">
-                    <p></p>
-                    <fieldset id="box-field-generate">
-                        <table id="table-recebido">
-                            <tr>
-                                <th id="tituloTable2">RECEBIDO</th>
+                    <table id="table-recebido">
+                        <h3 id="recebido">RECEBIDO</h3>
+                            <tr style="border-top: 1px solid black;">
+                                <th id="tituloTable2" style="border-right: 1px solid black;">{{destinatario_oficio}}</th>
+                                <td id="em" style="width: 25%;"> Em: <br> __________/__________/__________</td>
+                                <td id="ass" style="width: 25%;">Ass: <br> __________________________________</td>
+                                <td id="matr" style="width: 25%;">&nbsp; &nbsp; &nbsp; &nbsp; Matrícula: <br> _________ . _________ </td>
                             </tr>
-                            <tr>
-                                <td id="em">Em: ______ /______ /______</td>
-                            </tr>
-                            <tr>
-                                <td id="ass">Ass: _____________________</td>
-                            </tr>
-                            <tr>
-                                <td id="matr">Matrícula: _____________________ </td>
-                            </tr>
-
-                        </table>
-                    </fieldset>
+                    </table>
                 </div>
             </div>
             {% comment %}{% endcomment %}

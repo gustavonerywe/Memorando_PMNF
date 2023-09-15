@@ -1252,7 +1252,6 @@ hr {
 
 #img-container {
     display: flex;
-    margin: 0 auto;
     justify-content: center;
 }
 
@@ -2805,8 +2804,19 @@ hr {
     font-family: 'Times New Roman', Times, serif;
 }
 
+.endereco-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .grupomoc-endereco {
     font-size: 0.7em;
     font-family: 'Times New Roman', Times, serif;
     margin-top: 10px;
+    text-align: center;
+}
+
+.endereco-pdf {
+    border-bottom: 1px solid black;
 }
