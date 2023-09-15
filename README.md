@@ -53,6 +53,12 @@ Install dependencies
 ```bash
   pip install django
 ```
+
+
+```bash
+  pip install gunicorn
+```
+
 ```bash
   pip install django-weasyprint
 ```
