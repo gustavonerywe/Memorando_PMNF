@@ -60,6 +60,10 @@ Install dependencies
   pip install gunicorn
 ```
 
+```bash
+  pip install djangorestframework
+```
+
 
 ```bash
   pip install django-tinymce
