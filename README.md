@@ -61,13 +61,6 @@ Install dependencies
   pip install django-tinymce
 ```
 ```bash
-<<<<<<< HEAD
-=======
-  pip install pymysql
-```
-
-```bash
->>>>>>> b113242feb5f6cd5096412349000996a9f707b5f
   pip install reportlab
 ```
 ```bash
@@ -75,13 +68,10 @@ Install dependencies
 ```
 
 ```bash
-<<<<<<< HEAD
   pip install pymsql
 ```
 
 ```bash
-=======
->>>>>>> b113242feb5f6cd5096412349000996a9f707b5f
   pip install bs4
 ```
 
