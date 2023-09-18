@@ -923,3 +923,89 @@ def visualizaMoc(request, id_criptografado, tipo):
             'grupomoc': groupaddress,
         }
         return render(request, 'visualiza_moc.html', context)
+
+
+@login_required
+def geraPdfVisualiza(request, idpdf, tipo):
+    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    # url_criptografada = quote(id_criptografado_criptografado)
+    
+    if tipo == "Memorando":
+        memorando = Memorando.objects.get(id=idpdf)
+        usuario = memorando.remetente
+        assunto = memorando.assunto
+        destinatario = memorando.destinatario.all()
+        destinatario_copia = memorando.destinatarios_copia.all()
+        data = memorando.data
+        corpo = memorando.corpo
+        
+    if tipo == "Circular":
+        memorando = MemorandoCircular.objects.get(id=idpdf)
+        usuario = memorando.remetente_circular
+        assunto = memorando.assunto_circular
+        destinatario = memorando.destinatario_circular.all()
+        destinatario_copia = None
+        data = memorando.data_circular
+        corpo = memorando.corpo_circular
+        
+    if tipo == "Oficio":
+        memorando = Oficio.objects.get(id=idpdf)
+        usuario = memorando.remetente_oficio
+        assunto = memorando.assunto_oficio
+        destinatario = memorando.destinatario_oficio
+        destinatario_copia = memorando.destinatarios_copia_oficio
+        data = memorando.data_oficio
+        corpo = memorando.corpo_oficio
+        
+    groupuser = usuario.groups.first()
+    groupaddress = GroupMoc.objects.get(group=groupuser)
+
+    arquivos = Image.objects.filter(idDoc=idpdf, tipoDoc=tipo)
+    
+    context = {
+        'memorando': memorando,
+        'memorando_assunto': assunto,
+        'data_atual': data,
+        'grupo_escolhido': destinatario,
+        'text_content': corpo,
+        'grupo_escolhido_copia': destinatario_copia,
+        'arquivos': arquivos,
+        'usermoc': usuario,
+        'grupomoc': groupaddress,
+    }
+    
+    
+    html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
+
+    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    
+    if tipo == "Memorando":
+        html_render = render_to_string('generate_pdf.html', context, request=request)
+    if tipo == "Circular":
+        html_render = render_to_string('generate_pdf_circular.html', context, request=request)
+    if tipo == "Oficio":
+        html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
+    
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    pathToPdf = str(BASE_DIR)+'/fileStorage/memorando' + str(idpdf) + '.pdf'
+
+    with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
+        conteudo = arquivoCss.read()
+        
+    arrayAttachment = []
+    
+    for arquivo in arquivos:
+        attachmentFile = Attachment(arquivo)
+        arrayAttachment.append(attachmentFile)
+        print(attachmentFile)
+    
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)], attachments=arrayAttachment)
+    
+    add_image(arquivos, pathToPdf, output_pdf)
+    
+    
+    with open(output_pdf, 'rb') as f:
+            response = HttpResponse(f, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
+            return response

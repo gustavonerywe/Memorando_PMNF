@@ -17,6 +17,8 @@
             <div id="header">
                 <a href="{% url 'consulta_memo' %}"><img id="back" src="/static/img/botao-voltar.png" width="30"
                     alt="back"></a>
+                <a href="{% url 'geraPdfVisualiza' memorando.id tipo %}"><img id="back" src="/static/img/pdf.png" width="30"
+                    alt="back"></a>
                 {% comment %}{% endcomment %}
                 <img class="img-visualiza" src="https://pedroschuenck.github.io/prefeituraImg.png" alt="Logo da prefeitura" />
             </div>

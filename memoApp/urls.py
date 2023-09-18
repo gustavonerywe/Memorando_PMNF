@@ -19,5 +19,6 @@ urlpatterns = [
     path('erro/', views.error_image, name='erro'),
     path('consulta-memo/', views.consultaMemo, name='consulta_memo'),
     path('visualiza_moc/<int:id_criptografado>/<str:tipo>', views.visualizaMoc, name='visualiza_moc'),
+    path('geraPdfVisualiza/<int:idpdf>/<str:tipo>', views.geraPdfVisualiza, name='geraPdfVisualiza'),
 
 ]
