@@ -837,7 +837,6 @@ def consultaMemo(request):
     
 @login_required
 def visualizaMoc(request, id_criptografado, tipo):
-    
     if tipo == 'Memorando':
         memorando = Memorando.objects.get(id=id_criptografado)
 
@@ -929,8 +928,10 @@ def visualizaMoc(request, id_criptografado, tipo):
 def geraPdfVisualiza(request, idpdf, tipo):
     # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
     # url_criptografada = quote(id_criptografado_criptografado)
-    
-    if tipo == "Memorando":
+    tipo = tipo.lower()
+    print(tipo)
+
+    if tipo == "memorando":
         memorando = Memorando.objects.get(id=idpdf)
         usuario = memorando.remetente
         assunto = memorando.assunto
@@ -938,8 +939,9 @@ def geraPdfVisualiza(request, idpdf, tipo):
         destinatario_copia = memorando.destinatarios_copia.all()
         data = memorando.data
         corpo = memorando.corpo
+        arquivos = Image.objects.filter(idDoc=memorando.memo_numero.partition('/')[0], tipoDoc=tipo)
         
-    if tipo == "Circular":
+    if tipo == "circular":
         memorando = MemorandoCircular.objects.get(id=idpdf)
         usuario = memorando.remetente_circular
         assunto = memorando.assunto_circular
@@ -947,8 +949,9 @@ def geraPdfVisualiza(request, idpdf, tipo):
         destinatario_copia = None
         data = memorando.data_circular
         corpo = memorando.corpo_circular
+        arquivos = Image.objects.filter(idDoc=memorando.memo_numero_circular, tipoDoc=tipo)
         
-    if tipo == "Oficio":
+    if tipo == "oficio":
         memorando = Oficio.objects.get(id=idpdf)
         usuario = memorando.remetente_oficio
         assunto = memorando.assunto_oficio
@@ -956,11 +959,12 @@ def geraPdfVisualiza(request, idpdf, tipo):
         destinatario_copia = memorando.destinatarios_copia_oficio
         data = memorando.data_oficio
         corpo = memorando.corpo_oficio
+        arquivos = Image.objects.filter(idDoc=memorando.memo_numero_oficio, tipoDoc=tipo)
         
     groupuser = usuario.groups.first()
     groupaddress = GroupMoc.objects.get(group=groupuser)
 
-    arquivos = Image.objects.filter(idDoc=idpdf, tipoDoc=tipo)
+    usuarioMoc = UserMoc.objects.get(user=usuario)
     
     context = {
         'memorando': memorando,
@@ -970,7 +974,7 @@ def geraPdfVisualiza(request, idpdf, tipo):
         'text_content': corpo,
         'grupo_escolhido_copia': destinatario_copia,
         'arquivos': arquivos,
-        'usermoc': usuario,
+        'usermoc': usuarioMoc,
         'grupomoc': groupaddress,
     }
     
@@ -980,11 +984,11 @@ def geraPdfVisualiza(request, idpdf, tipo):
     # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     
-    if tipo == "Memorando":
+    if tipo == "memorando":
         html_render = render_to_string('generate_pdf.html', context, request=request)
-    if tipo == "Circular":
+    if tipo == "circular":
         html_render = render_to_string('generate_pdf_circular.html', context, request=request)
-    if tipo == "Oficio":
+    if tipo == "oficio":
         html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
     
     # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
@@ -996,13 +1000,12 @@ def geraPdfVisualiza(request, idpdf, tipo):
     arrayAttachment = []
     
     for arquivo in arquivos:
-        attachmentFile = Attachment(arquivo)
-        arrayAttachment.append(attachmentFile)
-        print(attachmentFile)
+        caminhoArquivo = str(BASE_DIR) + "/fileStorage/" + arquivo.file.name
+        arrayAttachment.append(caminhoArquivo)
     
-    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)], attachments=arrayAttachment)
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
     
-    add_image(arquivos, pathToPdf, output_pdf)
+    add_image(arrayAttachment, pathToPdf, output_pdf)
     
     
     with open(output_pdf, 'rb') as f:
