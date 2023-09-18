@@ -1059,6 +1059,7 @@ hr {
     margin-left: 5px;
     margin-top: 1%;
     margin-right: 1%;
+    height: 40px;
 }
 
 #btnTroca:hover {
@@ -1959,11 +1960,13 @@ hr {
 
     @media screen and (min-width:700px){
     .table {
-        width: 80%;
+        width: 85%;
         font-size: 14px;
         margin-left: 50px;
         margin-bottom: 25px;
-
+    }
+    .custom-table{
+        margin-left: 50px!important;
     }
     .modal-content {
         width: 350px;
