@@ -785,7 +785,7 @@ def error_image(request):
 
 @login_required
 def consultaMemo(request):
-       
+    grupos = Group.objects.all()
     if request.method == 'POST':
         form = SearchForm(request.POST)
         print(form.errors)
@@ -830,7 +830,7 @@ def consultaMemo(request):
             
     else:
         form = SearchForm()
-        context = {'form': form}
+        context = {'form': form,}
         
     return render(request, 'consulta_memo.html', context)
     

@@ -52,6 +52,19 @@
                     {% comment %} <button id="removeBusca" type="button"><img width="30" src="/static/img/remove.png" alt="X"></button> {% endcomment %}
                 </div>  
             </div>
+
+            <div id="tipo-e-ano">
+                <div class="input-group mb-3 divSubmit">
+                    <span class="input-group-text" id="inputGroup-sizing-default-number">Destinatário</span>
+                    <input id="destinatario" name='destinatario' type="text" class="form-control input-consulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    {% comment %} <button id="clearButton" type="button"><img width="30" src="/static/img/remove.png" alt="X"></button> {% endcomment %}
+                </div>
+                <div class="input-group mb-3 divSubmit" style="margin-left: 3%;">
+                    <span class="input-group-text" id="inputGroup-sizing-default-number">Remetente</span>
+                    <input id="remetente" name='remetente' type="text" class="form-control input-consulta" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    {% comment %} <button id="clearButton" type="button"><img width="30" src="/static/img/remove.png" alt="X"></button> {% endcomment %}
+                </div>
+            </div> 
             <div class="d-flex justify-content-center">
                 <button type="submit" id="submit-consulta" class="btn btn-outline-primary btn-lg"><img width="25" height="25" src="/static/img/lupa.png" alt="Pesquisar"></button>
             </div>
@@ -120,15 +133,10 @@
    
    document.addEventListener("DOMContentLoaded", function () {
             let inputNumero = document.getElementById("numBusca");
-            let clearButton = document.getElementById("clearButton");
             let storedNumero = localStorage.getItem("numBusca");
             if (storedNumero) {
                 inputNumero.value = storedNumero;
             }
-
-            clearButton.addEventListener("click", function () {
-                inputNumero.value = "";
-            });
         });
 
         document.querySelector("form").addEventListener("submit", function (event) {
@@ -138,21 +146,43 @@
 
     document.addEventListener("DOMContentLoaded", function () {
             let termoBusca = document.getElementById("termoBusca");
-            let removeBusca = document.getElementById("removeBusca");
             let storedTermo = localStorage.getItem("termoBusca");
             if (storedTermo) {
                 termoBusca.value = storedTermo;
             }
-
-            removeBusca.addEventListener("click", function () {
-                termoBusca.value = "";
-            });
         });
 
         document.querySelector("form").addEventListener("submit", function (event) {
             let termoBusca = document.getElementById("termoBusca");
             localStorage.setItem("termoBusca", termoBusca.value);
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+            let destinatario = document.getElementById("destinatario");
+            let storedTermo = localStorage.getItem("destinatario");
+            if (storedTermo) {
+                destinatario.value = storedTermo;
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            let destinatario = document.getElementById("destinatario");
+            localStorage.setItem("destinatario", destinatario.value);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+            let remetente = document.getElementById("remetente");
+            let storedTermo = localStorage.getItem("remetente");
+            if (storedTermo) {
+                remetente.value = storedTermo;
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            let remetente = document.getElementById("remetente");
+            localStorage.setItem("remetente", remetente.value);
+    });
+
 
     let tipo = "{{tipo}}"; 
     let select = document.getElementById("tipo-select-consulta");
@@ -161,7 +191,9 @@
     }
 
 </script>
+    
 </body>
 
 </html>
+
 {% endblock %}

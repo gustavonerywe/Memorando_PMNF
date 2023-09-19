@@ -46,3 +46,5 @@ document.querySelector("form").addEventListener("submit", function (event) {
     let termoBusca = document.getElementById("termoBusca");
     localStorage.setItem("termoBusca", termoBusca.value);
 });
+
+
