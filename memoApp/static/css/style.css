@@ -2420,12 +2420,15 @@ hr {
 .back{
     height: 85px;
     width: 50px;
-    padding: 4px;
     border-radius: 10px;
     border: #000 2px solid;
     background-color: #dfdfdf;
     position: relative;
     top: 90px;
+}
+
+#voltar-visualiza-moc{
+    height: 80px;
 }
 
 .back:hover {

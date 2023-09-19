@@ -808,7 +808,7 @@ def consultaMemo(request):
             if tipo == 'Memorando':
                 buscapornum = Memorando.objects.filter(memo_numero=numBuscaComAno)
                 buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
-                buscaRemetente = Memorando.objects.filter(Q(remetente__first_name__icontains=remetente) | Q(remetente__last_name__icontains=remetente))
+                buscaRemetente = Memorando.objects.filter(Q(remetente__first_name__icontains=remetente) | Q(remetente__last_name__icontains=remetente) | Q(remetente__groups__name__icontains=remetente))
                 buscaDestinatario = Memorando.objects.filter(destinatario__name__icontains=destinatario)
             if tipo == 'Oficio':
                 buscapornum = Oficio.objects.filter(memo_numero_oficio=numBuscaComAno)
@@ -818,9 +818,10 @@ def consultaMemo(request):
             if tipo == 'Circular':
                 buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
-                buscaRemetente = MemorandoCircular.objects.filter(Q(remetente_circular__first_name__icontains=remetente) | Q(remetente_circular__last_name__icontains=remetente))
+                buscaRemetente = MemorandoCircular.objects.filter(Q(remetente_circular__first_name__icontains=remetente) | Q(remetente_circular__last_name__icontains=remetente) | Q(remetente_circular__groups__name__icontains=remetente))
                 buscaDestinatario = MemorandoCircular.objects.filter(destinatario_circular__name__icontains=destinatario)
             
+
             if numBusca:
                 resultadoQuery = buscapornum
             else:
@@ -838,6 +839,9 @@ def consultaMemo(request):
                     resultadoQuery = buscaRemetente
                 elif destinatario:
                     resultadoQuery = buscaDestinatario
+                else:
+                    resultadoQuery = buscaporAssunto
+            
                     
                     
                     
@@ -854,6 +858,7 @@ def consultaMemo(request):
                 'form': form,
                 'tipo': tipo,
                 'numBusca': numBusca,
+
             }
             
     else:
@@ -993,11 +998,13 @@ def geraPdfVisualiza(request, idpdf, tipo):
     groupaddress = GroupMoc.objects.get(group=groupuser)
 
     usuarioMoc = UserMoc.objects.get(user=usuario)
+    data_atual = datetime.date.today()
+    data_numerica = data_atual.strftime("%d/%m/%y")
     
     context = {
         'memorando': memorando,
         'memorando_assunto': assunto,
-        'data_atual': data,
+        'data_atual': data_numerica,
         'grupo_escolhido': destinatario,
         'text_content': corpo,
         'grupo_escolhido_copia': destinatario_copia,

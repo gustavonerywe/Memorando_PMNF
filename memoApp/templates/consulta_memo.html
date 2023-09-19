@@ -78,7 +78,7 @@
         <thead>
             <tr>
                 <th style="border-right: 1px solid black">N° M.O.C.</th>
-                <th style="border-right: 1px solid black">Tipo</th>
+                <th style="border-right: 1px solid black">Remetente</th>
                 <th style="border-right: 1px solid black">Assunto</th>
                 <th>Ver M.O.C.</th>
             </tr>
@@ -89,7 +89,7 @@
             {% for obj in objectList %}
             <tr>
                 <td style="font-family: 'Times New Roman', Times, serif;">{{ obj.memo_numero }}</td>
-                <td style="font-family: 'Times New Roman', Times, serif;" >{{tipo}}</td>
+                <td style="font-family: 'Times New Roman', Times, serif;" >{{obj.remetente.groups.first.name}} - {{obj.remetente.get_full_name}}</td>
                 <td style="font-family: 'Times New Roman', Times, serif; border-right: 1px solid black;">{{ obj.assunto }}</td>
                 <td><a class="styled-link" href="{% url 'visualiza_moc' obj.id tipo %}">Detalhes</a></td>
             </tr>
@@ -100,7 +100,7 @@
             {% for obj in objectList %}
             <tr>
                 <td style="font-family: 'Times New Roman', Times, serif;">{{ obj.memo_numero_oficio }}</td>
-                <td style="font-family: 'Times New Roman', Times, serif;" >{{tipo}}</td>
+                <td style="font-family: 'Times New Roman', Times, serif;" >{{obj.remetente_oficio.groups.first.name}} - {{obj.remetente_oficio.get_full_name}}}</td>
                 <td style="font-family: 'Times New Roman', Times, serif; border-right: 1px solid black;">{{ obj.assunto_oficio }}</td>
                 <td><a class="styled-link" href="{% url 'visualiza_moc' obj.id tipo %}">Detalhes</a></td>
             </tr>
@@ -111,7 +111,7 @@
             {% for obj in objectList %}
             <tr>
                 <td style="font-family: 'Times New Roman', Times, serif;">{{ obj.memo_numero_circular }}</td>
-                <td style="font-family: 'Times New Roman', Times, serif;" >{{tipo}}</td>
+                <td style="font-family: 'Times New Roman', Times, serif;" >{{obj.remetente_circular.groups.first.name}} - {{obj.remetente_circular.get_full_name}}</td>
                 <td style="font-family: 'Times New Roman', Times, serif; border-right: 1px solid black;">{{ obj.assunto_circular }}</td>
                 <td><a class="styled-link" href="{% url 'visualiza_moc' obj.id tipo %}">Detalhes</a></td>
             </tr>

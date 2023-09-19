@@ -16,13 +16,13 @@
             {% csrf_token %}
             <div id="header">
                 <div id="button-visualiza">
-                    <button class="back">
+                    <button type="button" class="back">
                         <a class="link-visualiza" id="voltar-visualiza-moc" href="{% url 'consulta_memo' %}">
                             <img id="voltar-visualiza" src="/static/img/botao-voltar.png" width="30"alt="back">
                             Voltar
                         </a>
                     </button>
-                    <button class="back">
+                    <button type="button" class="back">
                         <a class="link-visualiza" href="{% url 'geraPdfVisualiza' memorando.id tipo %}">
                             <img src="/static/img/pdf.png" width="30" alt="back">
                             Gerar PDF
