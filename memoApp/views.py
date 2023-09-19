@@ -796,6 +796,8 @@ def consultaMemo(request):
             numBusca = form.cleaned_data['numBusca']
             termoBusca = form.cleaned_data['termoBusca']
             ano = form.cleaned_data['ano']
+            remetente = form.cleaned_data['remetente']
+            destinatario = form.cleaned_data['destinatario']
             
             print(termoBusca)
             numBuscaComAno = str(numBusca).zfill(3)+"/"+str(ano)
@@ -806,19 +808,45 @@ def consultaMemo(request):
             if tipo == 'Memorando':
                 buscapornum = Memorando.objects.filter(memo_numero=numBuscaComAno)
                 buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
+                buscaRemetente = Memorando.objects.filter(remetente__name__icontains=remetente)
+                buscaDestinatario = Memorando.objects.filter(destinatario__name__icontains=destinatario)
             if tipo == 'Oficio':
                 buscapornum = Oficio.objects.filter(memo_numero_oficio=numBuscaComAno)
                 buscaporAssunto = Oficio.objects.filter(assunto_oficio__icontains=termoBusca)
+                buscaRemetente = Oficio.objects.filter(remetente_oficio__icontains=remetente)
+                buscaDestinatario = Oficio.objects.filter(destinatario_oficio__icontains=destinatario)
             if tipo == 'Circular':
                 buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
+                buscaRemetente = MemorandoCircular.objects.filter(remetente_circular__name__icontains=remetente)
+                buscaDestinatario = MemorandoCircular.objects.filter(destinatario_circular__name__icontains=destinatario)
             
-            if termoBusca:
-                resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
-            elif numBusca:
+            if numBusca:
                 resultadoQuery = buscapornum
             else:
-                resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
+                if termoBusca and remetente and destinatario:
+                    resultadoQuery = buscaporAssunto.union(buscaRemetente, buscaDestinatario)
+                elif termoBusca and remetente:
+                    resultadoQuery = buscaporAssunto.union(buscaRemetente)
+                elif termoBusca and destinatario:
+                    resultadoQuery = buscaporAssunto.union(buscaDestinatario)
+                elif destinatario and remetente:
+                    resultadoQuery = buscaRemetente.union(buscaDestinatario)
+                elif termoBusca:
+                    resultadoQuery = buscaporAssunto
+                elif remetente:
+                    resultadoQuery = buscaRemetente
+                elif destinatario:
+                    resultadoQuery = buscaDestinatario
+                    
+                    
+                    
+            # if termoBusca:
+            #     resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
+            # elif numBusca:
+            #     resultadoQuery = buscapornum
+            # else:
+            #     resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
                 
             context = {
                 'buscando': True,
