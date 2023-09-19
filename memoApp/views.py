@@ -30,7 +30,7 @@ from django_weasyprint import *
 # import aspose.pdf as aspose
 from reportlab.pdfgen import canvas
 from PIL import Image as imgpil
-from django.forms.utils import ErrorDict
+from django.db.models import Q
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -808,7 +808,7 @@ def consultaMemo(request):
             if tipo == 'Memorando':
                 buscapornum = Memorando.objects.filter(memo_numero=numBuscaComAno)
                 buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
-                buscaRemetente = Memorando.objects.filter(remetente__name__icontains=remetente)
+                buscaRemetente = Memorando.objects.filter(Q(remetente__first_name__icontains=remetente) | Q(remetente__last_name__icontains=remetente))
                 buscaDestinatario = Memorando.objects.filter(destinatario__name__icontains=destinatario)
             if tipo == 'Oficio':
                 buscapornum = Oficio.objects.filter(memo_numero_oficio=numBuscaComAno)
@@ -818,7 +818,7 @@ def consultaMemo(request):
             if tipo == 'Circular':
                 buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
-                buscaRemetente = MemorandoCircular.objects.filter(remetente_circular__name__icontains=remetente)
+                buscaRemetente = MemorandoCircular.objects.filter(Q(remetente_circular__first_name__icontains=remetente) | Q(remetente_circular__last_name__icontains=remetente))
                 buscaDestinatario = MemorandoCircular.objects.filter(destinatario_circular__name__icontains=destinatario)
             
             if numBusca:
