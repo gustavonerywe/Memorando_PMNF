@@ -2417,18 +2417,18 @@ hr {
     margin: 0 auto;
     margin-left: -150px;
 }
-#back{
-    margin-left: -38%;
-    width: 45px;
+.back{
+    height: 85px;
+    width: 50px;
     padding: 4px;
     border-radius: 10px;
     border: #000 2px solid;
-    margin-left: 90%;
+    background-color: #dfdfdf;
     position: relative;
     top: 90px;
 }
 
-#back:hover {
+.back:hover {
     transform: scale(1.1);
 }
 
@@ -2796,6 +2796,29 @@ hr {
             width: 80%;
         }
     }
+    @media screen and (min-width:600px) and (max-width:900px){
+        .table-visualiza {
+            font-size: 13px;
+            width: 100%;
+            margin-left: -5px;
+        }
+        .table-visualiza th,
+        td {
+            font-size: 13px;
+        }
+        /* .back{
+            margin-left: 180px;
+            position: relative;
+            top: 63px;
+            width: 40px;
+        } */
+        .hr-visualiza{
+            width: 77%;
+        }
+        #content-visualiza{
+            width: 80%;
+        }
+    }
 
     #perfil-upload{
         /* margin-top: 50px; */
@@ -2822,4 +2845,26 @@ hr {
 
 .endereco-pdf {
     border-bottom: 1px solid black;
+}
+#button-visualiza{
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    margin-left: 55%;
+    margin-top: -60px;
+}
+.link-visualiza{
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    top: 10px;
+
+}
+#voltar-visualiza{
+    margin-top: -20px;
+}
+#voltar-visualiza-moc{
+    position: absolute;
+    top: 17px;
+    margin-left: -20px;
 }
