@@ -813,13 +813,13 @@ def consultaMemo(request):
             if tipo == 'Oficio':
                 buscapornum = Oficio.objects.filter(memo_numero_oficio=numBuscaComAno)
                 buscaporAssunto = Oficio.objects.filter(assunto_oficio__icontains=termoBusca)
-                buscaRemetente = Oficio.objects.filter(remetente_oficio__icontains=remetente)
+                buscaRemetente = Oficio.objects.filter(Q(remetente_oficio__first_name__icontains=remetente) | Q(remetente_oficio__last_name__icontains=remetente) | Q(remetente_oficio__groups__name__icontains=remetente))
                 buscaDestinatario = Oficio.objects.filter(destinatario_oficio__icontains=destinatario)
             if tipo == 'Circular':
                 buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
                 buscaRemetente = MemorandoCircular.objects.filter(Q(remetente_circular__first_name__icontains=remetente) | Q(remetente_circular__last_name__icontains=remetente) | Q(remetente_circular__groups__name__icontains=remetente))
-                buscaDestinatario = MemorandoCircular.objects.filter(destinatario_circular__name__icontains=destinatario)
+                buscaDestinatario = MemorandoCircular.objects.none()
             
 
             if numBusca:

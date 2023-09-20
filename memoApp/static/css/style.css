@@ -2333,8 +2333,7 @@ hr {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 1%;
+    justify-content: space-between;   
 }
 
 #tipo-e-ano {

@@ -23,7 +23,7 @@
                         </a>
                     </button>
                     <button type="button" class="back">
-                        <a class="link-visualiza" href="{% url 'geraPdfVisualiza' memorando.id tipo %}">
+                        <a id="baixa-pdf-visualiza" class="link-visualiza" href="{% url 'geraPdfVisualiza' memorando.id tipo %}">
                             <img src="/static/img/pdf.png" width="30" alt="back">
                             Gerar PDF
                         </a>
@@ -131,6 +131,28 @@
         <img src='/fileStorage/{{anexo.file}}' style="width: 85%; margin: 25px;"></img>
         {% endfor %}
     </div>
+    <div id="modal-pdf">
+        <div style="height: 45%;" class="modal-content">
+            <span class="fechar-pdf">&times;</span>
+            <div style="text-align: center;">
+                <p style="font-size: 17px; text-align: center; align-items: center;"><strong
+                        style="margin: 1px;">Aguarde!</strong>
+                    <hr style="margin-bottom: 10px;"> O seu memorando já está sendo baixado. <br><br>
+                <div id="dot-container">
+                    <p id="first-dot" class="dot">○</p>
+                    <p id="second-dot" class="dot">○</p>
+                    <p id="third-dot" class="dot">○</p> <br>
+                </div>
+                <div id="image-container"><img width=30 src='/static/img/check.png' alt='check' id="check-img" style="display: none; margin: 0 auto"></div>
+                <span style="font-size: 0.5em;">Pode fechar esse aviso.</span>
+                </p>
+            </div>
+            <div class="button-container">
+                <button type="button" id="ok-modal-pdf" class="btn btn-dark btn-sm">Ok</button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/visualiza.js"></script>
 </body>
 
 </html>
