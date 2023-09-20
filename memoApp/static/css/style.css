@@ -2349,16 +2349,16 @@ hr {
 }
 
 #ano-select-consulta {
-    width: 40%;
+    width: 70%!important;
     text-align: center;
 }
 
 #tipo-select-consulta {
-    width: 34.5%;
+    width: 70%!important;
     text-align: center;
   }
 
-#numero-consulta {
+/* #numero-consulta {
     margin-left: 2%;
 }
 
@@ -2368,7 +2368,7 @@ hr {
 
 #numero-consulta {
     width: 92%;
-}
+} */
 
 #button_consulta:hover {
     transform: scale(1.1);
@@ -2537,89 +2537,61 @@ hr {
 /* responsividade página consulta-memo */
 
 @media screen and (min-width:320px) and (max-width:400px){
+    .search-box{
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 97%;
+    }
+    .input-group-text {
+        width: 55%;
+        font-size: 12.5px;
+    }
+    #tipo-select-consulta, #ano-select-consulta{
+        font-size: 12.5px;
+    }
     #consulta-body{
         margin: 0 auto; /* alinhar body no centro */
     }
-    #tipo-e-ano {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-type{
-        width: 60px!important;
-        margin-left: -5px;
-    }
-    #tipo-select-consulta{
-        width: 75%!important;
-    }
-    #inputGroup-sizing-default-number{
-        width: 150px!important;
-        margin-left: -10px;
-    }
-    #consulta-search {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-ano{
-        width: 60px!important;
-        margin-left: 5px;
-    }
-    #ano-select-consulta{
-        width: 70%!important;
-    }
-   #inputGroup-sizing-default-topic{
-        width: 150px!important;
-        margin: 0 auto!important;
-   }
+
    .styled-link{
-        width: 47px;
-        margin-left: -7px;
-        text-indent: -19px;
+        width: 45px;
+        margin-left: -1.7px;
+        text-indent: -17px;
+        font-size: 10px;
    }
     .query_result {
-        width: 98.5%;
+        width: 97%;
         height: auto;
-        border-radius: 15px;
+        border-radius: 20px;
+        border-spacing: 5px;
 }
-@media screen and (min-width:335px) {
-    .styled-link{
-        width: 60px;
-        margin-left: 5px;
-        text-indent: -13px;
+
+    .query_result th, td, tr {
+            font-size: 11px;
+        }
+    .input-consulta{
+        width: 30%;
     }
 }
+
+@media screen and (min-width:375px) {
+    .query_result .search-box {
+        width: 90%;
+    }
+    .styled-link{
+        width: 50px;
+        margin-left: 5px;
+        text-indent: -17px;
+        font-size: 11px;
+   }
 }
+
+
 @media screen and (min-width:400px) and (max-width:500px){
     #consulta-body{
         margin: 0 auto; /* alinhar body no centro */
     }
-    #tipo-e-ano {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-type{
-        width: 105px!important;
-    }
-    #tipo-select-consulta{
-        width: 65%!important;
-    }
-    #inputGroup-sizing-default-number{
-        width: 150px!important;
-        margin-left: -10px;
-    }
-    #consulta-search {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-ano{
-        width: 110px!important;
-        margin-left: 5px;
-    }
-    #ano-select-consulta{
-        width: 62%!important;
-    }
-   #inputGroup-sizing-default-topic{
-        width: 150px!important;
-   }
+ 
    .query_result {
     border-radius: 15px;
 }
@@ -2627,99 +2599,29 @@ hr {
         width: 65px;
         text-indent: -10px;
    }
+   .input-consulta{
+    width: 30%;
+}
    
 }
 @media screen and (min-width:500px) and (max-width:600px){
     #consulta-body{
         margin: 0 auto; /* alinhar body no centro */
     }
-    #tipo-e-ano {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-type{
-        width: 153px!important;
-        margin-left: -5px;
-    }
-    #tipo-select-consulta{
-        width: 61%!important;
-    }
-    #inputGroup-sizing-default-number{
-        width: 150px!important;
-        margin-left: -10px;
-    }
-    #consulta-search {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-ano{
-        width: 150px!important;
-        margin-left: 10px;
-    }
-    #ano-select-consulta{
-        width: 59%!important;
-    }
-   #inputGroup-sizing-default-topic{
-        width: 150px!important;
-        margin: 0 auto!important;
-   }
+   
    #consulta-body{
     margin: 0 auto; /* alinhar body no centro */
 }
 }
 @media screen and (min-width:600px) and (max-width:700px){
-    #inputGroup-sizing-default-number{
-        width: 60%!important;
-
-    }
-    #inputGroup-sizing-default-topic{
-        width: 60%!important;
-   }
+   
    #consulta-body{
     margin: 0 auto; /* alinhar body no centro */
 }
-    /* #consulta-body{
-        margin: 0 auto; 
-    }
-    #tipo-e-ano {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-type{
-        width: 230px!important;
-        margin-left: -5px;
-    }
-    #tipo-select-consulta{
-        width: 52%!important;
-    }
-    #inputGroup-sizing-default-number{
-        width: 230px!important;
-        margin-left: -15px;
-    }
-    #consulta-search {
-        display: flex;
-        flex-direction: column;
-}
-    #inputGroup-sizing-default-ano{
-        width: 230px!important;
-        margin-left: 10px;
-    }
-    #ano-select-consulta{
-        width: 49%!important;
-    }
-   #inputGroup-sizing-default-topic{
-        width: 150px!important;
-        margin: 0 auto!important;
-   } */
+   
 }
 @media screen and (min-width:700px) and (max-width:1200px) {
-    #inputGroup-sizing-default-number{
-        width: 52%!important;
 
-    }
-    #inputGroup-sizing-default-topic{
-        width: 52%!important;
-   }
    #consulta-body{
     margin: 0 auto; /* alinhar body no centro */
 }
