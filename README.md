@@ -69,11 +69,6 @@ Install dependencies
 ```
 
 ```bash
-  pip install djangorestframework
-```
-
-
-```bash
   pip install django-tinymce
 ```
 ```bash
