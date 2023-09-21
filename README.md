@@ -67,6 +67,14 @@ Install dependencies
 ```bash
   pip install django-weasyprint
 ```
+```bash
+  pip install gunicorn
+```
+
+```bash
+  pip install djangorestframework
+```
+
 
 ```bash
   pip install django-tinymce

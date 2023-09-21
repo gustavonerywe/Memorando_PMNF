@@ -30,7 +30,7 @@ from django_weasyprint import *
 # import aspose.pdf as aspose
 from reportlab.pdfgen import canvas
 from PIL import Image as imgpil
-from django.forms.utils import ErrorDict
+from django.db.models import Q
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -785,7 +785,7 @@ def error_image(request):
 
 @login_required
 def consultaMemo(request):
-       
+    grupos = Group.objects.all()
     if request.method == 'POST':
         form = SearchForm(request.POST)
         print(form.errors)
@@ -796,6 +796,8 @@ def consultaMemo(request):
             numBusca = form.cleaned_data['numBusca']
             termoBusca = form.cleaned_data['termoBusca']
             ano = form.cleaned_data['ano']
+            remetente = form.cleaned_data['remetente']
+            destinatario = form.cleaned_data['destinatario']
             
             print(termoBusca)
             numBuscaComAno = str(numBusca).zfill(3)+"/"+str(ano)
@@ -806,19 +808,49 @@ def consultaMemo(request):
             if tipo == 'Memorando':
                 buscapornum = Memorando.objects.filter(memo_numero=numBuscaComAno)
                 buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
+                buscaRemetente = Memorando.objects.filter(Q(remetente__first_name__icontains=remetente) | Q(remetente__last_name__icontains=remetente) | Q(remetente__groups__name__icontains=remetente))
+                buscaDestinatario = Memorando.objects.filter(destinatario__name__icontains=destinatario)
             if tipo == 'Oficio':
                 buscapornum = Oficio.objects.filter(memo_numero_oficio=numBuscaComAno)
                 buscaporAssunto = Oficio.objects.filter(assunto_oficio__icontains=termoBusca)
+                buscaRemetente = Oficio.objects.filter(Q(remetente_oficio__first_name__icontains=remetente) | Q(remetente_oficio__last_name__icontains=remetente) | Q(remetente_oficio__groups__name__icontains=remetente))
+                buscaDestinatario = Oficio.objects.filter(destinatario_oficio__icontains=destinatario)
             if tipo == 'Circular':
                 buscapornum = MemorandoCircular.objects.filter(memo_numero_circular=numBuscaComAno)
                 buscaporAssunto = MemorandoCircular.objects.filter(assunto_circular__icontains=termoBusca)
+                buscaRemetente = MemorandoCircular.objects.filter(Q(remetente_circular__first_name__icontains=remetente) | Q(remetente_circular__last_name__icontains=remetente) | Q(remetente_circular__groups__name__icontains=remetente))
+                buscaDestinatario = MemorandoCircular.objects.none()
             
-            if termoBusca:
-                resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
-            elif numBusca:
+
+            if numBusca:
                 resultadoQuery = buscapornum
             else:
-                resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
+                if termoBusca and remetente and destinatario:
+                    resultadoQuery = buscaporAssunto.union(buscaRemetente, buscaDestinatario)
+                elif termoBusca and remetente:
+                    resultadoQuery = buscaporAssunto.union(buscaRemetente)
+                elif termoBusca and destinatario:
+                    resultadoQuery = buscaporAssunto.union(buscaDestinatario)
+                elif destinatario and remetente:
+                    resultadoQuery = buscaRemetente.union(buscaDestinatario)
+                elif termoBusca:
+                    resultadoQuery = buscaporAssunto
+                elif remetente:
+                    resultadoQuery = buscaRemetente
+                elif destinatario:
+                    resultadoQuery = buscaDestinatario
+                else:
+                    resultadoQuery = buscaporAssunto
+            
+                    
+                    
+                    
+            # if termoBusca:
+            #     resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
+            # elif numBusca:
+            #     resultadoQuery = buscapornum
+            # else:
+            #     resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
                 
             context = {
                 'buscando': True,
@@ -826,18 +858,18 @@ def consultaMemo(request):
                 'form': form,
                 'tipo': tipo,
                 'numBusca': numBusca,
+
             }
             
     else:
         form = SearchForm()
-        context = {'form': form}
+        context = {'form': form,}
         
     return render(request, 'consulta_memo.html', context)
     
     
 @login_required
 def visualizaMoc(request, id_criptografado, tipo):
-    
     if tipo == 'Memorando':
         memorando = Memorando.objects.get(id=id_criptografado)
 
@@ -923,3 +955,95 @@ def visualizaMoc(request, id_criptografado, tipo):
             'grupomoc': groupaddress,
         }
         return render(request, 'visualiza_moc.html', context)
+
+
+@login_required
+def geraPdfVisualiza(request, idpdf, tipo):
+    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
+    # url_criptografada = quote(id_criptografado_criptografado)
+    tipo = tipo.lower()
+    print(tipo)
+
+    if tipo == "memorando":
+        memorando = Memorando.objects.get(id=idpdf)
+        usuario = memorando.remetente
+        assunto = memorando.assunto
+        destinatario = memorando.destinatario.all()
+        destinatario_copia = memorando.destinatarios_copia.all()
+        data = memorando.data
+        corpo = memorando.corpo
+        arquivos = Image.objects.filter(idDoc=memorando.memo_numero.partition('/')[0], tipoDoc=tipo)
+        
+    if tipo == "circular":
+        memorando = MemorandoCircular.objects.get(id=idpdf)
+        usuario = memorando.remetente_circular
+        assunto = memorando.assunto_circular
+        destinatario = memorando.destinatario_circular.all()
+        destinatario_copia = None
+        data = memorando.data_circular
+        corpo = memorando.corpo_circular
+        arquivos = Image.objects.filter(idDoc=memorando.memo_numero_circular, tipoDoc=tipo)
+        
+    if tipo == "oficio":
+        memorando = Oficio.objects.get(id=idpdf)
+        usuario = memorando.remetente_oficio
+        assunto = memorando.assunto_oficio
+        destinatario = memorando.destinatario_oficio
+        destinatario_copia = memorando.destinatarios_copia_oficio
+        data = memorando.data_oficio
+        corpo = memorando.corpo_oficio
+        arquivos = Image.objects.filter(idDoc=memorando.memo_numero_oficio, tipoDoc=tipo)
+        
+    groupuser = usuario.groups.first()
+    groupaddress = GroupMoc.objects.get(group=groupuser)
+
+    usuarioMoc = UserMoc.objects.get(user=usuario)
+    data_atual = datetime.date.today()
+    data_numerica = data_atual.strftime("%d/%m/%y")
+    
+    context = {
+        'memorando': memorando,
+        'memorando_assunto': assunto,
+        'data_atual': data_numerica,
+        'grupo_escolhido': destinatario,
+        'text_content': corpo,
+        'grupo_escolhido_copia': destinatario_copia,
+        'arquivos': arquivos,
+        'usermoc': usuarioMoc,
+        'grupomoc': groupaddress,
+    }
+    
+    
+    html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
+
+    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
+    output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
+    
+    if tipo == "memorando":
+        html_render = render_to_string('generate_pdf.html', context, request=request)
+    if tipo == "circular":
+        html_render = render_to_string('generate_pdf_circular.html', context, request=request)
+    if tipo == "oficio":
+        html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
+    
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    pathToPdf = str(BASE_DIR)+'/fileStorage/memorando' + str(idpdf) + '.pdf'
+
+    with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
+        conteudo = arquivoCss.read()
+        
+    arrayAttachment = []
+    
+    for arquivo in arquivos:
+        caminhoArquivo = str(BASE_DIR) + "/fileStorage/" + arquivo.file.name
+        arrayAttachment.append(caminhoArquivo)
+    
+    HTML(string=html_render).write_pdf(pathToPdf, stylesheets=[CSS(string=conteudo)])
+    
+    add_image(arrayAttachment, pathToPdf, output_pdf)
+    
+    
+    with open(output_pdf, 'rb') as f:
+            response = HttpResponse(f, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="memorando.pdf"'
+            return response
