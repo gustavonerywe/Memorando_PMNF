@@ -90,4 +90,4 @@ class UserMoc(models.Model):
 
 class GroupMoc(models.Model):
     group = models.OneToOneField(Group, on_delete=models.CASCADE)
-    endereco = models.CharField(max_length=225)
+    endereco = models.CharField(max_length=225, null=True, blank=False)
