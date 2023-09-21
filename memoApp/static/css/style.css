@@ -2452,6 +2452,7 @@ hr {
     font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
     margin: 5px;
+    width: 110px;
 }
 
 .styled-link:hover {
@@ -2555,7 +2556,7 @@ hr {
 
    .styled-link{
         width: 45px;
-        margin-left: -1.7px;
+        margin-left: 5px;
         text-indent: -17px;
         font-size: 10px;
    }
@@ -2572,58 +2573,104 @@ hr {
     .input-consulta{
         width: 30%;
     }
+    /* @media screen and (min-width:350px) {
+        .query_result .search-box {
+            width: 98%;
+        }
+        .styled-link{
+            width: 50px;
+            margin-left: 5px;
+            text-indent: -17px;
+            font-size: 11px;
+       }
+    } */
 }
-
-@media screen and (min-width:375px) {
-    .query_result .search-box {
-        width: 90%;
-    }
-    .styled-link{
-        width: 50px;
-        margin-left: 5px;
-        text-indent: -17px;
-        font-size: 11px;
-   }
-}
-
 
 @media screen and (min-width:400px) and (max-width:500px){
+    .search-box{
+        width: 97%;
+        margin-top: 20px;
+    }
     #consulta-body{
         margin: 0 auto; /* alinhar body no centro */
     }
- 
    .query_result {
-    border-radius: 15px;
+    width: 97%;
+    border-radius: px;
 }
     .styled-link{
         width: 65px;
         text-indent: -10px;
    }
    .input-consulta{
-    width: 30%;
+    width: 45%!important;
+   }
+   .input-group-text {
+    width: 45%;
+    font-size:14px;
+   }
+   #tipo-select-consulta, #ano-select-consulta{
+    width: 55%!important;
+    font-size: 14px;
 }
-   
 }
+
 @media screen and (min-width:500px) and (max-width:600px){
+    .search-box{
+        margin-top: 20px;
+    }
     #consulta-body{
         margin: 0 auto; /* alinhar body no centro */
     }
-   
-   #consulta-body{
-    margin: 0 auto; /* alinhar body no centro */
+    .styled-link{
+    width: 60px;
+    text-indent: -17px;
+   }
+   .input-group-text {
+    width: 40%;
 }
+.input-consulta{
+    width: 40%!important;
 }
-@media screen and (min-width:600px) and (max-width:700px){
-   
-   #consulta-body{
-    margin: 0 auto; /* alinhar body no centro */
+.input-group-text {
+    width: 40%;
 }
-   
+#tipo-select-consulta, #ano-select-consulta{
+    width: 60%!important;
 }
-@media screen and (min-width:700px) and (max-width:1200px) {
 
+   
+}
+@media screen and (min-width:600px) and (max-width:768px){
    #consulta-body{
     margin: 0 auto; /* alinhar body no centro */
+}
+.styled-link{
+    width: 60px;
+    text-indent: -15px;
+   }
+.input-group-text {
+    width: 40%;
+}
+#tipo-select-consulta, #ano-select-consulta{
+    width: 60%!important;
+}
+   
+}
+@media screen and (min-width:768px) and (max-width:1200px) {
+   #consulta-body{
+    margin: 0 auto; /* alinhar body no centro */
+}
+.input-group-text {
+    width: 50%;
+}
+#tipo-select-consulta, #ano-select-consulta{
+    width: 50%!important;
+    font-size: 14px;
+}
+.styled-link{
+    width: 70px;
+    text-indent:  -16px;
 }
 
 }
