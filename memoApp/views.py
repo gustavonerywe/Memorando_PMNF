@@ -108,7 +108,7 @@ def upload(request):
 
             context = {
                 'memorando': memorando,
-                'memo_numero_atualizado': memo_numero_atualizado,
+                'memo_numero_atualizado': memorando.memo_numero,
                 'memorando_corpo': mark_safe(memorando.corpo),
                 'memorando_remetente': memorando.remetente,
                 'memorando_assunto': memorando.assunto,
@@ -259,7 +259,7 @@ def oficio(request):
            
             context = {
                 'oficio': oficio,
-                'memo_numero_atualizado': oficio_numero_atualizado,
+                'memo_numero_atualizado': oficio.memo_numero_oficio,
                 'oficio_corpo': mark_safe(oficio.corpo_oficio),
                 'oficio_remetente': oficio.remetente_oficio,
                 'oficio_assunto': oficio.assunto_oficio,
@@ -541,7 +541,7 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
     # url_criptografada = quote(id_criptografado_criptografado)
     grupos = Group.objects.all()
-    memorando = Memorando.objects.get(id=id_criptografado)
+    # memorando = Memorando.objects.get(id=id_criptografado)
     memorandocircular = MemorandoCircular.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -553,7 +553,6 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     groupuser = memorandocircular.remetente_circular.groups.first()
     groupaddress = GroupMoc.objects.get(group=groupuser)
     context = {
-        'memorando': memorando,
         'memorandocircular': memorandocircular,
         'memorando_assunto_circular': memorandocircular.assunto_circular,
         'data_atual': data_numerica,
@@ -599,7 +598,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     
     # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
     # url_criptografada = quote(id_criptografado_criptografado)
-    memorando = Memorando.objects.get(id=id_criptografado)
+    # memorando = Memorando.objects.get(id=id_criptografado)
     oficio = Oficio.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -610,7 +609,7 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     groupuser = oficio.remetente_oficio.groups.first()
     groupaddress = GroupMoc.objects.get(group=groupuser)
     context = {
-        'memorando': memorando,
+        'oficio': oficio,
         'oficio_assunto': oficio.assunto_oficio,
         'destinatario_oficio': oficio.destinatario_oficio,
         'destinatario_copia_oficio': oficio.destinatarios_copia_oficio,
@@ -982,7 +981,7 @@ def geraPdfVisualiza(request, idpdf, tipo):
         destinatario_copia = None
         data = memorando.data_circular
         corpo = memorando.corpo_circular
-        arquivos = Image.objects.filter(idDoc=memorando.memo_numero_circular, tipoDoc=tipo)
+        arquivos = Image.objects.filter(idDoc=memorando.memo_numero_circular.partition('/')[0], tipoDoc=tipo)
         
     if tipo == "oficio":
         memorando = Oficio.objects.get(id=idpdf)
@@ -992,7 +991,7 @@ def geraPdfVisualiza(request, idpdf, tipo):
         destinatario_copia = memorando.destinatarios_copia_oficio
         data = memorando.data_oficio
         corpo = memorando.corpo_oficio
-        arquivos = Image.objects.filter(idDoc=memorando.memo_numero_oficio, tipoDoc=tipo)
+        arquivos = Image.objects.filter(idDoc=memorando.memo_numero_oficio.partition('/')[0], tipoDoc=tipo)
         
     groupuser = usuario.groups.first()
     groupaddress = GroupMoc.objects.get(group=groupuser)
