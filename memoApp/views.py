@@ -803,12 +803,14 @@ def consultaMemo(request):
             
             # if tipo == 'Todos':
             #     mostraTodos(request, numBuscaComAno, termoBusca, ano, form)
+            userGroup = request.user.groups.first()
+            daSecretaria = Q(remetente__groups__name=userGroup.name) or Q(destinatario__contains=userGroup)
                 
             if tipo == 'Memorando':
-                buscapornum = Memorando.objects.filter(memo_numero=numBuscaComAno)
-                buscaporAssunto = Memorando.objects.filter(assunto__icontains=termoBusca)
-                buscaRemetente = Memorando.objects.filter(Q(remetente__first_name__icontains=remetente) | Q(remetente__last_name__icontains=remetente) | Q(remetente__groups__name__icontains=remetente))
-                buscaDestinatario = Memorando.objects.filter(destinatario__name__icontains=destinatario)
+                buscapornum = Memorando.objects.filter(Q(memo_numero=numBuscaComAno) & daSecretaria)
+                buscaporAssunto = Memorando.objects.filter(Q(assunto__icontains=termoBusca) & daSecretaria)
+                buscaRemetente = Memorando.objects.filter((Q(remetente__first_name__icontains=remetente) | Q(remetente__last_name__icontains=remetente) | Q(remetente__groups__name__icontains=remetente)) & daSecretaria)
+                buscaDestinatario = Memorando.objects.filter(Q(destinatario__name__icontains=destinatario) & daSecretaria)
             if tipo == 'Oficio':
                 buscapornum = Oficio.objects.filter(memo_numero_oficio=numBuscaComAno)
                 buscaporAssunto = Oficio.objects.filter(assunto_oficio__icontains=termoBusca)
@@ -823,6 +825,7 @@ def consultaMemo(request):
 
             if numBusca:
                 resultadoQuery = buscapornum
+                print("parei aqui")
             else:
                 if termoBusca and remetente and destinatario:
                     resultadoQuery = buscaporAssunto.union(buscaRemetente, buscaDestinatario)
@@ -839,7 +842,8 @@ def consultaMemo(request):
                 elif destinatario:
                     resultadoQuery = buscaDestinatario
                 else:
-                    resultadoQuery = buscaporAssunto
+                    resultadoQuery = buscaporAssunto.union(buscaRemetente, buscaDestinatario, buscapornum)
+                    print("vim ate aqui")
             
                     
                     
