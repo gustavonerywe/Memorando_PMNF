@@ -128,7 +128,7 @@
     </div>
     <div class="img-container">
         {% for anexo in anexos %}
-        <img src='/fileStorage/{{anexo.file}}' style="width: 85%; margin: 25px;"></img>
+        <img id="img-visualiza" src='/fileStorage/{{anexo.file}}'></img>
         {% endfor %}
     </div>
     <div id="modal-pdf">

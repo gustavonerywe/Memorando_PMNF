@@ -2433,6 +2433,10 @@ hr {
 .back:hover {
     transform: scale(1.1);
 }
+#img-visualiza{
+    width: 70%;
+    margin-top: 25px;
+}
 
 .query_table td:nth-child(1), .query_table td:nth-child(2) {
     border-collapse: collapse;
@@ -2700,6 +2704,10 @@ hr {
         #content-visualiza{
             width: 80%;
         }
+        #img-visualiza{
+            width: 70%;
+            margin-left: -80px;
+        }
         @media screen and (min-width:350px){
             .hr-visualiza{
                 width: 75%;
@@ -2729,6 +2737,15 @@ hr {
         #content-visualiza{
             width: 80%;
         }
+        #img-visualiza{
+            margin-left: -100px;
+        }
+        @media screen and (min-width:450px) {
+            #img-visualiza{
+                margin-left: -115px;
+            }
+            
+        }
     }
     @media screen and (min-width:500px) and (max-width:600px){
         .table-visualiza {
@@ -2752,6 +2769,9 @@ hr {
         #content-visualiza{
             width: 80%;
         }
+        #img-visualiza{
+            margin-left: -130px;
+        }
     }
     @media screen and (min-width:600px) and (max-width:900px){
         .table-visualiza {
@@ -2774,6 +2794,19 @@ hr {
         }
         #content-visualiza{
             width: 80%;
+        }
+        #img-visualiza{
+            margin-left: -145px;
+        }
+    }
+    @media screen and (min-width:700px) and (max-width:800px) {
+        #img-visualiza{
+            margin-left: -165px;
+        }
+    }
+    @media screen and (min-width:800px) and (max-width:900px) {
+        #img-visualiza{
+            margin-left: -190px;
         }
     }
 
