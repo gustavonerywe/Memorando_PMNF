@@ -401,12 +401,6 @@ def file_detail(request, id):
 def digital_view(request, id):
     try: 
         image = Image.objects.get(id=id)
-        # with open(str(image.file), 'rb') as pdf_file:
-        #     pdf_reader = PyPDF2.PdfReader(pdf_file)
-        #     num_pages = len(pdf_reader.pages)
-        #     for page_num in range(num_pages):
-        #         page = pdf_reader.pages[page_num]
-        #         print(page.extract_text())
     except Image.DoesNotExist:
         raise Http404("Image does not exist")
     
@@ -467,10 +461,6 @@ def encerraSessao(request):
     logout(request)
     return redirect('loginPage')
 
-# def geraEBaixaPDF(request, id_criptografado):
-#     pdf = pdfkit.from_url('http://localhost:8000/generatepdf/' + str(id_criptografado))
-#     response = FileResponse(pdf, as_attachment=True, filename='memorando.pdf')
-#     return response
 
 import io
 from django.http import HttpResponse
@@ -479,8 +469,6 @@ from django.contrib import messages
 
 def geraEBaixaPDF(request, id_criptografado):
     
-    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
-    # url_criptografada = quote(id_criptografado_criptografado)
     memorando = Memorando.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -508,7 +496,6 @@ def geraEBaixaPDF(request, id_criptografado):
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
 
-    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf.html', context, request=request)
     
@@ -538,10 +525,7 @@ def geraEBaixaPDF(request, id_criptografado):
 
 def geraEBaixaPDFCircular(request, id_criptografado):
     
-    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
-    # url_criptografada = quote(id_criptografado_criptografado)
     grupos = Group.objects.all()
-    # memorando = Memorando.objects.get(id=id_criptografado)
     memorandocircular = MemorandoCircular.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -567,11 +551,9 @@ def geraEBaixaPDFCircular(request, id_criptografado):
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_circular.html"
 
-    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf_circular.html', context, request=request)
     
-    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     pathToPdf = str(BASE_DIR)+'/fileStorage/memorando_circular' + str(id_criptografado) + '.pdf'
 
     with open(str(BASE_DIR)+'/memoApp/static/css/style.css', 'r') as arquivoCss:
@@ -595,10 +577,6 @@ def geraEBaixaPDFCircular(request, id_criptografado):
             return response
 
 def geraEBaixaPDFOficio(request, id_criptografado):
-    
-    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
-    # url_criptografada = quote(id_criptografado_criptografado)
-    # memorando = Memorando.objects.get(id=id_criptografado)
     oficio = Oficio.objects.get(id=id_criptografado)
     data_atual = datetime.date.today()
     data_numerica = data_atual.strftime("%d/%m/%y")
@@ -624,7 +602,6 @@ def geraEBaixaPDFOficio(request, id_criptografado):
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf_oficio.html"
 
-    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     html_render = render_to_string('generate_pdf_oficio.html', context, request=request)
     
@@ -962,8 +939,6 @@ def visualizaMoc(request, id_criptografado, tipo):
 
 @login_required
 def geraPdfVisualiza(request, idpdf, tipo):
-    # id_criptografado_criptografado = criptografar_id_criptografado(id_criptografado)
-    # url_criptografada = quote(id_criptografado_criptografado)
     tipo = tipo.lower()
     print(tipo)
 
@@ -1019,7 +994,6 @@ def geraPdfVisualiza(request, idpdf, tipo):
     
     html_path = str(BASE_DIR) + "/memoApp/templates/generate_pdf.html"
 
-    # path_wkhtmltopdf = 'C:\Program Files\wkhtmltopdf\\bin\\wkhtmltopdf.exe'
     output_pdf = str(BASE_DIR)+'\\pdf_criado.pdf'
     
     if tipo == "memorando":
