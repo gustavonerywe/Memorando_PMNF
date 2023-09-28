@@ -24,7 +24,7 @@
                     </button>
                     <button type="button" class="back">
                         <a id="baixa-pdf-visualiza" class="link-visualiza" href="{% url 'geraPdfVisualiza' memorando.id tipo %}">
-                            <img src="/static/img/pdf.png" width="30" alt="back">
+                            <img src="/static/img/pdf.png" width="30" alt="img-pdf">
                             Gerar PDF
                         </a>
                     </button>
@@ -128,7 +128,7 @@
     </div>
     <div class="img-container">
         {% for anexo in anexos %}
-        <img src='/fileStorage/{{anexo.file}}' style="width: 85%; margin: 25px;"></img>
+        <img id="img-visualiza" src='/fileStorage/{{anexo.file}}'></img>
         {% endfor %}
     </div>
     <div id="modal-pdf">
