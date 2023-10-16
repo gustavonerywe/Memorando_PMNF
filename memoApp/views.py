@@ -845,8 +845,12 @@ def consultaMemo(request):
                     resultadoQuery = buscaporAssunto.union(buscaRemetente, buscaDestinatario, buscapornum)
                     print("vim ate aqui")
             
-                    
-                    
+            if tipo == 'Memorando':
+                resultadoQuery = resultadoQuery.order_by('-memo_numero')
+            elif tipo == 'Oficio':
+                resultadoQuery = resultadoQuery.order_by('-memo_numero_oficio')
+            else:
+                resultadoQuery = resultadoQuery.order_by('-memo_numero_circular')                 
                     
             # if termoBusca:
             #     resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
@@ -866,7 +870,12 @@ def consultaMemo(request):
             
     else:
         form = SearchForm()
-        context = {'form': form,}
+        context = {
+            'form': form,
+            'buscando': True,
+            'objectList': Memorando.objects.all().order_by('-memo_numero'),
+            'tipo': "Memorando",
+        }
         
     return render(request, 'consulta_memo.html', context)
     
