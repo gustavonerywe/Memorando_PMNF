@@ -57,6 +57,15 @@ def upload(request):
                    grupo_escolhido.remove('-- Selecione um grupo --')
             for i in range(grupo_escolhido_copia.count('-- Selecione um grupo --')):
                    grupo_escolhido_copia.remove('-- Selecione um grupo --')
+
+            files = request.FILES.getlist('file')
+
+            for file in files:
+                try:
+                    with imgpil.open(file) as image:
+                        image.save(f'fileStorage/{file.name}')
+                except ValueError as e:
+                    return redirect('erro')
                        
             memorando.save()
             
@@ -67,7 +76,6 @@ def upload(request):
                 grupoDestinado = Group.objects.get(name=grupo_escolhido_copia[i])
                 memorando.destinatarios_copia.add(grupoDestinado)
                 
-            files = request.FILES.getlist('file')
             
             nomesArquivos = []
             
@@ -87,13 +95,6 @@ def upload(request):
             session['grupo_escolhido_copia'] = grupo_escolhido_copia
             session['file_name'] = nomesArquivos
             session.save()
-
-            for file in files:
-                try:
-                    with imgpil.open(file) as image:
-                        image.save(f'fileStorage/{file.name}')
-                except ValueError as e:
-                    return redirect('erro')
             
             memorando.save()
             
@@ -822,8 +823,12 @@ def consultaMemo(request):
                     resultadoQuery = buscaporAssunto.union(buscaRemetente, buscaDestinatario, buscapornum)
                     print("vim ate aqui")
             
-                    
-                    
+            if tipo == 'Memorando':
+                resultadoQuery = resultadoQuery.order_by('-memo_numero')
+            elif tipo == 'Oficio':
+                resultadoQuery = resultadoQuery.order_by('-memo_numero_oficio')
+            else:
+                resultadoQuery = resultadoQuery.order_by('-memo_numero_circular')                 
                     
             # if termoBusca:
             #     resultadoQuery = sorted(buscapornum.union(buscaporAssunto), key=lambda x: x not in buscapornum)
@@ -843,7 +848,12 @@ def consultaMemo(request):
             
     else:
         form = SearchForm()
-        context = {'form': form,}
+        context = {
+            'form': form,
+            'buscando': True,
+            'objectList': Memorando.objects.all().order_by('-memo_numero'),
+            'tipo': "Memorando",
+        }
         
     return render(request, 'consulta_memo.html', context)
     

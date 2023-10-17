@@ -8,7 +8,7 @@
 <head>
     <link rel="stylesheet" href="/static/css/style.css" />
 </head>
-<a href="{% url 'loginPage' %}"><img id="perfil" style="float: left;" src="/static/img/menu.png" width="30"
+<a href="{% url 'loginPage' %}"><img id="perfil" style="float: left;" src="/static/img/botao-voltar.png" width="30"
         alt="perfil"></a>
 <html class="page_main" lang="pt-br">
 
@@ -268,13 +268,14 @@
         tinymce.init({
             selector: "#corpo",
             height: 500,
-            plugins: "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            // plugins: "advlist autolink lists link charmap print preview hr anchor pagebreak",
             toolbar_mode: "floating",
             toolbar: "undo redo | formatselect | bold italic backcolor | \
                   alignleft aligncenter alignright alignjustify | \
                   bullist numlist outdent indent | removeformat | help",
             content_style: "body { font-family: Arial, sans-serif; font-size: 14px; }",
             content_css: "custom-styles.css",
+            language: "pt_BR",
         });
 
     </script>
