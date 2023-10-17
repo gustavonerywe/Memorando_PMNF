@@ -57,6 +57,15 @@ def upload(request):
                    grupo_escolhido.remove('-- Selecione um grupo --')
             for i in range(grupo_escolhido_copia.count('-- Selecione um grupo --')):
                    grupo_escolhido_copia.remove('-- Selecione um grupo --')
+
+            files = request.FILES.getlist('file')
+
+            for file in files:
+                try:
+                    with imgpil.open(file) as image:
+                        image.save(f'fileStorage/{file.name}')
+                except ValueError as e:
+                    return redirect('erro')
                        
             memorando.save()
             
@@ -67,7 +76,6 @@ def upload(request):
                 grupoDestinado = Group.objects.get(name=grupo_escolhido_copia[i])
                 memorando.destinatarios_copia.add(grupoDestinado)
                 
-            files = request.FILES.getlist('file')
             
             nomesArquivos = []
             
@@ -87,13 +95,6 @@ def upload(request):
             session['grupo_escolhido_copia'] = grupo_escolhido_copia
             session['file_name'] = nomesArquivos
             session.save()
-
-            for file in files:
-                try:
-                    with imgpil.open(file) as image:
-                        image.save(f'fileStorage/{file.name}')
-                except ValueError as e:
-                    return redirect('erro')
             
             memorando.save()
             
