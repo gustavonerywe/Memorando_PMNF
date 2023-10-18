@@ -277,6 +277,35 @@
          $("#select-secretaria-copia-para").select2();
       });
    </script>
+   <script>
+       if(/*condição de erro*/){
+      document.addEventListener("DOMContentLoaded", function () {
+          let inputNumero = document.getElementById("id_assunto");
+          let storedNumero = localStorage.getItem("numBusca");
+          if (storedNumero) {
+              inputNumero.value = storedNumero;
+          }
+
+          let termoBusca = document.getElementById("termoBusca");
+          let storedTermo = localStorage.getItem("termoBusca");
+          if (storedTermo) {
+              termoBusca.value = storedTermo;
+          }
+      
+          let destinatario = document.getElementById("select-secretaria");
+          let storedDestinatario = localStorage.getItem("destinatario");
+          if (storedDestinatario) {
+              destinatario.value = storedDestinatario;
+          }
+      
+          let remetente = document.querySelector(".usermoc-matricula");
+          let storedRemetente = localStorage.getItem("remetente");
+          if (storedRemetente) {
+              remetente.textContent = storedRemetente;
+          }
+      })};
+      </script>
+      
 </body>
 
 </html>
