@@ -64,7 +64,7 @@ def upload(request):
                 try:
                     with imgpil.open(file) as image:
                         image.save(f'fileStorage/{file.name}')
-                except ValueError as e:
+                except:
                     return redirect('erro')
                        
             memorando.save()

@@ -2523,7 +2523,6 @@ hr {
     border: 1px solid;
 }
 .img-visualiza{
-    width: 40%;
     margin-right: 75%;
 }
 
@@ -2936,4 +2935,18 @@ hr {
     #button-container-troca{
         gap: 0px!important;
     }
+}
+.modal-content-success{
+    background-color: #fefefe;
+    margin: 0 auto;
+    margin-top: 10%;
+    border: 1px solid #888;
+    width: 40%;
+    height: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 25px;
+}
+.title-modal-success{
+    font-size: 25px;
 }

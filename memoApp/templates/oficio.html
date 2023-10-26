@@ -41,7 +41,7 @@
    <form id="form-main" method="post" enctype="multipart/form-data" action="{% url 'oficio' %}">
       {% csrf_token %}
       <div id="header">
-         <img id="img" src="/static/img/prefeitura.png" alt="Logo da prefeitura" />
+         <img id="img" src="/static/img/prefeitura-logo.jpeg" alt="Logo da prefeitura" />
       </div>
       <hr />
       <div id="content">
@@ -241,6 +241,40 @@
          $("#select-secretaria-copia-para").select2();
       });
    </script>
+   <script>
+       if(/*condição de erro*/){
+      document.addEventListener("DOMContentLoaded", function () {
+          let inputAssunto = document.getElementById("id_assunto");
+          let storedAssunto = localStorage.getItem("assunto_memorando");
+          if (storedAssunto) {
+              inputAssunto.value = storedAssunto;
+          }
+      
+          let inputParaOficio = document.getElementById("para-oficio");
+          let storedParaOficio = localStorage.getItem("para-oficio");
+          if (storedParaOficio) {
+              inputParaOficio.value = storedParaOficio;
+          }
+      
+          let inputCopiaOficio = document.getElementById("copia-oficio");
+          let storedCopiaOficio = localStorage.getItem("copia-oficio");
+          if (storedCopiaOficio) {
+              inputCopiaOficio.value = storedCopiaOficio;
+          }
+      });
+      
+      document.getElementById("form-main").addEventListener("submit", function (event) {
+          let inputAssunto = document.getElementById("id_assunto");
+          localStorage.setItem("assunto_memorando", inputAssunto.value);
+      
+          let inputParaOficio = document.getElementById("para-oficio");
+          localStorage.setItem("para-oficio", inputParaOficio.value);
+      
+          let inputCopiaOficio = document.getElementById("copia-oficio");
+          localStorage.setItem("copia-oficio", inputCopiaOficio.value);
+      })};
+      </script>
+      
 </body>
 
 </html>
