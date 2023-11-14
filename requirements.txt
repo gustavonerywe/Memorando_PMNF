@@ -28,3 +28,4 @@ tinycss2==1.2.1
 weasyprint==59.0
 webencodings==0.5.1
 zopfli==0.2.3
+criptography==37.0.2
