@@ -899,7 +899,7 @@ hr {
 }
 
 .tox-notifications-container {
-    display: none;
+    display: none !important;
 }
 
 .tox .tox-statusbar a,

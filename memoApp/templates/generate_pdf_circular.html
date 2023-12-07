@@ -198,13 +198,7 @@
                         <td class="td-generate">
                             {{ user.groups.first.name }}
                             <br>
-                            {{ user.get_full_name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th-generate" style="vertical-align: middle;">Matrícula:</th>
-                        <td class="td-generate">
-                           <span>{{usermoc.matricula}}</span> 
+                            {{ user.get_full_name }} | Matrícula {{usermoc.matricula}}
                         </td>
                     </tr>
                     <tr>

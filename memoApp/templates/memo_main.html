@@ -63,13 +63,7 @@
                     <td id="td-table-memo">
                         {{ user.groups.first.name }}
                         <hr id="hr-table" />
-                        {{ user.get_full_name }}
-                    </td>
-                </tr>
-                <tr class="table-secondary">
-                    <th>Matrícula:</th>
-                    <td>
-                       <span class="usermoc-matricula">{{usermoc.matricula}}</span> 
+                        {{ user.get_full_name }} | Matrícula: {{usermoc.matricula}}
                     </td>
                 </tr>
                 <tr class="table-secondary">
