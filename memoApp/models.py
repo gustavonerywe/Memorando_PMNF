@@ -25,15 +25,18 @@ class Memorando(models.Model):
     def gerar_proximo_numero(self):
         memo_numero = 201
         ultimo_numero = Memorando.objects.last()
+        data_atual = timezone.now()
+        ano_atual = data_atual.year
         print(ultimo_numero)
         if ultimo_numero:
             numero =  ultimo_numero.memo_numero.split('/')
-            memo_numero = int(numero[0]) + 1
+            if numero[1] == ano_atual:
+                memo_numero = int(numero[0]) + 1
+            else:
+                memo_numero = 1
         else:
             memo_numero = 1
 
-        data_atual = timezone.now()
-        ano_atual = data_atual.year
         response = f'{memo_numero:003d}/{ano_atual}'
         return response
 
@@ -49,15 +52,18 @@ class Oficio(models.Model):
     def gerar_proximo_numero_oficio(self):
         memo_numero_oficio = 0
         ultimo_numero = Oficio.objects.last()
+        data_atual = timezone.now()
+        ano_atual = data_atual.year
         print(ultimo_numero)
         if ultimo_numero:
             numero =  ultimo_numero.memo_numero_oficio.split('/')
-            memo_numero_oficio = int(numero[0]) + 1
+            if numero[1] == ano_atual:
+                memo_numero_oficio = int(numero[0]) + 1
+            else:
+                memo_numero_oficio = 1
         else:
             memo_numero_oficio = 1
-
-        data_atual = timezone.now()
-        ano_atual = data_atual.year
+            
         response = f'{memo_numero_oficio:003d}/{ano_atual}'
         return response
 
@@ -72,15 +78,20 @@ class MemorandoCircular(models.Model):
     def gerar_proximo_numero_circular(self):
         memo_numero_circular = 0
         ultimo_numero = MemorandoCircular.objects.last()
+        data_atual = timezone.now()
+        ano_atual = data_atual.year
+        
         print(ultimo_numero)
         if ultimo_numero:
             numero =  ultimo_numero.memo_numero_circular.split('/')
-            memo_numero_circular = int(numero[0]) + 1
+            if numero[1] == ano_atual:
+                memo_numero_circular = int(numero[0]) + 1
+            else:
+                memo_numero_circular = 1
         else:
             memo_numero_circular = 1
 
-        data_atual = timezone.now()
-        ano_atual = data_atual.year
+
         response = f'{memo_numero_circular:003d}/{ano_atual}'
         return response
     
