@@ -98,22 +98,36 @@
             <span class="grupomoc-endereco">{{grupomoc.endereco}}</span>
         </div> 
       </div>
-      <!-- <div id="footer">
+<div id="footer">
             <p></p>
             <fieldset id="box-field">
-                <table>
-                    <tr>
-                        <th id="tituloTable2">RECEBIDO</th>
-                    </tr>
-                    <tr>
-                        <td id="em">Em: ______ /______ /______</td>
-                    </tr>
-                    <tr>
-                        <td id="ass">Ass: _____________________</td>
-                    </tr>
-                </table>
+                    <table>
+
+                        <tr>
+                            <td id="ass">Ass: _____________________</td>
+                        </tr>
+                        <tr>
+                            {% if  usermoc.acessoTerceiros%}
+                            <td>
+                                <select name="remetente" id="selectTerceiro">
+                                    {% for user in users %}
+                                    <option value="{{user.id}}">{{ user.get_full_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            {% else %}
+                                <th>{{user.get_full_name}}</th>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td>
+                                <p style="font-size: smaller">*As demais informações aparecerão no PDF gerado*</p>
+                            </td>
+                        </tr>
+
+                    </table>
             </fieldset>
-            </div> -->
+            </div> 
       <hr />
       <h1 id="title-footer">ARQUIVOS EM ANEXO</h1>
       <!-- templates/upload.html -->
@@ -213,19 +227,20 @@
       </div>
    </div>
    <script src="/static/js/oficio.js"></script>
-   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+   <script src="https://cdn.tiny.cloud/1/blezqsiz6tw2f8t569z65c2ri02rjcpk1bivav5idv377x3e/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
    <script>
-      tinymce.init({
-         selector: "#corpo",
-         height: 500,
-         plugins: "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-         toolbar_mode: "floating",
-         toolbar: "undo redo | formatselect | bold italic backcolor | \
-               alignleft aligncenter alignright alignjustify | \
-               bullist numlist outdent indent | removeformat | help",
-         content_style: "body { font-family: Arial, sans-serif; font-size: 14px; }",
-         content_css: "custom-styles.css",
-      });
+       tinymce.init({
+           selector: "#corpo",
+           height: 500,
+           // plugins: "advlist autolink lists link charmap print preview hr anchor pagebreak",
+           toolbar_mode: "floating",
+           toolbar: "undo redo | formatselect | bold italic backcolor | \
+                 alignleft aligncenter alignright alignjustify | \
+                 bullist numlist outdent indent | removeformat | help",
+           content_style: "body { font-family: Arial, sans-serif; font-size: 14px; }",
+           content_css: "custom-styles.css",
+           language: "pt_BR",
+       });
 
    </script>
    <!-- códigos de bootstrap e do search dentro do select  -->

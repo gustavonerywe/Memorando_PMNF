@@ -40,6 +40,7 @@ def upload(request):
     grupos = Group.objects.all()
     groupuser = request.user.groups.first()
     groupaddress = GroupMoc.objects.get(group=groupuser)
+    users = User.objects.all()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -48,7 +49,8 @@ def upload(request):
             memorando.corpo = request.POST.get('corpo')
             memo_numero_atualizado = memorando.gerar_proximo_numero()
             memorando.data = request.POST.get('data')
-            memorando.remetente = request.user
+            memorando.remetente = User.objects.get(id=request.POST.get('remetente'))
+            memorando.creatorUser = request.user
             memorando.memo_numero = memo_numero_atualizado
             grupo_escolhido = request.POST.getlist('destinatario')
             grupo_escolhido_copia = request.POST.getlist('destinatarios_copia')
@@ -116,6 +118,7 @@ def upload(request):
                 'grupos': grupos,
                 'usermoc': UserMoc.objects.get(user=request.user),
                 'grupomoc': groupaddress,
+                'users': users
             }
             return render(request, 'upload_success.html', context)
     else:
@@ -128,6 +131,7 @@ def upload(request):
         'grupos': grupos,
         'usermoc': UserMoc.objects.get(user=request.user),
         'grupomoc': groupaddress,
+        'users': users
     }
     return render(request, 'memo_main.html', context)
 
@@ -137,6 +141,7 @@ def memorando_circular(request):
     memorandocircular = MemorandoCircular()
     groupuser = request.user.groups.first()
     groupaddress = GroupMoc.objects.get(group=groupuser)
+    users = User.objects.all()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -144,7 +149,8 @@ def memorando_circular(request):
             memorandocircular.corpo_circular = request.POST.get('corpo')
             memo_numero_atualizado_circular = memorandocircular.gerar_proximo_numero_circular()
             memorandocircular.data_circular = request.POST.get('data')
-            memorandocircular.remetente_circular = request.user
+            memorandocircular.remetente_circular = User.objects.get(id=request.POST.get('remetente'))
+            memorandocircular.creatorUser = request.user
             memorandocircular.memo_numero_circular = memo_numero_atualizado_circular
 
             files = request.FILES.getlist('file')
@@ -190,6 +196,7 @@ def memorando_circular(request):
                 'grupos': grupos,
                 'usermoc': UserMoc.objects.get(user=request.user),
                 'grupomoc': groupaddress,
+                'users': users
             }
             return render(request, 'upload_success_circular.html', context)
     else:
@@ -202,6 +209,7 @@ def memorando_circular(request):
     'grupos': grupos,
     'usermoc': UserMoc.objects.get(user=request.user),
     'grupomoc': groupaddress,
+    'users': users
 }
 
     return render(request, 'memorando_circular.html', context)
@@ -212,6 +220,7 @@ def oficio(request):
     oficio = Oficio()
     groupuser = request.user.groups.first()
     groupaddress = GroupMoc.objects.get(group=groupuser)
+    users = User.objects.all()
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -219,7 +228,8 @@ def oficio(request):
             oficio.corpo_oficio = request.POST.get('corpo')
             oficio_numero_atualizado = oficio.gerar_proximo_numero_oficio()
             oficio.data_oficio = request.POST.get('data')
-            oficio.remetente_oficio = request.user
+            oficio.creatorUser = request.user
+            oficio.remetente_oficio = User.objects.get(id=request.POST.get('remetente'))
             oficio.memo_numero_oficio = oficio_numero_atualizado
             oficio.destinatario_oficio = request.POST.get('para-oficio')
             oficio.destinatarios_copia_oficio = request.POST.get('copia-oficio')
@@ -268,6 +278,7 @@ def oficio(request):
                 'destinatario_copia_oficio': oficio.destinatarios_copia_oficio,
                 'usermoc': UserMoc.objects.get(user=request.user),
                 'grupomoc': groupaddress,
+                'users': users
             }
             return render(request, 'upload_success_oficio.html', context)
     else:
@@ -279,6 +290,7 @@ def oficio(request):
         'memorando_corpo': Memorando().corpo,
         'usermoc': UserMoc.objects.get(user=request.user),
         'grupomoc': groupaddress,
+        'users': users
     }
     return render(request, 'oficio.html', context)
 

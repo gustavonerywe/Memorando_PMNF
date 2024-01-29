@@ -138,6 +138,13 @@
         font-size: xx-small;
     } 
 
+    #table-enviado {
+        padding: 5px;
+        width: 30%;
+        font-size: x-small;
+        text-align: left;
+    }
+
     #ass, #em, #tituloTable2, #matr {
         font-size: xx-small;
     }
@@ -197,8 +204,6 @@
                         </div>
                         <td class="td-generate">
                             {{ user.groups.first.name }}
-                            <br>
-                            {{ user.get_full_name }} | Matrícula {{usermoc.matricula}}
                         </td>
                     </tr>
                     <tr>
@@ -220,6 +225,26 @@
                     </tr>
                 </table>
                 <div style=" margin-top: 10px; text-align: justify;  word-wrap: break-word;" id="corpo-memorando-pdf" contenteditable="false">{{text_content|safe }}</div>
+                <div id="footer">
+                    <fieldset id="box-field">
+                        <table id="table-enviado" style="padding-top: 20px">
+    
+                            <tr>
+                                <td id="ass-enviado" style="font-size: small;">Ass: _____________________</td>
+                            </tr>
+                            <tr>
+                                <th>{{ user.get_full_name }}</th>
+                            </tr>
+                            <tr>
+                                <th>Matrícula: {{usermoc.matricula}}</th>
+                            </tr>
+                            <tr>
+                                <th>{{ user.groups.first.name }}</th>
+                            </tr>
+    
+                        </table>
+                    </fieldset>
+                    </div>
                 <div class="endereco-container endereco-pdf">
                     <span class="grupomoc-endereco">{{grupomoc.endereco}}</span>
                 </div> 
