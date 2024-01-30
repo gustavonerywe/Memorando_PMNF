@@ -61,8 +61,6 @@
                <th>De:</th>
                <td id="td-table-memo">
                   {{ user.groups.first.name }}
-                  <hr />
-                  {{ user.get_full_name }}
                </td>
             </tr>
             <tr class="table-secondary">
@@ -290,6 +288,7 @@
          // $('.select2').select2();
          $("#select-secretaria").select2();
          $("#select-secretaria-copia-para").select2();
+         $("#selectTerceiro").select2();
       });
    </script>
    <script>

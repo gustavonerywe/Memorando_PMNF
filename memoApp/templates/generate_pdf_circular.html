@@ -206,7 +206,7 @@
                             {{ user.groups.first.name }}
                         </td>
                     </tr>
-                    <tr>
+                    {% comment %} <tr>
                         <th class="th-generate" style="vertical-align: middle;">Para:</th>
                         <td class="td-generate" id="secretaria-escolhida">
                             <ul class="grupo-lista">
@@ -215,7 +215,7 @@
                                 {% endfor %}
                             </ul>
                         </td>
-                    </tr>
+                    </tr> {% endcomment %}
 
                     <tr>
                         <th class="th-generate" style="vertical-align: middle;">Assunto:</th>
@@ -248,7 +248,7 @@
                 <div class="endereco-container endereco-pdf">
                     <span class="grupomoc-endereco">{{grupomoc.endereco}}</span>
                 </div> 
-                <div id="footer">
+                {% comment %} <div id="footer">
                     <table id="table-recebido">
                         <h3 id="recebido">RECEBIDO</h3>
                         {% for grupo in grupos %}
@@ -260,7 +260,7 @@
                             </tr>
                         {% endfor %}
                     </table>
-                </div>
+                </div> {% endcomment %}
             </div>
             {% comment %} <script src="/static/js/generate_pdf.js"></script> {% endcomment %}
         </form>
